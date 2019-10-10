@@ -16,7 +16,7 @@
 	</div>
 	<div id="banner">
 		<ul>
-			<li><a href="${cp }">귀걸이</a></li>
+			<li><a href="${cp }/inventory/ear?jnum=100">귀걸이</a></li>
 			<li><a href="${cp }">목걸이</a></li>
 			<li><a href="${cp }">팔찌</a></li>
 			<li><a href="${cp }">시계</a></li>
