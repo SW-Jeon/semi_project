@@ -34,29 +34,37 @@
 
 #right {
 	width: 30%;
-	height: 200px;
-	background-color: #EFFBF5;
+	height:1600px;
 	text-align: center;
 	float: right;
 }
-
 #right_down1 {
-	width: 30%;
+	width: 100%;
 	height: 300px;
 	background-color: #EFFBF5;
 	text-align: center;
-	float: right;
+   align-content: center;
+}
+#right_down2 {
+	width: 100%;
+	height: 500px;
+	background-color: #EFFBF5;
+	text-align: center;
+	margin-top:30px;
+	padding-bottom: 30px;
 }
 
-#right_down2 {
-	width: 30%;
-	height: 300px;
+#right_down3 {
+	width:100%;
+	height: 500px;
 	background-color: #EFFBF5;
 	text-align: center;
-	float: right;
+	margin-top:30px;
+	padding-top: 30px;
 }
 
 #footer {
+	padding-top:30px;
 	width: 100%;
 	height: 130px;
 	background-color: #CEF6CE;
@@ -65,6 +73,7 @@
 }
 
 #header h1 {
+	margin:20px;
 	font-style: italic; 
 	font-size: 2.5em;
 }
@@ -73,6 +82,8 @@
 	padding-top: 30px;
 	padding-left: 250px;
 }
+#gnb{float: right;}
+#banner{float: left; margin-top: 80px;  font:12px;}
 
 #header ul li {
 	list-style: none;

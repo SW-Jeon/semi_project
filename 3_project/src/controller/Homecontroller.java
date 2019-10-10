@@ -25,7 +25,7 @@ public class Homecontroller extends HttpServlet {
 			main="/pro/home.jsp";
 		}
 		if(right==null) {
-			right="/pro/login.jsp";
+			right="/pro/right.jsp";
 		}
 		if(bottom==null) {
 			bottom="/pro/footer.jsp";
