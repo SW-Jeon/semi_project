@@ -13,8 +13,8 @@ import SH.Inventory_Dao.InventoryDao;
 import SH.Inventory_Vo.InventoryVo;
 
 
-@WebServlet("/inventory/ear")
-public class InventoryServlet extends HttpServlet {
+@WebServlet("/inventory/list")
+public class ListServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String spageNum=req.getParameter("pageNum");
@@ -41,6 +41,11 @@ public class InventoryServlet extends HttpServlet {
 		req.setAttribute("endPageNum", endPageNum);
 		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("jnum", jnum);
-		req.getRequestDispatcher("/SH.inventory/earring.jsp").forward(req, resp);
+		switch(jnum) {
+		case(100) : req.getRequestDispatcher("/SH.inventory/earring.jsp").forward(req, resp); break;
+		case(200) : req.getRequestDispatcher("/SH.inventory/neck.jsp").forward(req, resp); break;
+		case(300) : req.getRequestDispatcher("/SH.inventory/watch.jsp").forward(req, resp); break;
+		case(400) : req.getRequestDispatcher("/SH.inventory/brace.jsp").forward(req, resp);  break;
+		}
 	}
 }
