@@ -6,15 +6,14 @@
 }
 
 #wrap {
-	width: 1200px;
+	width: 1300px;
 	height: 2000px;
-	margin: auto;
 }
 
 #header {
 	width: 100%;
 	height: 250px;
-	background-color: #FBEFFB;
+	background-color: #FFFFFF;
 	text-align: center;
 }
 
@@ -26,7 +25,7 @@
 }
 
 #content {
-	width: 70%;
+	width: 60%;
 	height: 1600px;
 	text-align: center;
 	float: left;
@@ -36,7 +35,7 @@
 	width: 30%;
 	height: 1600px;
 	text-align: center;
-	float: left;
+	float: right;
 }
 
 #right_down1 {
@@ -68,7 +67,7 @@
 	height: 130px;
 	text-align: center;
 	float: right;
-	background-color: #FBEFFB;
+	background-color: #FFFFFF;
 }
 
 #header h1 {
@@ -78,11 +77,12 @@
 }
 
 #header #logo {
+	padding-left:30px;
 	float: left;
 }
 
 #header #ser {
-	margin-left: 70px;
+	margin-left: 50px;
 	padding-top: 100px;
 }
 
@@ -98,7 +98,7 @@
 }
 
 #header ul {
-	padding-top: 30px;
+	
 	padding-left: 250px;
 }
 

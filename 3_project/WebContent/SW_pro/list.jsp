@@ -5,7 +5,7 @@
 <hr>
 	<h1>발자국</h1>
 	<hr>
-		<table border="1" bordercolor="green" width="600">
+		<table style="width:100%;">
 			<tr>
 				<th>글번호</th>
 				<th>작성자</th>
