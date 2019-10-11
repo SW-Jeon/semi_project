@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!--insert.jsp-->
+<!-- QnAwrite.jsp -->
 <div id="main">
+		<h1>Q&A</h1>
+		<h4>글쓰기</h4>
 	<hr>
-	<h1>글쓰기</h1>
-	<hr>
-	<form method="post" action="${cp }/SW_pro/insert">
+	<form method="post" action="${cp }/SW_pro/QnAwrite">
 		글쓴이<br>
 		<input type="text" name="writer"><br>
-		제목<br>
-		<input type="text" name="title"><br>
 		내용<br>
 		<textarea rows="5" cols="60" name="content"></textarea><br>
 		비밀번호<br>

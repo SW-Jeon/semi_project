@@ -5,6 +5,5 @@
 	<jsp:include page="${top }" />
 	<jsp:include page="${content }" />
 	<jsp:include page="${right }" />
-	<hr>
 	<jsp:include page="${bottom }" />
 </div>

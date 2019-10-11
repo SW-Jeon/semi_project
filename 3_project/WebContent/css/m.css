@@ -6,16 +6,17 @@
 }
 
 #wrap {
-	width: 1200px;
+	width: 1300px;
 	height: 2000px;
+	margin-left: 300px;
 	margin: auto;
 }
 
 #header {
 	width: 100%;
 	height: 250px;
-	background-color: #FBEFFB;
 	text-align: center;
+	background: #ffffff; 
 }
 
 #main {
@@ -26,7 +27,7 @@
 }
 
 #content {
-	width: 70%;
+	width: 60%;
 	height: 1600px;
 	text-align: center;
 	float: left;
@@ -68,7 +69,11 @@
 	height: 130px;
 	text-align: center;
 	float: right;
-	background-color: #FBEFFB;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(left,  #ffffff 4%, #ffffff 10%, #ffffff 48%, #ffffff 48%, #42e560 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  #ffffff 4%,#ffffff 10%,#ffffff 48%,#ffffff 48%,#42e560 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  #ffffff 4%,#ffffff 10%,#ffffff 48%,#ffffff 48%,#42e560 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#42e560',GradientType=1 ); /* IE6-9 */
 }
 
 #header h1 {
@@ -78,11 +83,12 @@
 }
 
 #header #logo {
+	padding-left:30px;
 	float: left;
 }
 
 #header #ser {
-	margin-left: 70px;
+	margin-left: 50px;
 	padding-top: 100px;
 }
 
@@ -93,12 +99,12 @@
 
 #banner {
 	float: left;
-	margin-top: 20px;
+	margin-top: 0px;
 	margin-left: 150px;
 }
 
 #header ul {
-	padding-top: 30px;
+	
 	padding-left: 250px;
 }
 
