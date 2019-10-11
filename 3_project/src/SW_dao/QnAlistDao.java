@@ -139,7 +139,7 @@ public class QnAlistDao {
 	}
 
 	//조회수 업데이트 메소드
-	public void addHit(int qaNum) {
+	public int addHit(int qaNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
@@ -147,9 +147,10 @@ public class QnAlistDao {
 			String sql="update qa set qaHit=qaHit+1 where qaNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, qaNum);
-			pstmt.executeUpdate();
+			return pstmt.executeUpdate();
 		}catch(SQLException se) {
-			System.out.println(se.getMessage());
+			se.printStackTrace();
+			return -1;
 		}finally {
 			JdbcUtil.close(con, pstmt, null);
 		}

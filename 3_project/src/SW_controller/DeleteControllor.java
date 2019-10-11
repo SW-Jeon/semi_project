@@ -9,33 +9,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import SW_dao.QnAlistDao;
-import SW_vo.QnAvo;
 
-@WebServlet("/SW_pro/QnAwrite")
-public class QnAwriteController extends HttpServlet {
+@WebServlet("/board/delete")
+public class DeleteControllor extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+		int qaNum=Integer.parseInt(req.getParameter("qaNum"));
+		req.setAttribute("qaNum", qaNum);
+		req.getRequestDispatcher("/SW_pro/delete.jsp").forward(req, resp);
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String qaContent=req.getParameter("qaContent");
-		String qaName=req.getParameter("qaName");
+		req.setCharacterEncoding("utf-8");
+		int qaNum=Integer.parseInt(req.getParameter("qaNum"));
 		String qaPwd=req.getParameter("qaPwd");
-		QnAvo vo=new QnAvo(0, qaContent, qaName, qaPwd, null, 0, null);
+		
 		QnAlistDao dao=QnAlistDao.getInstance();
-		int n=dao.insert(vo);
-		if(n>0){
-			req.setAttribute("msg", "success");
+		int n=dao.delete(qaNum, qaPwd);
+		if(n>0) {
+			req.setAttribute("msg","success");
 		}else {
-			req.setAttribute("msg", "fail");
+			req.setAttribute("msg","fail");
 		}
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main","/SW_pro/result.jsp");
+		req.setAttribute("content","/SW_pro/result.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }
-
 

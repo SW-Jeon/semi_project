@@ -26,4 +26,6 @@
 			<li><button type="button" class="Btn" onClick="location.href='${cp }'">시계</button></li>
 		</ul>
 	</div>
+  <br><br><hr>
 </div>
+	

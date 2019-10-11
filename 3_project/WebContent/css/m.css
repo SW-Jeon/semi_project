@@ -8,13 +8,15 @@
 #wrap {
 	width: 1300px;
 	height: 2000px;
+	margin-left: 300px;
+	margin: auto;
 }
 
 #header {
 	width: 100%;
 	height: 250px;
-	background-color: #FFFFFF;
 	text-align: center;
+	background: #ffffff; 
 }
 
 #main {
@@ -35,7 +37,7 @@
 	width: 30%;
 	height: 1600px;
 	text-align: center;
-	float: right;
+	float: left;
 }
 
 #right_down1 {
@@ -67,7 +69,11 @@
 	height: 130px;
 	text-align: center;
 	float: right;
-	background-color: #FFFFFF;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(left,  #ffffff 4%, #ffffff 10%, #ffffff 48%, #ffffff 48%, #42e560 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  #ffffff 4%,#ffffff 10%,#ffffff 48%,#ffffff 48%,#42e560 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  #ffffff 4%,#ffffff 10%,#ffffff 48%,#ffffff 48%,#42e560 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#42e560',GradientType=1 ); /* IE6-9 */
 }
 
 #header h1 {
@@ -93,7 +99,7 @@
 
 #banner {
 	float: left;
-	margin-top: 20px;
+	margin-top: 0px;
 	margin-left: 150px;
 }
 

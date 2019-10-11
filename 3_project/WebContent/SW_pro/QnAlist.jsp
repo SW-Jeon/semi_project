@@ -1,28 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- QnAlist.jsp.jsp -->
+<!-- QnAlist.jsp -->
 <div id="main">
-		<h1>QnA</h1>
-		<hr>
+<br>
+		<h1 style="font-size: 5em;">Q&A</h1>
+		<h4>궁금하신 사항을 문의해주세요.</h4>
+		<br><br><hr>
 		<table style="width:100%;">
 			<tr>
 				<th>번호</th>
 				<th>글내용</th>
 				<th>글쓴이</th>
 				<th>답변확인</th>
-				<th>조회수</th>
 			</tr>
 			<c:forEach var="vo" items="${QnAlist }">
 			<tr>
 				<td>${vo.qaNum }</td>
 				<td>${vo.qaContent }</td>
-				<td>>${vo.qaName }</td>
-				<td>>${vo.reQst }</td>
-				<td>>${vo.qaHit }</td>
+				<td>${vo.qaName }</td>
+				<td>${vo.reQst }</td>
 			</tr>
 			</c:forEach>
 		</table>
-		
+					<hr>
 	<div><!-- 페이징처리 -->
 		<c:choose>
 				<c:when test="${startPageNum>10 }">
@@ -54,7 +54,8 @@
 				</c:otherwise>
 		</c:choose>
 	</div>
-	<hr>
+	
+	<br>
 		<!-- 검색창 -->
 	<div>
 		<form method="post" action="${cp }/SW_pro/QnAlist">
@@ -66,4 +67,6 @@
 			<input type="submit" value="검색">
 		</form>
 	</div>
+	
+	<p><a href="${cp}/SW_pro/QnAwrite" style="font-size: 1.2em; text-align: center; text-decoration: none;display: inline-block; float: right;">문의하기</a></p>
 </div>
