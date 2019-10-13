@@ -204,4 +204,24 @@ public class QnAlistDao {
         	JdbcUtil.close(con, pstmt, null);
 		}
 	}
+	
+	//답글 달기
+    public int reDab(QnAvo vo) {
+    	Connection con=null;
+    	PreparedStatement pstmt=null;
+    	String sql="update qa set qaRecontent=? and reQst=? where qaNum=?";
+    	try { 
+    		con=JdbcUtil.getConn();
+    		pstmt=con.prepareStatement(sql);
+    		pstmt.setString(1, vo.getQaRecontent());
+    		pstmt.setString(2, vo.getReQst());
+    		pstmt.setInt(3, vo.getQaNum());
+    		return pstmt.executeUpdate();
+    	}catch(SQLException se){
+    		se.printStackTrace();
+    		return -1;
+    	}finally {
+    		JdbcUtil.close(con, pstmt, null);
+    	}
+    }
 }

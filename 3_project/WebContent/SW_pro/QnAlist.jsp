@@ -16,7 +16,7 @@
 			<c:forEach var="vo" items="${QnAlist }">
 			<tr>
 				<td>${vo.qaNum }</td>
-				<td>${vo.qaContent }</td>
+				<td><a href="${cp }/SW_pro/QnAdetail?qaNum=${vo.qaNum}">${vo.qaContent }</a></td>
 				<td>${vo.qaName }</td>
 				<td>${vo.reQst }</td>
 			</tr>

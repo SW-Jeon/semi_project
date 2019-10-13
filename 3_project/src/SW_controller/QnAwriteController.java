@@ -15,14 +15,19 @@ import SW_vo.QnAvo;
 public class QnAwriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SW_pro/QnAwrite.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		String qaContent=req.getParameter("qaContent");
 		String qaName=req.getParameter("qaName");
 		String qaPwd=req.getParameter("qaPwd");
+		
 		QnAvo vo=new QnAvo(0, qaContent, qaName, qaPwd, null, 0, null);
 		QnAlistDao dao=QnAlistDao.getInstance();
 		int n=dao.insert(vo);
