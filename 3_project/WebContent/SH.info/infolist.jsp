@@ -15,12 +15,13 @@ ul{list-style:none; }
 .num{width:40px; height: 40px; float: left; text-align: center; clear: both; }
 .body_title{width: 800px; height: 40px; float: left; }
 .del{width:60px; height: 40px; float: left; text-align: center;}
+.insert{width:80px; height: 40px; float: left; text-align: center; clear: both; }
+.button{width: 900px; height: 40px; float: left;}
 </style>
 </head>
 <body>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
 <div id="wrap">
-
 	<ul class="head">
 		<li class="no">No</li><li class="head_title">제목</li>	
 	</ul>
@@ -31,7 +32,9 @@ ul{list-style:none; }
 			<li class="del"><a href="${cp }/info/delete?infonum=${vo.infonum}">삭제</a></li>
 		</ul>
 	</c:forEach>
-	<a href="${cp }/SH.info/infoinsert.jsp">글쓰기</a>
+		<ul class="button">
+		<li class="insert"><a href="${cp }/info/insert">글쓰기</a></li>
+		</ul>
 </div>
 </body>
 </html>
