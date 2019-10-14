@@ -28,7 +28,8 @@ public class QnAlistController extends HttpServlet {
 		int endRow=pageNum*10;
 		int startRow=endRow-9;
 		QnAlistDao dao=QnAlistDao.getInstance();
-		ArrayList<QnAvo> QnAlist=dao.QnAlist(startRow, endRow, field, keyword);
+		ArrayList<QnAvo> list=dao.QnAlist(startRow, endRow, field, keyword);
+	
 		int pageCount=(int)Math.ceil(dao.getCount(field, keyword)/10.0);		//전체페이지
 		int startPageNum=((pageNum-1)/10*10)+1;		//시작페이지
 		
@@ -36,16 +37,16 @@ public class QnAlistController extends HttpServlet {
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
 		}
-		req.setAttribute("QnAlist", QnAlist);
+		req.setAttribute("list", list);
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("startPageNum", startPageNum);
 		req.setAttribute("endPageNum", endPageNum);
 		req.setAttribute("pageNum", pageNum);
+		req.setAttribute("field", field);
+		req.setAttribute("keyword", keyword);
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("main", "/SW_pro/QnAlist.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.setAttribute("field", field);
-		req.setAttribute("keyword", keyword);
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }

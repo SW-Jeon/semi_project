@@ -13,12 +13,12 @@
 				<th>글쓴이</th>
 				<th>답변확인</th>
 			</tr>
-			<c:forEach var="vo" items="${QnAlist }">
+			<c:forEach var="vo" items="${list }">
 			<tr>
-				<td>${vo.qaNum }</td>
-				<td>${vo.qaContent }</td>
-				<td>${vo.qaName }</td>
-				<td>${vo.reQst }</td>
+				<td>${vo.qanum }</td>
+				<td><a href="${cp }/SW_pro/QnAdetail?qanum=${vo.qanum}">${vo.qacontent }</a></td>
+				<td>${vo.qaname }</td>
+				<td>${vo.reqst }</td>
 			</tr>
 			</c:forEach>
 		</table>
@@ -60,8 +60,8 @@
 	<div>
 		<form method="post" action="${cp }/SW_pro/QnAlist">
 			<select name="field">
-					<option value="qaName" <c:if test="${field=='qaName'}">selected</c:if>>글쓴이</option>
-					<option value="qaContent" <c:if test="${field=='qaContent'}">selected</c:if>>글내용</option>
+					<option value="qaname" <c:if test="${field=='qaname'}">selected</c:if>>글쓴이</option>
+					<option value="qacontent" <c:if test="${field=='qacontent'}">selected</c:if>>글내용</option>
 			</select>
 			<input type="text" name="keyword" value="${keyword }">
 			<input type="submit" value="검색">
