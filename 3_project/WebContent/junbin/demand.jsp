@@ -129,6 +129,7 @@
 	<span id="cprice" style="color:red;font-size:30px;font-family:sans-serif;"></span>
 	<br>
 		<input type="hidden" id="allamount" name="allamount" value="">
+		<input type="hidden" name="ordernum" value="${vo.ordernum}">
 		<input type="hidden" name="name" value="${name}">
 		<input type="hidden" name="goImg" value="${goImg}">
 		<input type="hidden" name="goName" value="${goName}">

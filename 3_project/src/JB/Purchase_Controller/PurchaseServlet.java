@@ -12,6 +12,7 @@ public class PurchaseServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		String ordernum=req.getParameter("ordernum");
 		String msg=req.getParameter("msg"); //배송메시지
 		String buyway=req.getParameter("buyway"); // 결제방식(카드,무통장입금)
 		String hal=req.getParameter("hal"); //카드 할부 정보
@@ -32,6 +33,7 @@ public class PurchaseServlet extends HttpServlet{
 		//ex) MemDao dao=MemDao.getMemDao();
 		//MemVo mvo=dao.getInfo(mid); --> mid 에 해당하는 회원의 정보를 담은 vo 필요
 		//req.setAttribute("mvo",mvo);
+		req.setAttribute("ordernum", ordernum); //주문번호 보냄
 		req.setAttribute("msg", msg);
 		req.setAttribute("buyway", buyway);
 		req.setAttribute("name", name);
