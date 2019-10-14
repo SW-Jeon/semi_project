@@ -126,8 +126,9 @@
 <hr>
 <h3>4.결제하기</h3>
 <div id="final">
-	<span id="cprice" style="color:red;font-size:30px;font-family:sans-serif;"></span><br>
-	
+	<span id="cprice" style="color:red;font-size:30px;font-family:sans-serif;"></span>
+	<br>
+		<input type="hidden" id="allamount" name="allamount" value="">
 		<input type="hidden" name="name" value="${name}">
 		<input type="hidden" name="goImg" value="${goImg}">
 		<input type="hidden" name="goName" value="${goName}">
@@ -218,6 +219,7 @@
 			 "<option value='일시불'>일시불</option>" + 
 			 "<option value='2개월(무이자)'>2개월(무이자)</option>" +
 			 "<option value='3개월(무이자)'>3개월(무이자)</option></select>";
+		str+="<input type='hidden' name='cardname' value='신한카드'>";
 		details.innerHTML=str;
 		str="";
 	});
@@ -231,6 +233,7 @@
 			 "<option value='일시불'>일시불</option>" + 
 			 "<option value='2개월(무이자)'>2개월(무이자)</option>" +
 			 "<option value='3개월(무이자)'>3개월(무이자)</option></select>";
+		str+="<input type='hidden' name='cardname' value='Kb국민카드'>";
 		details.innerHTML=str;
 		str="";
 	});
@@ -246,7 +249,16 @@
 		}
 		document.getElementById("cprice").innerHTML=rePrice+'원';
 	}
-	getChangeNum('${vo.orderprice}');
+	getChangeNum('2321213');
+	//천단위 값 넘겨주기
+	function changePrice(){
+		var allamount=document.getElementById("allamount");
+		var cprice=document.getElementById("cprice");
+		//alert(cprice.innerText);
+		allamount.value=cprice.innerText;
+	}
+	changePrice();
+	
 	//유효성 검사 함수
 	function validate() {
 		var msg=document.getElementById("msg");
