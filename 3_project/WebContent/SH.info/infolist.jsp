@@ -17,6 +17,7 @@ ul{list-style:none; }
 </style>
 </head>
 <body>
+<c:set var="cp" value="${pageContext.request.contextPath }"/>
 <div id="wrap">
 
 	<ul class="head">
@@ -24,7 +25,7 @@ ul{list-style:none; }
 	</ul>
 	<c:forEach var="vo" items="${requestScope.list }">
 		<ul class="body">
-			<li class="num">${vo.infonum}</li><li class="body_title">&nbsp;${vo.infotitle }</li>
+			<li class="num">${vo.infonum}</li><li class="body_title">&nbsp;${vo.infotitle }</li><a href="${cp }/info/delete?infonum=${vo.infonum}">삭제</a>
 		</ul>
 	</c:forEach>
 </div>
