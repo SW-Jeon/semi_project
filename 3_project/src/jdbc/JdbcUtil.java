@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class JdbcUtil {
 	public static Connection getConn() throws SQLException {
 		Connection con=null;
@@ -60,5 +61,4 @@ public class JdbcUtil {
 		}
 	}
 
-	
 }
