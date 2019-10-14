@@ -21,6 +21,7 @@
 </style>
 </head>
 <body>
+<form method="get" action="${pageContext.request.contextPath}/purchase/insert" onsubmit="return validate()" style="display: inline-block;">
 <h1>주문서</h1>
 <hr>
 <h3>1. 주문상품 정보</h3>
@@ -62,24 +63,24 @@
 <table border="1" width="600">
 	<tr>
 		<th>* 이름</th>
-		<td><!-- 기훈이가 해야됨(membervo 필요) -->이준빈</td>
+		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->이준빈</td>
 	</tr>
 	<tr>
 		<th>* 주소</th>
-		<td><!-- 기훈이가 해야됨(membervo 필요) -->서울 마포구</td>
+		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->서울 마포구</td>
 	</tr>
 	<tr>
 		<th>* 연락처</th>
-		<td><!-- 기훈이가 해야됨(membervo 필요) -->010-1111-1234</td>
+		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->010-1111-1234</td>
 	</tr>
 	<tr>
 		<th>* 이메일</th>
-		<td><!-- 기훈이가 해야됨(membervo 필요) -->test@naver.com</td>
+		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->test@naver.com</td>
 	</tr>
 	<tr>
 		<th>배송메시지</th>
 		<td style="text-align:left">
-			<input type="text" id="msg" size="60" placeholder="배송 메시지를 입력하세요" onmouseover="getinfo()">
+			<input type="text" id="msg" name="msg" size="60" placeholder="배송 메시지를 입력하세요" onmouseover="getinfo()">
 			<div id="result" onmouseover="getinfo()" onmouseout="delinfo()">
 				<p class="tag"><a href="javascript:insert('배송전, 연락바랍니다.')" onmouseover="getTag(event)" onmouseout="delTag(event)">배송전, 연락바랍니다.</a></p>
 				<p class="tag"><a href="javascript:insert('부재시, 전화주시거나 또는 문자 남겨주세요.')" onmouseover="getTag(event)" onmouseout="delTag(event)">부재시, 전화주시거나 또는 문자 남겨주세요.</a></p>
@@ -126,15 +127,25 @@
 <h3>4.결제하기</h3>
 <div id="final">
 	<span id="cprice" style="color:red;font-size:30px;font-family:sans-serif;"></span><br>
-	<form method="post" action="${pageContext.request.contextPath}/purchase/insert" onsubmit="return validate()" style="display: inline-block;">
-		
-		<input type="submit" value="결제하기" style="font-size: 15px;color:red">
-	</form>
+	
+		<input type="hidden" name="name" value="${name}">
+		<input type="hidden" name="goImg" value="${goImg}">
+		<input type="hidden" name="goName" value="${goName}">
+		<input type="hidden" name="orderamount" value="${vo.orderamount}">
+		<input type="hidden" name="orderprice" value="${vo.orderprice}">
+		<input type="hidden" name="mid" value="${sessionScope.mid}">
+		<input type="hidden" name="mName" value="${mvo.mname}">
+		<input type="hidden" name="mEmail" value="${mvo.memail}">
+		<input type="hidden" name="mAddr" value="${mvo.maddr}">
+		<input type="hidden" name="mPhone" value="${mvo.mphone}">
+		<input type="hidden" name="mGen" value="${mvo.mgen}">
+		<input type="submit" value="결제하기" style="font-size: 15px;color:red;font-weight: bold">
+	
 	<a href="${pageContext.request.contextPath}/demand/delete?ordernum=${vo.ordernum}&jNum=${jNum}">
-	<input type="button" value="주문취소" style="font-size: 15px;color:red">
-</a>
+	<input type="button" value="주문취소" style="font-size: 15px;color:red;font-weight: bold">
+	</a>
 </div>
-
+</form>
 </body>
 <script type="text/javascript">
 	function getinfo() {
@@ -235,6 +246,7 @@
 		}
 		document.getElementById("cprice").innerHTML=rePrice+'원';
 	}
+	getChangeNum('${vo.orderprice}');
 	//유효성 검사 함수
 	function validate() {
 		var msg=document.getElementById("msg");
