@@ -250,7 +250,7 @@
 		}
 		document.getElementById("cprice").innerHTML=rePrice+'원';
 	}
-	getChangeNum('2321213');
+	getChangeNum('${vo.orderprice}');
 	//천단위 값 넘겨주기
 	function changePrice(){
 		var allamount=document.getElementById("allamount");
