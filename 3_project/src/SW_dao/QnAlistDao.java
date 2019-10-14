@@ -82,7 +82,6 @@ public class QnAlistDao {
 						"        (" + 
 						"            select * from qa order by qanum desc" + 
 						"        )aa" + 
-						
 						")where rnum>=? and  rnum<=?";
 				}else {		//검색조건이 있는 경우
 					sql="select * from " + 
@@ -149,7 +148,7 @@ public class QnAlistDao {
 	}
 
 	//조회수 업데이트 메소드
-	public int addHit(int qanum) {
+	public void addHit(int qanum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
@@ -157,10 +156,9 @@ public class QnAlistDao {
 			String sql="update qa set qahit=qahit+1 where qanum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, qanum);
-			return pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
-			return -1;
 		}finally {
 			JdbcUtil.close(con, pstmt, null);
 		}

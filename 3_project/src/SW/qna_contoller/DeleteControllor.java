@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import SW_dao.QnAlistDao;
 
-@WebServlet("/SW_pro/Delete")
+@WebServlet("/SW_pro/delete")
 public class DeleteControllor extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

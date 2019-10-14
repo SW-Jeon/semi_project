@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import SW_dao.QnAlistDao;
 import SW_vo.QnAvo;
 
-@WebServlet("/SW_pro/QnAreQst")
+@WebServlet("/SW_pro/QnAreqst")
 public class QnAreQstController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

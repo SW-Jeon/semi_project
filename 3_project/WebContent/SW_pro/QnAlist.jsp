@@ -6,7 +6,7 @@
 		<h1 style="font-size: 5em;">Q&A</h1>
 		<h4>궁금하신 사항을 문의해주세요.</h4>
 		<br><br><hr>
-		<table style="width:100%;">
+		<table style="width:100%; text-align: center;  margin: auto;">
 			<tr>
 				<th>번호</th>
 				<th>글내용</th>
