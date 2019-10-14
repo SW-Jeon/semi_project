@@ -93,7 +93,7 @@ public class InfoDao {
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="select * from info";
+			String sql="select * from info order by infonum desc ";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			ArrayList<InfoVo> list=new ArrayList<InfoVo>();
