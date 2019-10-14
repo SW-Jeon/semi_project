@@ -2,7 +2,7 @@
 <!-- header.jsp -->
 <div id="header">
 	<div id="logo">
-		<a href="${cp }/pro/home1"><img src="../images/HS.png" style="height: 200px; width: 200px;"></a>
+		<a href="${cp }/pro/home"><img src="../images/HS.png" style="height: 200px; width: 200px;"></a>
 	</div>
 	<div id="gnb">
 		<ul>
