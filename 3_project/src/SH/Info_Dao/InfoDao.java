@@ -93,7 +93,7 @@ public class InfoDao {
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="select * from info order by infonum desc";
+			String sql="select * from info";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			ArrayList<InfoVo> list=new ArrayList<InfoVo>();
@@ -113,30 +113,4 @@ public class InfoDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
-	
-	/*
-	 * public int getMaxNum() {//가장 큰 글번호 얻어오기
-			Connection con=null;
-			PreparedStatement pstmt=null;
-			ResultSet rs=null;
-			try {
-			con=JdbcUtil.getConn();
-			String sql="select NVL(max(infonum),0) as maxnum from info";
-			pstmt=con.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				int maxnum=rs.getInt("maxnum");//알리아스로.
-				return maxnum;
-			}else {
-				return 0;
-			}
-			}catch(SQLException se) {
-				System.out.println(se.getMessage());
-				return -1;
-			}finally {
-				JdbcUtil.close(con, pstmt, rs);
-			}
-		}
-	 */
-	
 }
