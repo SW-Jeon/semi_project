@@ -1,62 +1,61 @@
 package SW_vo;
 
 public class WriteVo {
-	 private int writenum;
-	 private String mid;
-	 private String writecontent;
-	 private String rewrite;
-	 private String rewst;
+	 private int writeNum;
+	 private String mId;
+	 private String writeContent;
+	 private String reWrite;
+	 private String reWst;
 	 
 	 public WriteVo() {}
 
-	public WriteVo(int writenum, String mid, String writecontent, String rewrite, String rewst) {
+	public WriteVo(int writeNum, String mId, String writeContent, String reWrite, String reWst) {
 		super();
-		this.writenum = writenum;
-		this.mid = mid;
-		this.writecontent = writecontent;
-		this.rewrite = rewrite;
-		this.rewst = rewst;
+		this.writeNum = writeNum;
+		this.mId = mId;
+		this.writeContent = writeContent;
+		this.reWrite = reWrite;
+		this.reWst = reWst;
 	}
 
-	public int getWritenum() {
-		return writenum;
+	public int getWriteNum() {
+		return writeNum;
 	}
 
-	public void setWritenum(int writenum) {
-		this.writenum = writenum;
+	public void setWriteNum(int writeNum) {
+		this.writeNum = writeNum;
 	}
 
-	public String getMid() {
-		return mid;
+	public String getmId() {
+		return mId;
 	}
 
-	public void setMid(String mid) {
-		this.mid = mid;
+	public void setmId(String mId) {
+		this.mId = mId;
 	}
 
-	public String getWritecontent() {
-		return writecontent;
+	public String getWriteContent() {
+		return writeContent;
 	}
 
-	public void setWritecontent(String writecontent) {
-		this.writecontent = writecontent;
+	public void setWriteContent(String writeContent) {
+		this.writeContent = writeContent;
 	}
 
-	public String getRewrite() {
-		return rewrite;
+	public String getReWrite() {
+		return reWrite;
 	}
 
-	public void setRewrite(String rewrite) {
-		this.rewrite = rewrite;
+	public void setReWrite(String reWrite) {
+		this.reWrite = reWrite;
 	}
 
-	public String getRewst() {
-		return rewst;
+	public String getReWst() {
+		return reWst;
 	}
 
-	public void setRewst(String rewst) {
-		this.rewst = rewst;
+	public void setReWst(String reWst) {
+		this.reWst = reWst;
 	}
-
-	
+	 
 }

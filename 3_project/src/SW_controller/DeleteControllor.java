@@ -10,25 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import SW_dao.QnAlistDao;
 
-@WebServlet("/SW_pro/Delete")
+@WebServlet("/board/delete")
 public class DeleteControllor extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int qanum=Integer.parseInt(req.getParameter("qanum"));
-		req.setAttribute("qanum", qanum);
-		req.setAttribute("top","/pro/header.jsp");
-		req.setAttribute("main","/SW_pro/delete.jsp");
-		req.setAttribute("bottom","/pro/footer.jsp");
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+		int qaNum=Integer.parseInt(req.getParameter("qaNum"));
+		req.setAttribute("qaNum", qaNum);
+		req.getRequestDispatcher("/SW_pro/delete.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		int qanum=Integer.parseInt(req.getParameter("qanum"));
-		String qapwd=req.getParameter("qapwd");
-		System.out.println(qanum);
+		int qaNum=Integer.parseInt(req.getParameter("qaNum"));
+		String qaPwd=req.getParameter("qaPwd");
+		
 		QnAlistDao dao=QnAlistDao.getInstance();
-		int n=dao.delete(qanum, qapwd);
+		int n=dao.delete(qaNum, qaPwd);
 		if(n>0) {
 			req.setAttribute("msg","success");
 		}else {

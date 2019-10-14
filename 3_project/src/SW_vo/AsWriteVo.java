@@ -1,82 +1,81 @@
 package SW_vo;
 
 public class AsWriteVo {
-	 private int asnum;
-	 private String asimg;
-	 private String ascontent;
-	 private String mid;
-	 private String gocode;
-	 private int purnum;
-	 private int ashit;
+	 private int asNum;
+	 private String asImg;
+	 private String asContent;
+	 private String mId;
+	 private String goCode;
+	 private int purNum;
+	 private int asHit;
 	 
 	 public AsWriteVo() {}
 
-	public AsWriteVo(int asnum, String asimg, String ascontent, String mid, String gocode, int purnum, int ashit) {
+	public AsWriteVo(int asNum, String asImg, String asContent, String mId, String goCode, int purNum, int asHit) {
 		super();
-		this.asnum = asnum;
-		this.asimg = asimg;
-		this.ascontent = ascontent;
-		this.mid = mid;
-		this.gocode = gocode;
-		this.purnum = purnum;
-		this.ashit = ashit;
+		this.asNum = asNum;
+		this.asImg = asImg;
+		this.asContent = asContent;
+		this.mId = mId;
+		this.goCode = goCode;
+		this.purNum = purNum;
+		this.asHit = asHit;
 	}
 
-	public int getAsnum() {
-		return asnum;
+	public int getAsNum() {
+		return asNum;
 	}
 
-	public void setAsnum(int asnum) {
-		this.asnum = asnum;
+	public void setAsNum(int asNum) {
+		this.asNum = asNum;
 	}
 
-	public String getAsimg() {
-		return asimg;
+	public String getAsImg() {
+		return asImg;
 	}
 
-	public void setAsimg(String asimg) {
-		this.asimg = asimg;
+	public void setAsImg(String asImg) {
+		this.asImg = asImg;
 	}
 
-	public String getAscontent() {
-		return ascontent;
+	public String getAsContent() {
+		return asContent;
 	}
 
-	public void setAscontent(String ascontent) {
-		this.ascontent = ascontent;
+	public void setAsContent(String asContent) {
+		this.asContent = asContent;
 	}
 
-	public String getMid() {
-		return mid;
+	public String getmId() {
+		return mId;
 	}
 
-	public void setMid(String mid) {
-		this.mid = mid;
+	public void setmId(String mId) {
+		this.mId = mId;
 	}
 
-	public String getGocode() {
-		return gocode;
+	public String getGoCode() {
+		return goCode;
 	}
 
-	public void setGocode(String gocode) {
-		this.gocode = gocode;
+	public void setGoCode(String goCode) {
+		this.goCode = goCode;
 	}
 
-	public int getPurnum() {
-		return purnum;
+	public int getPurNum() {
+		return purNum;
 	}
 
-	public void setPurnum(int purnum) {
-		this.purnum = purnum;
+	public void setPurNum(int purNum) {
+		this.purNum = purNum;
 	}
 
-	public int getAshit() {
-		return ashit;
+	public int getAsHit() {
+		return asHit;
 	}
 
-	public void setAshit(int ashit) {
-		this.ashit = ashit;
+	public void setAsHit(int asHit) {
+		this.asHit = asHit;
 	}
-
 	
 }
