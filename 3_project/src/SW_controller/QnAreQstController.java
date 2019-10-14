@@ -24,12 +24,12 @@ public class QnAreQstController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String qaRecontent=req.getParameter("qaRecontent");
-		String reQst=req.getParameter("reQst");
+		String qarecontent=req.getParameter("qarecontent");
+		String reqst=req.getParameter("reqst");
 		HttpSession session=req.getSession(); 
-		String id=(String)session.getAttribute("adminId");
+		String id=(String)session.getAttribute("adminid");
 		if(id.equals("admin")) {
-			QnAvo vo=new QnAvo(0, null, null, null, qaRecontent, 0, reQst);
+			QnAvo vo=new QnAvo(0, null, null, null, qarecontent, 0, reqst);
 			QnAlistDao dao=QnAlistDao.getInstance();
 			int n=dao.reDab(vo);
 			if(n>0){

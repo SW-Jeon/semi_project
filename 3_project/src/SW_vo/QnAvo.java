@@ -1,82 +1,84 @@
 package SW_vo;
 
 public class QnAvo {
-	 private int qaNum;
-	 private String qaContent;
-	 private String qaName;
-	 private String qaPwd;
-	 private String qaRecontent;
-	 private int qaHit;
-	 private String reQst;
+	 private int qanum;
+	 private String qacontent;
+	 private String qaname;
+	 private String qapwd;
+	 private String qarecontent;
+	 private int qahit;
+	 private String reqst;
 	 
 	 public QnAvo() {}
 
-	public QnAvo(int qaNum, String qaContent, String qaName, String qaPwd, String qaRecontent, int qaHit,
-			String reQst) {
+	public QnAvo(int qanum, String qacontent, String qaname, String qapwd, String qarecontent, int qahit,
+			String reqst) {
 		super();
-		this.qaNum = qaNum;
-		this.qaContent = qaContent;
-		this.qaName = qaName;
-		this.qaPwd = qaPwd;
-		this.qaRecontent = qaRecontent;
-		this.qaHit = qaHit;
-		this.reQst = reQst;
+		this.qanum = qanum;
+		this.qacontent = qacontent;
+		this.qaname = qaname;
+		this.qapwd = qapwd;
+		this.qarecontent = qarecontent;
+		this.qahit = qahit;
+		this.reqst = reqst;
 	}
 
-	public int getQaNum() {
-		return qaNum;
+	public int getQanum() {
+		return qanum;
 	}
 
-	public void setQaNum(int qaNum) {
-		this.qaNum = qaNum;
+	public void setQanum(int qanum) {
+		this.qanum = qanum;
 	}
 
-	public String getQaContent() {
-		return qaContent;
+	public String getQacontent() {
+		return qacontent;
 	}
 
-	public void setQaContent(String qaContent) {
-		this.qaContent = qaContent;
+	public void setQacontent(String qacontent) {
+		this.qacontent = qacontent;
 	}
 
-	public String getQaName() {
-		return qaName;
+	public String getQaname() {
+		return qaname;
 	}
 
-	public void setQaName(String qaName) {
-		this.qaName = qaName;
+	public void setQaname(String qaname) {
+		this.qaname = qaname;
 	}
 
-	public String getQaPwd() {
-		return qaPwd;
+	public String getQapwd() {
+		return qapwd;
 	}
 
-	public void setQaPwd(String qaPwd) {
-		this.qaPwd = qaPwd;
+	public void setQapwd(String qapwd) {
+		this.qapwd = qapwd;
 	}
 
-	public String getQaRecontent() {
-		return qaRecontent;
+	public String getQarecontent() {
+		return qarecontent;
 	}
 
-	public void setQaRecontent(String qaRecontent) {
-		this.qaRecontent = qaRecontent;
+	public void setQarecontent(String qarecontent) {
+		this.qarecontent = qarecontent;
 	}
 
-	public int getQaHit() {
-		return qaHit;
+	public int getQahit() {
+		return qahit;
 	}
 
-	public void setQaHit(int qaHit) {
-		this.qaHit = qaHit;
+	public void setQahit(int qahit) {
+		this.qahit = qahit;
 	}
 
-	public String getReQst() {
-		return reQst;
+	public String getReqst() {
+		return reqst;
 	}
 
-	public void setReQst(String reQst) {
-		this.reQst = reQst;
+	public void setReqst(String reqst) {
+		this.reqst = reqst;
 	}
+
+	
 	 
 }

@@ -23,10 +23,10 @@ public  class QnAdetailController extends HttpServlet {
 			@Override
 			protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 				req.setCharacterEncoding("utf-8");
-				int qaNum=Integer.parseInt(req.getParameter("qaNum"));
+				int qanum=Integer.parseInt(req.getParameter("qanum"));
 				QnAlistDao dao=QnAlistDao.getInstance();
-				dao.addHit(qaNum); 	//업데이트 하면서 조회수 +1씩 증가
-				QnAvo vo=dao.detail(qaNum);
+				dao.addHit(qanum); 	//업데이트 하면서 조회수 +1씩 증가
+				QnAvo vo=dao.detail(qanum);
 				req.setAttribute("vo", vo);
 			}
 }

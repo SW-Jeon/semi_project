@@ -24,11 +24,11 @@ public class QnAwriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String qaContent=req.getParameter("qaContent");
-		String qaName=req.getParameter("qaName");
-		String qaPwd=req.getParameter("qaPwd");
+		String qacontent=req.getParameter("qacontent");
+		String qaname=req.getParameter("qaname");
+		String qapwd=req.getParameter("qapwd");
 		
-		QnAvo vo=new QnAvo(0, qaContent, qaName, qaPwd, null, 0, null);
+		QnAvo vo=new QnAvo(0, qacontent, qaname, qapwd, null, 0, null);
 		QnAlistDao dao=QnAlistDao.getInstance();
 		int n=dao.insert(vo);
 		if(n>0){

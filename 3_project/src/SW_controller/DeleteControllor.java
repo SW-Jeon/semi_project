@@ -14,21 +14,21 @@ import SW_dao.QnAlistDao;
 public class DeleteControllor extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int qaNum=Integer.parseInt(req.getParameter("qaNum"));
-		req.setAttribute("qaNum", qaNum);
-		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main",	"/SW_pro/delete.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");
+		int qanum=Integer.parseInt(req.getParameter("qanum"));
+		req.setAttribute("qanum", qanum);
+		req.setAttribute("top","/pro/header.jsp");
+		req.setAttribute("main","/SW_pro/delete.jsp");
+		req.setAttribute("bottom","/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		int qaNum=Integer.parseInt(req.getParameter("qaNum"));
-		String qaPwd=req.getParameter("qaPwd");
-		
+		int qanum=Integer.parseInt(req.getParameter("qanum"));
+		String qapwd=req.getParameter("qapwd");
+		System.out.println(qanum);
 		QnAlistDao dao=QnAlistDao.getInstance();
-		int n=dao.delete(qaNum, qaPwd);
+		int n=dao.delete(qanum, qapwd);
 		if(n>0) {
 			req.setAttribute("msg","success");
 		}else {

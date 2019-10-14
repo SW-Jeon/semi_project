@@ -23,12 +23,12 @@ public class QnAlistDao {
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="select NVL(max(qaNum),0) from qa";
+			String sql="select NVL(max(qanum),0) from qa";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				int qaNum=rs.getInt(1);
-				return qaNum;
+				int qanum=rs.getInt(1);
+				return qanum;
 			}
 			return 0;
 		}catch(SQLException se) {
@@ -46,18 +46,18 @@ public class QnAlistDao {
 		try {
 			con=JdbcUtil.getConn();
 			int boardNum=getMaxNum()+1;
-			int qaHit=0;
-			String qaRecontent=null;
-			String reQst=null;
+			int qahit=0;
+			String qarecontent=null;
+			String reqst=null;
 			String sql="insert into qa values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, boardNum);
-			pstmt.setString(2, vo.getQaContent());
-			pstmt.setString(3, vo.getQaName());
-			pstmt.setString(4, vo.getQaPwd());
-			pstmt.setString(5, qaRecontent);
-			pstmt.setInt(6, qaHit);
-			pstmt.setString(7, reQst);
+			pstmt.setString(2, vo.getQacontent());
+			pstmt.setString(3, vo.getQaname());
+			pstmt.setString(4, vo.getQapwd());
+			pstmt.setString(5, qarecontent);
+			pstmt.setInt(6, qahit);
+			pstmt.setString(7, reqst);
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -76,31 +76,40 @@ public class QnAlistDao {
 			con=JdbcUtil.getConn();
 			String sql="";
 			if(field==null || field.equals("")) {	//검색조건이 없는 경우
-				sql="select * from (" +
-						"  select aa.*,rownum rnum from (" +
-						"  select * from qa order by qaNum desc )aa" +
-						")where rnum>=? and rnum<=?";
-			}else {	//검색조건이 있는 경우
-				sql="select * from (" + 
-						"   select aa.*,rownum rnum from (" + 
-						"   select * from qa where " + field + " like '%" + keyword +"%'" + 
-						"	 order by qaNum desc  )aa" + 
+				sql="select * from" + 		
+						"    (" + 
+						"        select aa.*,rownum rnum from" + 
+						"        (" + 
+						"            select * from qa order by qanum desc" + 
+						"        )aa" + 
+						
 						")where rnum>=? and  rnum<=?";
-			}
+				}else {		//검색조건이 있는 경우
+					sql="select * from " + 
+						"(" + 
+						"   select aa.*,rownum rnum from" + 
+						"    (" + 
+						"        select * from qa " + 
+						"	     where " + field + " like '%" + keyword +"%'" + 
+						"	     order by qanum desc " + 
+						"     )aa" + 
+						")where rnum>=? and  rnum<=?";
+				}
+			System.out.println(sql);
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
 			rs=pstmt.executeQuery();
 			ArrayList<QnAvo> QnAlist=new ArrayList<QnAvo>();
 			while(rs.next()) {
-				int qaNum=rs.getInt("qaNum");
-				String qaContent=rs.getString("qaContent");
-				String qaName=rs.getString("qaName");
-				String qaPwd =rs.getString("qaPwd ");
-				String qaRecontent=rs.getString("qaRecontent");
-				int qaHit=rs.getInt("qaHit");
-				String reQst=rs.getString("reQst");
-				QnAvo vo=new QnAvo(qaNum, qaContent, qaName, qaPwd, qaRecontent, qaHit, reQst);
+				int qanum=rs.getInt(1);
+				String qacontent=rs.getString(2);
+				String qaname=rs.getString(3);
+				String qapwd =rs.getString(4);
+				String qarecontent=rs.getString(5);
+				int qahit=rs.getInt(6);
+				String reqst=rs.getString(7);
+				QnAvo vo=new QnAvo(qanum, qacontent, qaname, qapwd, qarecontent, qahit, reqst);
 				QnAlist.add(vo);
 			}
 			return QnAlist;
@@ -108,7 +117,7 @@ public class QnAlistDao {
 			System.out.println(se.getMessage());
 			return null;
 		}finally {
-			JdbcUtil.close(con,pstmt,null);
+			JdbcUtil.close(con,pstmt,rs);
 		}
 	}
 
@@ -127,6 +136,7 @@ public class QnAlistDao {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				int cnt=rs.getInt(1);
+				System.out.println("cnt:"+cnt);
 				return cnt;
 			}
 			return 0;
@@ -139,14 +149,14 @@ public class QnAlistDao {
 	}
 
 	//조회수 업데이트 메소드
-	public int addHit(int qaNum) {
+	public int addHit(int qanum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="update qa set qaHit=qaHit+1 where qaNum=?";
+			String sql="update qa set qahit=qahit+1 where qanum=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, qaNum);
+			pstmt.setInt(1, qanum);
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -157,24 +167,24 @@ public class QnAlistDao {
 	}
 
 	//글 상세내용
-	public QnAvo detail(int qaNum) {
+	public QnAvo detail(int qanum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="select *from qa where qaNum=?";
+			String sql="select *from qa where qanum=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, qaNum);
+			pstmt.setInt(1, qanum);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				String qaContent=rs.getString("qaContent");
-				String qaName=rs.getString("qaName");
-				String qaPwd =rs.getString("qaPwd ");
-				String qaRecontent=rs.getString("qaRecontent");
-				int qaHit=rs.getInt("qaHit");
-				String reQst=rs.getString("reQst");
-				QnAvo vo=new QnAvo(qaNum, qaContent, qaName, qaPwd, qaRecontent, qaHit, reQst);
+				String qacontent=rs.getString(1);
+				String qaname=rs.getString(2);
+				String qapwd =rs.getString(3);
+				String qarecontent=rs.getString(4);
+				int qahit=rs.getInt(5);
+				String reqst=rs.getString(6);
+				QnAvo vo=new QnAvo(qanum, qacontent, qaname, qapwd, qarecontent, qahit, reqst);
 				return vo;
 			}
 			return null;
@@ -187,15 +197,15 @@ public class QnAlistDao {
 	}
 	
 	//글삭제
-	public int delete(int qaNum,String qaPwd) {
+	public int delete(int qanum,String qapwd) {
         Connection con=null;
         PreparedStatement pstmt=null;
         try {
             con=JdbcUtil.getConn();
-            String sql="delete from qa where qaNum=? and qaPwd=?";
+            String sql="delete from qa where qanum=? and qapwd=?";
             pstmt=con.prepareStatement(sql);
-            pstmt.setInt(1,qaNum);
-        	pstmt.setString(2, qaPwd);
+            pstmt.setInt(1,qanum);
+        	pstmt.setString(2, qapwd);
             return pstmt.executeUpdate();
         }catch(SQLException se) {
             se.printStackTrace();
@@ -209,13 +219,13 @@ public class QnAlistDao {
     public int reDab(QnAvo vo) {
     	Connection con=null;
     	PreparedStatement pstmt=null;
-    	String sql="update qa set qaRecontent=? and reQst=? where qaNum=?";
+    	String sql="update qa set qarecontent=? and reqst=? where qanum=?";
     	try { 
     		con=JdbcUtil.getConn();
     		pstmt=con.prepareStatement(sql);
-    		pstmt.setString(1, vo.getQaRecontent());
-    		pstmt.setString(2, vo.getReQst());
-    		pstmt.setInt(3, vo.getQaNum());
+    		pstmt.setString(1, vo.getQacontent());
+    		pstmt.setString(2, vo.getReqst());
+    		pstmt.setInt(3, vo.getQanum());
     		return pstmt.executeUpdate();
     	}catch(SQLException se){
     		se.printStackTrace();
