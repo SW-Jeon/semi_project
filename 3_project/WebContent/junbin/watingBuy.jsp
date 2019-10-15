@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<div id="content">
+<div id="main">
 <c:choose>
 	<c:when test="${code=='success'}">
 		<h1>결제가 진행중입니다 ^__^</h1>

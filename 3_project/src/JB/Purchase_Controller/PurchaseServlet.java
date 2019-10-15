@@ -39,6 +39,9 @@ public class PurchaseServlet extends HttpServlet{
 		req.setAttribute("goImg", goImg);
 		req.setAttribute("orderamount", orderamount);
 		req.setAttribute("allamount", allamount);
-		req.getRequestDispatcher("/junbin/purchase.jsp").forward(req, resp);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.setAttribute("main", "/junbin/purchase.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }
