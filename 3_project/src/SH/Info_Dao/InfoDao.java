@@ -59,8 +59,8 @@ public int getMaxNum() {//가장 큰 글번호 얻어오기
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
-			int infonum=getMaxNum() + 1;//글번호
 			con=JdbcUtil.getConn();
+			int infonum=getMaxNum() + 1; //등록될 글번호
 			String sql="insert into info values(?,?,?,'admin')";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, infonum);

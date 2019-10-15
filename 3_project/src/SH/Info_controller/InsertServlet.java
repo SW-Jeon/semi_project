@@ -19,16 +19,13 @@ public class InsertServlet extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String infonum=req.getParameter("infonum");
+		req.setCharacterEncoding("utf-8");
+		String snum=req.getParameter("num");
 		String infotitle=req.getParameter("infotitle");
 		String infocontent=req.getParameter("infocontent");
-		String admin=null;
-		i
-		if(infonum!=null && infonum.equals("")) {
-			infonum=Integer.parseInt("infonum");
-		}
+		int infonum=0;
+		InfoVo vo=new InfoVo(infonum,infotitle,infocontent,null);
 		InfoDao dao=new InfoDao();
-		InfoVo vo=new InfoVo(infonum,infotitle,infocontent,admin);
 		int n=dao.insert(vo);
 		if(n>0) {
 			req.setAttribute("code", "success");
