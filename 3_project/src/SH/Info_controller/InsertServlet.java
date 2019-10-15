@@ -26,12 +26,9 @@ public class InsertServlet extends HttpServlet{
 		String infotitle=req.getParameter("infotitle");
 		String infocontent=req.getParameter("infocontent");
 		int infonum=0;
-		InfoVo vo=new InfoVo(infonum,infotitle,infocontent,null);
+		Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,null);
 		InfoDao dao=new InfoDao();
-<<<<<<< HEAD
-		Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,admin);
-=======
->>>>>>> branch 'sh' of https://github.com/SW-Jeon/3_project.git
+
 		int n=dao.insert(vo);
 		if(n>0) {
 			resp.sendRedirect(req.getContextPath()+"/info/list");

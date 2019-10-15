@@ -54,7 +54,6 @@
 				</c:otherwise>
 		</c:choose>
 	</div>
-	
 	<br>
 		<!-- 검색창 -->
 	<div>

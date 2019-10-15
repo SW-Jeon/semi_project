@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import SH.Info_Dao.InfoDao;
-import SH.Info_Vo.InfoVo;
+import SH.Info_Vo.Info_Vo;
 
 @WebServlet("/info/update")
 public class UpdateServlet extends HttpServlet {
@@ -18,7 +18,7 @@ public class UpdateServlet extends HttpServlet {
 		//일단 상세글에서 받고
 		int infonum=Integer.parseInt(req.getParameter("infonum"));
 		InfoDao dao=new InfoDao();
-		InfoVo vo=dao.detail(infonum);
+		Info_Vo vo=dao.detail(infonum);
 		req.setAttribute("vo", vo);
 		req.getRequestDispatcher("/SH.info/infoupdate.jsp").forward(req, resp);
 	}
@@ -29,7 +29,7 @@ public class UpdateServlet extends HttpServlet {
 		String infotitle=req.getParameter("infotitle");
 		String infocontent=req.getParameter("infocontent");
 		InfoDao dao=new InfoDao();
-		InfoVo vo=new InfoVo(infonum,infotitle,infocontent,null);
+		Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,null);
 		int n=dao.update(vo);
 		if(n>0) {
 			resp.sendRedirect(req.getContextPath()+"/info/list");
