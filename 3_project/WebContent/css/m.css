@@ -27,7 +27,7 @@
 }
 
 #content {
-	width: 60%;
+	width: 70%;
 	height: 1600px;
 	text-align: center;
 	float: left;
@@ -91,28 +91,29 @@
 	margin-left: 50px;
 	padding-top: 100px;
 }
-
-#gnb {
+#gnb ul{
 	float: right;
-	margin-top: 0px;
 }
-
-#banner {
+#gnb ul li{
 	float: left;
-	margin-top: 0px;
-	margin-left: 150px;
-}
-
-#header ul {
-	
-	padding-left: 250px;
-}
-
-#header ul li {
+	margin-top: 5px;
 	list-style: none;
 	display: inline-block;
 	width: 110px;
 	font: bold 12px Dotum;
+}
+
+#banner ul li{
+	list-style: none;
+	display: inline-block;
+	width: 200px;
+	margin-left: 70px;
+}
+
+#banner ul li button{
+	float: left;
+	font-size: 1.5em;
+	text-align:center;
 }
 
 #header ul li a {
@@ -131,8 +132,12 @@
 	background-color: #4CAF50;
 	color: white;
 }
+<<<<<<< HEAD
 
 
+=======
+
+>>>>>>> branch 'sw' of https://github.com/SW-Jeon/3_project.git
 .tag{text-align: left;font-size:13px;}
 a{text-decoration: none;color:gray;}
 #result{width:450px;border:1px solid gray;height:100px;padding:1px;
@@ -151,5 +156,9 @@ table{margin:auto;}
 #brace_wrap #b{width:400px; height:400px;  float: left; 
 padding:20px; margin-bottom:50px ; margin-right: 20px; margin-left: 140px; }
 #page{clear: both; float: left;   margin: auto;}
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> branch 'sw' of https://github.com/SW-Jeon/3_project.git
 
