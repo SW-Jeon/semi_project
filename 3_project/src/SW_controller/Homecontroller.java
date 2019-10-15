@@ -22,7 +22,7 @@ public class Homecontroller extends HttpServlet {
 			content="/pro/home.jsp";
 		}
 		if(main==null) {
-			main="/pro/home.jsp";
+			main="/pro/banner.jsp";
 		}
 		if(right==null) {
 			right="/pro/right.jsp";

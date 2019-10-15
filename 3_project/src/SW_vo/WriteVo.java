@@ -1,61 +1,70 @@
 package SW_vo;
 
 public class WriteVo {
-	 private int writeNum;
-	 private String mId;
-	 private String writeContent;
-	 private String reWrite;
-	 private String reWst;
+	 private int writenum;
+	 private String mid;
+	 private String title;
+	 private String writecontent;
+	 private String rewrite;
+	 private String rewst;
 	 
 	 public WriteVo() {}
 
-	public WriteVo(int writeNum, String mId, String writeContent, String reWrite, String reWst) {
+	public WriteVo(int writenum, String mid, String title, String writecontent, String rewrite, String rewst) {
 		super();
-		this.writeNum = writeNum;
-		this.mId = mId;
-		this.writeContent = writeContent;
-		this.reWrite = reWrite;
-		this.reWst = reWst;
+		this.writenum = writenum;
+		this.mid = mid;
+		this.title = title;
+		this.writecontent = writecontent;
+		this.rewrite = rewrite;
+		this.rewst = rewst;
 	}
 
-	public int getWriteNum() {
-		return writeNum;
+	public int getWritenum() {
+		return writenum;
 	}
 
-	public void setWriteNum(int writeNum) {
-		this.writeNum = writeNum;
+	public void setWritenum(int writenum) {
+		this.writenum = writenum;
 	}
 
-	public String getmId() {
-		return mId;
+	public String getMid() {
+		return mid;
 	}
 
-	public void setmId(String mId) {
-		this.mId = mId;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 
-	public String getWriteContent() {
-		return writeContent;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setWriteContent(String writeContent) {
-		this.writeContent = writeContent;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getReWrite() {
-		return reWrite;
+	public String getWritecontent() {
+		return writecontent;
 	}
 
-	public void setReWrite(String reWrite) {
-		this.reWrite = reWrite;
+	public void setWritecontent(String writecontent) {
+		this.writecontent = writecontent;
 	}
 
-	public String getReWst() {
-		return reWst;
+	public String getRewrite() {
+		return rewrite;
 	}
 
-	public void setReWst(String reWst) {
-		this.reWst = reWst;
+	public void setRewrite(String rewrite) {
+		this.rewrite = rewrite;
 	}
-	 
+
+	public String getRewst() {
+		return rewst;
+	}
+
+	public void setRewst(String rewst) {
+		this.rewst = rewst;
+	}
 }

@@ -1,92 +1,92 @@
 package SW_vo;
 
 public class MemVo {
-	 private String mId;
-	 private String mName;
-	 private String mPwd;
-	 private String mEmail;
-	 private String mAddr;
-	 private String mPhone;
-	 private String mGen;
-	 private int mDelup;
+	 private String mid;
+	 private String mname;
+	 private String mpwd;
+	 private String memail;
+	 private String maddr;
+	 private String mphone;
+	 private String mgen;
+	 private int mdelup;
 	 
 	 public  MemVo() {}
 
-	public MemVo(String mId, String mName, String mPwd, String mEmail, String mAddr, String mPhone, String mGen,
-			int mDelup) {
+	public MemVo(String mid, String mname, String mpwd, String memail, String maddr, String mphone, String mgen,
+			int mdelup) {
 		super();
-		this.mId = mId;
-		this.mName = mName;
-		this.mPwd = mPwd;
-		this.mEmail = mEmail;
-		this.mAddr = mAddr;
-		this.mPhone = mPhone;
-		this.mGen = mGen;
-		this.mDelup = mDelup;
+		this.mid = mid;
+		this.mname = mname;
+		this.mpwd = mpwd;
+		this.memail = memail;
+		this.maddr = maddr;
+		this.mphone = mphone;
+		this.mgen = mgen;
+		this.mdelup = mdelup;
 	}
 
-	public String getmId() {
-		return mId;
+	public String getMid() {
+		return mid;
 	}
 
-	public void setmId(String mId) {
-		this.mId = mId;
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 
-	public String getmName() {
-		return mName;
+	public String getMname() {
+		return mname;
 	}
 
-	public void setmName(String mName) {
-		this.mName = mName;
+	public void setMname(String mname) {
+		this.mname = mname;
 	}
 
-	public String getmPwd() {
-		return mPwd;
+	public String getMpwd() {
+		return mpwd;
 	}
 
-	public void setmPwd(String mPwd) {
-		this.mPwd = mPwd;
+	public void setMpwd(String mpwd) {
+		this.mpwd = mpwd;
 	}
 
-	public String getmEmail() {
-		return mEmail;
+	public String getMemail() {
+		return memail;
 	}
 
-	public void setmEmail(String mEmail) {
-		this.mEmail = mEmail;
+	public void setMemail(String memail) {
+		this.memail = memail;
 	}
 
-	public String getmAddr() {
-		return mAddr;
+	public String getMaddr() {
+		return maddr;
 	}
 
-	public void setmAddr(String mAddr) {
-		this.mAddr = mAddr;
+	public void setMaddr(String maddr) {
+		this.maddr = maddr;
 	}
 
-	public String getmPhone() {
-		return mPhone;
+	public String getMphone() {
+		return mphone;
 	}
 
-	public void setmPhone(String mPhone) {
-		this.mPhone = mPhone;
+	public void setMphone(String mphone) {
+		this.mphone = mphone;
 	}
 
-	public String getmGen() {
-		return mGen;
+	public String getMgen() {
+		return mgen;
 	}
 
-	public void setmGen(String mGen) {
-		this.mGen = mGen;
+	public void setMgen(String mgen) {
+		this.mgen = mgen;
 	}
 
-	public int getmDelup() {
-		return mDelup;
+	public int getMdelup() {
+		return mdelup;
 	}
 
-	public void setmDelup(int mDelup) {
-		this.mDelup = mDelup;
+	public void setMdelup(int mdelup) {
+		this.mdelup = mdelup;
 	}
-	 
+
 }

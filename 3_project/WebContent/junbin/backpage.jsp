@@ -7,7 +7,7 @@
 <title>backpage.jsp</title>
 </head>
 <body>
-<form method="get" id="frm1" action="${pageContext.request.contextPath}/inventory/list">
+<form method="get" id="frm1" action="${cp}/inventory/list">
 	<input type="hidden" name="jNum" value="${jNum}">
 </form>
 <script type="text/javascript">
