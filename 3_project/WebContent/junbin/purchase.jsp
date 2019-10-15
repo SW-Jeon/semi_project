@@ -7,7 +7,7 @@
 <h3>1. 결제상품 내역</h3>
 <table border="1" width="600" style="text-align: center;border-collapse: collapse;">
 	<tr>
-		<td colspan="2"><img src="${pageContext.request.contextPath}/악세서리/${name}/${goImg}" width="300"></td>
+		<td colspan="2"><img src="${pageContext.request.contextPath}/acc/${name}/${goImg}" width="300"></td>
 	</tr>
 	<tr>
 		<th>*상품종류</th>
@@ -23,7 +23,7 @@
 	</tr>
 	<tr>
 		<th>*결제가격</th>
-		<td>${orderprice}</td>
+		<td>${allamount}</td>
 	</tr>
 	<tr>
 		<th>*결제방식</th>

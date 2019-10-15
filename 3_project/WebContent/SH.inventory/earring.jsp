@@ -17,7 +17,7 @@ padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
 </style>
 <script type="text/javascript">
 	function aa(gocode,index) {
-	var 	id=document.getElementById(index);
+	var id=document.getElementById(index);
 	var bname=id.innerText;
 	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+bname;
 	}

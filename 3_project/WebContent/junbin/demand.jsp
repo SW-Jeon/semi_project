@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <div id="main">
 <form method="get" action="${pageContext.request.contextPath}/purchase/insert" onsubmit="return validate()" style="display: inline-block;">
 <h1>주문서</h1>
@@ -19,19 +18,19 @@
 		<c:set var="name" value=""/>
 		<c:choose>
 			<c:when test="${jNum=='100' }">
-				<c:set var="name" value="귀걸이"/>
+				<c:set var="name" value="ear"/>
 			</c:when>
 			<c:when test="${jNum=='200' }">
-				<c:set var="name" value="목걸이"/>
+				<c:set var="name" value="neck"/>
 			</c:when>
 			<c:when test="${jNum=='300' }">
-				<c:set var="name" value="시계"/>
+				<c:set var="name" value="watch"/>
 			</c:when>
 			<c:otherwise>
-				<c:set var="name" value="팔찌"/>
+				<c:set var="name" value="brace"/>
 			</c:otherwise>
 		</c:choose>
-		<td><img src="${pageContext.request.contextPath}/악세서리/${name}/${goImg}" width="100"></td>
+		<td><img src="${pageContext.request.contextPath}/acc/${name}/${goImg}" width="100"></td>
 		<td>${goName}</td>
 		<td>${goPrice}</td>
 		<td>${vo.orderamount}</td>
