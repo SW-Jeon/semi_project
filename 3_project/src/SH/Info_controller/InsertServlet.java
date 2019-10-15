@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import SH.Info_Dao.InfoDao;
-import SH.Info_Vo.InfoVo;
+import SH.Info_Vo.Info_Vo;
+
 
 @WebServlet("/info/insert")
 public class InsertServlet extends HttpServlet{
@@ -28,7 +29,7 @@ public class InsertServlet extends HttpServlet{
 			infonum=Integer.parseInt("num");
 		}
 		InfoDao dao=new InfoDao();
-		InfoVo vo=new InfoVo(infonum,infotitle,infocontent,admin);
+		Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,admin);
 		int n=dao.insert(vo);
 		if(n>0) {
 			req.setAttribute("code", "success");
