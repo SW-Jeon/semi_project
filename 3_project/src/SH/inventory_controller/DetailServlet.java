@@ -15,6 +15,7 @@ import SH.Inventory_Vo.InventoryVo;
 public class DetailServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		String gocode=req.getParameter("gocode");
 		String name=req.getParameter("index");
 		InventoryDao dao=new InventoryDao();
