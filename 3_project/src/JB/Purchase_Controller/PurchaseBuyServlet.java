@@ -33,12 +33,10 @@ public class PurchaseBuyServlet extends HttpServlet{
 		}else {
 			req.setAttribute("code", "fail");
 		}
-		req.getRequestDispatcher("/junbin/watingBuy.jsp").forward(req, resp);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.setAttribute("main", "/junbin/watingBuy.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }
-
-
-
-
-
 

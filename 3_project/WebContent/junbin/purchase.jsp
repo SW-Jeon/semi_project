@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>purchase.jsp</title>
-</head>
-<body>
-<h1>최종결제정보</h1>
+<div id="main">
+<h1 style="font-size: 5em;">최종결제정보</h1>
 <hr>
 <h3>1. 결제상품 내역</h3>
 <table border="1" width="600" style="text-align: center;border-collapse: collapse;">
@@ -53,6 +47,10 @@
 		<th>*배송메시지</th>
 		<td>${msg}</td>
 	</tr>
+	<tr>
+		<th>*운송장번호</th>
+		<td><span id="renum"></span></td>
+	</tr>
 </table><br><hr>
 <h3>2. 주문자 정보</h3>
 <table border="1" width="600" style="text-align: center;border-collapse: collapse;">
@@ -73,8 +71,8 @@
 		<td>${mvo.memail}</td>
 	</tr>
 </table><br><hr>
-<div id="buydiv">
-	<form method="post" action="${pageContext.request.contextPath}/purchase/buy">
+<div id="buydiv" style="text-align: center; margin:auto;">
+	<form method="get" action="${pageContext.request.contextPath}/purchase/buy">
 		<input type="hidden" name="ordernum" value="${ordernum}">
 		<input type="hidden" name="pursumprice" value="${orderprice}">
 		<input type="hidden" name="purway" value="${buyway}">
@@ -84,5 +82,12 @@
 		<input type="button" value="취소하기" style="width:150px;font-size: 20px;background-color: skyblue;font-family: 돋움체" onclick="history.go(-1);">
 	</form>
 </div>
-</body>
-</html>
+<script type="text/javascript">
+	var renum=document.getElementById("renum");
+	var re = Math.floor(Math.random() * 100000000000) + 10000000000;
+	if(re>100000000000) re=re-10000000000;
+	renum.innerHTML=re;
+</script>
+</div>
+
+
