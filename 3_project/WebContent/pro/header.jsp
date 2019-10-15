@@ -2,24 +2,31 @@
 <!-- header.jsp -->
 <div id="header">
 	<div id="logo">
-		<h1>ACC SHOP</h1>
-		<h2>검색</h2>
+		<a href="${cp }/pro/home"><img src="../images/HS.png" style="height: 200px; width: 200px;"></a>
 	</div>
 	<div id="gnb">
 		<ul>
-			<li><a href="${cp }">홈으로</a></li>
-			<li><a href="${cp }">배송조회</a></li>
-			<li><a href="${cp }">Q&A</a></li>
-			<li><a href="${cp }">상담</a></li>
-			<li><a href="${cp }">회원가입</a></li>
+			<li><button type="button" class="navyBtn" onClick="window.open('https://www.ilogen.com/web/personal/tkSearch')">배송조회</button></li>
+			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_pro/QnAlist'">고객만족센터</button></li>
+			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/pro/join'">회원가입</button></li>
+			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/info/list'">공지</button></li>
 		</ul>
 	</div>
+	<div id="ser">
+                   <form method="post" action="${cp }/SW_pro/list">
+                             <input type="text" name="keyword" value="${keyword }" style="width: 200px; height: 50px;" placeholder="원하시는 상품을 검색해주세요" required autofocus>
+                             <input type="submit" value="검색" style="width: 100px; height: 50px;"   >
+                   </form>
+          </div>
+         <br><br><br> <hr>
 	<div id="banner">
 		<ul>
-			<li><a href="${cp }">귀걸이</a></li>
-			<li><a href="${cp }">목걸이</a></li>
-			<li><a href="${cp }">팔찌</a></li>
-			<li><a href="${cp }">시계</a></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=100'">귀걸이</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=200'">목걸이</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=400'">팔찌</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=300'">시계</button></li>
 		</ul>
 	</div>
+  <br><br><hr>
 </div>
+	
