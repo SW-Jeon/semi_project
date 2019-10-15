@@ -2,19 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<style type="text/css">
-	.tag{text-align: left;font-size:13px;}
-	a{text-decoration: none;color:gray;}
-	#result{width:450px;border:1px solid gray;height:100px;padding:1px;
-	font-size: 12px; display:none;}
-	#cardinfo{width:600px;border:1px solid gray;padding:1px;margin-top:20px;display:none;}
-	#nodeposit{width:600px;border:1px solid gray;height:150px;padding:10px;margin-top:20px;display:none;}
-	#buyDiv{width:600px; border: 1px solid gray;}
-	#details{width:580px;border:1px solid gray;height:130px;padding:1px;margin-top:10px;}
-	#final{width:600px;border:1px solid gray;padding:2px;margin-top:20px;}
-	label{margin-left:80px;}
-	li{font-size:15px}
-</style>
 <div id="main">
 <form method="get" action="${pageContext.request.contextPath}/purchase/insert" onsubmit="return validate()" style="display: inline-block;">
 <h1>주문서</h1>

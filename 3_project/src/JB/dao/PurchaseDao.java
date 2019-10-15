@@ -154,4 +154,12 @@ public class PurchaseDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
+	//회원이 결제한 물품 보여주는 메소드
+	/*
+	public ArrayList<PurchaseVo> memList(String mid){
+		
+	}
+	*/
 }
+
+
