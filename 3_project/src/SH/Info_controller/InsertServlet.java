@@ -26,12 +26,11 @@ public class InsertServlet extends HttpServlet{
 		String infotitle=req.getParameter("infotitle");
 		String infocontent=req.getParameter("infocontent");
 		int infonum=0;
-		Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,null);
+
 		InfoDao dao=new InfoDao();
-<<<<<<< HEAD
-=======
-		Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,admin);
->>>>>>> refs/remotes/origin/master
+
+		Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,null);
+
 		int n=dao.insert(vo);
 		if(n>0) {
 			resp.sendRedirect(req.getContextPath()+"/info/list");
