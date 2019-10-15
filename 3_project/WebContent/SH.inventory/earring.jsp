@@ -24,7 +24,6 @@ padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
 </script>
 <body>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
-<h1 style="text-align: center;">귀걸이</h1> 
 <br>
 <br>
 <div id="err_wrap" >

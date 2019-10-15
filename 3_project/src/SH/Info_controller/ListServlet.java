@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import SH.Info_Dao.InfoDao;
-import SH.Info_Vo.InfoVo;
+import SH.Info_Vo.Info_Vo;
+
 
 @WebServlet("/info/list")
 public class ListServlet extends HttpServlet{
@@ -18,7 +19,7 @@ public class ListServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		InfoDao dao=new InfoDao();
-		ArrayList<InfoVo> list=dao.list();
+		ArrayList<Info_Vo> list=dao.list();
 		req.setAttribute("list", list);
 		req.getRequestDispatcher("/SH.info/infolist.jsp").forward(req, resp);
 	}

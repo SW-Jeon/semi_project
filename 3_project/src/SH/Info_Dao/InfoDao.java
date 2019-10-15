@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import SH.Info_Vo.InfoVo;
+
+import SH.Info_Vo.Info_Vo;
 import jdbc.JdbcUtil;
 
 public class InfoDao {
@@ -55,7 +56,7 @@ public int getMaxNum() {//가장 큰 글번호 얻어오기
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
-	public int insert(InfoVo vo) {//글 등록
+	public int insert(Info_Vo vo) {//글 등록
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
@@ -74,7 +75,7 @@ public int getMaxNum() {//가장 큰 글번호 얻어오기
 			JdbcUtil.close(con, pstmt, null);
 		}
 	}
-	public int update(InfoVo vo) {//수정
+	public int update(Info_Vo vo) {//수정
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
@@ -108,7 +109,7 @@ public int getMaxNum() {//가장 큰 글번호 얻어오기
 			JdbcUtil.close(con, pstmt, null);
 		}
 	}
-	public InfoVo detail(int infonum) {//상세
+	public Info_Vo detail(int infonum) {//상세
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -122,7 +123,7 @@ public int getMaxNum() {//가장 큰 글번호 얻어오기
 				String infotitle=rs.getString("infotitle");
 				String infocontent=rs.getString("infocontent");
 				String adminid=rs.getString("adminid");
-				InfoVo vo=new InfoVo(infonum,infotitle,infocontent,adminid);
+				Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,adminid);
 				return vo;
 			}
 			return null;
@@ -133,7 +134,7 @@ public int getMaxNum() {//가장 큰 글번호 얻어오기
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
-	public ArrayList<InfoVo> list() {//전체 리스트 최신이 위로오게.
+	public ArrayList<Info_Vo> list() {//전체 리스트 최신이 위로오게.
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -142,13 +143,13 @@ public int getMaxNum() {//가장 큰 글번호 얻어오기
 			String sql="select * from info order by infonum desc";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
-			ArrayList<InfoVo> list=new ArrayList<InfoVo>();
+			ArrayList<Info_Vo> list=new ArrayList<Info_Vo>();
 			while(rs.next()) {
 				int infonum=rs.getInt("infonum");
 				String infotitle=rs.getString("infotitle");
 				String infocontent=rs.getString("infocontent");
 				String adminid=rs.getString("adminid");
-				InfoVo vo=new InfoVo(infonum,infotitle,infocontent,adminid);
+				Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,adminid);
 				list.add(vo);
 			}
 			return list;

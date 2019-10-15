@@ -1,14 +1,14 @@
 package SH.Info_Vo;
 
-public class InfoVo {
+public class Info_Vo {
 	private int infonum;
 	private String infotitle;
 	private String infocontent;
 	private String adminid;
 	
-	public InfoVo() {}
+	public Info_Vo() {}
 
-	public InfoVo(int infonum, String infotitle, String infocontent, String adminid) {
+	public Info_Vo(int infonum, String infotitle, String infocontent, String adminid) {
 		super();
 		this.infonum = infonum;
 		this.infotitle = infotitle;
