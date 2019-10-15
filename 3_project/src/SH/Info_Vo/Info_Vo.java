@@ -50,4 +50,8 @@ public class Info_Vo {
 
 	
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/remotes/origin/master

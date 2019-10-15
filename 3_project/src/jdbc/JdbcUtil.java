@@ -7,12 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class JdbcUtil {
-	public static Connection getConn() throws SQLException{
+	public static Connection getConn() throws SQLException {
 		Connection con=null;
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			String url="jdbc:oracle:thin:@localhost:1521:xe";
+		   // String url="jdbc:oracle:thin:@192.168.0.24:1521:xe";
+		    String url="jdbc:oracle:thin:@192.168.0.29:1521:xe";
 			con=DriverManager.getConnection(url,"scott","tiger");
 			return con;
 		}catch(ClassNotFoundException ce) {
@@ -25,8 +27,8 @@ public class JdbcUtil {
 			if(rs!=null) rs.close();
 			if(stmt!=null) stmt.close();
 			if(con!=null) con.close();
-		}catch(SQLException s) {
-			System.out.println(s.getMessage());
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
 		}
 	}
 	public static void close(Connection con,PreparedStatement pstmt,ResultSet rs) {
@@ -34,26 +36,26 @@ public class JdbcUtil {
 			if(rs!=null) rs.close();
 			if(pstmt!=null) pstmt.close();
 			if(con!=null) con.close();
-		}catch(SQLException s) {
-			System.out.println(s.getMessage());
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
 		}
 	}
-	public static void close(Connection con) {	
+	public static void close(Connection con) {
 		try {
 			if(con!=null) con.close();
 		}catch(SQLException se) {
 			System.out.println(se.getMessage());
 		}
 	}
-	public static void close(Statement stmt) {	
-		try {		
+	public static void close(Statement stmt) {
+		try {
 			if(stmt!=null) stmt.close();
 		}catch(SQLException se) {
 			System.out.println(se.getMessage());
 		}
 	}
-	public static void close(ResultSet rs) {	
-		try {		
+	public static void close(ResultSet rs) {
+		try {
 			if(rs!=null) rs.close();
 		}catch(SQLException se) {
 			System.out.println(se.getMessage());
