@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header.jsp -->
 <div id="header">
 	<div id="logo">
@@ -9,8 +10,17 @@
 			<li><button type="button" class="navyBtn" onClick="window.open('https://www.ilogen.com/web/personal/tkSearch')">배송조회</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_pro/QnAlist'">고객만족센터</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/info/list'">공지사항</button></li>
-			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/pro/join'">회원가입</button></li>
-			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_write/writedetai'">회원문의</button></li>
+   		<c:choose>
+   	 		<c:when test="${empty sessionScope.mid }"> <%--로그인 안한 경우 --%>
+   	 		<li><button type="button" class="navyBtn" onClick="location.href='${cp }/pro/join'">회원가입</button></li>
+			</c:when>
+    		<c:otherwise>      <%--로그인 한 경우 --%>		
+			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_write/Wlist'">회원문의</button></li>
+			<li><button type="button" class="navyBtn" onClick="location.href='${cp } '">로그아웃</button></li>
+		      <li><a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>
+                                      <span style="color:red;font-size: 12px">(${id }님 반갑습니다)</span></li>
+            </c:otherwise>
+       	</c:choose>
 		</ul>
 	</div>
 	<div id="ser">
