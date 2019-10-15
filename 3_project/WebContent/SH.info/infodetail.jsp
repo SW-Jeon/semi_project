@@ -11,7 +11,7 @@
 
 	<table>
 		<tr>
-			<th>글번호</th>
+			<th>No</th>
 			<td><input type="text" name="infotitle" value="${vo.infonum }" readonly="readonly"></td>
 		</tr>
 		<tr>
@@ -24,8 +24,12 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<a href="${cp }/info/delete?infonum=${vo.infonum}">삭제</a>	
-				<a href="${cp }/info/update?infonum=${vo.infonum}">수정</a>
+			<c:choose >
+				<c:when test="${sessionScope.id=='admin'}"><%--운영자로 로그인한 경우 --%>
+					<a href="${cp }/info/delete?infonum=${vo.infonum}">삭제</a>	
+					<a href="${cp }/info/update?infonum=${vo.infonum}">수정</a>
+				</c:when>			
+			</c:choose>		
 				<a href="${cp }/info/list">목록으로</a>
 			</td>
 		</tr>

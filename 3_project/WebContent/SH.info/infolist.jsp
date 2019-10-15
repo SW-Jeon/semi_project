@@ -15,6 +15,7 @@ ul{list-style:none; }
 .num{width:40px; height: 40px; float: left; text-align: center; clear: both; }
 .body_title{width: 800px; height: 40px; float: left; }
 .insert{width:80px; height: 40px; float: left; text-align: center; clear: both; }
+.main{width:80px; height: 40px; float: left; text-align: center;}
 .button{width: 900px; height: 40px; float: left;}
 </style>
 </head>
@@ -30,8 +31,13 @@ ul{list-style:none; }
 			<li class="body_title">&nbsp;&nbsp;&nbsp;<a href="${cp }/info/detail?infonum=${vo.infonum}">${vo.infotitle }</li></a>
 		</ul>
 	</c:forEach>
-		<ul class="button">
-		<li class="insert"><a href="${cp }/info/insert">글쓰기</a></li>
+		<ul class="button">	
+			<c:choose >
+				<c:when test="${sessionScope.id=='admin'}"><%--운영자로 로그인한 경우 --%>
+					<li class="insert"><a href="${cp }/info/insert">글쓰기</a></li>
+				</c:when>			
+			</c:choose>
+				<li class="main"><a href="${cp }/pro/home">메인으로</a><li>	
 		</ul>
 </div>
 </body>
