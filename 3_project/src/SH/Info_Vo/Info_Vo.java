@@ -47,7 +47,4 @@ public class Info_Vo {
 	public void setAdminid(String adminid) {
 		this.adminid = adminid;
 	}
-
-	
-	
 }

@@ -7,7 +7,7 @@
   
     <!-- 세션리스너 설정하기(세션이 생성되면 자동 호출됨) -->
   <listener>
-  		<listener-class>SW.qna_controller.HitListener</listener-class>
+  		<listener-class>SW.qna_contoller.HitListener</listener-class>
   </listener>
 
 </web-app>

@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demand.jsp</title>
 <style type="text/css">
 	.tag{text-align: left;font-size:13px;}
 	a{text-decoration: none;color:gray;}
@@ -15,7 +19,8 @@
 	label{margin-left:80px;}
 	li{font-size:15px}
 </style>
-<div id="main">
+</head>
+<body>
 <form method="get" action="${pageContext.request.contextPath}/purchase/insert" onsubmit="return validate()" style="display: inline-block;">
 <h1>주문서</h1>
 <hr>
@@ -143,6 +148,7 @@
 	</a>
 </div>
 </form>
+</body>
 <script type="text/javascript">
 	function getinfo() {
 		var result=document.getElementById("result");
@@ -294,7 +300,7 @@
 		return true;
 	}
 </script>
-</div>
+</html>
 
 
 

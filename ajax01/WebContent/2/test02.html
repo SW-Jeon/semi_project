@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2/test02.html</title>
+<script type="text/javascript">
+	var xhr=null;
+	function find(){
+		var id=document.getElementById("id").value;
+		xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=success;
+		xhr.open('get','findpwd.jsp?id=' + id,true);
+		xhr.send();
+	}
+	function success(){
+		if(xhr.readyState==4 ){
+			if(xhr.status==404){
+				alert("서버페이지를 찾지 못했습니다...");
+			}else if(xhr.status==200){
+				//alert("success");
+				//아이디에 해당하는 비밀번호를 div에 출력해 보세요
+				var data=xhr.responseXML;
+				var code=data.getElementsByTagName("code")[0].firstChild.nodeValue;
+				if(code=='success'){
+					var pwd=data.getElementsByTagName("pwd")[0].firstChild.nodeValue;
+					document.getElementById("result").innerHTML="비밀번호:" + pwd;
+				}else{
+					document.getElementById("result").innerHTML="조회된 정보없음...";
+				}
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<h1>비밀번호 찾기</h1>
+아이디 <input type="text" name="id" id="id"><br>
+<input type="button" value="찾기" onclick="find()">
+<div id="result"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+

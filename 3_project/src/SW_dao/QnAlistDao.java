@@ -7,14 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import SW_vo.QnAvo;
-import SW_vo.WriteVo;
 import jdbc.JdbcUtil;
 
 public class QnAlistDao {
-	private static QnAlistDao qnalistdao=new QnAlistDao();
+	private static QnAlistDao instace=new QnAlistDao();
 	private QnAlistDao() {}
 	public static QnAlistDao getInstance() {
-		return qnalistdao;
+		return instace;
 	}
 
 	//가장 큰 글번호 얻어오기
@@ -49,7 +48,7 @@ public class QnAlistDao {
 			int boardNum=getMaxNum()+1;
 			int qahit=0;
 			String qarecontent=null;
-			String reqst="waiting";
+			String reqst=null;
 			String sql="insert into qa values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, boardNum);
@@ -213,27 +212,6 @@ public class QnAlistDao {
         	JdbcUtil.close(con, pstmt, null);
 		}
 	}
-	
-	//QnA수정
-    public int update(QnAvo vo) {
-    	Connection con=null;
-    	PreparedStatement pstmt=null;
-    	try {
-    		con=JdbcUtil.getConn();
-    		String sql="update qa set qaname=?,qacontent=?,qapwd=? where qanum=?";
-    		pstmt=con.prepareStatement(sql);
-    		pstmt.setString(1, vo.getQaname());
-    		pstmt.setString(2, vo.getQacontent());
-    		pstmt.setString(3, vo.getQapwd());
-    		pstmt.setInt(4, vo.getQanum());
-    		return pstmt.executeUpdate();
-    	}catch(SQLException se){
-    		se.printStackTrace();
-    		return -1;
-    	}finally {
-    		JdbcUtil.close(con, pstmt, null);
-    	}
-    }
 	
 	//답글 달기
     public int reDab(QnAvo vo) {

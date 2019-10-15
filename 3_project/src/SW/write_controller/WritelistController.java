@@ -1,19 +1,13 @@
 package SW.write_controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import SW_dao.WriteDao;
-import SW_vo.WriteVo;
-
-@WebServlet("/SW_write/Wlist")
+@WebServlet("/SW_write/wlist")
 public class WritelistController extends HttpServlet {
+<<<<<<< HEAD
+
+=======
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
@@ -48,6 +42,5 @@ public class WritelistController extends HttpServlet {
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
+>>>>>>> branch 'sw' of https://github.com/SW-Jeon/3_project.git
 }
-
-

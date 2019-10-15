@@ -39,6 +39,7 @@ public class InsertServlet extends HttpServlet{
 		//req.setAttribute("mvo",mvo);
 		
 		
+		
 		int n=dao.insert(vo); //DB에 추가
 		if(n>0) {
 			//req.setAttribute("mvo",mvo);
@@ -47,10 +48,7 @@ public class InsertServlet extends HttpServlet{
 			req.setAttribute("goImg", goImg);
 			req.setAttribute("jNum", jNum);
 			req.setAttribute("goPrice", goPrice);
-			req.setAttribute("top", "/pro/header.jsp");
-			req.setAttribute("bottom", "/pro/footer.jsp");
-			req.setAttribute("main", "/junbin/demand.jsp");
-			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+			req.getRequestDispatcher("/junbin/demand.jsp").forward(req, resp);
 		}else {
 			//물품리스트 페이지로 돌아가기
 			req.setAttribute("jNum", jNum);

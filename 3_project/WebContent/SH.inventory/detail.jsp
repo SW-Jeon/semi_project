@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>/SH.inventory/detail.jsp</title>
-<style>
+<style type="text/css">
 * {box-sizing: border-box;}
-#wrab{margin: 0px auto; }
+#detail_wrap{margin-top: 100px; }
 #detail{ float: left; width: 500px; height: 600px; margin-left: 100px; border: 1px solid black; }
 .img-zoom-container {
   position: relative;
@@ -18,10 +18,9 @@
 
 .img-zoom-lens {
   position: absolute;
-  border: 1px solid #d4d4d4;
-  /*set the size of the lens:*/
   width: 40px; 
   height: 40px;
+  
 }
 
 .img-zoom-result {
@@ -93,6 +92,8 @@ function imageZoom(imgID, resultID) {
 </script>
 </head>
 <body onload="init();">
+
+<div id="main">
 <script>
 var sell_price;
 var amount;
@@ -133,10 +134,7 @@ function change () {
 //-->
 </script>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
-
-
-<h1>상세페이지</h1>
-<div id="wrab">
+<div id="detail_wrap">
 	<div class="img-zoom-box">		 
 		  <div id="myresult" class="img-zoom-result"></div>
 		  		<c:choose>
@@ -159,21 +157,22 @@ function change () {
 		<div id="detail">
 			<form name="form"  method="get" style="text-align: center;" action="${cp }/here">
 			 <h1>${name}</h1><br>
-			<h2>가격 : ${vo.goprice } 원</h2><br>
+			<h2><p style=" color: red;">가격 : ${vo.goprice } 원</p></h2><br>
 			<h3>배송방법: 택배</h3><br>
 			색상:
 			<select name="color">
-			<option value="1">${vo.gocolor }</option>	
+			<option value="${vo.gocolor }">${vo.gocolor }</option>	<!-- 색상넘어감 -->
 			</select>
 			<br>
-			수량 : <input type=hidden name="sell_price" value="${vo.goprice }">
-			<input type="text" name="amount" value="1" size="3" onchange="change();">
+			수량 : <input type=hidden name="sell_price" value="${vo.goprice }" >
+			<input type="text" name="amount" value="1" size="3" onchange="change();" style="text-align:right;">
 			<input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
-			금액 : <input type="text" name="sum" size="11" readonly>원<br>
+			금액 : <input type="text" name="sum" size="11"  readonly="readonly" style="text-align:right;">원<br>
 			<br>
 			<input type="button" value="장바구니" onclick="here">&nbsp;<input type="submit" value="구매하기" >
 			</form>
 		</div>
+</div>
 </div>
 <script>
 imageZoom("myimage", "myresult");
