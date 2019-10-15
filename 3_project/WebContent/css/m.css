@@ -145,4 +145,11 @@ label{margin-left:80px;}
 li{font-size:15px}
 table{margin:auto;}
 
+#brace_wrap{ margin:0px auto;}
+#price{text-align: center;}
+#brace_wrap #b{width:400px; height:400px;  float: left; 
+padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+img { display: block; margin: 0px auto; }
+#page{clear: both; float: left;   margin: auto;}
+
 
