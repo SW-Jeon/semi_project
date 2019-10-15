@@ -91,15 +91,18 @@
 	margin-left: 50px;
 	padding-top: 100px;
 }
-
-#gnb ul li{
+#gnb ul{
 	float: right;
-	margin-top: 0px;
+}
+#gnb ul li{
+	float: left;
+	margin-top: 5px;
 	list-style: none;
 	display: inline-block;
 	width: 110px;
 	font: bold 12px Dotum;
 }
+
 #banner ul li{
 	list-style: none;
 	display: inline-block;

@@ -44,7 +44,7 @@ public class WritelistController extends HttpServlet {
 		req.setAttribute("field", field);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main", "/SW_write/Wlist.jsp");
+		req.setAttribute("main", "/SW_write/W_List.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}

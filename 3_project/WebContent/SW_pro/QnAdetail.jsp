@@ -15,7 +15,7 @@
 			<tr>
 				<td width="150">글쓴이  |</td><td width="600">${vo.qaname}</td>
 			</tr>
-<c:if test="${ adminid=='admin'}">	
+<c:if test="${sessionScope.adminid=='admin'}">	
 			<tr>
 				<td width="150">답변  |</td><td width="600">${vo.qarecontent}</td>
 			</tr>
@@ -26,11 +26,13 @@
 			<tr>
 				<td width="150">조회수  |</td><td width="600">${vo.qahit}</td>
 			</tr>
+		
 			<tr>
-				<td width="150">삭제  |</td><td width="600"><a href="${cp }/SW_pro/delete?qanum=${vo.qanum }">삭제</a></td>
+				<td width="20"><a href="${cp }/SW_pro/delete?qanum=${vo.qanum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em; ">삭제하기</a></td>
 			</tr>
 	</table>
 	<br><hr>
+<c:if test="${sessionScope.adminid=='admin'}">		
 	<form method="post"  action="${cp }/SW_pro/QnAreqst">
 		<table style="display: inline-block;">
 			<tr>
@@ -44,4 +46,5 @@
 			</tr>
 		</table>
 	</form>
+</c:if>		
 </div>
