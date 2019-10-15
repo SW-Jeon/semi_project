@@ -1,4 +1,4 @@
-package SW.qna_contoller;
+package SW.qna_controller;
 
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;

@@ -1,4 +1,4 @@
-package SW.qna_contoller;
+package SW.qna_controller;
 
 import java.io.IOException;
 

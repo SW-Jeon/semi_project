@@ -16,10 +16,11 @@ import SW_vo.WriteVo;
 public class WriteRewstController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main",	"/SW_write/W_Detail.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+		String mid=req.getParameter("mid");
+		WriteDao dao=WriteDao.getInstance();
+		WriteVo vo=dao.getInfo(mid);
+		req.setAttribute("vo", vo);
+		req.getRequestDispatcher("/SW_write/W_Detail.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -30,9 +31,11 @@ public class WriteRewstController extends HttpServlet{
 		String rewst=req.getParameter("rewst");
 		HttpSession session=req.getSession(); 
 		String id=(String)session.getAttribute("mid");
+		
+		WriteDao dao=WriteDao.getInstance();
+		dao.getInfo(mid);
 		if(mid==id) {
 			WriteVo vo=new WriteVo(0, mid, null, null, rewrite, rewst);
-			WriteDao dao=WriteDao.getInstance();
 			int n=dao.reDab(vo);
 			if(n>0){
 				req.setAttribute("msg", "success");
