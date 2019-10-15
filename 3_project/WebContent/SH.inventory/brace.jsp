@@ -11,7 +11,7 @@
 #price{text-align: center;}
 #brace_wrap #b{width:400px; height:400px;  float: left; 
 padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
-#page{clear: both; float: left;   margin: auto;}
+#page{clear: both; float: left;  margin-left: 550px;}
 
 </style>
 </head>
