@@ -1,4 +1,4 @@
-package SW.write_controller;
+package SW.qna_contoller;
 
 import java.io.IOException;
 
@@ -8,36 +8,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import SW_dao.WriteDao;
-import SW_vo.WriteVo;
+import SW_dao.QnAlistDao;
 
-@WebServlet("/SW_write/write")
-public class WriteController extends HttpServlet {
+@WebServlet("/SW_pro/delete")
+public class QnAdeleteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main",	"/SW_write/Write.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");
+		int qanum=Integer.parseInt(req.getParameter("qanum"));
+		req.setAttribute("qanum", qanum);
+		req.setAttribute("top","/pro/header.jsp");
+		req.setAttribute("main","/SW_pro/delete.jsp");
+		req.setAttribute("bottom","/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String mid=req.getParameter("mid");
-		String title=req.getParameter("title");
-		String writecontent=req.getParameter("writecontent");
-		
-		WriteVo vo=new WriteVo(0, mid, title, writecontent, null, null);
-		WriteDao dao=WriteDao.getInstance();
-		int n=dao.insert(vo);
-		if(n>0){
-			req.setAttribute("msg", "success");
+		int qanum=Integer.parseInt(req.getParameter("qanum"));
+		String qapwd=req.getParameter("qapwd");
+		System.out.println(qanum);
+		QnAlistDao dao=QnAlistDao.getInstance();
+		int n=dao.delete(qanum, qapwd);
+		if(n>0) {
+			req.setAttribute("msg","success");
 		}else {
-			req.setAttribute("msg", "fail");
+			req.setAttribute("msg","fail");
 		}
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main","/SW_pro/result.jsp");
+		req.setAttribute("content","/SW_pro/result.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}

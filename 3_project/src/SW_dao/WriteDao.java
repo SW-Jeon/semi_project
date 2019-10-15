@@ -11,10 +11,10 @@ import SW_vo.WriteVo;
 import jdbc.JdbcUtil;
 
 public class WriteDao {
-	private static WriteDao instace=new WriteDao();
+	private static WriteDao writedao=new WriteDao();
 	private WriteDao() {}
 	public static WriteDao getInstance() {
-		return instace;
+		return writedao;
 	}
 	
 	//가장 큰 글번호 얻어오기
@@ -48,7 +48,7 @@ public class WriteDao {
 				con=JdbcUtil.getConn();
 				int boardNum=getMaxNum()+1;
 				String rewrite=null;
-				String rewst=null;
+				String rewst="waiting";
 				String sql="insert into write values(?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, boardNum);
@@ -192,6 +192,26 @@ public class WriteDao {
 	        	JdbcUtil.close(con, pstmt, null);
 			}
 		}
+		
+		//회원글수정
+	    public int update(WriteVo vo) {
+	    	Connection con=null;
+	    	PreparedStatement pstmt=null;
+	    	try {
+	    		con=JdbcUtil.getConn();
+	    		String sql="update write set title=? and writecontent=? where writenum=?";
+	    		pstmt=con.prepareStatement(sql);
+	    		pstmt.setString(1, vo.getTitle());
+	    		pstmt.setString(2, vo.getWritecontent());
+	    		pstmt.setInt(3, vo.getWritenum());
+	    		return pstmt.executeUpdate();
+	    	}catch(SQLException se){
+	    		se.printStackTrace();
+	    		return -1;
+	    	}finally {
+	    		JdbcUtil.close(con, pstmt, null);
+	    	}
+	    }
 		
 		//답글 달기
 	    public int reDab(WriteVo vo) {

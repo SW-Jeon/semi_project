@@ -1,4 +1,4 @@
-package SW.qna_contoller;
+package SW.write_controller;
 
 import java.io.IOException;
 
@@ -8,27 +8,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import SW_dao.QnAlistDao;
+import SW_dao.WriteDao;
 
-@WebServlet("/SW_pro/delete")
-public class DeleteControllor extends HttpServlet {
+@WebServlet("/SW_write/delete")
+public class WriteDeleteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int qanum=Integer.parseInt(req.getParameter("qanum"));
-		req.setAttribute("qanum", qanum);
+		int writenum=Integer.parseInt(req.getParameter("writenum"));
+		req.setAttribute("writenum", writenum);
 		req.setAttribute("top","/pro/header.jsp");
-		req.setAttribute("main","/SW_pro/delete.jsp");
+		req.setAttribute("main","/SW_write/W_Delete.jsp");
 		req.setAttribute("bottom","/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		int qanum=Integer.parseInt(req.getParameter("qanum"));
-		String qapwd=req.getParameter("qapwd");
-		System.out.println(qanum);
-		QnAlistDao dao=QnAlistDao.getInstance();
-		int n=dao.delete(qanum, qapwd);
+		int writenum=Integer.parseInt(req.getParameter("writenum"));
+		String mid=req.getParameter("mId");
+		WriteDao dao=WriteDao.getInstance();
+		int n=dao.delete(writenum, mid);
 		if(n>0) {
 			req.setAttribute("msg","success");
 		}else {
@@ -40,4 +39,3 @@ public class DeleteControllor extends HttpServlet {
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }
-
