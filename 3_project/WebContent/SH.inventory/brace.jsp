@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>/inventory/brace.jsp</title>
+<style type="text/css">
+#brace_wrap{ margin:0px auto;}
+#price{text-align: center;}
+#brace_wrap #b{width:400px; height:400px;  float: left; 
+padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+#page{clear: both; float: left;   margin: auto;}
+
+</style>
 </head>
 <script type="text/javascript">
 	function aa(gocode,index) {
