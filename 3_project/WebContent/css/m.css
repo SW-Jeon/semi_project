@@ -132,5 +132,10 @@
 	color: white;
 }
 
+#brace_wrap{ margin:0px auto;}
+#price{text-align: center;}
+#brace_wrap #b{width:400px; height:400px;  float: left; 
+padding:20px; margin-bottom:50px ; margin-right: 20px; margin-left: 140px; }
+#page{clear: both; float: left;   margin: auto;}
 
 
