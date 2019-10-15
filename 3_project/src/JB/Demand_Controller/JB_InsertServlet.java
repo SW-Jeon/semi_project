@@ -13,7 +13,7 @@ import JB.Demand_vo.DemandVo;
 import JB.dao.DemandDao;
 
 @WebServlet("/demand/insert")
-public class InsertServlet extends HttpServlet{
+public class JB_InsertServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session=req.getSession(); 

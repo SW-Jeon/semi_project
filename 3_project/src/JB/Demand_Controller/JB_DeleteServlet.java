@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import JB.dao.DemandDao;
 @WebServlet("/demand/delete")
-public class DeleteServlet extends HttpServlet{
+public class JB_DeleteServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int ordernum=Integer.parseInt(req.getParameter("ordernum")); //주문번호 받음
