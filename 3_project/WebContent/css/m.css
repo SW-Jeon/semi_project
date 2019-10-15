@@ -130,7 +130,6 @@
 	color: white;
 }
 
-
 .tag{text-align: left;font-size:13px;}
 a{text-decoration: none;color:gray;}
 #result{width:450px;border:1px solid gray;height:100px;padding:1px;
@@ -150,4 +149,5 @@ table{margin:auto;}
 padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
 img { display: block; margin: 0px auto; }
 #page{clear: both; float: left;   margin: auto;}
+
 
