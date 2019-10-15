@@ -26,12 +26,9 @@ public class QnAreQstController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		String qarecontent=req.getParameter("qarecontent");
 		String reqst=req.getParameter("reqst");
-		HttpSession session=req.getSession(); 
-		String id=(String)session.getAttribute("adminid");
-		if(id.equals("admin")) {
-			QnAvo vo=new QnAvo(0, null, null, null, qarecontent, 0, reqst);
-			QnAlistDao dao=QnAlistDao.getInstance();
-			int n=dao.reDab(vo);
+		QnAvo vo=new QnAvo(0, null, null, null, qarecontent, 0, reqst);
+		QnAlistDao dao=QnAlistDao.getInstance();
+		int n=dao.reDab(vo);
 			if(n>0){
 				req.setAttribute("msg", "success");
 			}else {
@@ -41,8 +38,5 @@ public class QnAreQstController extends HttpServlet {
 			req.setAttribute("main","/SW_pro/result.jsp");
 			req.setAttribute("bottom", "/pro/footer.jsp");
 			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
-		}else {
-			resp.sendRedirect(req.getContextPath()+"/SW_pro/QnAlist.jsp");
-		}
 	}
 }

@@ -9,10 +9,6 @@
 		<ul>
 			<li><button type="button" class="navyBtn" onClick="window.open('https://www.ilogen.com/web/personal/tkSearch')">배송조회</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_pro/QnAlist'">고객만족센터</button></li>
-<<<<<<< HEAD
-			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/pro/join'">회원가입</button></li>
-			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/info/list'">공지</button></li>
-=======
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/info/list'">공지사항</button></li>
    		<c:choose>
    	 		<c:when test="${empty sessionScope.mid }"> <%--로그인 안한 경우 --%>
@@ -25,7 +21,6 @@
                                       <span style="color:red;font-size: 12px">(${id }님 반갑습니다)</span></li>
             </c:otherwise>
        	</c:choose>
->>>>>>> branch 'sw' of https://github.com/SW-Jeon/3_project.git
 		</ul>
 	</div>
 	<div id="ser">
