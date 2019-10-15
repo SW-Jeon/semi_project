@@ -8,14 +8,8 @@
 <title>/inventory/brace.jsp</title>
 </head>
 
-<style>
-#brace_wrap{ margin:0px auto;  background-color: black;}
-img { display: block; margin: 0px auto; }
-#price{text-align: center;}
-#b{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
-#page{clear: both; float: left;   margin: auto;}
-</style>
+
+
 <script type="text/javascript">
 	function aa(gocode,index) {
 	var 	id=document.getElementById(index);
@@ -24,11 +18,9 @@ padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
 	}
 </script>
 <body>
+<div id="main" >
+<div id="brace_wrap">
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
-<h1 style="text-align: center;">팔찌</h1> 
-<br>
-<br>
-<div id="brace_wrap" >
 	<c:forEach var="vo" items="${list }" varStatus="vs">
 		<div id="b">
 		<!--  	<a href="${cp}/inventory/detail?gocode=${vo.gocode}" >-->
@@ -106,6 +98,7 @@ padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
 			</a>
 		</div>	
 		</c:forEach>
+	</div>
 </div>
  
 <div id="page"><!-- 페이징처리 -->

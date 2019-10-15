@@ -42,11 +42,14 @@ public class ListServlet extends HttpServlet {
 		req.setAttribute("endPageNum", endPageNum);
 		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("jnum", jnum);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
 		switch(jnum) {
-		case(100) : req.getRequestDispatcher("/SH.inventory/earring.jsp").forward(req, resp); break;
-		case(200) : req.getRequestDispatcher("/SH.inventory/neck.jsp").forward(req, resp); break;
-		case(300) : req.getRequestDispatcher("/SH.inventory/watch.jsp").forward(req, resp); break;
-		case(400) : req.getRequestDispatcher("/SH.inventory/brace.jsp").forward(req, resp);  break;
+		case(100) : req.setAttribute("main", "/SH.inventory/earring.jsp"); break;
+		case(200) : req.setAttribute("main","/SH.inventory/neck.jsp"); break;
+		case(300) : req.setAttribute("main","/SH.inventory/watch.jsp"); break;
+		case(400) : req.setAttribute("main","/SH.inventory/brace.jsp");  break;
 		}
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }
