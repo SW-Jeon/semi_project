@@ -12,8 +12,7 @@
 <form action="<c:url value='/info/insert'/>" method="post">
 	<table>
 		<tr>
-			<td>번호</td>
-			<td><input type="text" name="num" value="${param.num}" readonly="readonly"><td>
+			<td><input type="hidden" name="num" value="${param.num}" readonly="readonly"><td>
 		</tr>
 		<tr>
 			<td>제목</td>
@@ -24,8 +23,9 @@
 			<td><textarea rows="30" cols="100" name="infocontent"></textarea></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="submit" value="등록"></td>
+			<td colspan="2"><input type="submit" value="등록">&nbsp;&nbsp;<input type="reset" value="지우기"></td>
 		</tr>
+		
 	</table>
 </form>
 </body>

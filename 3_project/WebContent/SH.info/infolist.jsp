@@ -14,7 +14,6 @@ ul{list-style:none; }
 .head_title{width: 800px; height: 40px; float: left; text-align: center;}
 .num{width:40px; height: 40px; float: left; text-align: center; clear: both; }
 .body_title{width: 800px; height: 40px; float: left; }
-.del{width:60px; height: 40px; float: left; text-align: center;}
 .insert{width:80px; height: 40px; float: left; text-align: center; clear: both; }
 .button{width: 900px; height: 40px; float: left;}
 </style>
@@ -23,13 +22,12 @@ ul{list-style:none; }
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
 <div id="wrap">
 	<ul class="head">
-		<li class="no">No</li><li class="head_title">제목</li>	
+		<li class="no">No</li><li class="head_title">제목</li>
 	</ul>
 	<c:forEach var="vo" items="${requestScope.list }">
 		<ul class="body">
 			<li class="num">${vo.infonum}</li>
-			<li class="body_title">&nbsp;&nbsp;&nbsp;${vo.infotitle }</li>
-			<li class="del"><a href="${cp }/info/delete?infonum=${vo.infonum}">삭제</a></li>
+			<li class="body_title">&nbsp;&nbsp;&nbsp;<a href="${cp }/info/detail?infonum=${vo.infonum}">${vo.infotitle }</li></a>
 		</ul>
 	</c:forEach>
 		<ul class="button">

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.SendResult;
 
 import SH.Info_Dao.InfoDao;
 import SH.Info_Vo.InfoVo;
@@ -28,10 +29,10 @@ public class InsertServlet extends HttpServlet{
 		InfoDao dao=new InfoDao();
 		int n=dao.insert(vo);
 		if(n>0) {
-			req.setAttribute("code", "success");
+			resp.sendRedirect(req.getContextPath()+"/info/list");
 		}else {
 			req.setAttribute("code", "fail");
+			req.getRequestDispatcher("/SH.info/inforesult.jsp").forward(req, resp);
 		}
-		req.getRequestDispatcher("/SH.info/inforesult.jsp").forward(req, resp);
 	}
 }

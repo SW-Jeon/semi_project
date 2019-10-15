@@ -79,11 +79,11 @@ public int getMaxNum() {//가장 큰 글번호 얻어오기
 		PreparedStatement pstmt=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="update info set infotitle=?,infocontent=? where adminid=?";
+			String sql="update info set infotitle=?,infocontent=? where infonum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getInfotitle() );
 			pstmt.setString(2, vo.getInfocontent());
-			pstmt.setString(3, vo.getAdminid());
+			pstmt.setInt(3, vo.getInfonum());
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			System.out.println(se.getMessage());

@@ -17,6 +17,7 @@ import SH.Inventory_Vo.InventoryVo;
 public class ListServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		String spageNum=req.getParameter("pageNum");
 		int jnum=Integer.parseInt(req.getParameter("jnum"));
 		int pageNum=1;

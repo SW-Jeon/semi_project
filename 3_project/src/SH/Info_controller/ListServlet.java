@@ -16,6 +16,7 @@ import SH.Info_Vo.InfoVo;
 public class ListServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
 		InfoDao dao=new InfoDao();
 		ArrayList<InfoVo> list=dao.list();
 		req.setAttribute("list", list);
