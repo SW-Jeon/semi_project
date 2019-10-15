@@ -30,7 +30,7 @@ padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
 <div id="neck_wrap" >
 	<c:forEach var="vo" items="${list }" varStatus="vs">
 		<div id="n">
-			<a href="javascript:aa('${vo.gocode}',${vs.index })" >
+			<a href="javascript:aa('${vo.gocode}',${vs.index })" ><!-- 스크립트로 넘겨서 페이지 이동 -->
 				<img src="${cp }/acc/neck/${vo.goimg }"  border=0  width="300px" height="300px" >
 					<div id="price">
 					<br>
