@@ -28,6 +28,6 @@
 			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=300'">시계</button></li>
 		</ul>
 	</div>
-  <br><br><hr>
+  <hr>
 </div>
 	
