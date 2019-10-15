@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>/inventory/brace.jsp</title>
 </head>
-
-
-
 <script type="text/javascript">
 	function aa(gocode,index) {
 	var 	id=document.getElementById(index);
@@ -133,5 +130,4 @@
 		</c:otherwise>
 	</c:choose>
 </div>
-</body>
-</html>
+
