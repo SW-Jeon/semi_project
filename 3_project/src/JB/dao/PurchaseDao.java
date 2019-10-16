@@ -23,7 +23,7 @@ public class PurchaseDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="insert into values(purchase_seq.nextval,?,?,?,?,sysdate,?,?,?)";
+			String sql="insert into purchase values(purchase_seq.nextval,?,?,?,?,sysdate,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, vo.getOrdernum());
 			pstmt.setString(2, vo.getMid());
@@ -154,4 +154,12 @@ public class PurchaseDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
+	//회원이 결제한 물품 보여주는 메소드
+	/*
+	public ArrayList<PurchaseVo> memList(String mid){
+		
+	}
+	*/
 }
+
+

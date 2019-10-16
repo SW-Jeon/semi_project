@@ -12,13 +12,8 @@ public class JdbcUtil {
 	public static Connection getConn() throws SQLException {
 		Connection con=null;
 		try {
-<<<<<<< HEAD
-			Class.forName("oracle.jdbc.OracleDriver");
-		    String url="jdbc:oracle:thin:@192.168.0.29:1521:xe";
-=======
 			Class.forName("oracle.jdbc.OracleDriver");
 		    String url="jdbc:oracle:thin:@192.168.0.24:1521:xe";
->>>>>>> branch 'sh' of https://github.com/SW-Jeon/3_project.git
 			con=DriverManager.getConnection(url,"scott","tiger");
 			return con;
 		}catch(ClassNotFoundException ce) {
