@@ -157,13 +157,13 @@ function change () {
 	</div>
 
 		<div id="detail">
-			<form name="form"  method="get" style="text-align: center;" action="${cp }/here">
+			<form name="form"  method="get" style="text-align: center;" action="${cp }/demand/insert">
 			 <h1>${name}</h1><br>
 			<h2>가격 : ${vo.goprice } 원</h2><br>
 			<h3>배송방법: 택배</h3><br>
 			색상:
 			<select name="color">
-			<option value="1">${vo.gocolor }</option>	
+			<option value="${vo.gocolor }">${vo.gocolor }</option>	
 			</select>
 			<br>
 			수량 : <input type=hidden name="sell_price" value="${vo.goprice }">
@@ -171,6 +171,11 @@ function change () {
 			<input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
 			금액 : <input type="text" name="sum" size="11" readonly>원<br>
 			<br>
+			<!-- 아래추가 -->
+			<input type="hidden" name="goImg" value="${vo.goimg }">
+			<input type="hidden" name="jNum" value="${vo.jnum}">
+			<input type="hidden" name="goName" value="${name}">
+			<input type="hidden" name="getCode" value="${vo.gocode}">
 			<input type="button" value="장바구니" onclick="here">&nbsp;<input type="submit" value="구매하기" >
 			</form>
 		</div>

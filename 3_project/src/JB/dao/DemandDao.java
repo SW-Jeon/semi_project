@@ -22,7 +22,7 @@ public class DemandDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="insert into values(demand_seq.nextval,?,?,?,?)";
+			String sql="insert into demand values(demand_seq.nextval,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getGocode());

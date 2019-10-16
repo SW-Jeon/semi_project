@@ -1,4 +1,4 @@
-package SH.inventory_controller;
+package SW.write_controller;
 
 import java.io.IOException;
 
@@ -8,23 +8,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import SH.Inventory_Dao.InventoryDao;
-import SH.Inventory_Vo.InventoryVo;
+import SW_dao.WriteDao;
+import SW_vo.WriteVo;
 
-@WebServlet("/inventory/detail")
-public class DetailServlet extends HttpServlet{
+@WebServlet("/SW_write/Wdetail")
+public class WriteDetailController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String gocode=req.getParameter("gocode");
-		String name=req.getParameter("index");
-		InventoryDao dao=new InventoryDao();
-		InventoryVo vo=dao.detail(gocode);
+		int writenum=Integer.parseInt(req.getParameter("writenum"));
+		WriteDao dao=WriteDao.getInstance();
+		WriteVo vo=dao.detail(writenum);
 		req.setAttribute("vo", vo);
-		req.setAttribute("name", name);
 		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SW_write/W_Detail.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.setAttribute("main", "/SH.inventory/detail.jsp"); 
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);	
 	}
 }
+
