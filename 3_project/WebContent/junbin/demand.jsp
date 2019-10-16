@@ -1,26 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>demand.jsp</title>
-<style type="text/css">
-	.tag{text-align: left;font-size:13px;}
-	a{text-decoration: none;color:gray;}
-	#result{width:450px;border:1px solid gray;height:100px;padding:1px;
-	font-size: 12px; display:none;}
-	#cardinfo{width:600px;border:1px solid gray;padding:1px;margin-top:20px;display:none;}
-	#nodeposit{width:600px;border:1px solid gray;height:150px;padding:10px;margin-top:20px;display:none;}
-	#buyDiv{width:600px; border: 1px solid gray;}
-	#details{width:580px;border:1px solid gray;height:130px;padding:1px;margin-top:10px;}
-	#final{width:600px;border:1px solid gray;padding:2px;margin-top:20px;}
-	label{margin-left:80px;}
-	li{font-size:15px}
-</style>
-</head>
-<body>
+<div id="main">
 <form method="get" action="${pageContext.request.contextPath}/purchase/insert" onsubmit="return validate()" style="display: inline-block;">
 <h1>주문서</h1>
 <hr>
@@ -37,19 +18,19 @@
 		<c:set var="name" value=""/>
 		<c:choose>
 			<c:when test="${jNum=='100' }">
-				<c:set var="name" value="귀걸이"/>
+				<c:set var="name" value="ear"/>
 			</c:when>
 			<c:when test="${jNum=='200' }">
-				<c:set var="name" value="목걸이"/>
+				<c:set var="name" value="neck"/>
 			</c:when>
 			<c:when test="${jNum=='300' }">
-				<c:set var="name" value="시계"/>
+				<c:set var="name" value="watch"/>
 			</c:when>
 			<c:otherwise>
-				<c:set var="name" value="팔찌"/>
+				<c:set var="name" value="brace"/>
 			</c:otherwise>
 		</c:choose>
-		<td><img src="${pageContext.request.contextPath}/악세서리/${name}/${goImg}" width="100"></td>
+		<td><img src="${pageContext.request.contextPath}/acc/${name}/${goImg}" width="100"></td>
 		<td>${goName}</td>
 		<td>${goPrice}</td>
 		<td>${vo.orderamount}</td>
@@ -117,7 +98,7 @@
 		<option value="신한은행">신한은행</option>
 		<option value="하나은행">하나은행</option>
 	</select><hr>
-	<ul>
+	<ul style="list-style: none">
 		<li><font color="red">2019년 10월 18일</font> 까지 미입금 시 자동 취소 처리 됩니다.</li>
 		<li>입금하실 은행을 선택하신 후, 오른쪽 <font color="red"><결제하기></font> 버튼을 클릭합니다.</li>
 	</ul>
@@ -148,7 +129,6 @@
 	</a>
 </div>
 </form>
-</body>
 <script type="text/javascript">
 	function getinfo() {
 		var result=document.getElementById("result");
@@ -300,13 +280,4 @@
 		return true;
 	}
 </script>
-</html>
-
-
-
-
-
-
-
-
-
+</div>

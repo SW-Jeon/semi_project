@@ -1,4 +1,4 @@
-package SW.write_controller;
+package SW.qna_controller;
 
 import java.io.IOException;
 
@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import SW_dao.WriteDao;
-import SW_vo.WriteVo;
+import SW_dao.QnAlistDao;
+import SW_vo.QnAvo;
 
-@WebServlet("/SW_write/write")
-public class WriteController extends HttpServlet {
+@WebServlet("/SW_pro/QnAwrite")
+public class QnAwriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main","/SW_write/write.jsp");
+		req.setAttribute("main",	"/SW_pro/QnAwrite.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
@@ -24,12 +24,13 @@ public class WriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String mid=req.getParameter("mid");
-		String title=req.getParameter("title");
-		String writecontent=req.getParameter("writecontent");
-		
-		WriteVo vo=new WriteVo(0, mid, title, writecontent, null, null);
-		WriteDao dao=WriteDao.getInstance();
+		String qacontent=req.getParameter("qacontent");
+		String qaname=req.getParameter("qaname");
+		String qapwd=req.getParameter("qapwd");
+		int qahit=Integer.parseInt(req.getParameter("qahit"));
+		String reqst="대기중";
+		QnAvo vo=new QnAvo(0, qacontent, qaname, qapwd, null, qahit, reqst);
+		QnAlistDao dao=QnAlistDao.getInstance();
 		int n=dao.insert(vo);
 		if(n>0){
 			req.setAttribute("msg", "success");
@@ -42,3 +43,5 @@ public class WriteController extends HttpServlet {
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }
+
+

@@ -7,13 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import SW_vo.QnAvo;
+import SW_vo.WriteVo;
 import jdbc.JdbcUtil;
 
 public class QnAlistDao {
-	private static QnAlistDao instace=new QnAlistDao();
+	private static QnAlistDao qnalistdao=new QnAlistDao();
 	private QnAlistDao() {}
 	public static QnAlistDao getInstance() {
-		return instace;
+		return qnalistdao;
 	}
 
 	//가장 큰 글번호 얻어오기
@@ -46,9 +47,8 @@ public class QnAlistDao {
 		try {
 			con=JdbcUtil.getConn();
 			int boardNum=getMaxNum()+1;
-			int qahit=0;
+			//int qahit=0;
 			String qarecontent=null;
-			String reqst=null;
 			String sql="insert into qa values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, boardNum);
@@ -56,8 +56,8 @@ public class QnAlistDao {
 			pstmt.setString(3, vo.getQaname());
 			pstmt.setString(4, vo.getQapwd());
 			pstmt.setString(5, qarecontent);
-			pstmt.setInt(6, qahit);
-			pstmt.setString(7, reqst);
+			pstmt.setInt(6, vo.getQahit());
+			pstmt.setString(7, vo.getReqst());
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -176,12 +176,12 @@ public class QnAlistDao {
 			pstmt.setInt(1, qanum);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				String qacontent=rs.getString(1);
-				String qaname=rs.getString(2);
-				String qapwd =rs.getString(3);
-				String qarecontent=rs.getString(4);
-				int qahit=rs.getInt(5);
-				String reqst=rs.getString(6);
+				String qacontent=rs.getString(2);
+				String qaname=rs.getString(3);
+				String qapwd =rs.getString(4);
+				String qarecontent=rs.getString(5);
+				int qahit=rs.getInt(6);
+				String reqst=rs.getString(7);
 				QnAvo vo=new QnAvo(qanum, qacontent, qaname, qapwd, qarecontent, qahit, reqst);
 				return vo;
 			}
@@ -213,6 +213,58 @@ public class QnAlistDao {
 		}
 	}
 	
+	//QnA수정
+    public int update(QnAvo vo) {
+    	Connection con=null;
+    	PreparedStatement pstmt=null;
+    	try {
+    		con=JdbcUtil.getConn();
+    		String sql="update qa set qaname=?,qacontent=?,qapwd=? where qanum=?";
+    		pstmt=con.prepareStatement(sql);
+    		pstmt.setString(1, vo.getQaname());
+    		pstmt.setString(2, vo.getQacontent());
+    		pstmt.setString(3, vo.getQapwd());
+    		pstmt.setInt(4, vo.getQanum());
+    		return pstmt.executeUpdate();
+    	}catch(SQLException se){
+    		se.printStackTrace();
+    		return -1;
+    	}finally {
+    		JdbcUtil.close(con, pstmt, null);
+    	}
+    }
+    
+    //qna 수정을 위한 멤버선택
+    public QnAvo getInfo(int qanum) {
+    	Connection con=null;
+    	PreparedStatement pstmt=null;
+    	ResultSet rs=null;
+    	try {
+    		con=JdbcUtil.getConn();
+    		String sql="select * from qa whrer qanum=?";
+    		pstmt=con.prepareStatement(sql);
+    		pstmt.setInt(1, qanum);
+    		rs=pstmt.executeQuery();
+    		if(rs.next()) {
+				String qacontent=rs.getString(2);
+				String qaname=rs.getString(3);
+				String qapwd=rs.getString(4);
+				String qarecontent=rs.getString(5);
+				int qahit=rs.getInt(6);
+				String reqst=rs.getString(7);
+				QnAvo vo=new QnAvo(qanum, qacontent, qaname, qapwd, qarecontent, qahit, reqst);
+    			return vo;
+			}
+			return null;
+    	}catch(SQLException se) {
+    		se.printStackTrace();
+    		return null;
+    	}finally {
+    		JdbcUtil.close(con, pstmt, rs);
+		}
+	}
+    
+	
 	//답글 달기
     public int reDab(QnAvo vo) {
     	Connection con=null;
@@ -232,4 +284,6 @@ public class QnAlistDao {
     		JdbcUtil.close(con, pstmt, null);
     	}
     }
+    
+    
 }

@@ -26,10 +26,8 @@ public class InsertServlet extends HttpServlet{
 		String infotitle=req.getParameter("infotitle");
 		String infocontent=req.getParameter("infocontent");
 		int infonum=0;
-
-		InfoDao dao=new InfoDao();
-
 		Info_Vo vo=new Info_Vo(infonum,infotitle,infocontent,null);
+		InfoDao dao=new InfoDao();
 
 		int n=dao.insert(vo);
 		if(n>0) {
