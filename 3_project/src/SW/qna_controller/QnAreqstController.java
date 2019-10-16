@@ -1,4 +1,4 @@
-package SW.write_controller;
+package SW.qna_controller;
 
 import java.io.IOException;
 
@@ -9,33 +9,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import SW_dao.WriteDao;
-import SW_vo.WriteVo;
+import SW_dao.QnAlistDao;
+import SW_vo.QnAvo;
 
-@WebServlet("/SW_write/Wrewst")
-public class WriteRewstController extends HttpServlet{
+@WebServlet("/SW_pro/QnAreqst")
+public class QnAreqstController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String mid=req.getParameter("mid");
-		WriteDao dao=WriteDao.getInstance();
-		WriteVo vo=dao.getInfo(mid);
-		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/SW_write/W_Detail.jsp").forward(req, resp);
+		String qaname=req.getParameter("qaname");
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String mid=req.getParameter("mid");
-		String rewrite=req.getParameter("rewrite");
-		String rewst=req.getParameter("rewst");
+		int qanum=Integer.parseInt(req.getParameter("qanum"));
+		String qaname=req.getParameter("qaname");
+		String qarecontent=req.getParameter("qarecontent");
+		String reqst=req.getParameter("reqst");
 		HttpSession session=req.getSession(); 
-		String id=(String)session.getAttribute("mid");
+		String mid=(String)session.getAttribute("mid");
 		
-		WriteDao dao=WriteDao.getInstance();
-		dao.getInfo(mid);
-		if(mid==id) {
-			WriteVo vo=new WriteVo(0, mid, null, null, rewrite, rewst);
+		QnAlistDao dao=QnAlistDao.getInstance();
+		dao.getInfo(qanum);
+		if(mid.equals("admin")) {
+			QnAvo vo=new QnAvo(0, null, qaname, null, qarecontent, 0, reqst);
 			int n=dao.reDab(vo);
 			if(n>0){
 				req.setAttribute("msg", "success");
@@ -47,7 +43,7 @@ public class WriteRewstController extends HttpServlet{
 			req.setAttribute("bottom", "/pro/footer.jsp");
 			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 		}else {
-			resp.sendRedirect(req.getContextPath()+"/SW_write/W_List.jsp");
+			resp.sendRedirect(req.getContextPath()+"/SW_pro/QnAlist.jsp");
 		}
 	}
 }

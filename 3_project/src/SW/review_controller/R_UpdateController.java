@@ -1,4 +1,4 @@
-package SW.write_controller;
+package SW.review_controller;
 
 import java.io.IOException;
 
@@ -8,29 +8,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import SW_dao.WriteDao;
-import SW_vo.WriteVo;
+import SW_dao.AsWriteDao;
+import SW_vo.AsWriteVo;
 
-@WebServlet("/SW_write/writeupdate")
-public class WriteUpdateController extends HttpServlet {
+@WebServlet("/SW_review/Rupdate")
+public class R_UpdateController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String mid=req.getParameter("mid");
-		WriteDao dao=WriteDao.getInstance();
-		WriteVo vo=dao.getInfo(mid);
+		int asnum=Integer.parseInt(req.getParameter("asnum"));
+		AsWriteDao dao=AsWriteDao.getInstance();
+		AsWriteVo vo=dao.getInfo(asnum);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/SW_write/W_Update.jsp").forward(req, resp);
+		req.getRequestDispatcher("/SW_review/R_Update.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		String asimg=req.getParameter("asimg");
+		String astitle=req.getParameter("astitle");
+		String ascontent=req.getParameter("ascontent");
 		String mid=req.getParameter("mid");
-		String title=req.getParameter("title");
-		String writecontent=req.getParameter("writecontent");
-		String rewrite=req.getParameter("rewrite");
-		String rewst=req.getParameter("rewst");
-		WriteVo vo=new WriteVo(0, mid, title, writecontent, rewrite, rewst);
-		WriteDao dao=WriteDao.getInstance();
+		String gocode=req.getParameter("gocode");
+		int purnum=Integer.parseInt(req.getParameter("purnum"));
+		int ashit=Integer.parseInt(req.getParameter("ashit"));
+		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, gocode, purnum, ashit);
+		AsWriteDao dao=AsWriteDao.getInstance();
 		int n=dao.update(vo);
 		if(n>0){
 			req.setAttribute("msg", "success");
