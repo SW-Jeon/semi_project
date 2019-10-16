@@ -49,11 +49,7 @@ public class QnAlistDao {
 			int boardNum=getMaxNum()+1;
 			int qahit=0;
 			String qarecontent=null;
-<<<<<<< HEAD
 			String reqst="대기중";
-=======
-			String reqst="waiting";
->>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
 			String sql="insert into qa values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, boardNum);

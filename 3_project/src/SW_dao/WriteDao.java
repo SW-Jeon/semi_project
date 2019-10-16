@@ -48,11 +48,7 @@ public class WriteDao {
 				con=JdbcUtil.getConn();
 				int boardNum=getMaxNum()+1;
 				String rewrite=null;
-<<<<<<< HEAD
 				String rewst="대기중";
-=======
-				String rewst="waiting";
->>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
 				String sql="insert into write values(?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, boardNum);
@@ -216,35 +212,7 @@ public class WriteDao {
 	    		JdbcUtil.close(con, pstmt, null);
 	    	}
 	    }
-	    
-	    //글 수정을 위한 멤버선택
-	    public WriteVo getInfo(String mid) {
-	    	Connection con=null;
-	    	PreparedStatement pstmt=null;
-	    	ResultSet rs=null;
-	    	try {
-	    		con=JdbcUtil.getConn();
-	    		String sql="select * from write whrer mid=?";
-	    		pstmt=con.prepareStatement(sql);
-	    		pstmt.setString(1, mid);
-	    		rs=pstmt.executeQuery();
-	    		if(rs.next()) {
-	    			String title=rs.getString(1);
-					String writecontent=rs.getString(2);
-					String rewrite=rs.getString(3);
-					String rewst=rs.getString(4);
-					WriteVo vo=new WriteVo(0, mid, title, writecontent, rewrite, rewst);
-	    			return vo;
-				}
-				return null;
-	    	}catch(SQLException se) {
-	    		se.printStackTrace();
-	    		return null;
-	    	}finally {
-	    		JdbcUtil.close(con, pstmt, rs);
-			}
-		}
-		
+
 	  //답글 달기
 	    public int reDab(WriteVo vo) {
 	    	Connection con=null;
@@ -264,6 +232,7 @@ public class WriteDao {
 	    		JdbcUtil.close(con, pstmt, null);
 	    	}
 	    }
+	    
 	    //글 수정을 위한 멤버선택
 	    public WriteVo getInfo(String mid) {
 	    	Connection con=null;

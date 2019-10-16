@@ -15,16 +15,11 @@
 			<tr>
 				<td width="150">글쓴이  |</td><td width="600">${vo.qaname}</td>
 			</tr>
-<<<<<<< HEAD
-
-<c:if test="${sessionScope.adminid=='admin'}">	
-=======
-<c:if test="${ adminid=='admin'}">	
->>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
+			<c:if test="${sessionScope.adminid=='admin'}">	
 			<tr>
 				<td width="150">답변  |</td><td width="600">${vo.qarecontent}</td>
 			</tr>
-</c:if>		
+			</c:if>		
 			<tr>
 				<td width="150">답변확인상태  |</td><td width="600">${vo.reqst}</td>
 			</tr>

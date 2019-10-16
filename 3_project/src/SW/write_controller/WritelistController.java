@@ -8,23 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
-=======
 
-import SW_dao.WriteDao;
-import SW_vo.WriteVo;
->>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
-
-<<<<<<< HEAD
 import SW_dao.WriteDao;
 import SW_vo.WriteVo;
 
 @WebServlet("/SW_write/Wlist")
 public class WritelistController extends HttpServlet {
-=======
-@WebServlet("/SW_write/wlist")
-public class WritelistController extends HttpServlet {
->>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
