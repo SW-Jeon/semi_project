@@ -24,7 +24,23 @@ public class QnAupdateController  extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String mid=req.getParameter("mid");
-		String title=req.getParameter("title");
+		String qacontent=req.getParameter("qacontent");
+		String qaname=req.getParameter("qaname");
+		String qapwd=req.getParameter("qapwd");
+		String qarecontent =req.getParameter("qarecontent");
+		int qahit =Integer.parseInt(req.getParameter("qahit"));
+		String reqst =req.getParameter("reqst");
+		QnAvo vo=new QnAvo(0, qacontent, qaname, qapwd, qarecontent, qahit, reqst);
+		QnAlistDao dao=QnAlistDao.getInstance();
+		int n=dao.update(vo);
+		if(n>0){
+			req.setAttribute("msg", "success");
+		}else {
+			req.setAttribute("msg", "fail");
+		}
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main","/SW_pro/result.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }

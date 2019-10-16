@@ -1,5 +1,6 @@
 package SW.review_controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -7,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import SW_dao.AsWriteDao;
 import SW_vo.AsWriteVo;
@@ -23,15 +27,21 @@ public class R_WriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String asimg=req.getParameter("asimg");
-		String astitle=req.getParameter("astitle");
-		String ascontent=req.getParameter("ascontent");
-		String mid=req.getParameter("mid");
-		String gocode=req.getParameter("gocode");
-		int purnum=Integer.parseInt(req.getParameter("purnum"));
-		int ashit=Integer.parseInt(req.getParameter("ashit"));
-		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, gocode, purnum, ashit);
+		String path=getServletContext().getRealPath("/SW_review/upload");	//업로드할 디렉토리
+		MultipartRequest mr=new MultipartRequest( //인코딩 처리 객체
+				req, path, 1024*1024*5, "utf-8", new DefaultFileRenamePolicy()
+		);
+		String asimg=mr.getParameter("asimg1");
+		String astitle=mr.getParameter("astitle");
+		String ascontent=mr.getParameter("ascontent");
+		String mid=mr.getParameter("mid");
+		String gocode=mr.getParameter("gocode");
+		int purnum=Integer.parseInt(mr.getParameter("purnum"));
+		int ashit=Integer.parseInt(mr.getParameter("ashit"));
+		
+		//전송된 파일정보 DB에 저장하기
 		AsWriteDao dao=AsWriteDao.getInstance();
+		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, gocode, purnum, ashit);
 		int n=dao.insert(vo);
 		if(n>0){
 			req.setAttribute("msg", "success");
