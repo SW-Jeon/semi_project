@@ -26,7 +26,6 @@ public class QnAdeleteController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		int qanum=Integer.parseInt(req.getParameter("qanum"));
 		String qapwd=req.getParameter("qapwd");
-		System.out.println(qanum);
 		QnAlistDao dao=QnAlistDao.getInstance();
 		int n=dao.delete(qanum, qapwd);
 		if(n>0) {

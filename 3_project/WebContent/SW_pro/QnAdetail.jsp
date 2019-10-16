@@ -15,11 +15,12 @@
 			<tr>
 				<td width="150">글쓴이  |</td><td width="600">${vo.qaname}</td>
 			</tr>
-<c:if test="${ adminid=='admin'}">	
+
+		<c:if test="${sessionScope.mid=='admin'}">	
 			<tr>
 				<td width="150">답변  |</td><td width="600">${vo.qarecontent}</td>
 			</tr>
-</c:if>		
+			</c:if>		
 			<tr>
 				<td width="150">답변확인상태  |</td><td width="600">${vo.reqst}</td>
 			</tr>
@@ -31,6 +32,7 @@
 			</tr>
 	</table>
 	<br><hr>
+	<c:if test="${sessionScope.mid=='admin'}">		
 	<form method="post"  action="${cp }/SW_pro/QnAreqst">
 		<table style="display: inline-block;">
 			<tr>
@@ -44,4 +46,5 @@
 			</tr>
 		</table>
 	</form>
+		</c:if>	
 </div>

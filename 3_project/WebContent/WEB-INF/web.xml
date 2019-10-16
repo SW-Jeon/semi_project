@@ -9,5 +9,8 @@
   <listener>
   		<listener-class>SW.qna_controller.HitListener</listener-class>
   </listener>
+    <listener>
+  		<listener-class>SW.review_controller.R_HitListener</listener-class>
+  </listener>
 
 </web-app>

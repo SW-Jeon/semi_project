@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import SW_dao.WriteDao;
 import SW_vo.WriteVo;
 
-@WebServlet("/SW_write/writerewst")
+@WebServlet("/SW_write/Wrewst")
 public class WriteRewstController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,7 +47,7 @@ public class WriteRewstController extends HttpServlet{
 			req.setAttribute("bottom", "/pro/footer.jsp");
 			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 		}else {
-			resp.sendRedirect(req.getContextPath()+"/SW_pro/W_List.jsp");
+			resp.sendRedirect(req.getContextPath()+"/SW_write/W_List.jsp");
 		}
 	}
 }

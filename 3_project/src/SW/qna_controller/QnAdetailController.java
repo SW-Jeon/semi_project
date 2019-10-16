@@ -13,17 +13,17 @@ import SW_vo.QnAvo;
 
 @WebServlet("/SW_pro/QnAdetail")
 public  class QnAdetailController extends HttpServlet {
-			@Override
-			protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-				req.setCharacterEncoding("utf-8");
-				int qanum=Integer.parseInt(req.getParameter("qanum"));
-				QnAlistDao dao=QnAlistDao.getInstance();
-				dao.addHit(qanum); 	//업데이트 하면서 조회수 +1씩 증가
-				QnAvo vo=dao.detail(qanum);
-				req.setAttribute("vo", vo);
-				req.setAttribute("top", "/pro/header.jsp");
-				req.setAttribute("main",	"/SW_pro/QnAdetail.jsp");
-				req.setAttribute("bottom", "/pro/footer.jsp");
-				req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
-			}	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		int qanum=Integer.parseInt(req.getParameter("qanum"));
+		QnAlistDao dao=QnAlistDao.getInstance();
+		QnAvo vo=dao.detail(qanum);
+		dao.addHit(qanum); 	//업데이트 하면서 조회수 +1씩 증가
+		req.setAttribute("vo", vo);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SW_pro/QnAdetail.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+	}	
 }

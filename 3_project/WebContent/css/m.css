@@ -27,7 +27,7 @@
 }
 
 #content {
-	width: 60%;
+	width: 70%;
 	height: 1600px;
 	text-align: center;
 	float: left;
@@ -131,7 +131,10 @@
 	background-color: #4CAF50;
 	color: white;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
 
 .tag{text-align: left;font-size:13px;}
 a{text-decoration: none;color:gray;}
@@ -149,9 +152,21 @@ table{margin:auto;}
 #brace_wrap{ margin:0px auto;}
 #price{text-align: center;}
 #brace_wrap #b{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+padding:20px; margin-bottom:50px ; margin-right: 20px; margin-left: 140px; }
 img { display: block; margin: 0px auto; }
-#page{clear: both; float: left;   margin: auto;}
+#page{clear: both; float: left;   margin-left: 550px;}
+#watch_wrap{ margin:0px auto;  background-color: black;}
+#w{width:400px; height:400px;  float: left; 
+padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+#neck_wrap{ margin:0px auto;  background-color: black;}
+#n{width:400px; height:400px;  float: left; 
+padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+#err_wrap{ margin:0px auto;  background-color: black;}
+#e{width:400px; height:400px;  float: left; 
+padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
 

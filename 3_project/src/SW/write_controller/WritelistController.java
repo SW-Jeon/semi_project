@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import SW_dao.WriteDao;
 import SW_vo.WriteVo;
 
-@WebServlet("/SW_write/wlist")
+@WebServlet("/SW_write/Wlist")
 public class WritelistController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
