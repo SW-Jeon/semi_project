@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import SW_dao.WriteDao;
 import SW_vo.WriteVo;
 
-@WebServlet("/SW_write/writerewst")
+@WebServlet("/SW_write/Wrewst")
 public class WriteRewstController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

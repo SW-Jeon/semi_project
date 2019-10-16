@@ -15,8 +15,7 @@
 			<tr>
 				<td width="150">글쓴이  |</td><td width="600">${vo.qaname}</td>
 			</tr>
-<<<<<<< HEAD
-=======
+
 <c:if test="${sessionScope.adminid=='admin'}">	
 			<tr>
 				<td width="150">답변  |</td><td width="600">${vo.qarecontent}</td>
@@ -25,11 +24,9 @@
 			<tr>
 				<td width="150">답변확인상태  |</td><td width="600">${vo.reqst}</td>
 			</tr>
->>>>>>> branch 'sw' of https://github.com/SW-Jeon/3_project.git
 			<tr>
 				<td width="150">조회수  |</td><td width="600">${vo.qahit}</td>
 			</tr>
-		
 			<tr>
 				<td width="20"><a href="${cp }/SW_pro/delete?qanum=${vo.qanum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em; ">삭제하기</a></td>
 			</tr>

@@ -48,7 +48,7 @@ public class WriteDao {
 				con=JdbcUtil.getConn();
 				int boardNum=getMaxNum()+1;
 				String rewrite=null;
-				String rewst=null;
+				String rewst="대기중";
 				String sql="insert into write values(?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, boardNum);

@@ -13,6 +13,7 @@
    		<c:choose>
    	 		<c:when test="${empty sessionScope.mid }"> <%--로그인 안한 경우 --%>
    	 		<li><button type="button" class="navyBtn" onClick="location.href='${cp }/pro/join'">회원가입</button></li>
+   	 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_write/Wlist'">회원문의</button></li>
 			</c:when>
     		<c:otherwise>      <%--로그인 한 경우 --%>		
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_write/Wlist'">회원문의</button></li>

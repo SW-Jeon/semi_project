@@ -48,7 +48,7 @@ public class QnAlistDao {
 			int boardNum=getMaxNum()+1;
 			int qahit=0;
 			String qarecontent=null;
-			String reqst=null;
+			String reqst="대기중";
 			String sql="insert into qa values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, boardNum);

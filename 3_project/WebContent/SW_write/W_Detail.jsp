@@ -26,9 +26,6 @@
 				<td width="150">답변확인상태  |</td><td width="600">${vo.rewst}</td>
 			</tr>
 			<tr>
-				<td width="150">조회수  |</td><td width="600">${vo.qahit}</td>
-			</tr>
-			<tr>
 				<td width="20">
 				<a href="${cp }/SW_write/update?writenum=${vo.writenum }" 
 				style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">수정하기</a></td>
@@ -38,7 +35,7 @@
 	</table>
 	<br><hr>
 <c:if test="${sessionScope.adminid=='admin'}">		
-	<form method="post"  action="${cp }/SW_pro/QnAreqst">
+	<form method="post"  action="${cp }/SW_write/Wrewst">
 		<table style="display: inline-block;">
 			<tr>
 				<td width="30">운영자 답변</td><td width="500"><textarea rows="5" cols="60" name="qarecontent"></textarea></td>
