@@ -18,7 +18,6 @@
 
 .img-zoom-lens {
   position: absolute;
-  border: 1px solid #d4d4d4;
   /*set the size of the lens:*/
   width: 40px; 
   height: 40px;
@@ -133,9 +132,8 @@ function change () {
 //-->
 </script>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
-
-
-<h1>상세페이지</h1>
+<br>
+<h1><p style="text-align: center; color: midnightblue; font-style: italic; ">상세페이지</p></h1><br>
 <div id="wrab">
 	<div class="img-zoom-box">		 
 		  <div id="myresult" class="img-zoom-result"></div>

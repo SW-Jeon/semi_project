@@ -7,14 +7,6 @@
 <meta charset="UTF-8">
 <title>/inventory/earring.jsp</title>
 </head>
-<style>
-#err_wrap{ margin:0px auto;  background-color: black;}
-img { display: block; margin: 0px auto; }
-#price{text-align: center;}
-#e{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
-#page{clear: both; float: left;   margin: auto;}
-</style>
 <script type="text/javascript">
 	function aa(gocode,index) {
 	var id=document.getElementById(index);
@@ -23,8 +15,8 @@ padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
 	}
 </script>
 <body>
+<div id="main">
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
-<h1 style="text-align: center;">귀걸이</h1> 
 <br>
 <br>
 <div id="err_wrap" >
@@ -137,6 +129,7 @@ padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
 			[다음]
 		</c:otherwise>
 	</c:choose>
+</div>
 </div>
 </body>
 </html>

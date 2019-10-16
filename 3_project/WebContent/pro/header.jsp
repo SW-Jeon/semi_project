@@ -7,6 +7,7 @@
 	</div>
 	<div id="gnb">
 		<ul>
+			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/go/serch'">상품검색</button></li>
 			<li><button type="button" class="navyBtn" onClick="window.open('https://www.ilogen.com/web/personal/tkSearch')">배송조회</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_pro/QnAlist'">고객만족센터</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/info/list'">공지사항</button></li>
@@ -33,12 +34,12 @@
          <br><br><br> <hr>
 	<div id="banner">
 		<ul>
-			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=100'">귀걸이</button></li>
-			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=200'">목걸이</button></li>
-			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=400'">팔찌</button></li>
-			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=300'">시계</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=100&level=0'">귀걸이</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=200&level=0'">목걸이</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=400&level=0'">팔찌</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=300&level=0'">시계</button></li>
 		</ul>
 	</div>
-  <br><br><hr>
+  <hr>
 </div>
 	

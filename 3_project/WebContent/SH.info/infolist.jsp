@@ -35,7 +35,7 @@ ul{list-style:none; }
 	</c:forEach>
 		<ul class="button">	
 			<c:choose >
-				<c:when test="${sessionScope.id=='admin'}"><%--운영자로 로그인한 경우 --%>
+				<c:when test="${sessionScope.mid=='admin'}"><%--운영자로 로그인한 경우 --%>
 					<li class="insert"><a href="${cp }/info/insert">글쓰기</a></li>
 				</c:when>			
 			</c:choose>
