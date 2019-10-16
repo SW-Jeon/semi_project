@@ -19,6 +19,7 @@ public class SerchListServlet extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		String spageNum=req.getParameter("pageNum");
 		int jnum=Integer.parseInt(req.getParameter("jnum"));
+		String level=req.getParameter("level");
 		int pageNum=1;
 		String keyword=req.getParameter("keyword");
 		if(spageNum!=null) {
@@ -27,8 +28,8 @@ public class SerchListServlet extends HttpServlet{
 		int endRow=pageNum*6;
 		int startRow=endRow-5;
 		InventoryDao dao=new InventoryDao();
-		ArrayList<InventoryVo> list=dao.serchList(startRow, endRow, jnum, keyword);
-		int pageCount=(int)Math.ceil(dao.getCount(jnum,keyword)/6.0);
+		ArrayList<InventoryVo> list=dao.serchList(startRow, endRow, jnum, keyword); //아직 dao에 level추가 안함
+		int pageCount=(int)Math.ceil(dao.getCount(jnum,keyword,level)/6.0);
 		//시작페이지 번호
 		int startPageNum=((pageNum-1)/10*10)+1;
 		//끝페이지 번호

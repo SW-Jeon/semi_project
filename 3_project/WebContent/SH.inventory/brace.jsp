@@ -17,6 +17,7 @@
 <body>
 <div id="main" >
 <div id="brace_wrap">
+<a href="${cp }/inventory/list?jnum=400&level=1">가격높은순</a>&nbsp;<a href="${cp }/inventory/list?jnum=400&level=2">가격낮은순</a>
 	<c:set var="cp" value="${pageContext.request.contextPath }"/>
 		<c:forEach var="vo" items="${list }" varStatus="vs">
 			<div id="b">
@@ -107,12 +108,12 @@
 			<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 				<c:choose>
 					<c:when test="${pageNum==i }"><%--현재페이지 색 다르게 표시하기 --%>
-						<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
+						<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}&level=${level}">
 							<span style="color:red;">[${i }]</span>
 						</a>
 					</c:when>
 					<c:otherwise>
-						<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
+						<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}&level=${level}">
 							<span style="color:#555;">[${i }]</span>
 						</a>
 					</c:otherwise>

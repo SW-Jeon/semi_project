@@ -302,9 +302,10 @@
 							</c:choose>
 							<br>
 								<span class="number">${vo.goprice }원</span><!-- 가격 -->
-									<c:choose>					
-										<c:when test="${sessionScope.id=='admin'}"><%--운영자로 로그인한 경우 --%>
-											<span class="pamount">수량:${vo.pamount }</span><!--수량 -->
+									<br>
+										<c:choose>					
+											<c:when test="${sessionScope.mid=='admin'}"><%--운영자로 로그인한 경우 --%>
+												<span class="pamount">수량:${vo.pamount }</span><!--수량 -->
 										</c:when>			
 									</c:choose>
 						</strong>

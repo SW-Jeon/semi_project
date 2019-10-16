@@ -34,10 +34,10 @@
          <br><br><br> <hr>
 	<div id="banner">
 		<ul>
-			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=100'">귀걸이</button></li>
-			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=200'">목걸이</button></li>
-			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=400'">팔찌</button></li>
-			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=300'">시계</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=100&level=0'">귀걸이</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=200&level=0'">목걸이</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=400&level=0'">팔찌</button></li>
+			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=300&level=0'">시계</button></li>
 		</ul>
 	</div>
   <hr>

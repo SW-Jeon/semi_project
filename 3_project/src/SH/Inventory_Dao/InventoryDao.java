@@ -12,16 +12,23 @@ import jdbc.JdbcUtil;
 
 public class InventoryDao {
 	
-	public int getCount(int jnum,String keyword) {//작성된 글의 개수
+	public int getCount(int jnum,String keyword,String level) {//작성된 글의 개수
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
 			String sql="select NVL(count(*),0) as maxnum from inventory";
-			if(jnum!=0) {
-				sql += " where jnum="+jnum +" and gocolor like '%"+keyword+"%'"; 
-			}else {
+			if(jnum!=0 && level.equals("0")) {//리스트
+				sql +=" where jnum="+jnum+" and gocolor like'%"+keyword+"%'"+
+							" order by jnum desc";
+				}else if(jnum!=0 && level.equals("1")) {
+					sql +=" where jnum="+jnum+" and gocolor like'%"+keyword+"%'"+ 
+							" order by goprice desc"; 
+				}else if(jnum!=0 && level.equals("2")) {
+					sql +=" where jnum="+jnum+" and gocolor like'%"+keyword+"%'"+
+							" order by goprice asc"; 			
+			}else {//검색
 				sql +=" where jnum>all("+jnum+") and gocolor like '%"+keyword+"%'";						
 			}
 			pstmt=con.prepareStatement(sql);
@@ -41,20 +48,41 @@ public class InventoryDao {
 	}
 	
 	
-	public ArrayList<InventoryVo> list(int startRow, int endRow, int jnum){//페이징처리,검색
+	public ArrayList<InventoryVo> list(int startRow, int endRow, int jnum,String level){//페이징처리,검색
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-				String sql="select * from" + 
+			String sql="";
+			if(level.equals("0")) {		
+				 sql="select * from" + 
 						"	(" + 
 						"		select aa.*,rownum rnum from" +
 						"		(" + 
-						"		select * from inventory where jnum=" + jnum +
+						"		select * from inventory where jnum=" + jnum +			
 						"		order by jnum desc" +
 						"		)aa" + 
 						"	)where rnum>=? and rnum<=?";
+			}else if(level.equals("1")) {
+				sql="select * from" + 
+						"	(" + 
+						"		select aa.*,rownum rnum from" +
+						"		(" + 
+						"		select * from inventory where jnum=" + jnum +			
+						"		order by goprice desc" +
+						"		)aa" + 
+						"	)where rnum>=? and rnum<=?";
+			}else if(level.equals("2")) {
+				sql="select * from" + 
+						"	(" + 
+						"		select aa.*,rownum rnum from" +
+						"		(" + 
+						"		select * from inventory where jnum=" + jnum +			
+						"		order by goprice asc" +
+						"		)aa" + 
+						"	)where rnum>=? and rnum<=?";
+			}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
@@ -161,6 +189,6 @@ public class InventoryDao {
 		}finally {
 			JdbcUtil.close(con, pstmt, rs);
 		}
-				
 	}
+	
 }
