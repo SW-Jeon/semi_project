@@ -16,7 +16,7 @@ public class QnAwriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main",	"/SW_pro/QnAwrite.jsp");
+		req.setAttribute("main", "/SW_pro/QnAwrite.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
