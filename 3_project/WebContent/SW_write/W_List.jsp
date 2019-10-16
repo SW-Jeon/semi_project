@@ -2,13 +2,12 @@
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- W_List.jsp -->
 <div id="main">
-	<br>
+<br>
 		<h1 style="font-size: 5em;">회원문의</h1>
 		<h4>궁금하신 사항을 문의해주세요.</h4>
-		
-		<p><a href="${cp}/SW_write/write" style="font-size: 1.2em; text-align: center; text-decoration: none;display: inline-block; float: left;">글쓰기</a></p>
 		<br><br><hr>
-		<table style="width:100%; text-align: center;  margin: auto;">
+		<p><a href="${cp}/SW_write/write" style="font-size: 1.2em; text-align: center; text-decoration: none;display: inline-block; float: right;">글쓰기</a></p>
+		<table style="width:100%" text-align: center;  margin: auto;">
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
@@ -59,13 +58,15 @@
 		<br>
 		<!-- 검색창 -->
 	<div>
-		<form method="post" action="${cp }/SW_write/Wlist">
+		<form method="post" action="${cp }/SW_pro/QnAlist">
 			<select name="field">
-					<option value="mid" <c:if test="${field=='mid'}">selected</c:if>>글쓴이</option>
-					<option value="title" <c:if test="${field=='title'}">selected</c:if>>글제목</option>
+					<option value="qaname" <c:if test="${field=='qaname'}">selected</c:if>>글쓴이</option>
+					<option value="qacontent" <c:if test="${field=='qacontent'}">selected</c:if>>글내용</option>
 			</select>
 			<input type="text" name="keyword" value="${keyword }">
 			<input type="submit" value="검색">
 		</form>
 	</div>
-</div>
+	
+	
+	</div>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import SW_dao.WriteDao;
 import SW_vo.WriteVo;
 
+<<<<<<< HEAD
 @WebServlet("/SW_write/Wdetail")
 public class WriteDetailController extends HttpServlet{
 	@Override
@@ -26,3 +27,20 @@ public class WriteDetailController extends HttpServlet{
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);	
 	}
 }
+=======
+@WebServlet("/SW_write/writedetail")
+public class WriteDetailController extends HttpServlet{
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		int writenum=Integer.parseInt(req.getParameter("writenum"));
+		WriteDao dao=WriteDao.getInstance();
+		WriteVo vo=dao.detail(writenum);
+		req.setAttribute("vo", vo);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SW_write/W_List.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+	}	
+}
+>>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git

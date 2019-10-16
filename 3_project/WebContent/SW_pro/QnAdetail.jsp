@@ -1,4 +1,4 @@
-<%@page import="SW.qna_contoller.HitListener"%>
+<%@page import="SW.qna_controller.HitListener"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="main">
@@ -15,8 +15,12 @@
 			<tr>
 				<td width="150">글쓴이  |</td><td width="600">${vo.qaname}</td>
 			</tr>
+<<<<<<< HEAD
 
 <c:if test="${sessionScope.adminid=='admin'}">	
+=======
+<c:if test="${ adminid=='admin'}">	
+>>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
 			<tr>
 				<td width="150">답변  |</td><td width="600">${vo.qarecontent}</td>
 			</tr>
@@ -28,11 +32,10 @@
 				<td width="150">조회수  |</td><td width="600">${vo.qahit}</td>
 			</tr>
 			<tr>
-				<td width="20"><a href="${cp }/SW_pro/delete?qanum=${vo.qanum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em; ">삭제하기</a></td>
+				<td width="150">삭제  |</td><td width="600"><a href="${cp }/SW_pro/delete?qanum=${vo.qanum }">삭제</a></td>
 			</tr>
 	</table>
 	<br><hr>
-<c:if test="${sessionScope.adminid=='admin'}">		
 	<form method="post"  action="${cp }/SW_pro/QnAreqst">
 		<table style="display: inline-block;">
 			<tr>
@@ -46,5 +49,4 @@
 			</tr>
 		</table>
 	</form>
-</c:if>		
 </div>

@@ -12,18 +12,19 @@
 img { display: block; margin: 0px auto; }
 #price{text-align: center;}
 #e{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
-#page{clear: both; float: left;   margin-left: 550px;}
+padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 50px; }
+#page{clear: both; float: left;   margin: auto;}
 </style>
 <script type="text/javascript">
 	function aa(gocode,index) {
-	var 	id=document.getElementById(index);
+	var id=document.getElementById(index);
 	var bname=id.innerText;
 	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+bname;
 	}
 </script>
 <body>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
+<h1 style="text-align: center;">귀걸이</h1> 
 <br>
 <br>
 <div id="err_wrap" >

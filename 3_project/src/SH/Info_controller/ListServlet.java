@@ -21,9 +21,6 @@ public class ListServlet extends HttpServlet{
 		InfoDao dao=new InfoDao();
 		ArrayList<Info_Vo> list=dao.list();
 		req.setAttribute("list", list);
-		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main", "/SH.info/infolist.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+		req.getRequestDispatcher("/SH.info/infolist.jsp").forward(req, resp);
 	}
 }

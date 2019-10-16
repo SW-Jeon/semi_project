@@ -1,4 +1,4 @@
-package SW.write_controller;
+package SW.qna_controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,23 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
-=======
 
-import SW_dao.WriteDao;
-import SW_vo.WriteVo;
->>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
+import SW_dao.QnAlistDao;
+import SW_vo.QnAvo;
 
-<<<<<<< HEAD
-import SW_dao.WriteDao;
-import SW_vo.WriteVo;
-
-@WebServlet("/SW_write/Wlist")
-public class WritelistController extends HttpServlet {
-=======
-@WebServlet("/SW_write/wlist")
-public class WritelistController extends HttpServlet {
->>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
+@WebServlet("/SW_pro/QnAlist")
+public class QnAlistController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
@@ -38,8 +27,9 @@ public class WritelistController extends HttpServlet {
 		//글은 10개씩
 		int endRow=pageNum*10;
 		int startRow=endRow-9;
-		WriteDao dao=WriteDao.getInstance();
-		ArrayList<WriteVo> list=dao.Wlist(startRow, endRow, field, keyword);
+		QnAlistDao dao=QnAlistDao.getInstance();
+		ArrayList<QnAvo> list=dao.QnAlist(startRow, endRow, field, keyword);
+	
 		int pageCount=(int)Math.ceil(dao.getCount(field, keyword)/10.0);		//전체페이지
 		int startPageNum=((pageNum-1)/10*10)+1;		//시작페이지
 		
@@ -55,7 +45,7 @@ public class WritelistController extends HttpServlet {
 		req.setAttribute("field", field);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main", "/SW_write/W_List.jsp");
+		req.setAttribute("main", "/SW_pro/QnAlist.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
