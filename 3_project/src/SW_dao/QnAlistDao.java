@@ -93,7 +93,7 @@ public class QnAlistDao {
 						"     )aa" + 
 						")where rnum>=? and  rnum<=?";
 				}
-			System.out.println(sql);
+			
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
