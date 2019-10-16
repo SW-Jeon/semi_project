@@ -1,4 +1,4 @@
-<%@page import="SW.qna_contoller.HitListener"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="main">
@@ -15,8 +15,7 @@
 			<tr>
 				<td width="150">글쓴이  |</td><td width="600">${vo.qaname}</td>
 			</tr>
-<<<<<<< HEAD
-=======
+
 <c:if test="${sessionScope.adminid=='admin'}">	
 			<tr>
 				<td width="150">답변  |</td><td width="600">${vo.qarecontent}</td>
@@ -25,7 +24,7 @@
 			<tr>
 				<td width="150">답변확인상태  |</td><td width="600">${vo.reqst}</td>
 			</tr>
->>>>>>> branch 'sw' of https://github.com/SW-Jeon/3_project.git
+
 			<tr>
 				<td width="150">조회수  |</td><td width="600">${vo.qahit}</td>
 			</tr>
