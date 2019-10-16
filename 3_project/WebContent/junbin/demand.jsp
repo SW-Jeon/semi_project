@@ -98,7 +98,7 @@
 		<option value="신한은행">신한은행</option>
 		<option value="하나은행">하나은행</option>
 	</select><hr>
-	<ul>
+	<ul style="list-style: none">
 		<li><font color="red">2019년 10월 18일</font> 까지 미입금 시 자동 취소 처리 됩니다.</li>
 		<li>입금하실 은행을 선택하신 후, 오른쪽 <font color="red"><결제하기></font> 버튼을 클릭합니다.</li>
 	</ul>

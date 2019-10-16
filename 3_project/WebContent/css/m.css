@@ -143,7 +143,7 @@ font-size: 12px; display:none;}
 #details{width:580px;border:1px solid gray;height:130px;padding:1px;margin-top:10px;}
 #final{width:600px;border:1px solid gray;padding:2px;margin-top:20px;}
 label{margin-left:80px;}
-li{font-size:15px}
+li{font-size:15px;}
 table{margin:auto;}
 
 #brace_wrap{ margin:0px auto;}
