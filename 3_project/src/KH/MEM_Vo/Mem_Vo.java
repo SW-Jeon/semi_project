@@ -1,6 +1,6 @@
-package SW_vo;
+package KH.MEM_Vo;
 
-public class MemVo {
+public class Mem_Vo {
 	 private String mid;
 	 private String mname;
 	 private String mpwd;
@@ -10,9 +10,9 @@ public class MemVo {
 	 private String mgen;
 	 private int mdelup;
 	 
-	 public  MemVo() {}
+	 public  Mem_Vo() {}
 
-	public MemVo(String mid, String mname, String mpwd, String memail, String maddr, String mphone, String mgen,
+	public Mem_Vo(String mid, String mname, String mpwd, String memail, String maddr, String mphone, String mgen,
 			int mdelup) {
 		super();
 		this.mid = mid;
