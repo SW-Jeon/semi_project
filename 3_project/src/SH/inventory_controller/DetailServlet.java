@@ -22,7 +22,9 @@ public class DetailServlet extends HttpServlet{
 		InventoryVo vo=dao.detail(gocode);
 		req.setAttribute("vo", vo);
 		req.setAttribute("name", name);
-		req.getRequestDispatcher("/SH.inventory/detail.jsp").forward(req, resp);
-		
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.setAttribute("main", "/SH.inventory/detail.jsp"); 
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>5/quiz.html</title>
+<script type="text/javascript">
+	var xhr=null;
+	function check(){
+		var pwd=document.getElementById("pwd").value;
+		var email=document.getElementById("email").value;
+		xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=collback;
+		xhr.open('get','idsearch1.jsp?pwd='+pwd+"&email="+email,true);
+		xhr.send();
+	}
+	function collback(){
+		if(xhr.readyState==4 && xhr.status==200){
+			var data=xhr.responseText;//응답결과를 text로 얻어오기
+			var result=document.getElementById("result");
+			result.innerHTML=data;
+		}	
+	} 
+	/*
+	function collback(){
+		if(xhr.readyState==4||xhr.status==200){
+			var data=xhr.responseXML;
+			var using=data.getElementsByTagName("using")[0].firstChild.nodeValue;
+			var id=data.getElementsByTagName("id")[0].lastChild.nodeValue;
+			var result=document.getElementById("result");
+			if(using=='true'){
+				result.innerHTML="아이디는 "+id+"입니다."
+			}else{
+				result.innerHTML="해당조건에 따른 아이디가 없습니다."
+			}
+		}
+	}*/
+</script>
+</head>
+<body>
+<h1>아이디찾기</h1>
+<!-- 비밀번호와 이메일을 입력받아 ajax로 아이디 조회해 보세요 -->
+비밀번호 <input type="text" id="pwd"><br>
+이메일 <input type="text" id="email"><br>
+<input type="button" value="찾기"  onclick="check()">
+<div id="result"></div>
+</body>
+</html>
+
+
+
+
