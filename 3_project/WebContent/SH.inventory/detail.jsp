@@ -176,13 +176,21 @@ function change () {
 			<input type="hidden" name="jNum" value="${vo.jnum}">
 			<input type="hidden" name="goName" value="${name}">
 			<input type="hidden" name="getCode" value="${vo.gocode}">
-			<input type="button" value="장바구니" onclick="here">&nbsp;<input type="submit" value="구매하기" >
+			<input type="button" value="장바구니" onclick="CartGo()">&nbsp;<input type="submit" value="구매하기" >
 			</form>
 		</div>
 </div>
 <script>
 imageZoom("myimage", "myresult");
+function CartGo() {
+	var mid='${sessionScope.mid}';
+	if(mid==''){
+		alert('로그인을 먼저 해주세요!');
+	}else{
+		alert('장바구니 등록 완료!');
+		location.href="${cp}/cart/add?goImg=${vo.goimg}&jNum=${vo.jnum}&getCode=${vo.gocode}&name=${name}";
+	}
+}
 </script>
-
 </body>
 </html>

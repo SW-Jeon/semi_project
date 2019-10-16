@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 @WebServlet("/pro/home")
 public class Homecontroller extends HttpServlet {
 	@Override
@@ -36,6 +37,8 @@ public class Homecontroller extends HttpServlet {
 		req.setAttribute("main", main);
 		req.setAttribute("bottom", bottom);
 		getServletContext().setAttribute("cp", req.getContextPath());
+		HttpSession session=req.getSession(); //test
+		session.setAttribute("mid", "test"); //test
 		req.getRequestDispatcher("/pro/index.jsp").forward(req, resp);
 	}
 }
