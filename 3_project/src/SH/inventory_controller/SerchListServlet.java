@@ -37,7 +37,7 @@ public class SerchListServlet extends HttpServlet{
 			endPageNum=pageCount;
 		}
 		req.setAttribute("pageCount", pageCount);
-		req.setAttribute("list", list);
+		req.setAttribute("list", list); 
 		req.setAttribute("startPageNum", startPageNum);
 		req.setAttribute("endPageNum", endPageNum);
 		req.setAttribute("pageNum", pageNum);

@@ -59,7 +59,7 @@
 					<div id="price">
 						<strong class="b1">
 							<c:choose>
-								<c:when test="${vo.gocode=='e1'}">				
+								<c:when test="${vo.gocode=='e1'}"><!-- 상품명 -->				
 									<span class="name" id="${vs.index }">실버링귀걸이</span><br>
 								</c:when>
 								<c:when test="${vo.gocode=='e2'}">				
@@ -298,11 +298,15 @@
 								</c:when>
 								<c:when test="${vo.gocode=='b20'}">				
 									<span class="name" id="${vs.index }">블랙로골팔찌</span><br>
-								</c:when>
-								
+								</c:when>			
 							</c:choose>
 							<br>
-							<span class="number">${vo.goprice }원</span>
+								<span class="number">${vo.goprice }원</span><!-- 가격 -->
+									<c:choose>					
+										<c:when test="${sessionScope.id=='admin'}"><%--운영자로 로그인한 경우 --%>
+											<span class="pamount">수량:${vo.pamount }</span><!--수량 -->
+										</c:when>			
+									</c:choose>
 						</strong>
 					</div>
 			</a>
