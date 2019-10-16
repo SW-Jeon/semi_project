@@ -18,8 +18,8 @@ public  class QnAdetailController extends HttpServlet {
 				req.setCharacterEncoding("utf-8");
 				int qanum=Integer.parseInt(req.getParameter("qanum"));
 				QnAlistDao dao=QnAlistDao.getInstance();
-				dao.addHit(qanum); 	//업데이트 하면서 조회수 +1씩 증가
 				QnAvo vo=dao.detail(qanum);
+				dao.addHit(qanum); 	//업데이트 하면서 조회수 +1씩 증가
 				req.setAttribute("vo", vo);
 				req.setAttribute("top", "/pro/header.jsp");
 				req.setAttribute("main",	"/SW_pro/QnAdetail.jsp");

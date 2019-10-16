@@ -32,6 +32,7 @@
 			</tr>
 	</table>
 	<br><hr>
+	<c:if test="${sessionScope.adminid=='admin'}">		
 	<form method="post"  action="${cp }/SW_pro/QnAreqst">
 		<table style="display: inline-block;">
 			<tr>
@@ -45,4 +46,5 @@
 			</tr>
 		</table>
 	</form>
+		</c:if>	
 </div>
