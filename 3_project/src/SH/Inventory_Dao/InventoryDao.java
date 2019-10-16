@@ -20,7 +20,9 @@ public class InventoryDao {
 			con=JdbcUtil.getConn();
 			String sql="select NVL(count(*),0) as maxnum from inventory";
 			if(jnum!=0) {
-				sql += "where jnum=" +jnum +"and gocolor like'%"+ keyword +"%'"; 
+				sql += " where jnum="+jnum +" and gocolor like '%"+keyword+"%'"; 
+			}else {
+				sql +=" where jnum>all("+jnum+") and gocolor like '%"+keyword+"%'";						
 			}
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -84,15 +86,28 @@ public class InventoryDao {
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="select * from" + 
-					"					(" + 
-					"						select aa.*,rownum rnum from" + 
-					"					(" + 
-					"						select * from inventory" + 
-					"                        where jnum="+ jnum +" and gocolor like'%" + keyword + "%'" + 
-					"						order by jnum desc" + 
-					"					)aa" + 
-					"					)where rnum>=? and rnum<=?";
+			String sql="";
+			if(jnum!=0) {
+				sql="select * from" + 
+					"(" + 
+					"select aa.*,rownum rnum from" + 
+					"(" + 
+					"select * from inventory" + 
+					" where jnum="+jnum+" and gocolor like'%"+keyword+"%'" + 
+					" order by jnum desc" + 
+					")aa" + 
+					")where rnum>=? and rnum<=?";
+			}else {
+				sql="select * from" + 
+						"(" + 
+						"select aa.*,rownum rnum from" + 
+						"(" + 
+						"select * from inventory" + 
+						" where jnum>all(" + jnum + ") and gocolor like'%"+keyword+"%'" + 
+						" order by jnum desc" + 
+						")aa" + 
+						")where rnum>=? and rnum<=?";
+			}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1,startRow);
 			pstmt.setInt(2,endRow);

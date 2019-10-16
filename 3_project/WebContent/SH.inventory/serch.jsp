@@ -19,7 +19,9 @@
 <h1>검색창</h1>
 	<form action="${cp }/inventory/serch" method="post"> 
 		<select name="jnum">
-			<option value="100"
+				<option value="0"
+				<c:if test="${jnum==0}">selected</c:if>>전체</option>
+				<option value="100"
 				<c:if test="${jnum==100}">selected</c:if>>귀걸이</option>
 				<option value="200"
 				<c:if test="${jnum==200}">selected</c:if>>목걸이</option>
@@ -34,7 +36,7 @@
 		</select>
 		<input type="text" name="keyword" value="${keyword }">
 		<input type="submit" value="검색">
-	</form>
+	
 <div id="brace_wrap">
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
 	<c:forEach var="vo" items="${list }" varStatus="vs">
@@ -310,7 +312,7 @@
 <div id="page"><!-- 페이징처리 -->
 	<c:choose>
 		<c:when test="${startPageNum>10 }">
-			<a href="${cp }/inventory/list?pageNum=${startPageNum-1}">[이전]</a>
+			<a href="${cp }/inventory/serch?pageNum=${startPageNum-1}">[이전]</a>
 		</c:when>
 		<c:otherwise>
 			[이전]
@@ -319,12 +321,12 @@
 	<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 		<c:choose>
 			<c:when test="${pageNum==i }"><%--현재페이지 색 다르게 표시하기 --%>
-				<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
+				<a href="${cp }/inventory/serch?pageNum=${i}&jnum=${jnum}&keyword=${keyword}">
 				<span style="color:red;">[${i }]</span>
 				</a>
 			</c:when>
 			<c:otherwise>
-				<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
+				<a href="${cp }/inventory/serch?pageNum=${i}&jnum=${jnum}&keyword=${keyword}">
 				<span style="color:#555;">[${i }]</span>
 				</a>
 			</c:otherwise>
@@ -332,13 +334,14 @@
 	</c:forEach>
 	<c:choose>
 		<c:when test="${endPageNum<pageCount }">
-			<a href="${cp }/inventory/list?pageNum=${endPageNum+1}">[다음]</a>
+			<a href="${cp }/inventory/serch?pageNum=${endPageNum+1}">[다음]</a>
 		</c:when>
 		<c:otherwise>
 			[다음]
 		</c:otherwise>
 	</c:choose>
 </div>
+</form>
 </div>
 </body>
 </html>

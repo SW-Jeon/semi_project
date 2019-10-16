@@ -15,14 +15,7 @@ import SH.Inventory_Vo.InventoryVo;
 @WebServlet("/inventory/serch")
 public class SerchListServlet extends HttpServlet{
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.setAttribute("main", "/SH.inventory/serch.jsp");
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
-	}
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String spageNum=req.getParameter("pageNum");
 		int jnum=Integer.parseInt(req.getParameter("jnum"));
@@ -39,7 +32,7 @@ public class SerchListServlet extends HttpServlet{
 		//시작페이지 번호
 		int startPageNum=((pageNum-1)/10*10)+1;
 		//끝페이지 번호
-		int endPageNum=startPageNum+3;
+		int endPageNum=startPageNum+10;
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
 		}
@@ -48,12 +41,17 @@ public class SerchListServlet extends HttpServlet{
 		req.setAttribute("startPageNum", startPageNum);
 		req.setAttribute("endPageNum", endPageNum);
 		req.setAttribute("pageNum", pageNum);
+		req.setAttribute("keyword", keyword);
 		req.setAttribute("jnum", jnum);
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.setAttribute("main", "/SH.inventory/serch.jsp");
-		
-		
+		req.setAttribute("bottom", "/pro/footer.jsp");	
+		switch(jnum) {
+		case(0) : req.setAttribute("main", "/SH.inventory/serch.jsp"); break;
+		case(100) : req.setAttribute("main", "/SH.inventory/serch.jsp"); break;
+		case(200) : req.setAttribute("main","/SH.inventory/serch.jsp"); break;
+		case(300) : req.setAttribute("main","/SH.inventory/serch.jsp"); break;
+		case(400) : req.setAttribute("main","/SH.inventory/serch.jsp");  break;
+		}
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }
