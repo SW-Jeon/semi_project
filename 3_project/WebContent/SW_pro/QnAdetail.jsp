@@ -15,7 +15,8 @@
 			<tr>
 				<td width="150">글쓴이  |</td><td width="600">${vo.qaname}</td>
 			</tr>
-			<c:if test="${sessionScope.adminid=='admin'}">	
+
+		<c:if test="${sessionScope.adminid=='admin'}">	
 			<tr>
 				<td width="150">답변  |</td><td width="600">${vo.qarecontent}</td>
 			</tr>
