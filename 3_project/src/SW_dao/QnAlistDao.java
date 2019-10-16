@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import SW_vo.QnAvo;
-import SW_vo.WriteVo;
 import jdbc.JdbcUtil;
 
 public class QnAlistDao {
