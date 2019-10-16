@@ -7,6 +7,7 @@
 	</div>
 	<div id="gnb">
 		<ul>
+		<li><button type="button" class="navyBtn" onClick="location.href='${cp }/inventory/serch'">상품검색</button></li>
 			<li><button type="button" class="navyBtn" onClick="window.open('https://www.ilogen.com/web/personal/tkSearch')">배송조회</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_pro/QnAlist'">고객만족센터</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/info/list'">공지사항</button></li>

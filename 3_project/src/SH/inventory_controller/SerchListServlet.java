@@ -12,25 +12,30 @@ import javax.servlet.http.HttpServletResponse;
 import SH.Inventory_Dao.InventoryDao;
 import SH.Inventory_Vo.InventoryVo;
 
-
-@WebServlet("/inventory/list")
-public class ListServlet extends HttpServlet {
+@WebServlet("/inventory/serch")
+public class SerchListServlet extends HttpServlet{
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.setAttribute("main", "/SH.inventory/serch.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String spageNum=req.getParameter("pageNum");
 		int jnum=Integer.parseInt(req.getParameter("jnum"));
 		int pageNum=1;
-		int field=0;
-		String keyword=null;
+		String keyword=req.getParameter("keyword");
 		if(spageNum!=null) {
 			pageNum=Integer.parseInt(spageNum);
 		}
 		int endRow=pageNum*6;
 		int startRow=endRow-5;
 		InventoryDao dao=new InventoryDao();
-		ArrayList<InventoryVo> list=dao.list(startRow, endRow, jnum);	
-		int pageCount=(int)Math.ceil(dao.getCount(field, keyword)/6.0);
+		ArrayList<InventoryVo> list=dao.serchList(startRow, endRow, jnum, keyword);
+		int pageCount=(int)Math.ceil(dao.getCount(jnum,keyword)/6.0);
 		//시작페이지 번호
 		int startPageNum=((pageNum-1)/10*10)+1;
 		//끝페이지 번호
@@ -46,12 +51,9 @@ public class ListServlet extends HttpServlet {
 		req.setAttribute("jnum", jnum);
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
-		switch(jnum) {
-		case(100) : req.setAttribute("main", "/SH.inventory/earring.jsp"); break;
-		case(200) : req.setAttribute("main","/SH.inventory/neck.jsp"); break;
-		case(300) : req.setAttribute("main","/SH.inventory/watch.jsp"); break;
-		case(400) : req.setAttribute("main","/SH.inventory/brace.jsp");  break;
-		}
+		req.setAttribute("main", "/SH.inventory/serch.jsp");
+		
+		
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }
