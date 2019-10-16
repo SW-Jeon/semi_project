@@ -7,9 +7,6 @@
 <meta charset="UTF-8">
 <title>/inventory/brace.jsp</title>
 </head>
-
-
-
 <script type="text/javascript">
 	function aa(gocode,index) {
 	var 	id=document.getElementById(index);
@@ -20,14 +17,13 @@
 <body>
 <div id="main" >
 <div id="brace_wrap">
-<c:set var="cp" value="${pageContext.request.contextPath }"/>
-	<c:forEach var="vo" items="${list }" varStatus="vs">
-		<div id="b">
-		<!--  	<a href="${cp}/inventory/detail?gocode=${vo.gocode}" >-->
-			<a href="javascript:aa('${vo.gocode}',${vs.index })" >
-				<img src="${cp }/acc/brace/${vo.goimg }"  border=0  width="300px" height="300px" >
-					<div id="price">
-					<br>
+	<c:set var="cp" value="${pageContext.request.contextPath }"/>
+		<c:forEach var="vo" items="${list }" varStatus="vs">
+			<div id="b">
+				<a href="javascript:aa('${vo.gocode}',${vs.index })" >
+					<img src="${cp }/acc/brace/${vo.goimg }"  border=0  width="300px" height="300px" >
+						<div id="price">
+						<br>
 						<strong class="b1">
 							<c:choose>
 								<c:when test="${vo.gocode=='b1'}">				
@@ -95,43 +91,42 @@
 							<span class="number">${vo.goprice }원</span>
 						</strong>
 					</div>
-			</a>
-		</div>	
+				</a>
+			</div>	
 		</c:forEach>
 	</div>
-</div>
- 
-<div id="page"><!-- 페이징처리 -->
-	<c:choose>
-		<c:when test="${startPageNum>10 }">
-			<a href="${cp }/inventory/list?pageNum=${startPageNum-1}">[이전]</a>
-		</c:when>
-		<c:otherwise>
-			[이전]
-		</c:otherwise>
-	</c:choose>
-	<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+		<div id="page"><!-- 페이징처리 -->
+			<c:choose>
+				<c:when test="${startPageNum>10 }">
+					<a href="${cp }/inventory/list?pageNum=${startPageNum-1}">[이전]</a>
+				</c:when>
+				<c:otherwise>
+					[이전]
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+				<c:choose>
+					<c:when test="${pageNum==i }"><%--현재페이지 색 다르게 표시하기 --%>
+						<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
+							<span style="color:red;">[${i }]</span>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
+							<span style="color:#555;">[${i }]</span>
+						</a>
+					</c:otherwise>
+				</c:choose>					
+			</c:forEach>
 		<c:choose>
-			<c:when test="${pageNum==i }"><%--현재페이지 색 다르게 표시하기 --%>
-				<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
-				<span style="color:red;">[${i }]</span>
-				</a>
+			<c:when test="${endPageNum<pageCount }">
+				<a href="${cp }/inventory/list?pageNum=${endPageNum+1}">[다음]</a>
 			</c:when>
 			<c:otherwise>
-				<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
-				<span style="color:#555;">[${i }]</span>
-				</a>
+				[다음]
 			</c:otherwise>
-		</c:choose>					
-	</c:forEach>
-	<c:choose>
-		<c:when test="${endPageNum<pageCount }">
-			<a href="${cp }/inventory/list?pageNum=${endPageNum+1}">[다음]</a>
-		</c:when>
-		<c:otherwise>
-			[다음]
-		</c:otherwise>
-	</c:choose>
+		</c:choose>
+	</div>
 </div>
 </body>
 </html>

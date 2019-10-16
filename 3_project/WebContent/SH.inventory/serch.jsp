@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>/SH.inventory/serch.jsp</title>
 </head>
+<script type="text/javascript">
+	function aa(gocode,index) {
+	var 	id=document.getElementById(index);
+	var bname=id.innerText;
+	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+bname;
+	}
+</script>
 <body>
 <div id="main">
 <h1>검색창</h1>
@@ -300,8 +307,6 @@
 		</div>	
 		</c:forEach>
 	</div>
-</div>
- 
 <div id="page"><!-- 페이징처리 -->
 	<c:choose>
 		<c:when test="${startPageNum>10 }">
