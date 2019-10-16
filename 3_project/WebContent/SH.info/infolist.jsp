@@ -21,14 +21,16 @@ ul{list-style:none; }
 </head>
 <body>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
-<div id="wrap">
+<div id="main">
+<h1 style="font-size: 5em;">공지사항</h1>
+		<hr>
 	<ul class="head">
 		<li class="no">No</li><li class="head_title">제목</li>
 	</ul>
 	<c:forEach var="vo" items="${requestScope.list }">
 		<ul class="body">
 			<li class="num">${vo.infonum}</li>
-			<li class="body_title">&nbsp;&nbsp;&nbsp;<a href="${cp }/info/detail?infonum=${vo.infonum}">${vo.infotitle }</li></a>
+			<li class="body_title">&nbsp;&nbsp;&nbsp;<a href="${cp }/info/detail?infonum=${vo.infonum}">${vo.infotitle }</a></li>
 		</ul>
 	</c:forEach>
 		<ul class="button">	

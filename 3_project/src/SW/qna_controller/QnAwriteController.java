@@ -27,8 +27,9 @@ public class QnAwriteController extends HttpServlet {
 		String qacontent=req.getParameter("qacontent");
 		String qaname=req.getParameter("qaname");
 		String qapwd=req.getParameter("qapwd");
-		
-		QnAvo vo=new QnAvo(0, qacontent, qaname, qapwd, null, 0, null);
+		int qahit=Integer.parseInt(req.getParameter("qahit"));
+		String reqst="대기중";
+		QnAvo vo=new QnAvo(0, qacontent, qaname, qapwd, null, qahit, reqst);
 		QnAlistDao dao=QnAlistDao.getInstance();
 		int n=dao.insert(vo);
 		if(n>0){

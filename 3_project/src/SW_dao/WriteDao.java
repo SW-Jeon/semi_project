@@ -157,11 +157,11 @@ public class WriteDao {
 				pstmt.setInt(1, writenum);
 				rs=pstmt.executeQuery();
 				if(rs.next()) {
-					String mid=rs.getString(1);
-					String title=rs.getString(2);
-					String writecontent=rs.getString(3);
-					String rewrite=rs.getString(4);
-					String rewst=rs.getString(5);
+					String mid=rs.getString(2);
+					String title=rs.getString(3);
+					String writecontent=rs.getString(4);
+					String rewrite=rs.getString(5);
+					String rewst=rs.getString(6);
 					WriteVo vo=new WriteVo(writenum, mid, title, writecontent, rewrite, rewst);
 					return vo;
 				}
@@ -245,10 +245,10 @@ public class WriteDao {
 	    		pstmt.setString(1, mid);
 	    		rs=pstmt.executeQuery();
 	    		if(rs.next()) {
-	    			String title=rs.getString(1);
-					String writecontent=rs.getString(2);
-					String rewrite=rs.getString(3);
-					String rewst=rs.getString(4);
+	    			String title=rs.getString(3);
+					String writecontent=rs.getString(4);
+					String rewrite=rs.getString(5);
+					String rewst=rs.getString(6);
 					WriteVo vo=new WriteVo(0, mid, title, writecontent, rewrite, rewst);
 	    			return vo;
 				}
