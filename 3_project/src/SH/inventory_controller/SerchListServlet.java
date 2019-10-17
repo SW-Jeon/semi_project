@@ -19,7 +19,7 @@ public class SerchListServlet extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		String spageNum=req.getParameter("pageNum");
 		int jnum=Integer.parseInt(req.getParameter("jnum"));
-		String level=req.getParameter("level");
+		int level=Integer.parseInt(req.getParameter("level"));
 		int pageNum=1;
 		String keyword=req.getParameter("keyword");
 		if(spageNum!=null) {

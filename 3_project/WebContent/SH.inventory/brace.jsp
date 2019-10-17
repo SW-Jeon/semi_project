@@ -11,13 +11,17 @@
 	function aa(gocode,index) {
 	var 	id=document.getElementById(index);
 	var bname=id.innerText;
-	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+bname;
+	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+encodeURI(bname);
 	}
 </script>
 <body>
 <div id="main" >
 <div id="brace_wrap">
-<a href="${cp }/inventory/list?jnum=400&level=1">가격높은순</a>&nbsp;<a href="${cp }/inventory/list?jnum=400&level=2">가격낮은순</a>
+<a href="${cp }/inventory/list?jnum=400&level=0";>최신순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=400&level=1";>가격높은순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=400&level=2">가격낮은순</a>
 	<c:set var="cp" value="${pageContext.request.contextPath }"/>
 		<c:forEach var="vo" items="${list }" varStatus="vs">
 			<div id="b">

@@ -11,7 +11,7 @@
 	function aa(gocode,index) {
 	var 	id=document.getElementById(index);
 	var bname=id.innerText;
-	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+bname;
+	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+encodeURI(bname);
 	}
 </script>
 <body>
@@ -20,6 +20,11 @@
 <br>
 <br>
 <div id="watch_wrap" >
+<a href="${cp }/inventory/list?jnum=300&level=0";>최신순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=300&level=1";>가격높은순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=300&level=2">가격낮은순</a>
 	<c:forEach var="vo" items="${list }" varStatus="vs">
 		<div id="w">
 			<a href="javascript:aa('${vo.gocode}',${vs.index })">

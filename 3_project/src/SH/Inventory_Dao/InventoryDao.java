@@ -18,6 +18,7 @@ public class InventoryDao {
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
+			if(keyword==null)keyword="";
 			String sql="select NVL(count(*),0) as maxnum from inventory";
 			if(jnum!=0 ) {//리스트
 				sql +=" where jnum="+jnum+" and gocolor like'%"+keyword+"%'";
