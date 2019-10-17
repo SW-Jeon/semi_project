@@ -199,7 +199,7 @@ public class QnAlistDao {
         PreparedStatement pstmt=null;
         try {
             con=JdbcUtil.getConn();
-            String sql="delete from qa where qanum=? and qapwd=?";
+            String sql="delete from qa where qanum=?,qapwd=?";
             pstmt=con.prepareStatement(sql);
             pstmt.setInt(1,qanum);
         	pstmt.setString(2, qapwd);
@@ -268,11 +268,11 @@ public class QnAlistDao {
     public int reDab(QnAvo vo) {
     	Connection con=null;
     	PreparedStatement pstmt=null;
-    	String sql="update qa set qarecontent=? and reqst=? where qanum=?";
+    	String sql="update qa set qarecontent=?,reqst=? where qanum=?";
     	try { 
     		con=JdbcUtil.getConn();
     		pstmt=con.prepareStatement(sql);
-    		pstmt.setString(1, vo.getQacontent());
+    		pstmt.setString(1, vo.getQarecontent());
     		pstmt.setString(2, vo.getReqst());
     		pstmt.setInt(3, vo.getQanum());
     		return pstmt.executeUpdate();

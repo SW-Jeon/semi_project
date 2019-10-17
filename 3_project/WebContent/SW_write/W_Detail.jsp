@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="main">
@@ -18,11 +17,11 @@
 			<tr>
 				<td width="150">글쓴이  |</td><td width="600">${vo.mid}</td>
 			</tr>
-<c:if test="${sessionScope.adminid=='admin'}">	
+	<c:if test="${sessionScope.mid=='admin'}">	
 			<tr>
 				<td width="150">답변  |</td><td width="600">${vo.rewrite}</td>
 			</tr>
-</c:if>		
+	</c:if>		
 			<tr>
 				<td width="150">답변확인상태  |</td><td width="600">${vo.rewst}</td>
 			</tr>
@@ -35,7 +34,7 @@
 			</tr>
 	</table>
 	<br><hr>
-<c:if test="${sessionScope.adminid=='admin'}">		
+ <c:if test="${sessionScope.mid=='admin'}">		
 	<form method="post"  action="${cp }/SW_write/Wrewst">
 		<table style="display: inline-block;">
 			<tr>
@@ -51,17 +50,3 @@
 	</form>
 </c:if>		
 </div>
-=======
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
->>>>>>> branch 'junbin_update' of https://github.com/SW-Jeon/3_project.git
