@@ -5,9 +5,9 @@
 <br>
 		<h1 style="font-size: 5em;">회원문의</h1>
 		<h4>궁금하신 사항을 문의해주세요.</h4>
+		<p><a href="${cp}/SW_write/write" style="font-size: 1.2em; text-align: center; text-decoration: none;display: inline-block; float: left;">글쓰기</a></p>
 		<br><br><hr>
-		<p><a href="${cp}/SW_write/write" style="font-size: 1.2em; text-align: center; text-decoration: none;display: inline-block; float: right;">글쓰기</a></p>
-		<table style="width:100%" text-align: center;  margin: auto;">
+		<table style="width:100%; text-align: center;  margin: auto;">
 			<tr>
 				<th>번호</th>
 				<th>제목</th>

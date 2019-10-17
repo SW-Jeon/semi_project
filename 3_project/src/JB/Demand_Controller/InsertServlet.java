@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import JB.Demand_vo.DemandVo;
 import JB.dao.DemandDao;
+import KH.MEM_Vo.Mem_Vo;
+import KH.Mem_Dao.Mem_Dao;
 
 @WebServlet("/demand/insert")
 public class InsertServlet extends HttpServlet{
@@ -20,8 +22,8 @@ public class InsertServlet extends HttpServlet{
 		HttpSession session=req.getSession(); 
 		String mid=(String)session.getAttribute("mid");
 		if(mid==null || mid.equals("")) { //session에 id가 없다면(비로그인 상태이면) main으로 이동함
-			//resp.sendRedirect(req.getContextPath()+"/pro/home");
-			//return;
+			resp.sendRedirect(req.getContextPath()+"/pro/home");
+			return;
 		}
 		String goCode=req.getParameter("getCode"); //상품코드 받음
 		String goName=req.getParameter("goName"); //상품명 받음
@@ -39,15 +41,20 @@ public class InsertServlet extends HttpServlet{
 		//ex) MemDao dao=MemDao.getMemDao();
 		//MemVo mvo=dao.getInfo(mid); --> mid 에 해당하는 회원의 정보를 담은 vo 필요
 		//req.setAttribute("mvo",mvo);
+		Mem_Dao mdao=Mem_Dao.getMem_Dao();
+		Mem_Vo mvo=mdao.select(mid);
 		
 		int n=dao.insert(vo); //DB에 추가
+		int ordernum=dao.getMaxNum();
+		
 		if(n>0) {
-			//req.setAttribute("mvo",mvo);
+			req.setAttribute("mvo",mvo);
 			req.setAttribute("vo", vo);
 			req.setAttribute("goName", goName);
 			req.setAttribute("goImg", goImg);
 			req.setAttribute("jNum", jNum);
 			req.setAttribute("goPrice", goPrice);
+			req.setAttribute("ordernum", ordernum);
 			req.setAttribute("top", "/pro/header.jsp");
 			req.setAttribute("bottom", "/pro/footer.jsp");
 			req.setAttribute("main", "/junbin/demand.jsp");

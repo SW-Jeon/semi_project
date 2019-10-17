@@ -18,7 +18,6 @@
 
 .img-zoom-lens {
   position: absolute;
-  border: 1px solid #d4d4d4;
   /*set the size of the lens:*/
   width: 40px; 
   height: 40px;
@@ -133,9 +132,8 @@ function change () {
 //-->
 </script>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
-
-
-<h1>상세페이지</h1>
+<br>
+<h1><p style="text-align: center; color: midnightblue; font-style: italic; ">상세페이지</p></h1><br>
 <div id="wrab">
 	<div class="img-zoom-box">		 
 		  <div id="myresult" class="img-zoom-result"></div>
@@ -157,7 +155,7 @@ function change () {
 	</div>
 
 		<div id="detail">
-			<form name="form"  method="get" style="text-align: center;" action="${cp }/demand/insert">
+			<form name="form"  method="get" style="text-align: center;" action="${cp }/demand/insert" onsubmit="return checkLogin()">
 			 <h1>${name}</h1><br>
 			<h2>가격 : ${vo.goprice } 원</h2><br>
 			<h3>배송방법: 택배</h3><br>
@@ -176,13 +174,29 @@ function change () {
 			<input type="hidden" name="jNum" value="${vo.jnum}">
 			<input type="hidden" name="goName" value="${name}">
 			<input type="hidden" name="getCode" value="${vo.gocode}">
-			<input type="button" value="장바구니" onclick="here">&nbsp;<input type="submit" value="구매하기" >
+			<input type="button" value="장바구니" onclick="CartGo()">&nbsp;<input type="submit" value="구매하기" >
 			</form>
 		</div>
 </div>
 <script>
 imageZoom("myimage", "myresult");
+function CartGo() {
+	var mid='${sessionScope.mid}';
+	if(mid==''){
+		alert('로그인을 먼저 해주세요!');
+	}else{
+		alert('장바구니 등록 완료!');
+		location.href="${cp}/cart/add?goImg=${vo.goimg}&jNum=${vo.jnum}&getCode=${vo.gocode}&name=${name}";
+	}
+}
+function checkLogin() {
+	var mid='${sessionScope.mid}';
+	if(mid==''){
+		alert('로그인을 먼저 해주세요!');
+		return;
+	}
+	return true;
+}
 </script>
-
 </body>
 </html>

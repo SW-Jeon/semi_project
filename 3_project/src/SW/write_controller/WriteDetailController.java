@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import SW_dao.WriteDao;
 import SW_vo.WriteVo;
 
-@WebServlet("/SW_write/writedetail")
+@WebServlet("/SW_write/Wdetail")
 public class WriteDetailController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,8 +21,9 @@ public class WriteDetailController extends HttpServlet{
 		WriteVo vo=dao.detail(writenum);
 		req.setAttribute("vo", vo);
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main",	"/SW_write/W_List.jsp");
+		req.setAttribute("main",	"/SW_write/W_Detail.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
-	}	
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);	
+	}
 }
+

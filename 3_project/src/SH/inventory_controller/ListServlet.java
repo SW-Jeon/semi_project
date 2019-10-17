@@ -20,15 +20,18 @@ public class ListServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		String spageNum=req.getParameter("pageNum");
 		int jnum=Integer.parseInt(req.getParameter("jnum"));
+		int level=Integer.parseInt(req.getParameter("level"));
 		int pageNum=1;
+		int field=0;
+		String keyword=null;
 		if(spageNum!=null) {
 			pageNum=Integer.parseInt(spageNum);
 		}
 		int endRow=pageNum*6;
 		int startRow=endRow-5;
 		InventoryDao dao=new InventoryDao();
-		ArrayList<InventoryVo> list=dao.list(startRow, endRow, jnum);	
-		int pageCount=(int)Math.ceil(dao.getCount()/6.0);
+		ArrayList<InventoryVo> list=dao.list(startRow, endRow, jnum,level);	
+		int pageCount=(int)Math.ceil(dao.getCount(field, keyword, level)/.0);
 		//시작페이지 번호
 		int startPageNum=((pageNum-1)/10*10)+1;
 		//끝페이지 번호
@@ -42,6 +45,7 @@ public class ListServlet extends HttpServlet {
 		req.setAttribute("endPageNum", endPageNum);
 		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("jnum", jnum);
+		req.setAttribute("level", level);
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		switch(jnum) {

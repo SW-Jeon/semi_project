@@ -3,6 +3,7 @@ package SW_vo;
 public class AsWriteVo {
 	 private int asnum;
 	 private String asimg;
+	 private String astitle;
 	 private String ascontent;
 	 private String mid;
 	 private String gocode;
@@ -11,10 +12,12 @@ public class AsWriteVo {
 	 
 	 public AsWriteVo() {}
 
-	public AsWriteVo(int asnum, String asimg, String ascontent, String mid, String gocode, int purnum, int ashit) {
+	public AsWriteVo(int asnum, String asimg, String astitle, String ascontent, String mid, String gocode, int purnum,
+			int ashit) {
 		super();
 		this.asnum = asnum;
 		this.asimg = asimg;
+		this.astitle = astitle;
 		this.ascontent = ascontent;
 		this.mid = mid;
 		this.gocode = gocode;
@@ -36,6 +39,14 @@ public class AsWriteVo {
 
 	public void setAsimg(String asimg) {
 		this.asimg = asimg;
+	}
+
+	public String getAstitle() {
+		return astitle;
+	}
+
+	public void setAstitle(String astitle) {
+		this.astitle = astitle;
 	}
 
 	public String getAscontent() {
@@ -77,6 +88,6 @@ public class AsWriteVo {
 	public void setAshit(int ashit) {
 		this.ashit = ashit;
 	}
-
+	 
 	
 }

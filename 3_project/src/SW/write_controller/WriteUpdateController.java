@@ -41,6 +41,5 @@ public class WriteUpdateController extends HttpServlet {
 		req.setAttribute("main","/SW_pro/result.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
-		resp.sendRedirect(req.getContextPath()+"/SW_pro/W_List.jsp");
 	}
 }

@@ -1,33 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>/inventory/brace.jsp</title>
-</head>
-
-
-
 <script type="text/javascript">
 	function aa(gocode,index) {
 	var 	id=document.getElementById(index);
 	var bname=id.innerText;
-	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+bname;
+	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+encodeURI(bname);
 	}
 </script>
-<body>
 <div id="main" >
+<div id="jj" style="text-align: right;">
+<a href="${cp }/inventory/list?jnum=400&level=0">최신순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=400&level=1">가격높은순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=400&level=2">가격낮은순</a>
+</div>
 <div id="brace_wrap">
-<c:set var="cp" value="${pageContext.request.contextPath }"/>
-	<c:forEach var="vo" items="${list }" varStatus="vs">
-		<div id="b">
-		<!--  	<a href="${cp}/inventory/detail?gocode=${vo.gocode}" >-->
-			<a href="javascript:aa('${vo.gocode}',${vs.index })" >
-				<img src="${cp }/acc/brace/${vo.goimg }"  border=0  width="300px" height="300px" >
-					<div id="price">
-					<br>
+	<c:set var="cp" value="${pageContext.request.contextPath }"/>
+		<c:forEach var="vo" items="${list }" varStatus="vs">
+			<div id="b">
+				<a href="javascript:aa('${vo.gocode}',${vs.index })" >
+					<img src="${cp }/acc/brace/${vo.goimg }"  border=0  width="300px" height="300px" >
+						<div id="price">
+						<br>
 						<strong class="b1">
 							<c:choose>
 								<c:when test="${vo.gocode=='b1'}">				
@@ -95,43 +91,40 @@
 							<span class="number">${vo.goprice }원</span>
 						</strong>
 					</div>
-			</a>
-		</div>	
+				</a>
+			</div>	
 		</c:forEach>
 	</div>
-</div>
- 
-<div id="page"><!-- 페이징처리 -->
-	<c:choose>
-		<c:when test="${startPageNum>10 }">
-			<a href="${cp }/inventory/list?pageNum=${startPageNum-1}">[이전]</a>
-		</c:when>
-		<c:otherwise>
-			[이전]
-		</c:otherwise>
-	</c:choose>
-	<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+		<div id="page"><!-- 페이징처리 -->
+			<c:choose>
+				<c:when test="${startPageNum>10 }">
+					<a href="${cp }/inventory/list?pageNum=${startPageNum-1}">[이전]</a>
+				</c:when>
+				<c:otherwise>
+					[이전]
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+				<c:choose>
+					<c:when test="${pageNum==i }"><%--현재페이지 색 다르게 표시하기 --%>
+						<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}&level=${level}">
+							<span style="color:red;">[${i }]</span>
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}&level=${level}">
+							<span style="color:#555;">[${i }]</span>
+						</a>
+					</c:otherwise>
+				</c:choose>					
+			</c:forEach>
 		<c:choose>
-			<c:when test="${pageNum==i }"><%--현재페이지 색 다르게 표시하기 --%>
-				<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
-				<span style="color:red;">[${i }]</span>
-				</a>
+			<c:when test="${endPageNum<pageCount }">
+				<a href="${cp }/inventory/list?pageNum=${endPageNum+1}">[다음]</a>
 			</c:when>
 			<c:otherwise>
-				<a href="${cp }/inventory/list?pageNum=${i}&jnum=${jnum}">
-				<span style="color:#555;">[${i }]</span>
-				</a>
+				[다음]
 			</c:otherwise>
-		</c:choose>					
-	</c:forEach>
-	<c:choose>
-		<c:when test="${endPageNum<pageCount }">
-			<a href="${cp }/inventory/list?pageNum=${endPageNum+1}">[다음]</a>
-		</c:when>
-		<c:otherwise>
-			[다음]
-		</c:otherwise>
-	</c:choose>
+		</c:choose>
+	</div>
 </div>
-</body>
-</html>
