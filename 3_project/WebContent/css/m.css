@@ -93,6 +93,10 @@
 	float: right;
 }
 
+#gnb ul{
+	float: right;
+}
+
 #gnb ul li {
 	float: left;
 	margin-top: 5px;
@@ -114,6 +118,8 @@
 #banner ul li {
 	list-style: none;
 	display: inline-block;
+	width: 200px;
+	margin-left: 120px;
 }
 
 #banner ul li button {
