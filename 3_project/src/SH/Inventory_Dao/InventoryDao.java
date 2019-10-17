@@ -221,4 +221,34 @@ public class InventoryDao {
 		}
 	}
 	
+	//상품정보에 대한 조회 메소드
+		public InventoryVo getInfo(String gocode) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				con=JdbcUtil.getConn();
+				String sql="select * from  inventory where gocode=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, gocode);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					String goname=rs.getString("goname");
+					int goprice=rs.getInt("goprice");
+					String gocolor=rs.getString("gocolor");
+					String goimg=rs.getString("goimg");
+					int pamount=rs.getInt("pamount");
+					int jnum=rs.getInt("jnum");
+					String adminid =rs.getString("adminid");
+					InventoryVo vo=new InventoryVo(gocode, goname, goprice, gocolor, goimg, pamount, jnum, adminid);
+					return vo;
+				}
+				return null;
+			}catch(SQLException se) {
+				System.out.println(se.getMessage());
+				return null;
+			}finally {
+				JdbcUtil.close(con, pstmt, rs);
+			}
+		}	
 }

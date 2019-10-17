@@ -48,7 +48,7 @@ public class AsWriteDao {
 				int boardNum=getMaxNum()+1;
 				int ashit=0;
 				String asimg=null;
-				String sql="insert into aswrite values(?,?,?,?,?,?,?)";
+				String sql="insert into aswrite values(?,?,?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, boardNum);
 				pstmt.setString(2, asimg);
