@@ -47,7 +47,36 @@ public class InventoryDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
-	
+	public  ArrayList<InventoryVo> mainList(InventoryVo vo) {//메인에 뿌릴 악세 리스트
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="select * from inventory where rownum<=15 order by goprice desc";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			ArrayList<InventoryVo> list=new ArrayList<InventoryVo>();	
+			while(rs.next()) {
+				String gocode=rs.getString("gocode");
+				String goname=rs.getString("goname");
+				int goprice=rs.getInt("goprice");
+				String gocolor=rs.getString("gocolor");
+				String goimg=rs.getString("goimg");
+				int pamount=rs.getInt("pamount");
+				int jnum=rs.getInt("jnum");
+				String adminid=rs.getString("adminid");	
+				 vo=new InventoryVo(gocode,goname,goprice,gocolor,goimg,pamount,jnum,adminid);
+				list.add(vo);
+			}
+			return list;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);;
+		}
+	}
 	
 	public ArrayList<InventoryVo> list(int startRow, int endRow, int jnum,int level){//페이징처리,검색
 		Connection con=null;

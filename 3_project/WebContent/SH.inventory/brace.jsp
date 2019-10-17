@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>/inventory/brace.jsp</title>
-</head>
 <script type="text/javascript">
 	function aa(gocode,index) {
 	var 	id=document.getElementById(index);
@@ -14,12 +8,11 @@
 	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+encodeURI(bname);
 	}
 </script>
-<body>
 <div id="main" >
 <div id="brace_wrap">
-<a href="${cp }/inventory/list?jnum=400&level=0";>최신순</a>
+<a href="${cp }/inventory/list?jnum=400&level=0">최신순</a>
 &nbsp;
-<a href="${cp }/inventory/list?jnum=400&level=1";>가격높은순</a>
+<a href="${cp }/inventory/list?jnum=400&level=1">가격높은순</a>
 &nbsp;
 <a href="${cp }/inventory/list?jnum=400&level=2">가격낮은순</a>
 	<c:set var="cp" value="${pageContext.request.contextPath }"/>
@@ -133,5 +126,3 @@
 		</c:choose>
 	</div>
 </div>
-</body>
-</html>

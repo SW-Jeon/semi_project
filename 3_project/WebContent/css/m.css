@@ -161,3 +161,6 @@ padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
 #err_wrap{ margin:0px auto; }
 #e{width:400px; height:400px;  float: left; 
 padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+#mainlist_wrap{margin:0px auto;}
+#mainlist_wrap #mainimg{width:280px; height:280px;  float: left; 
+padding:10px; margin-bottom:10px ; marmargin-right: 10px;}
