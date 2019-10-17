@@ -1,4 +1,4 @@
-package SW.write_controller;
+package SW.qna_controller;
 
 import java.io.IOException;
 
@@ -9,32 +9,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import SW_dao.WriteDao;
-import SW_vo.WriteVo;
+import SW_dao.QnAlistDao;
+import SW_vo.QnAvo;
 
-@WebServlet("/SW_write/Wrewst")
-public class WriteRewstController extends HttpServlet{
+@WebServlet("/SW_pro/QnAreqst")
+public class QnAreqstController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int writenum=Integer.parseInt(req.getParameter("writenum"));
-		WriteDao dao=WriteDao.getInstance();
-		WriteVo vo=dao.getInfo(writenum);
+		int qanum=Integer.parseInt(req.getParameter("qanum"));
+		QnAlistDao dao=QnAlistDao.getInstance();
+		QnAvo vo=dao.getInfo(qanum);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/SW_write/W_Detail.jsp").forward(req, resp);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SW_pro/QnAdetail.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		int writenum=Integer.parseInt(req.getParameter("writenum"));
-		String rewrite=req.getParameter("rewrite");
-		String rewst=req.getParameter("rewst");
+		int qanum=Integer.parseInt(req.getParameter("qanum"));
+		String qarecontent=req.getParameter("qarecontent");
+		String reqst=req.getParameter("reqst");
 
-		WriteDao dao=WriteDao.getInstance();
-		WriteVo vo=new WriteVo(writenum, null, null, null, null, rewrite, rewst);
+		QnAlistDao dao=QnAlistDao.getInstance();
+		QnAvo vo=new QnAvo(qanum, null, null, null, qarecontent, 0, reqst);
 		int n=dao.reDab(vo);
 		if(n>0){
 				req.setAttribute("msg", "success");
+				System.out.println(qarecontent + reqst);	
 		}else {
 				req.setAttribute("msg", "fail");
 		}

@@ -4,6 +4,7 @@
 <div id="main">
 <br>
 		<h1 style="font-size: 5em;">상품후기</h1>
+		<img src="../images/review.png" >
 		<p><a href="${cp}/SW_review/Rwrite" style="font-size: 1.2em; text-align: center; text-decoration: none;display: inline-block; float: left;;">후기남기기</a></p>
 		<br><br><hr>
 		<table style="width:100%; text-align: center;  margin: auto;">

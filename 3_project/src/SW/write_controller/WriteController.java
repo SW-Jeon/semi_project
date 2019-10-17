@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import SH.Inventory_Dao.InventoryDao;
+import SH.Inventory_Vo.InventoryVo;
 import SW_dao.WriteDao;
 import SW_vo.WriteVo;
 
@@ -27,10 +29,17 @@ public class WriteController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		HttpSession session=req.getSession(); 
 		String mid=(String)session.getAttribute("mid");
+
+		String gocode=req.getParameter("gocode"); //상품코드 받음
+
 		String title=req.getParameter("title");
 		String writecontent=req.getParameter("writecontent");
 		
-		WriteVo vo=new WriteVo(0, mid, title, writecontent, null, null);
+		System.out.println(gocode);
+		InventoryDao dao1=new InventoryDao();
+		InventoryVo ivo=dao1.getInfo(gocode);
+		
+		WriteVo vo=new WriteVo(0, mid, gocode, title, writecontent, null, null);
 		WriteDao dao=WriteDao.getInstance();
 		int n=dao.insert(vo);
 		if(n>0){
@@ -38,6 +47,7 @@ public class WriteController extends HttpServlet {
 		}else {
 			req.setAttribute("msg", "fail");
 		}
+		req.setAttribute("ivo",ivo );
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("main","/SW_pro/result.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
