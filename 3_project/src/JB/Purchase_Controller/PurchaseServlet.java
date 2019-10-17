@@ -18,6 +18,7 @@ public class PurchaseServlet extends HttpServlet{
 		String bank=req.getParameter("bank"); //무통장입금 은행정보
 		String cardname=req.getParameter("cardname"); //선택한 카드이름
 		String orderprice=req.getParameter("orderprice"); //천단위 안붙은 결제가격
+		String goName=req.getParameter("goName");//물품명 이름
 		if(hal!=null && cardname!=null) {
 			req.setAttribute("hal", hal);
 			req.setAttribute("cardname", cardname);
@@ -41,6 +42,7 @@ public class PurchaseServlet extends HttpServlet{
 		req.setAttribute("orderamount", orderamount);
 		req.setAttribute("orderprice", orderprice);
 		req.setAttribute("allamount", allamount);
+		req.setAttribute("goName", goName);
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.setAttribute("main", "/junbin/purchase.jsp");
