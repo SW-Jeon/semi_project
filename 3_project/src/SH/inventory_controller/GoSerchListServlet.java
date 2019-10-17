@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 public class GoSerchListServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int level=Integer.parseInt(req.getParameter("level"));
+		req.setAttribute("level", level);
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.setAttribute("main", "/SH.inventory/serch.jsp");

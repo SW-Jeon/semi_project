@@ -29,7 +29,9 @@ public class WriteController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		HttpSession session=req.getSession(); 
 		String mid=(String)session.getAttribute("mid");
+
 		String gocode=req.getParameter("gocode"); //상품코드 받음
+
 		String title=req.getParameter("title");
 		String writecontent=req.getParameter("writecontent");
 		

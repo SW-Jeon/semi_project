@@ -2,10 +2,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header.jsp -->
 <div id="header">
-	
 	<div id="gnb">
 		<ul>
-			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/go/serch'">상품검색</button></li>
+			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/go/serch?&level=0'">상품검색</button></li>
 			<li><button type="button" class="navyBtn" onClick="window.open('https://www.ilogen.com/web/personal/tkSearch')">배송조회</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_pro/QnAlist'">고객만족센터</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/info/list'">공지사항</button></li>
@@ -16,13 +15,14 @@
     		<c:otherwise>      <%--로그인 한 경우 --%>
     			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_review/Rlist'">구매후기</button></li>
 				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_write/Wlist'">회원문의</button></li>
-				<li><button type="button" class="navyBtn" onClick="location.href='${cp } '">로그아웃</button></li>
+				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/user/mypage'">마이페이지</button></li>
+				<li><button type="button" class="navyBtn" onClick="location.href='${cp } '"><span style="color:red;font-weight: bold">로그아웃</span></button></li>
             </c:otherwise>
        	</c:choose>
 		</ul>
 	</div>
 	<div id="logo">
-		<a href="${cp }/pro/home"><img src="../images/HS.png" ></a>
+		<a href="${cp }/pro/home"><img src="${cp}/images/HS.png" ></a>
 	</div>
 	<div id="banner">
 		<hr>
