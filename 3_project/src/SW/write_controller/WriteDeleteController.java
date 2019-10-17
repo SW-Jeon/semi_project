@@ -25,9 +25,8 @@ public class WriteDeleteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		int writenum=Integer.parseInt(req.getParameter("writenum"));
-		String mid=req.getParameter("mid");
 		WriteDao dao=WriteDao.getInstance();
-		int n=dao.delete(writenum, mid);
+		int n=dao.delete(writenum);
 		if(n>0) {
 			req.setAttribute("msg","success");
 		}else {

@@ -10,5 +10,5 @@
 			<h1>오류로 인해 작업이 실패하였습니다</h1>
 		</c:when>
 	</c:choose>
-	<a href="${cp }/pro/home">index</a>
+	<a href="${cp }/pro/home">Home</a>
 </div>

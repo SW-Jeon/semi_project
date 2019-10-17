@@ -15,12 +15,10 @@
 			<tr>
 				<td width="150">글쓴이  |</td><td width="600">${vo.qaname}</td>
 			</tr>
-
-		<c:if test="${sessionScope.mid=='admin'}">	
 			<tr>
 				<td width="150">답변  |</td><td width="600">${vo.qarecontent}</td>
 			</tr>
-			</c:if>		
+
 			<tr>
 				<td width="150">답변확인상태  |</td><td width="600">${vo.reqst}</td>
 			</tr>
@@ -32,19 +30,22 @@
 			</tr>
 	</table>
 	<br><hr>
-	<c:if test="${sessionScope.mid=='admin'}">		
+<c:if test="${sessionScope.mid=='admin'}">		
 	<form method="post"  action="${cp }/SW_pro/QnAreqst">
 		<table style="display: inline-block;">
 			<tr>
-				<td width="30">운영자 답변</td><td width="500"><textarea rows="5" cols="60" name="qarecontent"></textarea></td>
+				<td width="30">운영자 답변</td><td width="500"><textarea rows="5" cols="60" name="qarecontent" required autofocus></textarea></td>
 			</tr>
 			<tr>
-				<td width="30">답변상태</td><td width="500"><input type="text" name="reqst "><br></td>
+				<td width="30">답변상태</td>
+				<td width="500"><input name="reqst" type="radio" checked value="대기중" required><label for="대기중">대기중</label>
+                <input name="reqst" type="radio" value="답변완료"><label for="답변완료">답변완료</label></td>
+				<td><input type="hidden" name="qanum" value="${param.qanum }"></td>
 			</tr>
 			<tr>
 				<td width="30"><input type="submit"  value="답변확인" style="margin-left: 300px; margin-top: 50px;"></td>
 			</tr>
 		</table>
 	</form>
-		</c:if>	
+</c:if>	
 </div>
