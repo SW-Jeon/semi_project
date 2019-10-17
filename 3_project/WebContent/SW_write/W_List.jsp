@@ -67,6 +67,4 @@
 			<input type="submit" value="검색">
 		</form>
 	</div>
-	
-	
 	</div>
