@@ -23,7 +23,6 @@ public class Homecontroller extends HttpServlet {
 		InventoryVo vo=new InventoryVo();
 		ArrayList<InventoryVo> list=dao.mainList(vo);
 		req.setAttribute("list", list);	
-		System.out.println(list);
 		String top=(String)req.getAttribute("top");
 		String content=(String)req.getAttribute("content");
 		String right=(String)req.getAttribute("right");
