@@ -91,11 +91,9 @@
 	margin-left: 50px;
 	padding-top: 100px;
 }
-
 #gnb ul{
 	float: right;
 }
-
 #gnb ul li{
 	float: left;
 	margin-top: 5px;
@@ -111,22 +109,11 @@
 	width: 200px;
 	margin-left: 70px;
 }
+
 #banner ul li button{
 	float: left;
 	font-size: 1.5em;
 	text-align:center;
-}
-
-#header ul {
-	
-	padding-left: 250px;
-}
-
-#header ul li {
-	list-style: none;
-	display: inline-block;
-	width: 110px;
-	font: bold 12px Dotum;
 }
 
 #header ul li a {
