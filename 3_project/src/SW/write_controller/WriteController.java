@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import SW_dao.WriteDao;
 import SW_vo.WriteVo;
@@ -24,7 +25,9 @@ public class WriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String mid=req.getParameter("mid");
+		HttpSession session=req.getSession(); 
+		String mid=(String)session.getAttribute("mid");
+		String mid=(String)session.getAttribute("mid");
 		String title=req.getParameter("title");
 		String writecontent=req.getParameter("writecontent");
 		

@@ -2,9 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- header.jsp -->
 <div id="header">
-	<div id="logo">
-		<a href="${cp }/pro/home"><img src="../images/HS.png" style="height: 200px; width: 200px;"></a>
-	</div>
+	
 	<div id="gnb">
 		<ul>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/go/serch'">상품검색</button></li>
@@ -23,21 +21,19 @@
        	</c:choose>
 		</ul>
 	</div>
-	<div id="ser">
-                   <form method="post" action="${cp }/SW_pro/list">
-                             <input type="text" name="keyword" value="${keyword }" style="width: 200px; height: 50px;" placeholder="원하시는 상품을 검색해주세요" required autofocus>
-                             <input type="submit" value="검색" style="width: 100px; height: 50px;"   >
-                   </form>
-          </div>
-         <br><br><br> <hr>
+	<div id="logo">
+		<a href="${cp }/pro/home"><img src="../images/HS.png" ></a>
+	</div>
 	<div id="banner">
+	<hr>
 		<ul>
 			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=100&level=0'">귀걸이</button></li>
 			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=200&level=0'">목걸이</button></li>
 			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=400&level=0'">팔찌</button></li>
 			<li><button type="button" class="Btn" onClick="location.href='${cp }/inventory/list?jnum=300&level=0'">시계</button></li>
 		</ul>
+		  <hr>
 	</div>
-  <hr>
+
 </div>
 	
