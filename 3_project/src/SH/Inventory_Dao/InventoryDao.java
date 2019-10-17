@@ -12,22 +12,22 @@ import jdbc.JdbcUtil;
 
 public class InventoryDao {
 	
-	public int getCount(int jnum,String keyword,String level) {//작성된 글의 개수
+	public int getCount(int jnum,String keyword,int level) {//작성된 글의 개수
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
 			String sql="select NVL(count(*),0) as maxnum from inventory";
-			if(jnum!=0 && level.equals("0")) {//리스트
-				sql +=" where jnum="+jnum+" and gocolor like'%"+keyword+"%'"+
-							" order by jnum desc";
-				}else if(jnum!=0 && level.equals("1")) {
-					sql +=" where jnum="+jnum+" and gocolor like'%"+keyword+"%'"+ 
-							" order by goprice desc"; 
-				}else if(jnum!=0 && level.equals("2")) {
-					sql +=" where jnum="+jnum+" and gocolor like'%"+keyword+"%'"+
-							" order by goprice asc"; 			
+			if(jnum!=0 ) {//리스트
+				sql +=" where jnum="+jnum+" and gocolor like'%"+keyword+"%'";
+				if(level==0) {
+					sql +=" order by jnum desc";
+				}else if(level==1) {
+					sql +=" order by goprice desc"; 
+				}else if(level==2) {
+					sql +=" order by goprice asc";
+				}
 			}else {//검색
 				sql +=" where jnum>all("+jnum+") and gocolor like '%"+keyword+"%'";						
 			}
@@ -48,14 +48,14 @@ public class InventoryDao {
 	}
 	
 	
-	public ArrayList<InventoryVo> list(int startRow, int endRow, int jnum,String level){//페이징처리,검색
+	public ArrayList<InventoryVo> list(int startRow, int endRow, int jnum,int level){//페이징처리,검색
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
 			String sql="";
-			if(level.equals("0")) {		
+			if(level==0) {		
 				 sql="select * from" + 
 						"	(" + 
 						"		select aa.*,rownum rnum from" +
@@ -64,7 +64,7 @@ public class InventoryDao {
 						"		order by jnum desc" +
 						"		)aa" + 
 						"	)where rnum>=? and rnum<=?";
-			}else if(level.equals("1")) {
+			}else if(level==1) {
 				sql="select * from" + 
 						"	(" + 
 						"		select aa.*,rownum rnum from" +
@@ -73,7 +73,7 @@ public class InventoryDao {
 						"		order by goprice desc" +
 						"		)aa" + 
 						"	)where rnum>=? and rnum<=?";
-			}else if(level.equals("2")) {
+			}else if(level==2) {
 				sql="select * from" + 
 						"	(" + 
 						"		select aa.*,rownum rnum from" +

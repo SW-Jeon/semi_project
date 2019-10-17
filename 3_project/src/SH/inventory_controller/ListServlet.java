@@ -20,7 +20,8 @@ public class ListServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		String spageNum=req.getParameter("pageNum");
 		int jnum=Integer.parseInt(req.getParameter("jnum"));
-		String level=req.getParameter("level");
+		int level=Integer.parseInt(req.getParameter("level"));
+		System.out.println(req.getParameter("level"));
 		int pageNum=1;
 		int field=0;
 		String keyword=null;
