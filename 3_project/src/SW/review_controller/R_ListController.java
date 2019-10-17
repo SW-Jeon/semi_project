@@ -45,7 +45,7 @@ public class R_ListController extends HttpServlet {
 		req.setAttribute("field", field);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main", "/SW_pro/QnAlist.jsp");
+		req.setAttribute("main", "/SW_review/R_List.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}

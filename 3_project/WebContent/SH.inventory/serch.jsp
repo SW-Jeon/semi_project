@@ -11,13 +11,20 @@
 	function aa(gocode,index) {
 	var 	id=document.getElementById(index);
 	var bname=id.innerText;
-	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+bname;
+	location.href="${cp}/inventory/detail?gocode="+gocode+"&index="+encodeURI(bname);
 	}
 </script>
 <body>
 <div id="main">
 <h1>검색창</h1>
-	<form action="${cp }/inventory/serch" method="post"> 
+<div id="jj" style="text-align: right;">
+<a href="${cp }/inventory/serch?pageNum=${pageNum}&jnum=${jnum }&keyword=${keyword }&level=0">최신순</a>
+&nbsp;
+<a href="${cp }/inventory/serch?pageNum=${pageNum}&jnum=${jnum }&keyword=${keyword }&level=1">가격높은순</a>
+&nbsp;
+<a href="${cp }/inventory/serch?pageNum=${pageNum}&jnum=${jnum }&keyword=${keyword }&level=2">가격낮은순</a>
+</div>
+	<form action="${cp }/inventory/serch?level=${level}" method="post"> 
 		<select name="jnum">
 				<option value="0"
 				<c:if test="${jnum==0}">selected</c:if>>전체</option>
@@ -326,12 +333,12 @@
 	<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 		<c:choose>
 			<c:when test="${pageNum==i }"><%--현재페이지 색 다르게 표시하기 --%>
-				<a href="${cp }/inventory/serch?pageNum=${i}&jnum=${jnum}&keyword=${keyword}">
+				<a href="${cp }/inventory/serch?pageNum=${i}&jnum=${jnum}&keyword=${keyword}&level=${level}">
 				<span style="color:red;">[${i }]</span>
 				</a>
 			</c:when>
 			<c:otherwise>
-				<a href="${cp }/inventory/serch?pageNum=${i}&jnum=${jnum}&keyword=${keyword}">
+				<a href="${cp }/inventory/serch?pageNum=${i}&jnum=${jnum}&keyword=${keyword}&level=${level}">
 				<span style="color:#555;">[${i }]</span>
 				</a>
 			</c:otherwise>

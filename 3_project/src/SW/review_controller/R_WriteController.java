@@ -1,6 +1,5 @@
 package SW.review_controller;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -12,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import JB.Purchase_vo.PurchaseVo;
+import JB.dao.PurchaseDao;
+import SH.Inventory_Dao.InventoryDao;
+import SH.Inventory_Vo.InventoryVo;
 import SW_dao.AsWriteDao;
 import SW_vo.AsWriteVo;
 
@@ -35,19 +38,25 @@ public class R_WriteController extends HttpServlet {
 		String astitle=mr.getParameter("astitle");
 		String ascontent=mr.getParameter("ascontent");
 		String mid=mr.getParameter("mid");
-		String gocode=mr.getParameter("gocode");
-		int purnum=Integer.parseInt(mr.getParameter("purnum"));
-		int ashit=Integer.parseInt(mr.getParameter("ashit"));
+		String goCode=req.getParameter("getCode"); //상품코드 받음
+		int purnum=Integer.parseInt(req.getParameter("purnum")); //결제번호 받음
 		
 		//전송된 파일정보 DB에 저장하기
 		AsWriteDao dao=AsWriteDao.getInstance();
-		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, gocode, purnum, ashit);
+		InventoryDao dao1=new InventoryDao();
+		PurchaseDao dao2=PurchaseDao.getPurchasedao();
+		InventoryVo ivo=dao1.getInfo(goCode);
+		PurchaseVo pvo=dao2.getInfo(purnum);
+		
+		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, goCode, purnum, 0);
 		int n=dao.insert(vo);
 		if(n>0){
 			req.setAttribute("msg", "success");
 		}else {
 			req.setAttribute("msg", "fail");
 		}
+		req.setAttribute("ivo", ivo);
+		req.setAttribute("pvo",pvo );
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("main","/SW_pro/result.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");

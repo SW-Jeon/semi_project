@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="${cp }/css/m.css">
 <div id="wrap">
 	<jsp:include page="${top }" />
-	<jsp:include page="${content }" />
+	<jsp:include page="${content }" /><!-- 이미지뿌릴.... -->
 	<jsp:include page="${right }" />
 	<jsp:include page="${bottom }" />
 </div>
