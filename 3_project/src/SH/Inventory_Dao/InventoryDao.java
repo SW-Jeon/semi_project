@@ -138,7 +138,7 @@ public class InventoryDao {
 		}
 	}
 	
-	public ArrayList<InventoryVo>  serchList(int startRow, int endRow,int jnum, String keyword){//검색한거
+	public ArrayList<InventoryVo>  serchList(int startRow, int endRow,int jnum, String keyword,int level){//검색한거
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -155,16 +155,60 @@ public class InventoryDao {
 					" order by jnum desc" + 
 					")aa" + 
 					")where rnum>=? and rnum<=?";
-			}else {
-				sql="select * from" + 
-						"(" + 
-						"select aa.*,rownum rnum from" + 
-						"(" + 
-						"select * from inventory" + 
-						" where jnum>all(" + jnum + ") and gocolor like'%"+keyword+"%'" + 
-						" order by jnum desc" + 
-						")aa" + 
-						")where rnum>=? and rnum<=?";
+							if(level==1) {
+								sql ="select * from" + 
+										"(" + 
+										"select aa.*,rownum rnum from" + 
+										"(" + 
+										"select * from inventory" + 
+										" where jnum="+jnum+" and gocolor like'%"+keyword+"%'" + 
+										" order by goprice desc" + 
+										")aa" + 
+										")where rnum>=? and rnum<=?";
+							}else if(level==2) {
+								sql ="select * from" + 
+										"(" + 
+										"select aa.*,rownum rnum from" + 
+										"(" + 
+										"select * from inventory" + 
+										" where jnum="+jnum+" and gocolor like'%"+keyword+"%'" + 
+										" order by goprice asc" + 
+										")aa" + 
+										")where rnum>=? and rnum<=?";
+							}
+					}else {
+						if(jnum==0&&level==0) {
+							sql="select * from" + 
+								"(" + 
+								"select aa.*,rownum rnum from" + 
+								"(" + 
+								"select * from inventory" + 
+								" where jnum>all(" + jnum + ") and gocolor like'%"+keyword+"%'" + 
+								" order by jnum desc" + 
+								")aa" + 
+								")where rnum>=? and rnum<=?";
+						
+						}else if(jnum==0&&level==1) {
+							sql="select * from" + 
+									"(" + 
+									"select aa.*,rownum rnum from" + 
+									"(" + 
+									"select * from inventory" + 
+									" where jnum>all(" + jnum + ") and gocolor like'%"+keyword+"%'" + 
+									" order by goprice desc" + 
+									")aa" + 
+									")where rnum>=? and rnum<=?";
+						}else if(jnum==0&&level==2) {
+							sql ="select * from" + 
+									"(" + 
+									"select aa.*,rownum rnum from" + 
+									"(" + 
+									"select * from inventory" + 
+									" where jnum>all(" + jnum + ") and gocolor like'%"+keyword+"%'" + 
+									" order by goprice asc" + 
+									")aa" + 
+									")where rnum>=? and rnum<=?";
+						}
 			}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1,startRow);

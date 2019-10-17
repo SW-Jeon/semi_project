@@ -10,12 +10,14 @@
 </script>
 <div id="main">
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
-<div id="neck_wrap" >
+<div id="jj" style="text-align: right;">
 <a href="${cp }/inventory/list?jnum=200&level=0">최신순</a>
 &nbsp;
 <a href="${cp }/inventory/list?jnum=200&level=1">가격높은순</a>
 &nbsp;
 <a href="${cp }/inventory/list?jnum=200&level=2">가격낮은순</a>
+</div>
+<div id="neck_wrap" >
 	<c:forEach var="vo" items="${list }" varStatus="vs">
 		<div id="n">
 			<a href="javascript:aa('${vo.gocode}',${vs.index })" ><!-- 스크립트로 넘겨서 페이지 이동 -->

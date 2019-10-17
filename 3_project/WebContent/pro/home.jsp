@@ -2,7 +2,9 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--  home.jsp -->
 <div id="content">
-<br>
+<div id="home_text" style="color: red; font-style: inherit; text-align: left;" >
+###히트상품###
+</div>
 <!-- 이미지 뿌려야함 -->	
 <script type="text/javascript">
 	function aa(gocode,index) {
@@ -18,16 +20,16 @@
 			<a href="javascript:aa('${vo.gocode}',${vs.index })" >
 				<c:choose>
 					<c:when test="${vo.jnum==100 }">
-						<img src="${cp }/acc/ear/${vo.goimg }"  border=0  width="250px" height="250px" >
+						<img src="${cp }/acc/ear/${vo.goimg }"  border=0  width="280px" height="280px" >
 					</c:when>
 					<c:when test="${vo.jnum==200 }">
-						<img src="${cp }/acc/neck/${vo.goimg }"  border=0  width="250px" height="250px" >
+						<img src="${cp }/acc/neck/${vo.goimg }"  border=0  width="280px" height="280px" >
 					</c:when>
 					<c:when test="${vo.jnum==300 }">
-						<img src="${cp }/acc/watch/${vo.goimg }"  border=0  width="250px" height="250px" >
+						<img src="${cp }/acc/watch/${vo.goimg }"  border=0  width="280px" height="280px" >
 					</c:when>
 					<c:when test="${vo.jnum==400 }">
-						<img src="${cp }/acc/brace/${vo.goimg }"  border=0  width="250px" height="250px" >
+						<img src="${cp }/acc/brace/${vo.goimg }"  border=0  width="280px" height="280px" >
 					</c:when>
 				</c:choose>	
 					<div id="price">

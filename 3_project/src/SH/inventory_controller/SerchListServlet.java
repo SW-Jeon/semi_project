@@ -17,18 +17,22 @@ public class SerchListServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String spageNum=req.getParameter("pageNum");
-		int jnum=Integer.parseInt(req.getParameter("jnum"));
+		String jjnum=req.getParameter("jnum");
+		int jnum=0;
+		if(jjnum!=null && !jjnum.equals("")) {
+			jnum=Integer.parseInt(jjnum);
+		}
+		String keyword=req.getParameter("keyword");
 		int level=Integer.parseInt(req.getParameter("level"));
 		int pageNum=1;
-		String keyword=req.getParameter("keyword");
-		if(spageNum!=null) {
+		String spageNum=req.getParameter("pageNum");
+		if(spageNum!=null && !spageNum.equals("")) {
 			pageNum=Integer.parseInt(spageNum);
 		}
 		int endRow=pageNum*6;
 		int startRow=endRow-5;
 		InventoryDao dao=new InventoryDao();
-		ArrayList<InventoryVo> list=dao.serchList(startRow, endRow, jnum, keyword); //아직 dao에 level추가 안함
+		ArrayList<InventoryVo> list=dao.serchList(startRow, endRow, jnum, keyword,level); //아직 dao에 level추가 안함
 		int pageCount=(int)Math.ceil(dao.getCount(jnum,keyword,level)/6.0);
 		//시작페이지 번호
 		int startPageNum=((pageNum-1)/10*10)+1;
@@ -44,8 +48,9 @@ public class SerchListServlet extends HttpServlet{
 		req.setAttribute("pageNum", pageNum);
 		req.setAttribute("keyword", keyword);
 		req.setAttribute("jnum", jnum);
+		req.setAttribute("level", level);
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");	
+		req.setAttribute("bottom", "/pro/footer.jsp");
 		switch(jnum) {
 		case(0) : req.setAttribute("main", "/SH.inventory/serch.jsp"); break;
 		case(100) : req.setAttribute("main", "/SH.inventory/serch.jsp"); break;

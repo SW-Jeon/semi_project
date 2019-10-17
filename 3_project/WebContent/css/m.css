@@ -160,21 +160,25 @@ table{margin:auto;}
 
 #brace_wrap{ margin:0px auto;}
 #price{text-align: center;}
-#brace_wrap #b{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; margin-right: 20px; margin-left: 140px; }
+#brace_wrap #b{width:400px; height:400px;  float: left; margin-top:130px;
+padding:20px; margin-bottom:100px ; margin-right: 20px; margin-left: 120px; }
 img { display: block; margin: 0px auto; }
-#page{clear: both; float: left;   margin-left: 550px;}
+
+#page{clear: both; float: left;   margin-left: 800px; margin-top: 130px;}
+
 #watch_wrap{ margin:0px auto; }
-#w{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+#w{width:400px; height:400px;  float: left; margin-top:130px;
+padding:20px; margin-bottom:100px ; marmargin-right: 20px; margin-left: 120px; }
+
 #neck_wrap{ margin:0px auto; }
-#n{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+#n{width:400px; height:400px;  float: left; margin-top:130px;
+padding:20px; margin-bottom:100px ; marmargin-right: 20px; margin-left: 120px; }
+
 #err_wrap{ margin:0px auto; }
-#e{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+#e{width:400px; height:400px;  float: left; margin-top:130px;
+padding:20px; margin-bottom:100px ; marmargin-right: 20px; margin-left: 120px; }
 
 #mainlist_wrap{margin:0px auto;}
 #mainlist_wrap #mainimg{width:280px; height:280px;  float: left; 
-padding:10px; margin-bottom:10px ; marmargin-right: 10px;}
+padding:10px; margin-bottom:10px ; marmargin-right: 20px;  margin-left: 90px; }
 

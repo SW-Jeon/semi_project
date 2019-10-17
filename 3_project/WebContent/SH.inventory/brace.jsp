@@ -9,12 +9,14 @@
 	}
 </script>
 <div id="main" >
-<div id="brace_wrap">
+<div id="jj" style="text-align: right;">
 <a href="${cp }/inventory/list?jnum=400&level=0">최신순</a>
 &nbsp;
 <a href="${cp }/inventory/list?jnum=400&level=1">가격높은순</a>
 &nbsp;
 <a href="${cp }/inventory/list?jnum=400&level=2">가격낮은순</a>
+</div>
+<div id="brace_wrap">
 	<c:set var="cp" value="${pageContext.request.contextPath }"/>
 		<c:forEach var="vo" items="${list }" varStatus="vs">
 			<div id="b">
