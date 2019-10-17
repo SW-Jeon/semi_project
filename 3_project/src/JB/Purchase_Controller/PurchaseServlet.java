@@ -5,12 +5,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import KH.MEM_Vo.Mem_Vo;
+import KH.Mem_Dao.Mem_Dao;
 
 @WebServlet("/purchase/insert")
 public class PurchaseServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		HttpSession session=req.getSession();
+		String mid=(String)session.getAttribute("mid");//유저 아이디
 		String ordernum=req.getParameter("ordernum");
 		String msg=req.getParameter("msg"); //배송메시지
 		String buyway=req.getParameter("buyway"); // 결제방식(카드,무통장입금)
@@ -28,12 +34,9 @@ public class PurchaseServlet extends HttpServlet{
 		String goImg=req.getParameter("goImg");//이미지명 받음
 		String orderamount=req.getParameter("orderamount");//주문수량 받음
 		String allamount=req.getParameter("allamount"); //천단위 콤마붙은 가격 문자열값 받음
-		//아래 추가작업
-		//기훈이가 작업한 memvo에서 getInfo를 requestScope에 담아야함..
-		//기훈이 dao도 반영해야함..
-		//ex) MemDao dao=MemDao.getMemDao();
-		//MemVo mvo=dao.getInfo(mid); --> mid 에 해당하는 회원의 정보를 담은 vo 필요
-		//req.setAttribute("mvo",mvo);
+		Mem_Dao dao=Mem_Dao.getMem_Dao();
+		Mem_Vo vo=dao.select(mid);
+		
 		req.setAttribute("ordernum", ordernum); //주문번호 보냄
 		req.setAttribute("msg", msg);
 		req.setAttribute("buyway", buyway);
@@ -43,6 +46,7 @@ public class PurchaseServlet extends HttpServlet{
 		req.setAttribute("orderprice", orderprice);
 		req.setAttribute("allamount", allamount);
 		req.setAttribute("goName", goName);
+		req.setAttribute("mvo", vo);
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.setAttribute("main", "/junbin/purchase.jsp");

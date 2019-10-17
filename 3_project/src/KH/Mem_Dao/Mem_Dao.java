@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import KH.MEM_Vo.Mem_Vo;
 import javafx.geometry.VPos;
@@ -117,7 +118,7 @@ public class Mem_Dao {
 				String maddr = rs.getString("maddr");
 				String mphone = rs.getString("mphone");
 				String mgen = rs.getString("mgen");
-				Mem_Vo vo = new Mem_Vo(mid, mname, mpwd, memail, maddr, mphone, mgen, 0);
+				Mem_Vo vo = new Mem_Vo(mid, mname, mpwd, memail, maddr, mphone, mgen, 1);
 				return vo;
 			}
 			return null;
@@ -136,4 +137,34 @@ public class Mem_Dao {
 			}
 		}
 	}
+	//회원탈퇴(update)
+	public int updateDel(String mid) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="update mem set mdelup=? where mid=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, 2);
+			pstmt.setString(2, mid);
+			return pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JdbcUtil.close(con, pstmt, null);
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

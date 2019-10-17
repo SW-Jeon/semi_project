@@ -3,7 +3,7 @@
 <!-- header.jsp -->
 <div id="header">
 	<div id="logo">
-		<a href="${cp }/pro/home"><img src="../images/HS.png" style="height: 200px; width: 200px;"></a>
+		<a href="${cp }/pro/home"><img src="${cp}/images/HS.png" style="height: 200px; width: 200px;"></a>
 	</div>
 	<div id="gnb">
 		<ul>
@@ -18,7 +18,8 @@
 			</c:when>
     		<c:otherwise>      <%--로그인 한 경우 --%>		
 				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_write/Wlist'">회원문의</button></li>
-				<li><button type="button" class="navyBtn" onClick="location.href='${cp } '">로그아웃</button></li>
+				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/user/mypage'">마이페이지</button></li>
+				<li><button type="button" class="navyBtn" onClick="location.href='${cp } '"><span style="color:red;font-weight: bold">로그아웃</span></button></li>
             </c:otherwise>
        	</c:choose>
 		</ul>

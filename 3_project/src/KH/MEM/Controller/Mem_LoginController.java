@@ -17,11 +17,19 @@ public class Mem_LoginController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String mid=req.getParameter("mid");
+		String islogin=req.getParameter("islogin"); //결제완료후 get방식으로 islogin 파라미터 넘겨줌
+		if(islogin!=null) {
+			req.setAttribute("top", "/pro/header.jsp");
+			req.setAttribute("main","/pro/home.jsp");
+			req.setAttribute("bottom", "/pro/footer.jsp");
+			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+		}else {
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("content", "/pro/home.jsp");
 		req.setAttribute("right", "/pro/right.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/index.jsp").forward(req, resp);
+		}
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,6 +40,7 @@ public class Mem_LoginController extends HttpServlet{
 		if(result) {
 			HttpSession session=req.getSession();	//세션객체 얻어오기
 			session.setAttribute("mid",mid);
+			session.setAttribute("ismain", "ok"); //홈컨트롤러로 이동할시 세션에 ismain 값을 지정
 			req.setAttribute("top", "/pro/header.jsp");
 			req.setAttribute("main","/pro/home.jsp");
 			req.setAttribute("bottom", "/pro/footer.jsp");
