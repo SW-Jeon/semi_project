@@ -44,19 +44,19 @@
 <table border="1" width="600">
 	<tr>
 		<th>* 이름</th>
-		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->이준빈</td>
+		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->${mvo.mname}</td>
 	</tr>
 	<tr>
 		<th>* 주소</th>
-		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->서울 마포구</td>
+		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->${mvo.maddr}</td>
 	</tr>
 	<tr>
 		<th>* 연락처</th>
-		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->010-1111-1234</td>
+		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->${mvo.mphone}</td>
 	</tr>
 	<tr>
 		<th>* 이메일</th>
-		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->test@naver.com</td>
+		<td><!-- 기훈이가 해야됨(membervo mvo 필요) -->${mvo.memail}</td>
 	</tr>
 	<tr>
 		<th>배송메시지</th>
@@ -110,7 +110,7 @@
 	<span id="cprice" style="color:red;font-size:30px;font-family:sans-serif;"></span>
 	<br>
 		<input type="hidden" id="allamount" name="allamount" value="">
-		<input type="hidden" name="ordernum" value="${vo.ordernum}">
+		<input type="hidden" name="ordernum" value="${ordernum}">
 		<input type="hidden" name="name" value="${name}">
 		<input type="hidden" name="goImg" value="${goImg}">
 		<input type="hidden" name="goName" value="${goName}">

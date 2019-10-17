@@ -145,6 +145,33 @@
 	color: white;
 }
 
+
+
+
+#mypageLeft{
+	width : 20%;
+	height : 80%;
+	border: 1px solid red;
+}
+#mypageLeft ul li button:hover {
+	background-color: #4CAF50;
+	color: white;
+}
+#mypageLeft ul li button {
+	width: 90%;
+	height: 50px;
+	background-color: white;
+	color: black;
+	border: 0px;
+}
+
+#mypageLeft ul li a {
+	text-decoration: none;
+}
+#mypageLeft ul{
+	
+}
+
 .tag{text-align: left;font-size:13px;}
 a{text-decoration: none;color:gray;}
 #result{width:450px;border:1px solid gray;height:100px;padding:1px;
@@ -160,17 +187,25 @@ table{margin:auto;}
 
 #brace_wrap{ margin:0px auto;}
 #price{text-align: center;}
-#brace_wrap #b{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; margin-right: 20px; margin-left: 140px; }
+#brace_wrap #b{width:400px; height:400px;  float: left; margin-top:130px;
+padding:20px; margin-bottom:100px ; margin-right: 20px; margin-left: 120px; }
 img { display: block; margin: 0px auto; }
-#page{clear: both; float: left;   margin-left: 550px;}
-#watch_wrap{ margin:0px auto;  background-color: black;}
-#w{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
-#neck_wrap{ margin:0px auto;  background-color: black;}
-#n{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
-#err_wrap{ margin:0px auto;  background-color: black;}
-#e{width:400px; height:400px;  float: left; 
-padding:20px; margin-bottom:50px ; marmargin-right: 20px; margin-left: 140px; }
+
+#page{clear: both; float: left;   margin-left: 800px; margin-top: 130px;}
+
+#watch_wrap{ margin:0px auto; }
+#w{width:400px; height:400px;  float: left; margin-top:130px;
+padding:20px; margin-bottom:100px ; marmargin-right: 20px; margin-left: 120px; }
+
+#neck_wrap{ margin:0px auto; }
+#n{width:400px; height:400px;  float: left; margin-top:130px;
+padding:20px; margin-bottom:100px ; marmargin-right: 20px; margin-left: 120px; }
+
+#err_wrap{ margin:0px auto; }
+#e{width:400px; height:400px;  float: left; margin-top:130px;
+padding:20px; margin-bottom:100px ; marmargin-right: 20px; margin-left: 120px; }
+
+#mainlist_wrap{margin:0px auto;}
+#mainlist_wrap #mainimg{width:280px; height:280px;  float: left; 
+padding:10px; margin-bottom:10px ; marmargin-right: 20px;  margin-left: 90px; }
 

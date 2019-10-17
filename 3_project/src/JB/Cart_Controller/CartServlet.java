@@ -9,7 +9,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import JB.Cart_Vo.CartVo;
+import JB.dao.CartDao;
 import SH.Inventory_Dao.InventoryDao;
 import SH.Inventory_Vo.InventoryVo;
 
@@ -19,6 +22,8 @@ public class CartServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		HttpSession session=req.getSession();
+		String mid=(String)session.getAttribute("mid"); //로그인 아이디 얻어옴(세션스코프)
 		String changeImg="";
 		int jNum=Integer.parseInt(req.getParameter("jNum"));
 		String goImg=req.getParameter("goImg");
@@ -30,23 +35,10 @@ public class CartServlet extends HttpServlet{
 			case(300): changeImg=req.getContextPath()+"/acc/brace/"+goImg; break;
 			case(400): changeImg=req.getContextPath()+"/acc/watch/"+goImg; break;
 		}
-		//Cookie cook1=new Cookie(goCode, ""); //코드쿠키에 넣어줌
-		//cook1.setPath("/");
-		//cook1.setMaxAge(0); //1시간유지
-		String reName=goCode+"."+goImg;
-		Cookie cook2=new Cookie(goCode, changeImg); //이미지경로 쿠키 넣어줌
-		cook2.setPath("/");
-		cook2.setMaxAge(60*10); //1시간유지
-		//resp.addCookie(cook1);
-		resp.addCookie(cook2);
-		//System.out.println(goCode+"."+goImg);
-		InventoryDao dao=new InventoryDao();
-		InventoryVo vo=dao.detail(goCode);
-		Cookie[] cookies=req.getCookies();
-		req.setAttribute("name", name); //물건한글이름
-		req.setAttribute("vo", vo);
-		req.setAttribute("cookies", cookies);
-		req.getRequestDispatcher("/junbin/cartResult.jsp").forward(req, resp);
+		CartDao dao=CartDao.getInstance();
+		CartVo vo=new CartVo(0, name, changeImg, mid);
+		dao.insert(vo); //장바구니 DB에 값 넣기
+		resp.sendRedirect(req.getContextPath()+"/junbin/successCartResult.jsp");
 	}
 }
 
