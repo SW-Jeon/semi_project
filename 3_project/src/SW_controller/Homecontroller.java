@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import SH.Inventory_Dao.InventoryDao;
 import SH.Inventory_Vo.InventoryVo;
 
-
 @WebServlet("/pro/home")
 public class Homecontroller extends HttpServlet {
 	@Override

@@ -7,12 +7,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import JB.Purchase_vo.PurchaseVo;
 import JB.dao.PurchaseDao;
+import KH.MEM_Vo.Mem_Vo;
+import KH.Mem_Dao.Mem_Dao;
 import SH.Inventory_Dao.InventoryDao;
 import SH.Inventory_Vo.InventoryVo;
 import SW_dao.AsWriteDao;
@@ -38,17 +41,22 @@ public class R_WriteController extends HttpServlet {
 		String astitle=mr.getParameter("astitle");
 		String ascontent=mr.getParameter("ascontent");
 		String mid=mr.getParameter("mid");
-		String goCode=req.getParameter("getCode"); //상품코드 받음
+		
+		String gocode=req.getParameter("gocode"); //상품코드 받음
 		int purnum=Integer.parseInt(req.getParameter("purnum")); //결제번호 받음
+		System.out.println(gocode +"," +purnum);
 		
 		//전송된 파일정보 DB에 저장하기
 		AsWriteDao dao=AsWriteDao.getInstance();
-		InventoryDao dao1=new InventoryDao();
-		PurchaseDao dao2=PurchaseDao.getPurchasedao();
-		InventoryVo ivo=dao1.getInfo(goCode);
-		PurchaseVo pvo=dao2.getInfo(purnum);
 		
-		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, goCode, purnum, 0);
+		//참조키값들 조회
+		InventoryDao dao1=new InventoryDao();
+		InventoryVo ivo=dao1.getInfo(gocode);
+		
+		PurchaseDao dao2=PurchaseDao.getPurchasedao();
+		PurchaseVo pvo=dao2.getMid(mid);
+		
+		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, gocode, purnum, 0);
 		int n=dao.insert(vo);
 		if(n>0){
 			req.setAttribute("msg", "success");
