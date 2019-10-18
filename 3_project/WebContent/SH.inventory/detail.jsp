@@ -8,7 +8,7 @@
 <title>/SH.inventory/detail.jsp</title>
 <style>
 * {box-sizing: border-box;}
-#wrab{margin: 0px auto; }
+#wrab{width: 100%; height: 900px; margin-left: 200px; }
 #detail{ float: left; width: 500px; height: 600px; margin-left: 100px; border: 1px solid black; }
 .img-zoom-container {
   position: relative;
@@ -30,6 +30,33 @@
   height: 300px;
 }
 .img-zoom-box{float: left;}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
 </style>
 
 <script>
@@ -162,12 +189,12 @@ function change () {
 			<h3>배송방법: 택배</h3><br>
 			색상:
 			<select name="color">
-			<option value="${vo.gocolor }">${vo.gocolor }</option>	
+				<option value="${vo.gocolor }">${vo.gocolor }</option>		
 			</select>
 			<br>
 			수량 : <input type=hidden name="sell_price" value="${vo.goprice }">
 			<input type="text" name="amount" value="1" size="3" onchange="change();">
-			<input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
+			<input type="button" value=" + " onclick="add();" class="button1"><input type="button" value=" - " onclick="del();" class="button1"><br>
 			금액 : <input type="text" name="sum" size="11" readonly>원<br>
 			<br>
 			<!-- 아래추가 -->
@@ -175,27 +202,38 @@ function change () {
 			<input type="hidden" name="jNum" value="${vo.jnum}">
 			<input type="hidden" name="goName" value="${name}">
 			<input type="hidden" name="getCode" value="${vo.gocode}">
-			<input type="button" value="장바구니" onclick="CartGo()">&nbsp;<input type="submit" value="구매하기" >
+			<input type="button" value="장바구니" onclick="CartGo()" class="button1" >&nbsp;<input type="submit" value="구매하기"  class="button1" >
 			</form>
 		</div>
 </div>
 <script>
 imageZoom("myimage", "myresult");
+
 function CartGo() {
 	var mid='${sessionScope.mid}';
+	var a=document.form.amount;
 	if(mid==''){
 		alert('로그인을 먼저 해주세요!');
-	}else{
-		alert('장바구니 등록 완료!');
-		location.href="${cp}/cart/add?goImg=${vo.goimg}&jNum=${vo.jnum}&getCode=${vo.gocode}&name=${name}";
+	}else{				
+		if(a.value>${vo.pamount}){
+			alert('재고가 부족합니다! 남은수량:${vo.pamount}');	
+		}else{
+			alert('장바구니 등록 완료!');
+			location.href="${cp}/cart/add?goImg=${vo.goimg}&jNum=${vo.jnum}&getCode=${vo.gocode}&name=${name}";
+		}
 	}
 }
 function checkLogin() {
 	var mid='${sessionScope.mid}';
+	var a=document.form.amount;
 	if(mid==''){
 		alert('로그인을 먼저 해주세요!');
-		return;
+		return false;
 	}
+	if(a.value>${vo.pamount}){
+			alert('재고가 부족합니다! 남은수량:${vo.pamount}');
+			return false;
+		}
 	return true;
 }
 </script>

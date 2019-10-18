@@ -20,7 +20,10 @@ public class UpdateServlet extends HttpServlet {
 		InfoDao dao=new InfoDao();
 		Info_Vo vo=dao.detail(infonum);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/SH.info/infoupdate.jsp").forward(req, resp);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SH.info/infoupdate.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);	
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,6 +38,7 @@ public class UpdateServlet extends HttpServlet {
 			resp.sendRedirect(req.getContextPath()+"/info/list");
 		}else {
 			req.setAttribute("code", "fail");
+			
 			req.getRequestDispatcher("/SH.info/inforesult.jsp").forward(req, resp);
 		}
 		
