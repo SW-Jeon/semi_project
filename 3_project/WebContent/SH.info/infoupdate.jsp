@@ -7,6 +7,7 @@
 <title>/SH.info/infoupdate.jsp</title>
 </head>
 <body>
+<div id="main">
 <form action="${cp }/info/update" method="post">
 	<table>
 		<tr>
@@ -22,7 +23,7 @@
 			<td><textarea rows="30" cols="100" name="infocontent"> ${vo.infocontent }</textarea></td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="2" style="text-align: right; ">
 				<input type="submit" value="수정" >
 				<input type="reset" value="되돌리기" >
 				<a href="${cp }/info/list">목록으로</a>
@@ -30,5 +31,6 @@
 		</tr>
 	</table>
 </form>
+</div>
 </body>
 </html>

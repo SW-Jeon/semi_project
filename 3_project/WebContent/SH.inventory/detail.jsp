@@ -162,7 +162,7 @@ function change () {
 			<h3>배송방법: 택배</h3><br>
 			색상:
 			<select name="color">
-			<option value="${vo.gocolor }">${vo.gocolor }</option>	
+				<option value="${vo.gocolor }">${vo.gocolor }</option>		
 			</select>
 			<br>
 			수량 : <input type=hidden name="sell_price" value="${vo.goprice }">
@@ -181,21 +181,32 @@ function change () {
 </div>
 <script>
 imageZoom("myimage", "myresult");
+
 function CartGo() {
 	var mid='${sessionScope.mid}';
+	var a=document.form.amount;
 	if(mid==''){
 		alert('로그인을 먼저 해주세요!');
-	}else{
-		alert('장바구니 등록 완료!');
-		location.href="${cp}/cart/add?goImg=${vo.goimg}&jNum=${vo.jnum}&getCode=${vo.gocode}&name=${name}";
+	}else{				
+		if(a.value>${vo.pamount}){
+			alert('재고가 부족합니다! 남은수량:${vo.pamount}');	
+		}else{
+			alert('장바구니 등록 완료!');
+			location.href="${cp}/cart/add?goImg=${vo.goimg}&jNum=${vo.jnum}&getCode=${vo.gocode}&name=${name}";
+		}
 	}
 }
 function checkLogin() {
 	var mid='${sessionScope.mid}';
+	var a=document.form.amount;
 	if(mid==''){
 		alert('로그인을 먼저 해주세요!');
-		return;
+		return false;
 	}
+	if(a.value>${vo.pamount}){
+			alert('재고가 부족합니다! 남은수량:${vo.pamount}');
+			return false;
+		}
 	return true;
 }
 </script>

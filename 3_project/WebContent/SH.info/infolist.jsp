@@ -8,16 +8,16 @@
 <title>/SH.info/infolist.jsp</title>
 <style>
 ul{list-style:none; }
-.head{width: 900px; height: 40px; float: left;}
-.body{width: 900px; height: 40px; float: left;}
-.no{width:40px; height: 40px; float: left; text-align: center;}
-.head_title{width: 800px; height: 40px; float: left; text-align: center;}
-.num{width:40px; height: 40px; float: left; text-align: center; clear: both; }
-.body_title{width: 800px; height: 40px; float: left; }
+.head{width:100%; height: 40px; float: left;}
+.body{width: 100%; height: 40px; float: left;}
+.no{width:10%; height: 40px; float: left; text-align: center;}
+.head_title{width: 90%; height: 40px; float: left; text-align: center;}
+.num{width:10%; height: 40px; float: left; text-align: center; clear: both; }
+.body_title{width: 90%; height: 40px; float: left; }
 .insert{width:80px; height: 40px; float: left; text-align: center; clear: both; }
 .main{width:80px; height: 40px; float: left; text-align: center;}
-.button{width: 900px; height: 40px; float: left;}
-#menu_right{margin-left: 500px; float: left; clear: both;}
+.button{width: 100%; height: 40px; float: left;}
+#menu_right{width:100%; float: left; clear: both; margin-left: 1600px;}
 </style>
 </head>
 <body>
@@ -30,8 +30,10 @@ ul{list-style:none; }
 	</ul>
 	<c:forEach var="vo" items="${requestScope.list }">
 		<ul class="body">
-			<li class="num">${vo.infonum}</li>
+			
+			<li class="num">${vo.infonum }</li>
 			<li class="body_title">&nbsp;&nbsp;&nbsp;<a href="${cp }/info/detail?infonum=${vo.infonum}">${vo.infotitle }</a></li>
+			
 		</ul>
 	</c:forEach>
 		<ul class="button">

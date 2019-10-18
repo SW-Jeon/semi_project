@@ -92,20 +92,31 @@ public int getMaxNum() {//가장 큰 글번호 얻어오기
 			JdbcUtil.close(con, pstmt, null);
 		}
 	}
+	
+	
 	public int delete(int infonum) {//삭제
 		Connection con=null;
 		PreparedStatement pstmt=null;
+		PreparedStatement pstmt2=null;
 		try {
 			con=JdbcUtil.getConn();
 			String sql="delete from info where infonum=?";
+
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, infonum);
-			return pstmt.executeUpdate();			
+			pstmt.executeUpdate();
+			String sql2="update info set infonum=infonum-1 where infonum>?";
+			pstmt2=con.prepareStatement(sql2);
+			pstmt2.setInt(1, infonum);
+			pstmt2.executeUpdate();
+
+			return 1;
 		}catch(SQLException se) {
 			System.out.println(se.getMessage());
 			return -1;
 		}finally {
-			JdbcUtil.close(con, pstmt, null);
+			JdbcUtil.close(pstmt2);
+			JdbcUtil.close(con, pstmt, null);		
 		}
 	}
 	public Info_Vo detail(int infonum) {//상세

@@ -18,7 +18,7 @@
 			<td><textarea rows="30" cols="100" readonly="readonly"> ${vo.infocontent }</textarea></td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="2" style="text-align: right;">
 			<c:choose >
 				<c:when test="${sessionScope.mid=='admin'}"><%--운영자로 로그인한 경우 --%>
 					<a href="${cp }/info/delete?infonum=${vo.infonum}">삭제</a>	

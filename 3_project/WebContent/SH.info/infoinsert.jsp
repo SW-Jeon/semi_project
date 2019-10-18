@@ -8,6 +8,7 @@
 <title>/SH.info/infoinsert.jsp</title>
 </head>
 <body>
+<div id="main">
 <h1>글쓰기</h1>
 <form action="<c:url value='/info/insert'/>" method="post">
 	<table>
@@ -27,6 +28,7 @@
 		</tr>
 		
 	</table>
+	</div>
 </form>
 </body>
 </html>
