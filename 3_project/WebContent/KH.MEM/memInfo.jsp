@@ -18,16 +18,42 @@
 
  <hr>
 	<h1>회원 수정</h1>
-	<form action="updateMem.jsp" method="post">
-	아이디: <input type="text" name="mid"><br>
-	패스워드: <input type="password" name="mpwd"><br>
-	이메일: <input type="text" name="memail"><br>
-	<input type="submit" value="회원수정"><br>
+	<form action="${cp }/update.do" method="post">
+	 <table  style="width:20%" >
+	<tr>
+		<th>아이디</th> 
+		<td><input type="text" name="mid"  value="${vo.mid }" readonly="readonly"></td>
+		<tr height="1" bgcolor="#dddddd"><td colspan="2"></td>
+	</tr>
+	<tr>
+		<th>패스워드</th>
+		<td><input type="password" name="mpwd" ></td>
+		<tr height="1" bgcolor="#dddddd"><td colspan="2"></td>
+	<tr>
+		<th>이메일</th>
+		<td><input type="text" name="memail" ></td>
+		<tr height="1" bgcolor="#dddddd"><td colspan="2"></td>
+	</tr>
+	<tr>	
+		<th>주소</th>
+		<td><input type="text" name="maddr" ></td>
+		<tr height="1" bgcolor="#dddddd"><td colspan="2"></td>
+	</tr>
+	<tr>	
+		<th>연락처</th>
+		<td><input type="text" name="mphone" ></td>
+		<tr height="1" bgcolor="#dddddd"><td colspan="2"></td>
+	</tr>
+	<tr>
+		<td><input type="submit" value="회원수정">
+		<input type="reset" value="취소"></td>
+	</tr>	
+	</table>
 	</form>
 
  <hr>
 	<h1>회원 탈퇴</h1>
-	<form action="deleteMem.jsp" method="post">
+	<form action="${cp }/deleteMem" method="post">
 	아이디: <input type="text" name="mid"><br>
 	패스워드: <input type="password" name="mpwd"><br>
 	<input type="submit" value="회원탈퇴"><br>

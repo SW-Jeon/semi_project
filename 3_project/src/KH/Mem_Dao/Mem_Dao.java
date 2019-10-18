@@ -37,7 +37,6 @@ public class Mem_Dao {
 			pstmt.setString(6, vo.getMphone());
 			pstmt.setString(7, vo.getMgen());
 			pstmt.setInt(8, mdelup);
-
 			return pstmt.executeUpdate();
 		} catch (SQLException se) {
 			System.out.println(se.getMessage());
@@ -78,11 +77,14 @@ public class Mem_Dao {
 		PreparedStatement pstmt = null;
 		try {
 			con = JdbcUtil.getConn();
-			String sql = "update mem set mpwd=?, memail=? where mid=?";
+			String sql = "update mem set mpwd=?, memail=?, mphone=?, maddr=? where mid=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, vo.getMpwd());
 			pstmt.setString(2, vo.getMemail());
-			pstmt.setString(3, vo.getMid());
+			pstmt.setString(3, vo.getMphone());
+			pstmt.setString(4, vo.getMaddr());
+			pstmt.setString(5, vo.getMid());
+			
 			return pstmt.executeUpdate();
 		} catch (SQLException se) {
 			System.out.println(se.getMessage());
@@ -99,7 +101,39 @@ public class Mem_Dao {
 			}
 		}
 	}
+	// 회원정보 수정
+		public int update_re(Mem_Vo vo) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			try {
+				con = JdbcUtil.getConn();
+				String sql = "update mem set mname=?, mpwd=?, memail=?, mphone=?, maddr=?, mdelup=? where mid=?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, vo.getMname());
+				pstmt.setString(2, vo.getMpwd());
+				pstmt.setString(3, vo.getMemail());
+				pstmt.setString(4, vo.getMphone());
+				pstmt.setString(5, vo.getMaddr());
+				pstmt.setInt(6, vo.getMdelup());
+				pstmt.setString(7, vo.getMid());
+				return pstmt.executeUpdate();
+			} catch (SQLException se) {
+				System.out.println(se.getMessage());
+				return -1;
+			} finally {
+				try {
+					if (pstmt != null)
+						pstmt.close();
+					if (con != null)
+						con.close();
+				} catch (SQLException se) {
+					System.out.println(se.getMessage());
 
+				}
+			}
+		}
+	
+	
 	// 회원정보 조회
 	public Mem_Vo select(String mid) {
 		Connection con = null;
@@ -118,7 +152,8 @@ public class Mem_Dao {
 				String maddr = rs.getString("maddr");
 				String mphone = rs.getString("mphone");
 				String mgen = rs.getString("mgen");
-				Mem_Vo vo = new Mem_Vo(mid, mname, mpwd, memail, maddr, mphone, mgen, 1);
+				int mdelup=rs.getInt("mdelup");
+				Mem_Vo vo = new Mem_Vo(mid, mname, mpwd, memail, maddr, mphone, mgen, mdelup);
 				return vo;
 			}
 			return null;
