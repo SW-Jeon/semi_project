@@ -34,7 +34,7 @@ public class R_WriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String path=getServletContext().getRealPath("/SW_review/upload");	//업로드할 디렉토리
-		MultipartRequest mr=new MultipartRequest( //인코딩 처리 객체
+		MultipartRequest mr=new MultipartRequest(  //인코딩 처리 객체
 				req, path, 1024*1024*5, "utf-8", new DefaultFileRenamePolicy()
 		);
 		String asimg=mr.getParameter("asimg1");
@@ -43,19 +43,19 @@ public class R_WriteController extends HttpServlet {
 		String mid=mr.getParameter("mid");
 		
 		String gocode=req.getParameter("gocode"); //상품코드 받음
+		
+		//참조키값들 조회
+		InventoryDao dao1=new InventoryDao();
+		InventoryVo ivo=dao1.getInfo(gocode);
+				
+		PurchaseDao dao2=PurchaseDao.getPurchasedao();
+		PurchaseVo pvo=dao2.getMid(mid);
+		
 		int purnum=Integer.parseInt(req.getParameter("purnum")); //결제번호 받음
 		System.out.println(gocode +"," +purnum);
 		
 		//전송된 파일정보 DB에 저장하기
 		AsWriteDao dao=AsWriteDao.getInstance();
-		
-		//참조키값들 조회
-		InventoryDao dao1=new InventoryDao();
-		InventoryVo ivo=dao1.getInfo(gocode);
-		
-		PurchaseDao dao2=PurchaseDao.getPurchasedao();
-		PurchaseVo pvo=dao2.getMid(mid);
-		
 		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, gocode, purnum, 0);
 		int n=dao.insert(vo);
 		if(n>0){
