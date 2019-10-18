@@ -136,8 +136,8 @@ function change () {
 <br>
 <h1><p style="text-align: center; color: midnightblue; font-style: italic; ">상세페이지</p></h1><br>
 <div id="wrab">
-	<div class="img-zoom-box">		 
-		  <div id="myresult" class="img-zoom-result"></div>
+	<div class="img-zoom-box" >		 
+		  <div id="myresult" class="img-zoom-result" ></div>
 		  		<c:choose>
 					<c:when test="${vo.jnum=='100'}">				
 						<c:set var="i"  value="ear"/>

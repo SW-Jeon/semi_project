@@ -163,7 +163,7 @@ public class PurchaseDao {
 			ResultSet rs=null;
 			try {
 				con=JdbcUtil.getConn();
-				String sql="select purnum from purchase where mid=?";
+				String sql="select purnum,mid from purchase where mid=?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, mid);
 				rs=pstmt.executeQuery();
