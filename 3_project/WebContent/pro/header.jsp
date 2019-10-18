@@ -12,13 +12,14 @@
    		<c:choose>
    	 		<c:when test="${empty sessionScope.mid }"> <%--로그인 안한 경우 --%>
    	 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/login.do'">로그인</button></li>
-   	 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/pro/join'">회원가입</button></li>
+   	 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/insert.do'">회원가입</button></li>
 			</c:when>
     		<c:otherwise>      <%--로그인 한 경우 --%>
     			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_review/Rlist'">구매후기</button></li>
 				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_write/Wlist'">회원문의</button></li>
 				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/user/mypage'">마이페이지</button></li>
-			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/user/logout'"><span style="color:red;font-weight: bold">로그아웃</span></button></li>
+				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/user/logout'"><span style="color:red;font-weight: bold">로그아웃</span></button></li>
+
             </c:otherwise>
        	</c:choose>
 		</ul>
@@ -36,5 +37,6 @@
 		</ul>
 		 <hr>
 	</div>
-	
 </div>
+
+
