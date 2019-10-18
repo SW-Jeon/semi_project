@@ -188,11 +188,76 @@ public class PurchaseDao {
 			}
 		}
 	//회원이 결제한 물품 보여주는 메소드
-	/*
-	public ArrayList<PurchaseVo> memList(String mid){
-		
+	public ArrayList<PurchaseVo> buyList(int startRow, int endRow, String mid){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="select * from(" + 
+					"    select aa.*,rownum rnum from" + 
+					"    (" + 
+					"        select p.purnum,d.gocode,p.mid,p.pursumprice,p.purway,p.purdate,p.puramount,p.purstatus,p.puraddr" + 
+					"        from demand d, purchase p" + 
+					"        where d.ordernum=p.ordernum and p.mid=?" + 
+					"        order by purnum desc" + 
+					"    )aa" + 
+					") where rnum>=? and rnum<=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			rs=pstmt.executeQuery();
+			ArrayList<PurchaseVo> list=new ArrayList<PurchaseVo>();
+			while(rs.next()) {
+				int purnum=rs.getInt("purnum");
+				String gocode=rs.getString("gocode");
+				int pursumprice=rs.getInt("pursumprice");
+				String purway=rs.getString("purway");
+				Date purdate=rs.getDate("purdate");
+				int puramount=rs.getInt("puramount");
+				String purstatus=rs.getString("purstatus");
+				String puraddr=rs.getString("puraddr");
+				PurchaseVo vo=new PurchaseVo(purnum, 0, mid, pursumprice, purway, purdate, puramount, purstatus, puraddr, gocode);
+				list.add(vo);
+			}
+			return list;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
 	}
-	*/
+	public int getCount(String mid) {//회원이 구매한 물건 개수
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+		con=JdbcUtil.getConn();
+		String sql="select NVL(count(*),0) as maxnum from purchase where mid=?";
+		pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, mid);
+		rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int infonum=rs.getInt(1);//컬럼순서 
+				return infonum;
+			}else {
+				return 0;
+			}
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
+	}
 }
+
+
+
+
+
+
 
 

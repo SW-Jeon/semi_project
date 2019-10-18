@@ -55,6 +55,7 @@ public class InsertServlet extends HttpServlet{
 			req.setAttribute("jNum", jNum);
 			req.setAttribute("goPrice", goPrice);
 			req.setAttribute("ordernum", ordernum);
+			req.setAttribute("goCode", goCode);
 			req.setAttribute("top", "/pro/header.jsp");
 			req.setAttribute("bottom", "/pro/footer.jsp");
 			req.setAttribute("main", "/junbin/demand.jsp");

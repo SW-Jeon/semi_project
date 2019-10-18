@@ -3,6 +3,7 @@
 	<div id="mypageLeft">
 		<ul>
 			<li><button type="button" class="menuBtn" onClick="location.href='${cp}/go/info'">나의정보내역</button></li>
+			<li><button type="button" class="menuBtn" onClick="location.href='${cp}/go/allbuy'">나의정보내역</button></li>
 			<hr>
 			<li><button type="button" class="menuBtn" onClick="location.href='${cp}'">나의결제내역</button></li>
 			<hr>

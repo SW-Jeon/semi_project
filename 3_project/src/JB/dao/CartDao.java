@@ -21,11 +21,12 @@ public class CartDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="insert into cart values(cart_seq.nextval,?,?,?)";
+			String sql="insert into cart values(cart_seq.nextval,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getCartname());
 			pstmt.setString(2, vo.getCartimg());
-			pstmt.setString(3, vo.getMid());
+			pstmt.setString(3, vo.getGocode());
+			pstmt.setString(4, vo.getMid());
 			pstmt.executeUpdate();
 		}catch(SQLException se) {
 			System.out.println(se.getMessage());
@@ -55,7 +56,7 @@ public class CartDao {
 		ResultSet rs=null;
 		try {
 		con=JdbcUtil.getConn();
-		String sql="select NVL(count(infonum),0) as maxnum from cart where mid=?";
+		String sql="select NVL(count(*),0) as maxnum from cart where mid=?";
 		pstmt=con.prepareStatement(sql);
 		pstmt.setString(1, mid);
 		rs=pstmt.executeQuery();
@@ -97,7 +98,8 @@ public class CartDao {
 				int cartnum=rs.getInt("cartnum");
 				String cartname=rs.getString("cartname");
 				String cartimg=rs.getString("cartimg");
-				CartVo vo=new CartVo(cartnum, cartname, cartimg, mid);
+				String gocode=rs.getString("gocode");
+				CartVo vo=new CartVo(cartnum, cartname, cartimg, gocode, mid);
 				list.add(vo);
 			}
 			return list;

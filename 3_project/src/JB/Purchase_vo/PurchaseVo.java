@@ -12,6 +12,8 @@ public class PurchaseVo {
 	private int puramount; //결제수량
 	private String purstatus; //결제상태
 	private String puraddr; //배송지
+	private String gocode; //물품코드
+	
 	public PurchaseVo() {}
 	public PurchaseVo(int purnum, int ordernum, String mid, int pursumprice, String purway, Date purdate, int puramount,
 			String purstatus, String puraddr) {
@@ -26,6 +28,21 @@ public class PurchaseVo {
 		this.purstatus = purstatus;
 		this.puraddr = puraddr;
 	}
+	public PurchaseVo(int purnum, int ordernum, String mid, int pursumprice, String purway, Date purdate, int puramount,
+			String purstatus, String puraddr,String gocode) {
+		super();
+		this.purnum = purnum;
+		this.ordernum = ordernum;
+		this.mid = mid;
+		this.pursumprice = pursumprice;
+		this.purway = purway;
+		this.purdate = purdate;
+		this.puramount = puramount;
+		this.purstatus = purstatus;
+		this.puraddr = puraddr;
+		this.gocode = gocode;
+	}
+	
 	public int getPurnum() {
 		return purnum;
 	}
@@ -80,5 +97,10 @@ public class PurchaseVo {
 	public void setPuraddr(String puraddr) {
 		this.puraddr = puraddr;
 	}
-	
+	public String getGocode() {
+		return gocode;
+	}
+	public void setGocode(String gocode) {
+		this.gocode = gocode;
+	}
 }
