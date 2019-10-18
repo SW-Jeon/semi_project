@@ -128,6 +128,29 @@ public class DemandDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
+	//주문테이블에서 가장 큰 ordernum 얻어오기
+	public int getMaxNum() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="select NVL(max(ordernum),0) as maxnum from demand";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int num=rs.getInt("maxnum");
+				return num;
+			}else {
+				return 0;
+			}
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
+	}
 	
 }
 

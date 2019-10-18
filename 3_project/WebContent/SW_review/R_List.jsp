@@ -4,18 +4,16 @@
 <div id="main">
 <br>
 		<h1 style="font-size: 5em;">상품후기</h1>
-		<p><a href="${cp}/SW_review/Rlist" style="font-size: 1.2em; text-align: center; text-decoration: none;display: inline-block; float: left;;">후기남기기</a></p>
+		<img src="../images/review.png" >
+		<p><a href="${cp}/SW_review/Rwrite" style="font-size: 1.2em; text-align: center; text-decoration: none;display: inline-block; float: left;;">후기남기기</a></p>
 		<br><br><hr>
 		<table style="width:100%; text-align: center;  margin: auto;">
-			<tr>
-				<th>번호</th><th>제목</th><th>이미지</th><th>리뷰</th>
-			</tr>
 			<c:forEach var="vo" items="${list }">
 			<tr>
-				<td>${vo.asnum }</td>
-				<td>${vo.astitle }</td>
-				<td><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}">${vo.asimg}</a></td>
-				<td>${vo.ashit }</td>
+				<th>번호</th><td>${vo.asnum }</td>
+				<th>제목</th><td>${vo.astitle }</td>
+				<th>이미지</th><td><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}">${vo.asimg}</a></td>
+				<th>리뷰</th><td>${vo.ashit }</td>
 			</tr>
 			</c:forEach>
 		</table>

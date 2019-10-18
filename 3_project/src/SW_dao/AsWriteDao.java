@@ -48,7 +48,7 @@ public class AsWriteDao {
 				int boardNum=getMaxNum()+1;
 				int ashit=0;
 				String asimg=null;
-				String sql="insert into aswrite values(?,?,?,?,?,?,?)";
+				String sql="insert into aswrite values(?,?,?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, boardNum);
 				pstmt.setString(2, asimg);
@@ -242,7 +242,7 @@ public class AsWriteDao {
 	    	ResultSet rs=null;
 	    	try {
 	    		con=JdbcUtil.getConn();
-	    		String sql="select * from aswrite whrer asnum=?";
+	    		String sql="select * from aswrite where asnum=?";
 	    		pstmt=con.prepareStatement(sql);
 	    		pstmt.setInt(1, asnum);
 	    		rs=pstmt.executeQuery();
