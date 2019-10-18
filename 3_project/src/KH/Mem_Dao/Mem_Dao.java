@@ -166,10 +166,9 @@ public class Mem_Dao {
 		PreparedStatement pstmt=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="update mem set mdelup=? where mid=?";
+			String sql="update mem set mdelup=2 where mid=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, 2);
-			pstmt.setString(2, mid);
+			pstmt.setString(1, mid);
 			return pstmt.executeUpdate();
 		}catch(SQLException se) {
 			System.out.println(se.getMessage());
