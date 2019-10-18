@@ -132,6 +132,7 @@ function change () {
 //-->
 </script>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
+<div id="main">
 <br>
 <h1><p style="text-align: center; color: midnightblue; font-style: italic; ">상세페이지</p></h1><br>
 <div id="wrab">
@@ -198,5 +199,6 @@ function checkLogin() {
 	return true;
 }
 </script>
+</div>
 </body>
 </html>
