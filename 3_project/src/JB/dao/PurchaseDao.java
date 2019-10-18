@@ -154,6 +154,39 @@ public class PurchaseDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
+	
+	
+	//결제정보 리턴 메소드
+		public PurchaseVo getMid(String mid) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				con=JdbcUtil.getConn();
+				String sql="select purnum from purchase where mid=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, mid);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					int purnum=rs.getInt("purnum");
+					int ordernum=rs.getInt("ordernum");
+					int pursumprice=rs.getInt("pursumprice");
+					String purway=rs.getString("purway");
+					Date purdate=rs.getDate("purdate");
+					int puramount=rs.getInt("puramount");
+					String purstatus=rs.getString("purstatus");
+					String puraddr=rs.getString("puraddr");
+					PurchaseVo vo=new PurchaseVo(purnum, ordernum, mid, pursumprice, purway, purdate, puramount, purstatus, puraddr);
+					return vo;
+				}
+				return null;
+			}catch(SQLException se) {
+				System.out.println(se.getMessage());
+				return null;
+			}finally {
+				JdbcUtil.close(con, pstmt, rs);
+			}
+		}
 	//회원이 결제한 물품 보여주는 메소드
 	/*
 	public ArrayList<PurchaseVo> memList(String mid){
