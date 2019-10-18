@@ -17,13 +17,14 @@ ul{list-style:none; }
 .insert{width:80px; height: 40px; float: left; text-align: center; clear: both; }
 .main{width:80px; height: 40px; float: left; text-align: center;}
 .button{width: 900px; height: 40px; float: left;}
+#menu_right{margin-left: 500px; float: left; clear: both;}
 </style>
 </head>
 <body>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
 <div id="main">
 <h1 style="font-size: 5em;">공지사항</h1>
-		<hr>
+	<hr>
 	<ul class="head">
 		<li class="no">No</li><li class="head_title">제목</li>
 	</ul>
@@ -33,13 +34,15 @@ ul{list-style:none; }
 			<li class="body_title">&nbsp;&nbsp;&nbsp;<a href="${cp }/info/detail?infonum=${vo.infonum}">${vo.infotitle }</a></li>
 		</ul>
 	</c:forEach>
-		<ul class="button">	
-			<c:choose >
-				<c:when test="${sessionScope.mid=='admin'}"><%--운영자로 로그인한 경우 --%>
-					<li class="insert"><a href="${cp }/info/insert">글쓰기</a></li>
-				</c:when>			
-			</c:choose>
-				<li class="main"><a href="${cp }/pro/home">메인으로</a><li>	
+		<ul class="button">
+			<div id="menu_right">
+				<c:choose >
+					<c:when test="${sessionScope.mid=='admin'}"><%--운영자로 로그인한 경우 --%>
+						<li class="insert" ><a href="${cp }/info/insert">글쓰기</a></li>
+					</c:when>			
+				</c:choose>
+					<li class="main"><a href="${cp }/pro/home">메인으로</a><li>	
+			</div>
 		</ul>
 </div>
 </body>

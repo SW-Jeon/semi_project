@@ -20,12 +20,12 @@
 		<tr>
 			<td colspan="2">
 			<c:choose >
-				<c:when test="${sessionScope.id=='admin'}"><%--운영자로 로그인한 경우 --%>
+				<c:when test="${sessionScope.mid=='admin'}"><%--운영자로 로그인한 경우 --%>
 					<a href="${cp }/info/delete?infonum=${vo.infonum}">삭제</a>	
 					<a href="${cp }/info/update?infonum=${vo.infonum}">수정</a>
 				</c:when>			
-			</c:choose>		
-				<a href="${cp }/info/list">목록으로</a>
+			</c:choose>	
+			<a href="${cp }/info/list">목록으로</a>	
 			</td>
 		</tr>
 	</table>
