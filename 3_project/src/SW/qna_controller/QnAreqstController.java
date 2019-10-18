@@ -37,7 +37,6 @@ public class QnAreqstController extends HttpServlet {
 		int n=dao.reDab(vo);
 		if(n>0){
 				req.setAttribute("msg", "success");
-				System.out.println(qarecontent + reqst);	
 		}else {
 				req.setAttribute("msg", "fail");
 		}

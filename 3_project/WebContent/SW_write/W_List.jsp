@@ -17,9 +17,9 @@
 			<c:forEach var="vo" items="${list }">
 			<tr>
 				<td>${vo.writenum }</td>
-				<td><a href="${cp }/SW_write/writedetail?writenum=${vo.writenum}">${vo.title}</a></td>
+				<td><a href="${cp }/SW_write/Wdetail?writenum=${vo.writenum}">${vo.title}</a></td>
 				<td>${vo.mid }</td>
-				<td>${vo.reqst }</td>
+				<td>${vo.rewst }</td>
 			</tr>
 			</c:forEach>
 		</table>
@@ -58,15 +58,14 @@
 		<br>
 		<!-- 검색창 -->
 	<div>
-		<form method="post" action="${cp }/SW_pro/QnAlist">
+		<form method="post" action="${cp }/SW_write/Wlist">
 			<select name="field">
-					<option value="qaname" <c:if test="${field=='qaname'}">selected</c:if>>글쓴이</option>
-					<option value="qacontent" <c:if test="${field=='qacontent'}">selected</c:if>>글내용</option>
+					<option value="mid" <c:if test="${field=='mid'}">selected</c:if>>글쓴이</option>
+					<option value="title" <c:if test="${field=='title'}">selected</c:if>>제목</option>
+					
 			</select>
 			<input type="text" name="keyword" value="${keyword }">
 			<input type="submit" value="검색">
 		</form>
 	</div>
-	
-	
 	</div>

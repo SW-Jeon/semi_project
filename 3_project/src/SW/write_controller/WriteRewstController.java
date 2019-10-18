@@ -20,7 +20,10 @@ public class WriteRewstController extends HttpServlet{
 		WriteDao dao=WriteDao.getInstance();
 		WriteVo vo=dao.getInfo(writenum);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/SW_write/W_Detail.jsp").forward(req, resp);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SW_write/W_Detail.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -35,6 +38,7 @@ public class WriteRewstController extends HttpServlet{
 		int n=dao.reDab(vo);
 		if(n>0){
 				req.setAttribute("msg", "success");
+				System.out.println(rewrite + rewst);	
 		}else {
 				req.setAttribute("msg", "fail");
 		}
