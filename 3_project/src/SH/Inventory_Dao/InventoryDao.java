@@ -294,5 +294,22 @@ public class InventoryDao {
 			}finally {
 				JdbcUtil.close(con, pstmt, rs);
 			}
-		}	
+		}
+		public int update(int pamount,String gocode) {//결제시 필요한 업데이트구문
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			try {
+				con=JdbcUtil.getConn();
+				String sql="update inventory set pamount=pamount-? where gocode=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, pamount);
+				pstmt.setString(2, gocode);
+				return pstmt.executeUpdate();
+			}catch(SQLException se) {
+				System.out.println(se.getMessage());
+				return -1;
+			}finally {
+				JdbcUtil.close(con, pstmt, null);;
+			}
+		}
 }

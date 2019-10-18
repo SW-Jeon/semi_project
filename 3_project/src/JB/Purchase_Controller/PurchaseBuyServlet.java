@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import JB.Purchase_vo.PurchaseVo;
 import JB.dao.PurchaseDao;
+import SH.Inventory_Dao.InventoryDao;
 
 @WebServlet("/purchase/buy")
 public class PurchaseBuyServlet extends HttpServlet{
@@ -24,11 +25,14 @@ public class PurchaseBuyServlet extends HttpServlet{
 		int puramount=Integer.parseInt(req.getParameter("puramount"));
 		String puraddr=req.getParameter("puraddr");
 		String purway=req.getParameter("purway");
+		String goCode=req.getParameter("goCode"); //물품코드 받음
 		String purstatus="구매완료";
 		PurchaseVo vo=new PurchaseVo(0, ordernum, mid, pursumprice, purway, null, puramount, purstatus, puraddr);
 		PurchaseDao dao=PurchaseDao.getPurchasedao();
+		InventoryDao idao=new InventoryDao();
 		int n=dao.insert(vo);
-		if(n>0) {
+		int n1=idao.update(puramount, goCode);
+		if(n>0 && n1>0) {
 			req.setAttribute("code", "success");
 		}else {
 			req.setAttribute("code", "fail");

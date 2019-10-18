@@ -186,6 +186,9 @@
 	float: left;
 }
 
+#mypageContent table{
+	border-spacing: 50px;
+}
 
 .tag{text-align: left;font-size:13px;}
 a{text-decoration: none;color:gray;}
