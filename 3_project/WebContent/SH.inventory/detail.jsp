@@ -132,6 +132,7 @@ function change () {
 //-->
 </script>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
+<div id="main">
 <br>
 <h1><p style="text-align: center; color: midnightblue; font-style: italic; ">상세페이지</p></h1><br>
 <div id="wrab">
@@ -155,7 +156,7 @@ function change () {
 	</div>
 
 		<div id="detail">
-			<form name="form"  method="get" style="text-align: center;" action="${cp }/demand/insert">
+			<form name="form"  method="get" style="text-align: center;" action="${cp }/demand/insert" onsubmit="return checkLogin()">
 			 <h1>${name}</h1><br>
 			<h2>가격 : ${vo.goprice } 원</h2><br>
 			<h3>배송방법: 택배</h3><br>
@@ -189,6 +190,15 @@ function CartGo() {
 		location.href="${cp}/cart/add?goImg=${vo.goimg}&jNum=${vo.jnum}&getCode=${vo.gocode}&name=${name}";
 	}
 }
+function checkLogin() {
+	var mid='${sessionScope.mid}';
+	if(mid==''){
+		alert('로그인을 먼저 해주세요!');
+		return;
+	}
+	return true;
+}
 </script>
+</div>
 </body>
 </html>

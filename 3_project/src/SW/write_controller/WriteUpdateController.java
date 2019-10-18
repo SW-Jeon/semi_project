@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import SW_dao.WriteDao;
 import SW_vo.WriteVo;
@@ -15,9 +16,9 @@ import SW_vo.WriteVo;
 public class WriteUpdateController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String mid=req.getParameter("mid");
+		int writenum=Integer.parseInt(req.getParameter("writenum"));
 		WriteDao dao=WriteDao.getInstance();
-		WriteVo vo=dao.getInfo(mid);
+		WriteVo vo=dao.getInfo(writenum);
 		req.setAttribute("vo", vo);
 		req.getRequestDispatcher("/SW_write/W_Update.jsp").forward(req, resp);
 	}
@@ -29,7 +30,11 @@ public class WriteUpdateController extends HttpServlet {
 		String writecontent=req.getParameter("writecontent");
 		String rewrite=req.getParameter("rewrite");
 		String rewst=req.getParameter("rewst");
-		WriteVo vo=new WriteVo(0, mid, title, writecontent, rewrite, rewst);
+		
+		HttpSession session=req.getSession(); 
+		String gocode=(String)session.getAttribute("gocode");
+		
+		WriteVo vo=new WriteVo(0, mid, gocode, title, writecontent, rewrite, rewst);
 		WriteDao dao=WriteDao.getInstance();
 		int n=dao.update(vo);
 		if(n>0){

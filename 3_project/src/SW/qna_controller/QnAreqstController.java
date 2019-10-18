@@ -16,34 +16,33 @@ import SW_vo.QnAvo;
 public class QnAreqstController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String qaname=req.getParameter("qaname");
+		int qanum=Integer.parseInt(req.getParameter("qanum"));
+		QnAlistDao dao=QnAlistDao.getInstance();
+		QnAvo vo=dao.getInfo(qanum);
+		req.setAttribute("vo", vo);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SW_pro/QnAdetail.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		int qanum=Integer.parseInt(req.getParameter("qanum"));
-		String qaname=req.getParameter("qaname");
 		String qarecontent=req.getParameter("qarecontent");
 		String reqst=req.getParameter("reqst");
-		HttpSession session=req.getSession(); 
-		String mid=(String)session.getAttribute("mid");
-		
+
 		QnAlistDao dao=QnAlistDao.getInstance();
-		dao.getInfo(qanum);
-		if(mid.equals("admin")) {
-			QnAvo vo=new QnAvo(0, null, qaname, null, qarecontent, 0, reqst);
-			int n=dao.reDab(vo);
-			if(n>0){
+		QnAvo vo=new QnAvo(qanum, null, null, null, qarecontent, 0, reqst);
+		int n=dao.reDab(vo);
+		if(n>0){
 				req.setAttribute("msg", "success");
-			}else {
+		}else {
 				req.setAttribute("msg", "fail");
-			}
+		}
 			req.setAttribute("top", "/pro/header.jsp");
 			req.setAttribute("main","/SW_pro/result.jsp");
 			req.setAttribute("bottom", "/pro/footer.jsp");
 			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
-		}else {
-			resp.sendRedirect(req.getContextPath()+"/SW_pro/QnAlist.jsp");
-		}
 	}
 }

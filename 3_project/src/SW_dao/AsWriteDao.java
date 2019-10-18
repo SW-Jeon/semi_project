@@ -242,7 +242,7 @@ public class AsWriteDao {
 	    	ResultSet rs=null;
 	    	try {
 	    		con=JdbcUtil.getConn();
-	    		String sql="select * from aswrite whrer asnum=?";
+	    		String sql="select * from aswrite where asnum=?";
 	    		pstmt=con.prepareStatement(sql);
 	    		pstmt.setInt(1, asnum);
 	    		rs=pstmt.executeQuery();

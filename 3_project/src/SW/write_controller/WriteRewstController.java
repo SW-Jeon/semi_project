@@ -16,38 +16,35 @@ import SW_vo.WriteVo;
 public class WriteRewstController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String mid=req.getParameter("mid");
+		int writenum=Integer.parseInt(req.getParameter("writenum"));
 		WriteDao dao=WriteDao.getInstance();
-		WriteVo vo=dao.getInfo(mid);
+		WriteVo vo=dao.getInfo(writenum);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/SW_write/W_Detail.jsp").forward(req, resp);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SW_write/W_Detail.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String mid=req.getParameter("mid");
+		int writenum=Integer.parseInt(req.getParameter("writenum"));
 		String rewrite=req.getParameter("rewrite");
 		String rewst=req.getParameter("rewst");
-		HttpSession session=req.getSession(); 
-		String id=(String)session.getAttribute("mid");
-		
+
 		WriteDao dao=WriteDao.getInstance();
-		dao.getInfo(mid);
-		if(mid==id) {
-			WriteVo vo=new WriteVo(0, mid, null, null, rewrite, rewst);
-			int n=dao.reDab(vo);
-			if(n>0){
+		WriteVo vo=new WriteVo(writenum, null, null, null, null, rewrite, rewst);
+		int n=dao.reDab(vo);
+		if(n>0){
 				req.setAttribute("msg", "success");
-			}else {
+				System.out.println(rewrite + rewst);	
+		}else {
 				req.setAttribute("msg", "fail");
-			}
+		}
 			req.setAttribute("top", "/pro/header.jsp");
 			req.setAttribute("main","/SW_pro/result.jsp");
 			req.setAttribute("bottom", "/pro/footer.jsp");
 			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
-		}else {
-			resp.sendRedirect(req.getContextPath()+"/SW_write/W_List.jsp");
-		}
 	}
 }

@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import SW_vo.QnAvo;
 import SW_vo.WriteVo;
 import jdbc.JdbcUtil;
 
@@ -49,14 +48,15 @@ public class WriteDao {
 				int boardNum=getMaxNum()+1;
 				String rewrite=null;
 				String rewst="대기중";
-				String sql="insert into write values(?,?,?,?,?,?)";
+				String sql="insert into write values(?,?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, boardNum);
 				pstmt.setString(2, vo.getMid());
-				pstmt.setString(3, vo.getTitle());
-				pstmt.setString(4, vo.getWritecontent());
-				pstmt.setString(5, rewrite);
-				pstmt.setString(6, rewst);
+				pstmt.setString(3, vo.getGocode() );
+				pstmt.setString(4, vo.getTitle());
+				pstmt.setString(5, vo.getWritecontent());
+				pstmt.setString(6, rewrite);
+				pstmt.setString(7, rewst);
 				return pstmt.executeUpdate();
 			}catch(SQLException se) {
 				se.printStackTrace();
@@ -93,7 +93,6 @@ public class WriteDao {
 						"     )aa" + 
 						")where rnum>=? and  rnum<=?";
 				}
-			System.out.println(sql);
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, endRow);
@@ -102,11 +101,12 @@ public class WriteDao {
 			while(rs.next()) {
 				int writenum=rs.getInt(1);
 				String mid=rs.getString(2);
-				String title=rs.getString(3);
-				String writecontent=rs.getString(4);
-				String rewrite=rs.getString(5);
-				String rewst=rs.getString(6);
-				WriteVo vo=new WriteVo(writenum, mid, title, writecontent, rewrite, rewst);
+				String gocode=rs.getString(3);
+				String title=rs.getString(4);
+				String writecontent=rs.getString(5);
+				String rewrite=rs.getString(6);
+				String rewst=rs.getString(7);
+				WriteVo vo=new WriteVo(writenum, mid, gocode, title, writecontent, rewrite, rewst);
 				Wlist.add(vo);
 			}
 			return Wlist;
@@ -158,11 +158,12 @@ public class WriteDao {
 				rs=pstmt.executeQuery();
 				if(rs.next()) {
 					String mid=rs.getString(2);
-					String title=rs.getString(3);
-					String writecontent=rs.getString(4);
-					String rewrite=rs.getString(5);
-					String rewst=rs.getString(6);
-					WriteVo vo=new WriteVo(writenum, mid, title, writecontent, rewrite, rewst);
+					String gocode=rs.getString(3);
+					String title=rs.getString(4);
+					String writecontent=rs.getString(5);
+					String rewrite=rs.getString(6);
+					String rewst=rs.getString(7);
+					WriteVo vo=new WriteVo(writenum, mid, gocode, title, writecontent, rewrite, rewst);
 					return vo;
 				}
 				return null;
@@ -175,15 +176,14 @@ public class WriteDao {
 		}
 		
 		//글삭제
-		public int delete(int writenum,String mid) {
+		public int delete(int writenum) {
 	        Connection con=null;
 	        PreparedStatement pstmt=null;
 	        try {
 	            con=JdbcUtil.getConn();
-	            String sql="delete from write where writenum=? and mid=?";
+	            String sql="delete from write where writenum=?";
 	            pstmt=con.prepareStatement(sql);
 	            pstmt.setInt(1,writenum);
-	        	pstmt.setString(2, mid);
 	            return pstmt.executeUpdate();
 	        }catch(SQLException se) {
 	            se.printStackTrace();
@@ -199,7 +199,7 @@ public class WriteDao {
 	    	PreparedStatement pstmt=null;
 	    	try {
 	    		con=JdbcUtil.getConn();
-	    		String sql="update write set title=? and writecontent=? where writenum=?";
+	    		String sql="update write set title=?,writecontent=? where writenum=?";
 	    		pstmt=con.prepareStatement(sql);
 	    		pstmt.setString(1, vo.getTitle());
 	    		pstmt.setString(2, vo.getWritecontent());
@@ -217,7 +217,7 @@ public class WriteDao {
 	    public int reDab(WriteVo vo) {
 	    	Connection con=null;
 	    	PreparedStatement pstmt=null;
-	    	String sql="update write set rewrite=? and rewst=? where writenum=?";
+	    	String sql="update write set rewrite=?,rewst=? where writenum=?";
 	    	try { 
 	    		con=JdbcUtil.getConn();
 	    		pstmt=con.prepareStatement(sql);
@@ -234,22 +234,24 @@ public class WriteDao {
 	    }
 	    
 	    //글 수정을 위한 멤버선택
-	    public WriteVo getInfo(String mid) {
+	    public WriteVo getInfo(int writenum) {
 	    	Connection con=null;
 	    	PreparedStatement pstmt=null;
 	    	ResultSet rs=null;
 	    	try {
 	    		con=JdbcUtil.getConn();
-	    		String sql="select * from write whrer mid=?";
+	    		String sql="select * from write where writenum=?";
 	    		pstmt=con.prepareStatement(sql);
-	    		pstmt.setString(1, mid);
+	    		pstmt.setInt(1, writenum);
 	    		rs=pstmt.executeQuery();
 	    		if(rs.next()) {
-	    			String title=rs.getString(3);
-					String writecontent=rs.getString(4);
-					String rewrite=rs.getString(5);
-					String rewst=rs.getString(6);
-					WriteVo vo=new WriteVo(0, mid, title, writecontent, rewrite, rewst);
+	    			String mid=rs.getString(2);
+	    			String gocode=rs.getString(3);
+					String title=rs.getString(4);
+					String writecontent=rs.getString(5);
+					String rewrite=rs.getString(6);
+					String rewst=rs.getString(7);
+					WriteVo vo=new WriteVo(writenum, mid, gocode, title, writecontent, rewrite, rewst);
 	    			return vo;
 				}
 				return null;
