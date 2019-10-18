@@ -42,7 +42,7 @@
 			<td width="30">답변상태</td>
 			<td width="500"><input name="rewst" type="radio" checked value="대기중" required><label for="대기중">대기중</label>
               <input name="rewst" type="radio" value="답변완료"><label for="답변완료">답변완료</label></td>
-              <td><input type="hidden" name="qanum" value="${param.writenum }"></td>
+              <td><input type="hidden" name="writenum" value="${param.writenum }"></td>
 			</tr>
 			<tr>
 				<td width="30"><input type="submit"  value="답변확인" style="margin-left: 300px; margin-top: 50px;"></td>
