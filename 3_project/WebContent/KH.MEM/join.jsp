@@ -1,4 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script type="text/javascript">
+	function Idvalidate(){
+		var mid=document.getElementById("mid").value;
+			if(mid.length>8 || mid.length<5){
+				alert("아이디는 5~8자 사이로 입력하세요");
+				return false; //submit작업 취소
+			}
+	}		
+	
+</script>
+</head>
+
+<body>
 <div id=main>
 	<form action="${cp }/insert.do" method="post" >
 	     <table style="width:800; border-left: 1px;" >
@@ -6,7 +19,8 @@
 	       		<td align="center" ><b>[회원가입]</b></td>
 	       	</tr>
 	       	<tr  height="30">
-	       		<th> 아이디(5~8자 사이) <input type="text" name="mid" placeholder="아이디 입력" required autofocus></th>
+	       		<th> 아이디(5~8자 사이) <input type="text" id="mid" placeholder="아이디 입력" required autofocus></th>
+	       		<th><input type="button" value="자릿수확인" onclick="Idvalidate()"></th>
 	       	</tr>
 	       	<tr  height="30">
 	       	 	<th>이름 <input type="text" name="mname" placeholder="이름 입력" required></th>
@@ -34,5 +48,7 @@
 	       		<th> <input type="submit"  value="가입" ></th>
 	       	</tr>
 	     </table>
+	   
 	</form>      
 </div>
+  </body>

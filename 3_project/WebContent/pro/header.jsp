@@ -18,7 +18,7 @@
 			</c:when>
     		<c:otherwise>      <%--로그인 한 경우 --%>		
 				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_write/Wlist'">회원문의</button></li>
-				<li><button type="button" class="navyBtn" onClick="location.href='${cp } '">로그아웃</button></li>
+				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/user/logout'">로그아웃</button></li>
 		      	<li><a href="${cp } ">로그아웃</a>
                                       <span style="color:red;font-size: 12px">(${id }님 반갑습니다)</span></li>
             </c:otherwise>

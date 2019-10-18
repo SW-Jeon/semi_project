@@ -136,4 +136,25 @@ public class Mem_Dao {
 			}
 		}
 	}
+
+	// 아이디 중복검사
+	public boolean selectMid(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from mem where mid=?";
+		boolean idFlag = false;
+		try {
+			con = JdbcUtil.getConn();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				idFlag = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return idFlag;
+	}
 }
