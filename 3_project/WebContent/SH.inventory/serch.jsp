@@ -41,7 +41,7 @@
 			<option value="choose"
 				<c:if test="${color=='choose' }">selected</c:if>>색상</option>
 		</select>
-		<input type="text" name="keyword" value="${keyword }">
+		<input type="text" name="keyword" value="${keyword }" placeholder="영어로 입력하세요">
 		<input type="submit" value="검색">
 	
 <div id="brace_wrap">
