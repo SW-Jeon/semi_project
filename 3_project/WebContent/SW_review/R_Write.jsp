@@ -32,7 +32,7 @@
 				 <th align="center">상품선택</th>
 			 		<td>	
 				   		 <select name="gocode">
-							<option value="b1"
+							<option value="b1,가죽화이트팔찌"
 							<c:if test="${gocode=='b1'}">selected</c:if>>가죽화이트팔찌</option>
 							<option value="b2"
 							<c:if test="${gocode=='b2'}">selected</c:if>>레드원석팔찌</option>
