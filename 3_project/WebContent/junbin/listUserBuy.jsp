@@ -74,8 +74,8 @@
 	var mystr=document.getElementsByClassName("status");
 	var btn1=document.getElementsByClassName("btn1");
 	var btn2=document.getElementsByClassName("btn2");
-	for(var i=0;i<myst.length;i++){
-		if(myst[i].value=='구매확정' || myst[i].value=='구매취소'){
+	for(var i=0;i<mystr.length;i++){
+		if(mystr[i].value=='구매확정' || mystr[i].value=='구매취소'){
 			btn1[i].disabled=true;
 			btn2[i].disabled=true;
 		}
