@@ -14,16 +14,9 @@ public class goMyPage extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session=req.getSession();
 		String mid=(String)session.getAttribute("mid");
-		if(!mid.equals("admin")) {
-			req.setAttribute("top", "/pro/header.jsp");
-			req.setAttribute("main","/junbin/myPage.jsp");
-			req.setAttribute("bottom", "/pro/footer.jsp");
-			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
-		}else {
-			req.setAttribute("top", "/pro/header.jsp");
-			req.setAttribute("main","/junbin/adminPage.jsp");
-			req.setAttribute("bottom", "/pro/footer.jsp");
-			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
-		}
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main","/junbin/myPage.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }

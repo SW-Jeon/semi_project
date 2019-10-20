@@ -154,19 +154,21 @@ public class PurchaseDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
-	//회원이 결제한 물품 보여주는 메소드
-	public ArrayList<PurchaseVo> buyList(int startRow, int endRow, String mid){
+	//전체정보 및 회원이 구매한 물품보내주는 메소드
+	public ArrayList<PurchaseVo> buyAllList(int startRow, int endRow, String mid){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="select * from(" + 
+			String sql="select * from" + 
+					"(" + 
 					"    select aa.*,rownum rnum from" + 
 					"    (" + 
-					"        select p.purnum,d.gocode,p.mid,p.pursumprice,p.purway,p.purdate,p.puramount,p.purstatus,p.puraddr" + 
-					"        from demand d, purchase p" + 
-					"        where d.ordernum=p.ordernum and p.mid=?" + 
+					"        select p.purnum,i.gocode,a.jnum,a.jname,i.goname,i.gocolor,i.goimg,p.mid,p.pursumprice,p.purway,p.purdate," + 
+					"        p.puramount,p.purstatus,p.puraddr" + 
+					"        from accessory a, inventory i, demand d, purchase p" + 
+					"        where a.jnum=i.jnum and i.gocode=d.gocode and d.ordernum=p.ordernum and p.mid=?" + 
 					"        order by purnum desc" + 
 					"    )aa" + 
 					") where rnum>=? and rnum<=?";
@@ -179,13 +181,19 @@ public class PurchaseDao {
 			while(rs.next()) {
 				int purnum=rs.getInt("purnum");
 				String gocode=rs.getString("gocode");
-				int pursumprice=rs.getInt("pursumprice");
+				String goname=rs.getString("goname");
+				String gocolor=rs.getString("gocolor");
+				int jnum=rs.getInt("jnum");
+				String jname=rs.getString("jname");
+				String goimg=rs.getString("goimg");
+				String pursumprice=String.format("%,d", rs.getInt("pursumprice"));
 				String purway=rs.getString("purway");
 				Date purdate=rs.getDate("purdate");
 				int puramount=rs.getInt("puramount");
 				String purstatus=rs.getString("purstatus");
 				String puraddr=rs.getString("puraddr");
-				PurchaseVo vo=new PurchaseVo(purnum, 0, mid, pursumprice, purway, purdate, puramount, purstatus, puraddr, gocode);
+				PurchaseVo vo=new PurchaseVo(purnum, 0, mid, pursumprice, purway, purdate, 
+						puramount, purstatus, puraddr, gocode, goname, gocolor, goimg, jnum, jname);
 				list.add(vo);
 			}
 			return list;
@@ -196,6 +204,7 @@ public class PurchaseDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
+
 	public int getCount(String mid) {//회원이 구매한 물건 개수
 		Connection con=null;
 		PreparedStatement pstmt=null;

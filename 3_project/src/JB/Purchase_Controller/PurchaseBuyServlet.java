@@ -26,7 +26,7 @@ public class PurchaseBuyServlet extends HttpServlet{
 		String puraddr=req.getParameter("puraddr");
 		String purway=req.getParameter("purway");
 		String goCode=req.getParameter("goCode"); //물품코드 받음
-		String purstatus="구매완료";
+		String purstatus="결제완료";
 		PurchaseVo vo=new PurchaseVo(0, ordernum, mid, pursumprice, purway, null, puramount, purstatus, puraddr);
 		PurchaseDao dao=PurchaseDao.getPurchasedao();
 		InventoryDao idao=new InventoryDao();

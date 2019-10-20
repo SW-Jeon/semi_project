@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
-<table border="1" width="600" height="600" style="overflow: auto;margin-top:10px;">
+<table border="1" width="600" height="600" style="overflow: auto;margin-top:10px;border-spacing:50px">
 <c:set var="cnt" value="0"/>
 <c:forEach var="vo" items="${list }">
 	<c:choose>
