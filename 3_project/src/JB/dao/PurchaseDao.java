@@ -228,6 +228,59 @@ public class PurchaseDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
+	//구매확정시 구매상태 변경해주는 메소드
+	public void updateOk(int purnum, String mid) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="update purchase set purstatus=? where mid=? and purnum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "구매확정");
+			pstmt.setString(2, mid);
+			pstmt.setInt(3, purnum);
+			pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+		}finally {
+			JdbcUtil.close(con, pstmt, null);
+		}
+	}
+	//구매취소시 구매상태 변경해주는 메소드
+	public void updateCancel(int purnum, String mid) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="update purchase set purstatus=? where mid=? and purnum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, "구매취소");
+			pstmt.setString(2, mid);
+			pstmt.setInt(3, purnum);
+			pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+		}finally {
+			JdbcUtil.close(con, pstmt, null);
+		}
+	}
+	//구매취소시 재고 테이블에 수량복구해주는 메소드
+	public void backInven(String gocode, int pamount) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="update inventory set pamount=pamount+? where gocode=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, pamount);
+			pstmt.setString(2, gocode);
+			pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+		}finally {
+			JdbcUtil.close(con, pstmt, null);
+		}
+	}
 }
 
 

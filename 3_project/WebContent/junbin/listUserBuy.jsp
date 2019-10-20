@@ -27,11 +27,15 @@
 		<td>${vo.puraddr}</td>
 		<td>${vo.purdate}</td>
 		<td>
-			<input type="button" class="btn1" value="구매확정">
-			<input type="button" class="btn2" value="구매취소">
+			<a href="${cp}/user/updateOk?purnum=${vo.purnum}&pageNum=${pageNum}">
+				<input type="button" class="btn1" value="구매확정">
+			</a>
+			<a href="${cp}/user/updateCancel?purnum=${vo.purnum}&pageNum=${pageNum}&puramount=${vo.puramount}&gocode=${vo.gocode}">
+				<input type="button" class="btn2" value="구매취소">
+			</a>
 		</td>
 		<td>
-			<input type="text" class="status" value="결제완료" disabled="disabled" style="text-align: center;width:80px;font-weight:bold">
+			<input type="text" class="status" value="${vo.purstatus}" disabled="disabled" style="text-align: center;width:80px;font-weight:bold">
 		</td>
 		<td><a href="" style="color:#0000FF;text-decoration:underline">후기작성</a></td>
 	</tr>
@@ -85,14 +89,12 @@
 			var input=confirm('구매확정 하시겠습니까?');
 			if(input){
 				alert('구매확정되었습니다!');
-				//location.href="";
 			}
 		});
 		btn2[i].addEventListener('click',function(e){
 			var input=confirm('구매취소 및 환불 하시겠습니까?');
 			if(input){
 				alert('구매가 취소되었습니다..');
-				//location.href="";
 			}
 		});
 	}
