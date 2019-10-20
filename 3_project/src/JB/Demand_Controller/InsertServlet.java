@@ -34,7 +34,7 @@ public class InsertServlet extends HttpServlet{
 		int orderPrice=goPrice * orderAmount; //총주문가격 계산
 		
 		DemandDao dao=DemandDao.getDemandDao();
-		DemandVo vo=new DemandVo(0, "test", goCode, orderAmount, orderPrice);
+		DemandVo vo=new DemandVo(0, mid, goCode, orderAmount, orderPrice);
 		//아래 추가작업
 		//기훈이가 작업한 memvo에서 getInfo를 requestScope에 담아야함..
 		//기훈이 dao도 반영해야함..

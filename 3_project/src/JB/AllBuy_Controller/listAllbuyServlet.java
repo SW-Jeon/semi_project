@@ -26,17 +26,16 @@ public class listAllbuyServlet extends HttpServlet{
 		int startRow=(pageNum*10)-9;
 		int endRow=pageNum*10;
 		PurchaseDao dao=PurchaseDao.getPurchasedao();
-		ArrayList<PurchaseVo> list=dao.buyList(startRow, endRow, mid);
+		ArrayList<PurchaseVo> list=dao.buyAllList(startRow, endRow, mid);
 		//전체페이지 갯수 구하기
 		int pageCount=(int)Math.ceil(dao.getCount(mid)/10.0);
 		//시작페이지 번호
-		int startPageNum=((pageNum-1)/10*10)+1;
+		int startPageNum=((pageNum-1)/5*5)+1;
 		//끝 페이지 번호
-		int endPageNum=startPageNum+9;
+		int endPageNum=startPageNum+4;
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
 		}
-		System.out.println(endRow);
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("list", list);
 		req.setAttribute("startPageNum", startPageNum);
