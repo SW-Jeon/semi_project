@@ -18,8 +18,11 @@ a {
 a:hover {
     color: #fff;
 }
+
 .name{color: gray;}
+
 .number{color: gray;}
+
 @keyframes anima {
     from {
         margin-top: -50px;
@@ -292,12 +295,15 @@ a:hover,
 							<c:choose>
 								<c:when test="${sessionScope.mid=='admin'}">
 								<%--운영자로 로그인한 경우 --%>
-								<span class="number">${vo.goprice }원</span><!-- 가격 -->
-								<span class="pamount" style="color: teal; ">수량:${vo.pamount }</span><!--수량 -->
-									<c:if test="${vo.pamount==0}">
-										<span class="pamount" style="color: red;">품절</span><!-- 재고가 0이면 품절뜨게 -->
-									</c:if>
+									<span class="number">${vo.goprice }원</span><!-- 가격 -->
+									<span class="pamount" style="color: teal; ">수량:${vo.pamount }</span><!--수량 -->
+										<c:if test="${vo.pamount==0}">
+											<span class="pamount" style="color: red;">품절</span><!-- 재고가 0이면 품절뜨게 -->
+										</c:if>
 								</c:when>
+								<c:otherwise>
+									<span class="number">${vo.goprice }원</span><!-- 가격 -->
+								</c:otherwise>
 							</c:choose>
 						</strong>
 					</div>

@@ -294,6 +294,10 @@ a:hover,
 														<span class="pamount" style="color: red;">품절</span><!-- 재고가 0이면 품절뜨게 -->
 												</c:if>
 										</c:when>
+										<c:otherwise>
+											<br>
+											<span class="number">${vo.goprice }원</span><!-- 가격 -->
+										</c:otherwise>
 									</c:choose>
 						</strong>
 					</div>
