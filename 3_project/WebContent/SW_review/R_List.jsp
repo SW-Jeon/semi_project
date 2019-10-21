@@ -1,3 +1,6 @@
+<%@page import="SW_vo.AsWriteVo"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="SW_dao.AsWriteDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- W_List.jsp -->
@@ -10,11 +13,25 @@
 		<table style="width:100%; text-align: center;  margin: auto;">
 			<c:forEach var="vo" items="${list }">
 			<tr>
-				<th>번호</th><td>${vo.asnum }</td>
+				<th>번호</th>
 				<th>제목</th><td>${vo.astitle }</td>
-				<th>이미지</th><td><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}">${vo.asimg}</a></td>
-				<th>리뷰</th><td>${vo.ashit }</td>
+				<th>이미지</th>
+				<th>리뷰수</th>
 			</tr>
+<% 
+		AsWriteDao dao=AsWriteDao.getInstance();
+		ArrayList<AsWriteVo> R_List=dao.R_List();
+		for(AsWriteVo vo:R_List){
+%>			
+				<tr>
+				<td>${vo.asnum }</td>
+				<td>${vo.astitle }</td>
+				<td><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}"><img src="upload/<%=vo.getAsimg()%>" width="70" height="140" ></a></td>
+				<td>${vo.ashit }</td>
+			</tr>
+<%		
+			}
+%>			
 			</c:forEach>
 		</table>
 		<hr>

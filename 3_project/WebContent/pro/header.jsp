@@ -8,7 +8,6 @@
 			<li><button type="button" class="navyBtn" onClick="window.open('https://www.ilogen.com/web/personal/tkSearch')">배송조회</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_pro/QnAlist'">고객만족센터</button></li>
 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/info/list'">공지사항</button></li>
-			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/info/list'">로그인</button></li>
    		<c:choose>
    	 		<c:when test="${empty sessionScope.mid }"> <%--로그인 안한 경우 --%>
    	 			<li><button type="button" class="navyBtn" onClick="location.href='${cp }/login.do'">로그인</button></li>

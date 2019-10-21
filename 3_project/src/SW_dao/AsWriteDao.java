@@ -265,4 +265,35 @@ public class AsWriteDao {
 				JdbcUtil.close(con, pstmt, rs);
 			}
 		}
+		
+		public ArrayList<AsWriteVo> R_List(){
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				con=JdbcUtil.getConn();
+				String sql="select * from aswrite";
+				pstmt=con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				ArrayList<AsWriteVo> R_List=new ArrayList<AsWriteVo>();
+				while(rs.next()) {
+					int asnum=rs.getInt(1);
+					String asimg=rs.getString(2);
+					String astitle=rs.getString(3);
+					String ascontent=rs.getString(4);
+					String mid=rs.getString(5);
+					String gocode=rs.getString(6);
+					int purnum=rs.getInt(7);
+					int ashit=rs.getInt(8);
+					AsWriteVo vo=new AsWriteVo(asnum, asimg, astitle, ascontent, mid, gocode, purnum, ashit);
+					R_List.add(vo);
+				}
+				return R_List;
+			}catch(SQLException se) {
+				System.out.println(se.getMessage());
+				return null;
+			}finally {
+				JdbcUtil.close(con,pstmt,rs);
+			}
+		}
 }
