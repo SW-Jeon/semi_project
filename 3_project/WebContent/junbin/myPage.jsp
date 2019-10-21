@@ -5,7 +5,7 @@
 	<c:choose>
 		<c:when test="${mid=='admin'}">
 			<ul>
-			<li><button type="button" class="menuBtn" onClick="location.href='${cp}'">회원관리</button></li>
+			<li><button type="button" class="menuBtn" onClick="location.href='${cp}/admin/member'">회원관리</button></li>
 			<hr>
 			<li><button type="button" class="menuBtn" onClick="location.href='${cp}'">회원결제내역</button></li>
 			<hr>

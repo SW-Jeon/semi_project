@@ -1,6 +1,7 @@
 package JB.Demand_Controller;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,6 +33,9 @@ public class InsertServlet extends HttpServlet{
 		int orderAmount=Integer.parseInt(req.getParameter("amount")); //수량 받음
 		int goPrice=Integer.parseInt(req.getParameter("sell_price")); //1개 가격 받음
 		int orderPrice=goPrice * orderAmount; //총주문가격 계산
+		
+		DecimalFormat dc = new DecimalFormat("###,###,###,###");
+		req.setAttribute("dc", dc);
 		
 		DemandDao dao=DemandDao.getDemandDao();
 		DemandVo vo=new DemandVo(0, mid, goCode, orderAmount, orderPrice);

@@ -155,6 +155,67 @@ public class Mem_Dao {
 			JdbcUtil.close(con, pstmt, null);
 		}
 	}
+	//모든회원정보 조회(list)
+	public ArrayList<Mem_Vo> listAll(int startRow, int endRow){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="select * from" + 
+					"	(" + 
+					"		select aa.*,rownum rnum from" +
+					"		(" + 
+					"		select mem.*,rpad(substr(mpwd,1,2), length(mpwd),'*') cpwd from mem" +
+					"		)aa" + 
+					"	)where rnum>=? and rnum<=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rs=pstmt.executeQuery();
+			ArrayList<Mem_Vo> list=new ArrayList<Mem_Vo>();
+			while(rs.next()) {
+				String mid=rs.getString("mid");
+				String mname=rs.getString("mname");
+				String cpwd=rs.getString("cpwd");
+				String memail=rs.getString("memail");
+				String maddr=rs.getString("maddr");
+				String mphone=rs.getString("mphone");
+				String mgen=rs.getString("mgen");
+				int mdelup=rs.getInt("mdelup");
+				Mem_Vo vo=new Mem_Vo(mid, mname, cpwd, memail, maddr, mphone, mgen, mdelup);
+				list.add(vo);
+			}
+			return list;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
+	}
+	//회원의 수 구하기
+	public int getCount() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="select NVL(count(*),0) from mem";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int cnt=rs.getInt(1);
+				return cnt;
+			}
+			return -1;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
+	}
 }
 
 
