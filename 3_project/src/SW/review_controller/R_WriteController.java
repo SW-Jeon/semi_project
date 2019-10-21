@@ -23,6 +23,8 @@ import SW_vo.AsWriteVo;
 public class R_WriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int purnum=Integer.parseInt(req.getParameter("purnum"));
+		req.setAttribute("purnum", purnum);
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("main",	"/SW_review/R_Write.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
@@ -40,17 +42,19 @@ public class R_WriteController extends HttpServlet {
 		String ascontent=mr.getParameter("ascontent");
 		String mid=mr.getParameter("mid");
 		String gocode=mr.getParameter("gocode");
-
+		
+		int purnum=Integer.parseInt(mr.getParameter("purnum"));
+		System.out.println(purnum);
 		//참조키값들 조회
 		InventoryDao dao1=new InventoryDao();
 		InventoryVo ivo=dao1.getInfo(gocode);
 		PurchaseDao dao2=PurchaseDao.getPurchasedao();
-		PurchaseVo pvo=dao2.getMid(mid);
+		PurchaseVo pvo=dao2.getInfo(purnum);
 		
 		System.out.println(gocode );
 		//전송된 파일정보 DB에 저장하기
 		AsWriteDao dao=AsWriteDao.getInstance();
-		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, gocode, 0, 0);
+		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, gocode, purnum, 0);
 		int n=dao.insert(vo);
 		if(n>0){
 			req.setAttribute("msg", "success");

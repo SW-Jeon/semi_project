@@ -7,7 +7,7 @@
 	<form method="post" action="${cp }/SW_review/Rwrite" enctype="multipart/form-data">
 		 <table  style="width:40%" >
 			 <tr>
-			 	<td><input type="hidden" name="num" value="${param.purnum }"></td>
+			 	<td><input type="hidden" name="purnum" value="${purnum }"></td>
 			 </tr>
 			 
 			 <tr>

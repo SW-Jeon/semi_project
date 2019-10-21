@@ -37,7 +37,7 @@
 		<td>
 			<input type="text" class="status" value="${vo.purstatus}" disabled="disabled" style="text-align: center;width:80px;font-weight:bold">
 		</td>
-		<td><a href="" style="color:#0000FF;text-decoration:underline">후기작성</a></td>
+		<td><a href="${cp }/SW_review/Rwrite?purnum=${vo.purnum}" style="color:#0000FF;text-decoration:underline">후기작성</a></td>
 	</tr>
 </c:forEach>	
 </table>
