@@ -26,12 +26,8 @@
 		<td>${vo.puraddr}</td>
 		<td>${vo.purdate}</td>
 		<td>
-			<a href="${cp}/user/updateOk?purnum=${vo.purnum}&pageNum=${pageNum}">
-				<input type="button" class="btn1" value="구매확정">
-			</a>
-			<a href="${cp}/user/updateCancel?purnum=${vo.purnum}&pageNum=${pageNum}&puramount=${vo.puramount}&gocode=${vo.gocode}">
-				<input type="button" class="btn2" value="구매취소">
-			</a>
+			<input type="button" class="btn1" value="구매확정" onclick="javascript:admitOk('${vo.purnum}','${pageNum}')">
+			<input type="button" class="btn2" value="구매취소" onclick="javascript:admitCancle('${vo.purnum}','${pageNum}','${vo.puramount}','${vo.gocode}')">
 		</td>
 		<td>
 			<input type="text" class="status" value="${vo.purstatus}" disabled="disabled" style="text-align: center;width:80px;font-weight:bold">
@@ -90,21 +86,6 @@
 			btn2[i].disabled=true;
 		}
 	}
-	for(var i=0;i<btn1.length;i++){
-		btn1[i].addEventListener('click',function(e){
-			var input=confirm('구매확정 하시겠습니까?');
-			if(input){
-				alert('구매확정되었습니다!');
-			}
-		});
-		btn2[i].addEventListener('click',function(e){
-			var input=confirm('구매취소 및 환불 하시겠습니까?');
-			if(input){
-				alert('구매가 취소되었습니다..');
-			}
-		});
-	}
-	
 	var cols=["#DF013A","#08088A","red"];
 	var index=0;
 	var tid;
@@ -115,6 +96,20 @@
 		}
 		index++;
 		if(index==3) index=0;
+	}
+	function admitOk(purnum,pagenum) {
+		var input=confirm('구매확정 하시겠습니까?');
+		if(input){
+			alert('구매확정되었습니다!');
+			location.href="${cp}/user/updateOk?purnum="+purnum+"&pageNum="+pagenum;
+		}
+	}
+	function admitCancle(purnum,pagenum,puramount,gocode) {
+		var input=confirm('구매취소 및 환불 하시겠습니까?');
+		if(input){
+			alert('구매가 취소되었습니다..');
+			location.href="${cp}/user/updateCancel?purnum="+purnum+"&pageNum="+pagenum+"&puramount="+puramount+"&gocode="+gocode;
+		}
 	}
 </script>
 

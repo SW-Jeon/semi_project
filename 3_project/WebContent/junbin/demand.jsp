@@ -32,9 +32,9 @@
 		</c:choose>
 		<td><img src="${pageContext.request.contextPath}/acc/${name}/${goImg}" width="100"></td>
 		<td>${goName}</td>
-		<td>${goPrice}</td>
+		<td>${dc.format(goPrice)}원</td>
 		<td>${vo.orderamount}</td>
-		<td>${vo.orderprice}</td>
+		<td>${dc.format(vo.orderprice)}원</td>
 	</tr>
 </table><br>
 <hr>
