@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import KH.MEM_Vo.Mem_Vo;
 import KH.Mem_Dao.Mem_Dao;
 import SH.Inventory_Dao.InventoryDao;
 import SH.Inventory_Vo.InventoryVo;
@@ -43,7 +44,8 @@ public class Mem_LoginController extends HttpServlet{
 		String mid=req.getParameter("mid");
 		String mpwd=req.getParameter("mpwd");
 		Mem_Dao dao = Mem_Dao.getMem_Dao();
-		boolean result=dao.isMember(mid, mpwd);
+		int mdelup=1;
+		boolean result=dao.isMember(mid, mpwd,mdelup);
 		InventoryDao idao=new InventoryDao();
 		InventoryVo vo=new InventoryVo();
 		ArrayList<InventoryVo> list=idao.mainList(vo);

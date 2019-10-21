@@ -11,8 +11,7 @@
 	</c:otherwise>
 </c:choose>
 
-<a href="${cp }/pro/home.jsp">메인으로</a>
-		
-<a href="${pageContext.request.contextPath }/pro/home">메인으로</a>
+<a href="${cp }/user/logout">메인으로</a>
+
 </div>
 

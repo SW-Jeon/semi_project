@@ -48,16 +48,17 @@ public class Mem_Dao {
 	}
 
 	// 로그인
-	public boolean isMember(String mid, String mpwd) {
+	public boolean isMember(String mid, String mpwd, int mdelup) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			con = JdbcUtil.getConn();
-			String sql = "select * from mem where mid=? and mpwd=?"; // 컬럼명이랑 동일해야함
+			String sql = "select * from mem where mid=? and mpwd=? and mdelup=?"; // 컬럼명이랑 동일해야함
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			pstmt.setString(2, mpwd);
+			pstmt.setInt(3, mdelup);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				return true;
