@@ -27,14 +27,11 @@ public class WriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		HttpSession session=req.getSession(); 
-		String mid=(String)session.getAttribute("mid");
-
-		String gocode=req.getParameter("gocode"); //상품코드 받음
-
+		String mid=req.getParameter("mid");
 		String title=req.getParameter("title");
 		String writecontent=req.getParameter("writecontent");
-		
+		String gocode=req.getParameter("gocode"); //상품코드 받음
+
 		System.out.println(gocode);
 		InventoryDao dao1=new InventoryDao();
 		InventoryVo ivo=dao1.getInfo(gocode);
@@ -52,6 +49,5 @@ public class WriteController extends HttpServlet {
 			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 		}
 		req.setAttribute("ivo",ivo );
-		
 	}
 }

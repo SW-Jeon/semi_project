@@ -4,21 +4,30 @@
 		<h1 style="font-size: 5em;">상품후기</h1>
 		<img src="${cp }/images/review.png" >
 	<hr>
-	<table style="display: inline-block; ">
+	<table style="width: 60%; height:30%;  text-align: center; margin: auto;">
 			<tr>
-				<td width="150">번호  |</td><td width="600" >${vo.asnum }</td>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.asimg }</td>
 			</tr>
 			<tr>
-				<td width="150">글내용  |</td><td width="600">${vo.astitle}</td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">번호</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.asnum }</td>
 			</tr>
 			<tr>
-				<td width="150">글내용  |</td><td width="600">${vo.ascontent}</td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글제목</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.astitle}</td>
 			</tr>
 			<tr>
-				<td width="150">글쓴이  |</td><td width="600">${vo.mid}</td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글내용</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.ascontent}</td>
 			</tr>
-					<tr>
-				<td width="150">조회수  |</td><td width="600">${vo.ashit}</td>
+			
+			<tr>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글쓴이</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.mid}</td>
+			</tr>
+			<tr>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">조회수</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.ashit}</td>
 			</tr>
 
 			<tr>

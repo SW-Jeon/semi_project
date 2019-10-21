@@ -29,7 +29,7 @@
 				 <th style="font-size: 1.5em; font-weight:bold; text-align:center; padding-left: 5px; ">상품선택</th>
 			 		<td>	
 				   		 <select name="gocode" style="width: 15%; height: 50px; font-size: large; ">
-							<option value="b1,가죽화이트팔찌"
+							<option value="b1"
 							<c:if test="${gocode=='b1'}">selected</c:if>>가죽화이트팔찌</option>
 							<option value="b2"
 							<c:if test="${gocode=='b2'}">selected</c:if>>레드원석팔찌</option>

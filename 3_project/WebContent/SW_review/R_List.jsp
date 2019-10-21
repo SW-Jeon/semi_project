@@ -4,18 +4,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- W_List.jsp -->
+<style>
+.title{font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; background-color: #D8D8D8; }
+.con{ font-size: 1.2em; }
+</style>
 <div id="main">
 <br>
-		<h1 style="font-size: 5em;">상품후기</h1>
-		<img src="${cp }/images/review.png" >
-		<br><br><hr>
-		<table style="width:100%; text-align: center;  margin: auto;">
-			<c:forEach var="vo" items="${list }">
+		<h1 style="font-size: 4em;">상품후기</h1>
+		<br><hr>
+			<table style="width: 95%; height:200px; text-align: center; margin: auto;">
 			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>이미지</th>
-				<th>리뷰수</th>
+				<th class="title">번호</th>
+				<th class="title">제목</th>
+				<th class="title">이미지</th>
+				<th class="title">리뷰수</th>
 			</tr>
 			<tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
 <% 
@@ -24,16 +26,14 @@
 		for(AsWriteVo vo:list){
 %>			
 		   <tr>
-		   
-				<td><%=vo.getAsnum() %></td>
-				<td><%=vo.getAstitle() %></td>
-				<td><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}"><img src="upload/<%=vo.getAsimg() %>" width="70" height="140" ></a></td>
-				<td><%=vo.getAshit() %></td>
-			</tr>
+				<td class="con"><%=vo.getAsnum() %></td>
+				<td class="con"><%=vo.getAstitle() %></td>
+				<td class="con"><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}"><img src="upload/<%=vo.getAsimg() %>" width="100" height="150" ></a></td>
+				<td class="con"><%=vo.getAshit() %><%=vo.getAsimg() %></td>
+		</tr>
 <%		
 			}
 %>			
-			</c:forEach>
 		</table>
 		<hr>
 		<!-- 페이징 처리 -->

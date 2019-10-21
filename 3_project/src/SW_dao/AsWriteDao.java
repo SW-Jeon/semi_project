@@ -47,11 +47,11 @@ public class AsWriteDao {
 				con=JdbcUtil.getConn();
 				int boardNum=getMaxNum()+1;
 				int ashit=0;
-				String asimg=null;
+				//String asimg=null;
 				String sql="insert into aswrite values(?,?,?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, boardNum);
-				pstmt.setString(2, asimg);
+				pstmt.setString(2, vo.getAsimg());
 				pstmt.setString(3, vo.getAstitle());
 				pstmt.setString(4, vo.getAscontent());
 				pstmt.setString(5, vo.getMid());

@@ -37,7 +37,8 @@ public class R_WriteController extends HttpServlet {
 		MultipartRequest mr=new MultipartRequest(  //인코딩 처리 객체
 				req, path, 1024*1024*5, "utf-8", new DefaultFileRenamePolicy()
 		);
-		String asimg=mr.getParameter("asimg1");
+		String asimg=mr.getOriginalFileName("asimg1");
+		System.out.println(asimg);
 		String astitle=mr.getParameter("astitle");
 		String ascontent=mr.getParameter("ascontent");
 		String mid=mr.getParameter("mid");

@@ -38,13 +38,13 @@ public class WriteUpdateController extends HttpServlet {
 		WriteDao dao=WriteDao.getInstance();
 		int n=dao.update(vo);
 		if(n>0){
-			req.setAttribute("msg", "success");
+			resp.sendRedirect(req.getContextPath()+"/SW_write/Wlist");
 		}else {
 			req.setAttribute("msg", "fail");
+			req.setAttribute("top", "/pro/header.jsp");
+			req.setAttribute("main","/SW_pro/result.jsp");
+			req.setAttribute("bottom", "/pro/footer.jsp");
+			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 		}
-		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main","/SW_pro/result.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }
