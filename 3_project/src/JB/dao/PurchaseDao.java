@@ -288,7 +288,15 @@ public class PurchaseDao {
 		String sql="select NVL(count(*),0) as maxnum from inventory i, demand d, purchase p "
 				+ "where i.gocode=d.gocode and d.ordernum=p.ordernum";
 		if(field!=null && !field.equals("")) {
-			sql+=" and "+field+" like '%"+keyword+"%'";
+			sql="select NVL(count(*),0) from" + 
+					"(" + 
+					"    select goname,mid,purway,purstatus from" + 
+					"    (" + 
+					"        select i.goname, d.mid,p.purway, p.purstatus" + 
+					"        from inventory i, demand d, purchase p" + 
+					"        where i.gocode=d.gocode and d.ordernum=p.ordernum" + 
+					"    ) aa" + 
+					") where "+field+" like '%"+keyword+"%'";
 		}
 		pstmt=con.prepareStatement(sql);
 		rs=pstmt.executeQuery();

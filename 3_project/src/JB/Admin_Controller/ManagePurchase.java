@@ -33,6 +33,7 @@ public class ManagePurchase extends HttpServlet{
 		PurchaseAdDao dao=PurchaseAdDao.getInstance();
 		ArrayList<PurchaseVo> list=dao.searchList(startRow, endRow, field, keyword);
 		int pageCount=(int)Math.ceil(pdao.getCount(field,keyword)/10.0);
+		System.out.println(pageCount);
 		//시작페이지 번호
 		int startPageNum=((pageNum-1)/5*5)+1;
 		//끝 페이지 번호
