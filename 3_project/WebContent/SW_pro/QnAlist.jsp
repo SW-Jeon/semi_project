@@ -27,7 +27,10 @@
 			</tr>
 			</c:forEach>
 		</table>
-	<div><!-- 페이징처리 -->
+		<hr>
+			
+	<!-- 페이징처리 -->
+	<div>
 		<c:choose>
 				<c:when test="${startPageNum>10 }">
 					<a href="${cp }/SW_pro/QnAlist?pageNum=${startPageNum-1}&field=${field}&keyword=${keyword}">이전</a>

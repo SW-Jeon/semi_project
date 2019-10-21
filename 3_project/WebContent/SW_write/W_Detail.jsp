@@ -41,10 +41,9 @@
               <input name="rewst" type="radio" value="답변완료"><label for="답변완료">답변완료</label></td>
               <td><input type="hidden" name="writenum" value="${param.writenum }"></td>
 			</tr>
-			<tr>
-				<td width="30"><input type="submit"  value="답변확인" style="margin-left: 300px; margin-top: 50px;"></td>
-			</tr>
+			
 		</table>
+		<input type="submit"  value="답변확인" style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;  margin-top: 50px;">
 	</form>
 </c:if>		
 </div>

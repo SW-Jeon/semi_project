@@ -5,25 +5,31 @@
 		<h1>Q&A</h1>
 		<h3>글보기</h3>
 	<hr>
-	<table style="display: inline-block; ">
+	<table style="width: 60%; height:30%;  text-align: center; margin: auto;">
 			<tr>
-				<td width="150">번호  |</td><td width="600" >${vo.qanum }</td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">번호</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qanum }</td>
 			</tr>
 			<tr>
-				<td width="150">글내용  |</td><td width="600">${vo.qacontent}</td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글내용</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qacontent}</td>
 			</tr>
 			<tr>
-				<td width="150">글쓴이  |</td><td width="600">${vo.qaname}</td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글쓴이</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qaname}</td>
 			</tr>
 			<tr>
-				<td width="150">답변  |</td><td width="600">${vo.qarecontent}</td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">>답변</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qarecontent}</td>
 			</tr>
 
 			<tr>
-				<td width="150">답변확인상태  |</td><td width="600">${vo.reqst}</td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">답변확인상태</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.reqst}</td>
 			</tr>
 			<tr>
-				<td width="150">조회수  |</td><td width="600">${vo.qahit}</td>
+			 	<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">조회수</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qahit}</td>
 			</tr>
 			<tr>
 				<td width="20"><a href="${cp }/SW_pro/update?qanum=${vo.qanum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">수정하기</a></td>
@@ -35,18 +41,18 @@
 	<form method="post"  action="${cp }/SW_pro/QnAreqst">
 		<table style="display: inline-block;">
 			<tr>
-				<td width="30">운영자 답변</td><td width="500"><textarea rows="5" cols="60" name="qarecontent" required autofocus></textarea></td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">운영자 답변</th>
+				<td><textarea rows="5" cols="60" name="ascontent" style="width: 90%; height: 150px; font-size: large;" name="qarecontent" required autofocus></textarea></td>
 			</tr>
 			<tr>
-				<td width="30">답변상태</td>
-				<td width="500"><input name="reqst" type="radio" checked value="대기중" required><label for="대기중">대기중</label>
-                <input name="reqst" type="radio" value="답변완료"><label for="답변완료">답변완료</label></td>
-				<td><input type="hidden" name="qanum" value="${param.qanum }"></td>
-			</tr>
-			<tr>
-				<td width="30"><input type="submit"  value="답변확인" style="margin-left: 300px; margin-top: 50px;"></td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">답변 상태</th>
+				<td width="30"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >
+				<input name="reqst" type="radio" checked value="대기중" required>대기중
+                <input name="reqst" type="radio" value="답변완료">답변완료</td>
 			</tr>
 		</table>
+		<input type="hidden" name="qanum" value="${param.qanum }">
+		<input type="submit"  value="답변확인" style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;  margin-top: 50px;">
 	</form>
 </c:if>	
 </div>
