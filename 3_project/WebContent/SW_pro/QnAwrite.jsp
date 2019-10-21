@@ -6,7 +6,7 @@
 	<h1 style="font-size: 5em;">Q&A</h1>
 	<hr>
 	<form method="post" action="${cp }/SW_pro/QnAwrite">
-		 <table  style="width:40%" >
+		 <table  style="width:100%" >
 			 <tr>
 			 	<th align="center"><h4 style="font-size: 1.5em;">글쓰기</h4></th>
 			 </tr>

@@ -2,36 +2,33 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- QnAwrite.jsp -->
 <div id="main">
-	<h1 style="font-size: 5em;">상품후기</h1>
+	<h1 style="font-size: 4em;">상품후기</h1>
+	<img src="${cp }/images/review.png"  style="width: 80%; height: 500px;">
 	<hr>
 	<form method="post" action="${cp }/SW_review/Rwrite" enctype="multipart/form-data">
-		 <table  style="width:40%" >
+				 <table  style="width:85%; height:45%;  border-style: groove; " >
 			 <tr>
-			 	<td><input type="hidden" name="purnum" value="${purnum }"></td>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width: 20%; ">글쓴이</th>
+			 	<td><input type="text" name="mid" style="width: 90%; height: 50px; font-size: large;" placeholder="회원아이디를 적어주세요." required autofocus ></td>
 			 </tr>
-			 
-			 <tr>
-			 	<th align="center">글쓴이</th>
-			 	<td><input type="text" name="mid" placeholder="회원아이디를 적어주세요." required autofocus></td>
-			 </tr>
-	     	 <tr height="1" bgcolor="#dddddd"><td colspan="2"></td></tr>
+	     	 <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
 	     	 
 			 <tr>
-			 	<th align="center">제목</th>
-			 	<td><input type="text" name="astitle" placeholder="제목(33자이내)" required></td>
+			 	<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; ">제목</th>
+			 	<td><input type="text" name="astitle" style="width: 90%; height: 50px; font-size: large;"placeholder="제목(33자이내)" required ></td>
 			 </tr>
-			 <tr height="1" bgcolor="#dddddd"><td colspan="2"></td></tr>
+			 <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
 			 
 			 <tr>
-			 	<th align="center">후기</th>
-			 	<td><textarea rows="5" cols="60" name="ascontent" placeholder="후기를 남겨주세요.(200자이내)" required></textarea></td>
+			 	<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; ">후기</th>
+			 	<td><textarea rows="5" cols="60" name="ascontent" style="width: 90%; height: 150px; font-size: large;" placeholder="후기를 남겨주세요.(200자이내)" required></textarea></td>
 			 </tr>
-			 <tr height="1" bgcolor="#dddddd"><td colspan="2"></td></tr>
+			 <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
 			 
 			  <tr>
-				 <th align="center">상품선택</th>
+				 <th style="font-size: 1.5em; font-weight:bold; text-align:center; padding-left: 5px; ">상품선택</th>
 			 		<td>	
-				   		 <select name="gocode">
+				   		 <select name="gocode" style="width: 15%; height: 50px; font-size: large; ">
 							<option value="b1,가죽화이트팔찌"
 							<c:if test="${gocode=='b1'}">selected</c:if>>가죽화이트팔찌</option>
 							<option value="b2"
@@ -198,18 +195,16 @@
 						</select>
 				</td>
 			 </tr>
-	     	 <tr height="1" bgcolor="#dddddd"><td colspan="2"></td></tr>
+	     	 <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
 			 
 			 <tr>
-			 	<th align="center">구매상품 이미지첨부</th>
-			 	<td><input type="file" name="asimg1" required></td>
+			 	<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; ">구매상품 이미지</th>
+			 	<td><input type="file" name="asimg1"  required></td>
 			 </tr>
-			 <tr height="1" bgcolor="#dddddd"><td colspan="2"></td></tr>
-			
-			 <tr>
-			 	<td><input type="submit" value="리뷰남기기" style="width: 100px; height: 40px; font-size: 1em; font-weight:bolder; color:#6E6E6E; background-color: #F2F2F2;" ></td>
-				<td><input type="reset" value="취소" style="width: 100px; height: 40px; font-size: 1em; font-weight:bolder; color:#6E6E6E; background-color: #F2F2F2;" ></td>
-			 </tr>
+			 <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
 		</table>
+			<input type="hidden" name="purnum" value="${purnum }">
+			<input type="submit" value="리뷰남기기" style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;  margin-top: 50px;">
+			<input type="reset" value="취소"  style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;">
 	</form>
 </div>

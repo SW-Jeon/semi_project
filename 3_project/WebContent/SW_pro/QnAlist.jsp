@@ -13,6 +13,7 @@
 				<th>글쓴이</th>
 				<th>답변확인</th>
 			</tr>
+			<tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
 			<c:forEach var="vo" items="${list }">
 			<tr>
 				<td>${vo.qanum }</td>
