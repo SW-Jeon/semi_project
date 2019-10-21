@@ -82,9 +82,9 @@
 </div>
 <div id="cardinfo">
 	<div id="card1" style="display:inline-block;text-align: center;margin-left:20px;margin-top:10px;padding-left:50px">
-		<img src="${pageContext.request.contextPath}/악세서리/카드이미지/card1.png" style="width:200px;height:100px"><br><strong><span style="font-size: 20px;">신한카드</span></strong></div>
+		<img src="${pageContext.request.contextPath}/acc/카드이미지/card1.png" style="width:200px;height:100px"><br><strong><span style="font-size: 20px;">신한카드</span></strong></div>
 	<div id="card2" style="display:inline-block;text-align: center;padding-left:50px">
-		<img src="${pageContext.request.contextPath}/악세서리/카드이미지/card2.jpg" style="width:200px;height:100px"><br><strong><span style="font-size: 20px;">Kb국민카드</span></strong></div>
+		<img src="${pageContext.request.contextPath}/acc/카드이미지/card2.jpg" style="width:200px;height:100px"><br><strong><span style="font-size: 20px;">Kb국민카드</span></strong></div>
 	<div id="details"><h3>결제방식</h3></div>
 </div>
 <div id="nodeposit">
@@ -122,6 +122,7 @@
 		<input type="hidden" name="mAddr" value="${mvo.maddr}">
 		<input type="hidden" name="mPhone" value="${mvo.mphone}">
 		<input type="hidden" name="mGen" value="${mvo.mgen}">
+		<input type="hidden" name="goCode" value="${goCode}">
 		<input type="submit" value="결제하기" style="font-size: 15px;color:red;font-weight: bold">
 	
 	<a href="${pageContext.request.contextPath}/demand/delete?ordernum=${vo.ordernum}&jNum=${jNum}">

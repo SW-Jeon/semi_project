@@ -1,20 +1,38 @@
+<%@page import="SW_vo.AsWriteVo"%>
+<%@page import="SW_dao.AsWriteDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- W_List.jsp -->
 <div id="main">
 <br>
 		<h1 style="font-size: 5em;">상품후기</h1>
-		<img src="../images/review.png" >
-		<p><a href="${cp}/SW_review/Rwrite" style="font-size: 1.2em; text-align: center; text-decoration: none;display: inline-block; float: left;;">후기남기기</a></p>
+		<img src="${cp }/images/review.png" >
 		<br><br><hr>
 		<table style="width:100%; text-align: center;  margin: auto;">
 			<c:forEach var="vo" items="${list }">
 			<tr>
-				<th>번호</th><td>${vo.asnum }</td>
-				<th>제목</th><td>${vo.astitle }</td>
-				<th>이미지</th><td><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}">${vo.asimg}</a></td>
-				<th>리뷰</th><td>${vo.ashit }</td>
+				<th>번호</th>
+				<th>제목</th>
+				<th>이미지</th>
+				<th>리뷰수</th>
 			</tr>
+			<tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+<% 
+		AsWriteDao dao=AsWriteDao.getInstance();
+		ArrayList<AsWriteVo> list=dao.R_List();
+		for(AsWriteVo vo:list){
+%>			
+		   <tr>
+		   
+				<td><%=vo.getAsnum() %></td>
+				<td><%=vo.getAstitle() %></td>
+				<td><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}"><img src="upload/<%=vo.getAsimg() %>" width="70" height="140" ></a></td>
+				<td><%=vo.getAshit() %></td>
+			</tr>
+<%		
+			}
+%>			
 			</c:forEach>
 		</table>
 		<hr>

@@ -24,11 +24,8 @@
 				<td width="150">답변확인상태  |</td><td width="600">${vo.rewst}</td>
 			</tr>
 			<tr>
-				<td width="20">
-				<a href="${cp }/SW_write/update?writenum=${vo.writenum }" 
-				style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">수정하기</a></td>
-				<td width="20"><a href="${cp }/SW_write/delete?writenum=${vo.writenum }" 
-				style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">삭제하기</a></td>
+				<td width="30"><a href="${cp }/SW_write/update?writenum=${vo.writenum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">수정하기</a></td>
+				<td width="30"><a href="${cp }/SW_write/delete?writenum=${vo.writenum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">삭제하기</a></td>
 			</tr>
 	</table>
 	<br><hr>
