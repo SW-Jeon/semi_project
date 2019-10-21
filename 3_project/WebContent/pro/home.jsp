@@ -21,7 +21,8 @@
 				<c:set var="cp" value="${pageContext.request.contextPath }" />
 				<c:forEach var="vo" items="${list }" varStatus="vs">
 					<div id="mainimg">
-						<a href="javascript:aa('${vo.gocode}',${vs.index })"> <c:choose>
+						<a href="javascript:aa('${vo.gocode}',${vs.index })"> 					
+						<c:choose>
 								<c:when test="${vo.jnum==100 }">
 									<img src="${cp }/acc/ear/${vo.goimg }" border=0 width="280px"
 										height="280px">
@@ -38,7 +39,7 @@
 									<img src="${cp }/acc/brace/${vo.goimg }" border=0 width="280px"
 										height="280px">
 								</c:when>
-							</c:choose>
+							</c:choose>					
 							<div id="price">
 								<strong class="b1"> <c:choose>
 										<c:when test="${vo.gocode=='e1'}">
