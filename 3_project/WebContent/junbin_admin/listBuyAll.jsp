@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<h2><span style="color:blue">${mid }</span>님의 주문내역</h2>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<h1>전체 결제정보</h1>
 <table border="1" width="1200"  style="text-align: center;border: none;">
 	<tr>
 		<th>상품이미지</th>
@@ -12,9 +12,8 @@
 		<th>결제수단</th>
 		<th>배송지</th>
 		<th>결제일자</th>
-		<th>구매여부 선택</th>
 		<th>구매상태</th>
-		<th>후기작성</th>
+		<th>구매자 아이디</th>
 	</tr>
 <c:forEach var="vo" items="${list }">
 	<tr>
@@ -27,21 +26,16 @@
 		<td>${vo.puraddr}</td>
 		<td>${vo.purdate}</td>
 		<td>
-			<input type="button" class="btn1" value="구매확정" onclick="javascript:admitOk('${vo.purnum}','${pageNum}')">
-			<input type="button" class="btn2" value="구매취소" onclick="javascript:admitCancle('${vo.purnum}','${pageNum}','${vo.puramount}','${vo.gocode}')">
-		</td>
-		<td>
 			<input type="text" class="status" value="${vo.purstatus}" disabled="disabled" style="text-align: center;width:80px;font-weight:bold">
 		</td>
-		<td><a href="" style="color:#0000FF;text-decoration:underline">후기작성</a></td>
-	</tr>
-</c:forEach>	
+		<td>${vo.mid}</td>
+	</tr>	
+</c:forEach>
 </table>
-<!-- 페이징처리 작업추가 -->
 <div>
 <c:choose>
 	<c:when test="${startPageNum>5}">
-		<a href="${cp }/my/allbuy?pageNum=${startPageNum-1}">[이전]</a>
+		<a href="${cp }/admin/purchase?pageNum=${startPageNum-1}&field=${field}&keyword=${keyword}">[이전]</a>
 	</c:when>
 	<c:otherwise>
 		[이전]
@@ -50,12 +44,12 @@
 <c:forEach var="i" begin="${startPageNum}" end="${endPageNum}">
 	<c:choose>
 		<c:when test="${pageNum==i}">
-			<a href="${cp}/my/allbuy?pageNum=${i}">
+			<a href="${cp}/admin/purchase?pageNum=${i}&field=${field}&keyword=${keyword}">
 				<span style="color:red;">[${i}]</span>
 			</a>
 		</c:when>
 		<c:otherwise>
-			<a href="${cp}/my/allbuy?pageNum=${i}">
+			<a href="${cp}/admin/purchase?pageNum=${i}&field=${field}&keyword=${keyword}">
 				<span style="color:#555;">[${i}]</span>
 			</a>
 		</c:otherwise>
@@ -63,23 +57,32 @@
 </c:forEach>
 <c:choose>
 	<c:when test="${endPageNum<pageCount}">
-		<a href="${cp}/my/allbuy?pageNum=${endPageNum+1}">[다음]</a>
+		<a href="${cp}/admin/purchase?pageNum=${endPageNum+1}&field=${field}&keyword=${keyword}">[다음]</a>
 	</c:when>
 	<c:otherwise>
 		[다음]
 	</c:otherwise>
 </c:choose>
 </div>
+<!-- 검색창 -->
+<div>
+	<form method="post" action="${cp}/admin/purchase">
+		<select name="field" style="height:20px;">
+			<option value="goname" <c:if test="${field=='goname'}">selected</c:if>
+			>상품명</option>
+			<option value="purway" <c:if test="${field=='purway'}">selected</c:if>
+			>결제수단</option>
+			<option value="mid" <c:if test="${field=='mid'}">selected</c:if>
+			>구매자 아이디</option>
+			<option value="purstatus" <c:if test="${field=='purstatus'}">selected</c:if>
+			>구매상태</option>
+		</select>
+		<input type="text" name="keyword" value="${keyword}">
+		<input type="submit" value="검색">
+	</form>
+</div>
 <script>
 	var mystr=document.getElementsByClassName("status");
-	var btn1=document.getElementsByClassName("btn1");
-	var btn2=document.getElementsByClassName("btn2");
-	for(var i=0;i<mystr.length;i++){
-		if(mystr[i].value=='구매확정' || mystr[i].value=='구매취소'){
-			btn1[i].disabled=true;
-			btn2[i].disabled=true;
-		}
-	}
 	var cols=["#DF013A","#08088A","red"];
 	var index=0;
 	var tid;
@@ -91,21 +94,8 @@
 		index++;
 		if(index==3) index=0;
 	}
-	function admitOk(purnum,pagenum) {
-		var input=confirm('구매확정 하시겠습니까?');
-		if(input){
-			alert('구매확정되었습니다!');
-			location.href="${cp}/user/updateOk?purnum="+purnum+"&pageNum="+pagenum;
-		}
-	}
-	function admitCancle(purnum,pagenum,puramount,gocode) {
-		var input=confirm('구매취소 및 환불 하시겠습니까?');
-		if(input){
-			alert('구매가 취소되었습니다..');
-			location.href="${cp}/user/updateCancel?purnum="+purnum+"&pageNum="+pagenum+"&puramount="+puramount+"&gocode="+gocode;
-		}
-	}
 </script>
+
 
 
 

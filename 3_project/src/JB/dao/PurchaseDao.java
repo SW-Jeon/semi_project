@@ -204,6 +204,56 @@ public class PurchaseDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
+	//운영자가 결제정보 확인하는 메소드
+	public ArrayList<PurchaseVo> buyAllList(int startRow, int endRow){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="select * from" + 
+					"(" + 
+					"    select aa.*,rownum rnum from" + 
+					"    (" + 
+					"        select p.purnum,i.gocode,a.jnum,a.jname,i.goname,i.gocolor,i.goimg,p.mid,p.pursumprice,p.purway,p.purdate," + 
+					"        p.puramount,p.purstatus,p.puraddr" + 
+					"        from accessory a, inventory i, demand d, purchase p" + 
+					"        where a.jnum=i.jnum and i.gocode=d.gocode and d.ordernum=p.ordernum " + 
+					"        order by purnum desc" + 
+					"    )aa" + 
+					") where rnum>=? and rnum<=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rs=pstmt.executeQuery();
+			ArrayList<PurchaseVo> list=new ArrayList<PurchaseVo>();
+			while(rs.next()) {
+				int purnum=rs.getInt("purnum");
+				String gocode=rs.getString("gocode");
+				String mid=rs.getString("mid");
+				String goname=rs.getString("goname");
+				String gocolor=rs.getString("gocolor");
+				int jnum=rs.getInt("jnum");
+				String jname=rs.getString("jname");
+				String goimg=rs.getString("goimg");
+				String pursumprice=String.format("%,d", rs.getInt("pursumprice"));
+				String purway=rs.getString("purway");
+				Date purdate=rs.getDate("purdate");
+				int puramount=rs.getInt("puramount");
+				String purstatus=rs.getString("purstatus");
+				String puraddr=rs.getString("puraddr");
+				PurchaseVo vo=new PurchaseVo(purnum, 0, mid, pursumprice, purway, purdate, 
+						puramount, purstatus, puraddr, gocode, goname, gocolor, goimg, jnum, jname);
+				list.add(vo);
+			}
+			return list;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return null;
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
+	}
 
 	public int getCount(String mid) {//회원이 구매한 물건 개수
 		Connection con=null;
@@ -214,6 +264,33 @@ public class PurchaseDao {
 		String sql="select NVL(count(*),0) as maxnum from purchase where mid=?";
 		pstmt=con.prepareStatement(sql);
 		pstmt.setString(1, mid);
+		rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int infonum=rs.getInt(1);//컬럼순서 
+				return infonum;
+			}else {
+				return 0;
+			}
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
+	}
+	//운영자 모드시 전체결제 갯수 받는 메소드
+	public int getCount(String field,String keyword) {//회원이 구매한 물건 개수
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+		con=JdbcUtil.getConn();
+		String sql="select NVL(count(*),0) as maxnum from inventory i, demand d, purchase p "
+				+ "where i.gocode=d.gocode and d.ordernum=p.ordernum";
+		if(field!=null && !field.equals("")) {
+			sql+=" and "+field+" like '%"+keyword+"%'";
+		}
+		pstmt=con.prepareStatement(sql);
 		rs=pstmt.executeQuery();
 			if(rs.next()) {
 				int infonum=rs.getInt(1);//컬럼순서 

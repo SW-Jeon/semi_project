@@ -7,7 +7,7 @@
 			<ul>
 			<li><button type="button" class="menuBtn" onClick="location.href='${cp}/admin/member'">회원관리</button></li>
 			<hr>
-			<li><button type="button" class="menuBtn" onClick="location.href='${cp}'">회원결제내역</button></li>
+			<li><button type="button" class="menuBtn" onClick="location.href='${cp}/admin/purchase'">회원결제내역</button></li>
 			<hr>
 			<li><button type="button" class="menuBtn" onClick="location.href='${cp}'">매출/통계</button></li>
 			<hr>
