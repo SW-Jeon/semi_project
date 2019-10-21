@@ -30,7 +30,6 @@ public class WriteController extends HttpServlet {
 		String mid=req.getParameter("mid");
 		String title=req.getParameter("title");
 		String writecontent=req.getParameter("writecontent");
-		
 		String gocode=req.getParameter("gocode"); //상품코드 받음
 
 		System.out.println(gocode);
@@ -50,6 +49,5 @@ public class WriteController extends HttpServlet {
 			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 		}
 		req.setAttribute("ivo",ivo );
-		
 	}
 }
