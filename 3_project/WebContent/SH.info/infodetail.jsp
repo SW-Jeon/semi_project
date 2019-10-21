@@ -4,17 +4,17 @@
 <div id="main">
 		<h1 style="font-size: 5em;">공지사항</h1>
 		<hr>
-	<table>
+		<table style="width: 95%; text-align: center; margin: auto;">
 		<tr>
-			<th>No</th>
+			<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">No.</th>
 			<td><input type="text" name="infotitle" value="${vo.infonum }" readonly="readonly"></td>
 		</tr>
 		<tr>
-			<th>제목</th>
+			<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">제목</th>
 			<td><input type="text" name="infotitle" value="${vo.infotitle }" readonly="readonly"></td>
 		</tr>
 		<tr>
-			<th>내용</th>
+			<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">내용</th>
 			<td><textarea rows="30" cols="100" readonly="readonly"> ${vo.infocontent }</textarea></td>
 		</tr>
 		<tr>

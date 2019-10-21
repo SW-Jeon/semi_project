@@ -42,5 +42,6 @@ public class InsertServlet extends HttpServlet{
 			req.setAttribute("bottom", "/pro/footer.jsp");
 			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 		}
+		req.setAttribute("snum", snum);
 	}
 }
