@@ -4,18 +4,18 @@
 <div id="main">
 		<h1 style="font-size: 5em;">공지사항</h1>
 		<hr>
-	<table>
+		<table style="width: 60%; height:30%;  text-align: center; margin: auto;">
 		<tr>
-			<th>No</th>
-			<td><input type="text" name="infotitle" value="${vo.infonum }" readonly="readonly"></td>
+			<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">No.</th>
+			<td><input type="text" name="infotitle" value="${vo.infonum }" readonly="readonly" style="width: 90%; height: 50px; font-size: large; padding-left: 10px;"></td>
 		</tr>
 		<tr>
-			<th>제목</th>
-			<td><input type="text" name="infotitle" value="${vo.infotitle }" readonly="readonly"></td>
+			<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">제목</th>
+			<td><input type="text" name="infotitle" value="${vo.infotitle }" readonly="readonly" style="width: 90%; height: 50px; font-size: large; padding-left: 10px;"></td>
 		</tr>
 		<tr>
-			<th>내용</th>
-			<td><textarea rows="30" cols="100" readonly="readonly"> ${vo.infocontent }</textarea></td>
+			<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">내용</th>
+			<td><textarea rows="30" cols="100" readonly="readonly" style="width: 90%; height: 200px; font-size: large;"> ${vo.infocontent }</textarea></td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align: right;">

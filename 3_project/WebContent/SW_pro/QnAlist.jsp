@@ -1,28 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- QnAlist.jsp -->
+<style>
+.title{font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; background-color: #D8D8D8; }
+.con{ font-size: 1.2em;}
+</style>
 <div id="main">
 <br>
 		<h1 style="font-size: 5em;">Q&A</h1>
-		<h4>궁금하신 사항을 문의해주세요.</h4>
-		<br><br><hr>
-		<table style="width:100%; text-align: center;  margin: auto;">
+		<h2>궁금하신 사항을 문의해주세요.</h2>
+		<hr>
+		<table style="width: 95%; text-align: center; margin: auto;">
 			<tr>
-				<th>번호</th>
-				<th>글내용</th>
-				<th>글쓴이</th>
-				<th>답변확인</th>
+				<th class="title">번호</th>
+				<th class="title">글내용</th>
+				<th class="title">글쓴이</th>
+				<th class="title">답변확인</th>
 			</tr>
+			<tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
 			<c:forEach var="vo" items="${list }">
 			<tr>
-				<td>${vo.qanum }</td>
-				<td><a href="${cp }/SW_pro/QnAdetail?qanum=${vo.qanum}">${vo.qacontent }</a></td>
-				<td>${vo.qaname }</td>
-				<td>${vo.reqst }</td>
+				<td class="con">${vo.qanum }</td>
+				<td class="con"><a href="${cp }/SW_pro/QnAdetail?qanum=${vo.qanum}">${vo.qacontent }</a></td>
+				<td class="con">${vo.qaname }</td>
+				<td class="con">${vo.reqst }</td>
 			</tr>
 			</c:forEach>
 		</table>
-					<hr>
 	<div><!-- 페이징처리 -->
 		<c:choose>
 				<c:when test="${startPageNum>10 }">

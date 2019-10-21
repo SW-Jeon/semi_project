@@ -201,7 +201,7 @@
 			
 			<tr>
 				<td><input type="submit" value="글올리기" style="width: 100px; height: 40px; font-size: 1em; font-weight:bolder; color:#6E6E6E; background-color: #F2F2F2;" ></td>
-				<td><input type="reset" value="취소" style="width: 100px; height: 40px; font-size: 1em; font-weight:bolder; color:#6E6E6E; background-color: #F2F2F2;" ></td>
+				<td><input type="reset" value="취소" style="width: 100px; height: 40px; font-size: 1em; font-weight:bolder; color:#6E6E6E; background-color: #F2F2F2;"  onclick="history.go(-1);"></td>
 			</tr>
 		</table>
 	</form>
