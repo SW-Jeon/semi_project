@@ -183,7 +183,7 @@
 			 
 			 <tr>
 			 	<th align="center">글쓴이</th>
-			 	<td><input type="text" name="mid"placeholder="아이디를 적어주세요." required autofocus></td>
+			 	<td><input type="text" name="mid" placeholder="아이디를 적어주세요." required autofocus></td>
 			 </tr>
 	     	 <tr height="1" bgcolor="#dddddd"><td colspan="2"></td></tr>
 			 
