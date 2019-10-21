@@ -14,8 +14,6 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import JB.Purchase_vo.PurchaseVo;
 import JB.dao.PurchaseDao;
-import KH.MEM_Vo.Mem_Vo;
-import KH.Mem_Dao.Mem_Dao;
 import SH.Inventory_Dao.InventoryDao;
 import SH.Inventory_Vo.InventoryVo;
 import SW_dao.AsWriteDao;
@@ -25,6 +23,8 @@ import SW_vo.AsWriteVo;
 public class R_WriteController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int purnum=Integer.parseInt(req.getParameter("purnum"));
+		req.setAttribute("purnum", purnum);
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("main",	"/SW_review/R_Write.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
@@ -34,28 +34,26 @@ public class R_WriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		String path=getServletContext().getRealPath("/SW_review/upload");	//업로드할 디렉토리
-		MultipartRequest mr=new MultipartRequest( //인코딩 처리 객체
+		MultipartRequest mr=new MultipartRequest(  //인코딩 처리 객체
 				req, path, 1024*1024*5, "utf-8", new DefaultFileRenamePolicy()
 		);
 		String asimg=mr.getParameter("asimg1");
 		String astitle=mr.getParameter("astitle");
 		String ascontent=mr.getParameter("ascontent");
 		String mid=mr.getParameter("mid");
+		String gocode=mr.getParameter("gocode");
 		
-		String gocode=req.getParameter("gocode"); //상품코드 받음
-		int purnum=Integer.parseInt(req.getParameter("purnum")); //결제번호 받음
-		System.out.println(gocode +"," +purnum);
-		
-		//전송된 파일정보 DB에 저장하기
-		AsWriteDao dao=AsWriteDao.getInstance();
-		
+		int purnum=Integer.parseInt(mr.getParameter("purnum"));
+		System.out.println(purnum);
 		//참조키값들 조회
 		InventoryDao dao1=new InventoryDao();
 		InventoryVo ivo=dao1.getInfo(gocode);
-		
 		PurchaseDao dao2=PurchaseDao.getPurchasedao();
-		PurchaseVo pvo=dao2.getMid(mid);
+		PurchaseVo pvo=dao2.getInfo(purnum);
 		
+		System.out.println(gocode );
+		//전송된 파일정보 DB에 저장하기
+		AsWriteDao dao=AsWriteDao.getInstance();
 		AsWriteVo vo=new AsWriteVo(0, asimg, astitle, ascontent, mid, gocode, purnum, 0);
 		int n=dao.insert(vo);
 		if(n>0){
@@ -64,7 +62,7 @@ public class R_WriteController extends HttpServlet {
 			req.setAttribute("msg", "fail");
 		}
 		req.setAttribute("ivo", ivo);
-		req.setAttribute("pvo",pvo );
+		req.setAttribute("pvo", pvo);
 		req.setAttribute("top", "/pro/header.jsp");
 		req.setAttribute("main","/SW_pro/result.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");

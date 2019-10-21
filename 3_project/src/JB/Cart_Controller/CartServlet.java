@@ -32,11 +32,11 @@ public class CartServlet extends HttpServlet{
 		switch(jNum) {
 			case(100): changeImg=req.getContextPath()+"/acc/ear/"+goImg; break;
 			case(200): changeImg=req.getContextPath()+"/acc/neck/"+goImg; break;
-			case(300): changeImg=req.getContextPath()+"/acc/brace/"+goImg; break;
-			case(400): changeImg=req.getContextPath()+"/acc/watch/"+goImg; break;
+			case(300): changeImg=req.getContextPath()+"/acc/watch/"+goImg; break;
+			case(400): changeImg=req.getContextPath()+"/acc/brace/"+goImg; break;
 		}
 		CartDao dao=CartDao.getInstance();
-		CartVo vo=new CartVo(0, name, changeImg, mid);
+		CartVo vo=new CartVo(0, name, changeImg,goCode,mid);
 		dao.insert(vo); //장바구니 DB에 값 넣기
 		resp.sendRedirect(req.getContextPath()+"/junbin/successCartResult.jsp");
 	}

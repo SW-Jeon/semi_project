@@ -6,6 +6,34 @@
 <head>
 <meta charset="UTF-8">
 <title>/SH.inventory/serch.jsp</title>
+<style type="text/css">
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+</style>
 </head>
 <script type="text/javascript">
 	function aa(gocode,index) {
@@ -16,7 +44,7 @@
 </script>
 <body>
 <div id="main">
-<h1>검색창</h1>
+<h1><p style="color: green;">검색창</p></h1>
 <div id="jj" style="text-align: right;">
 <a href="${cp }/inventory/serch?pageNum=${pageNum}&jnum=${jnum }&keyword=${keyword }&level=0">최신순</a>
 &nbsp;
@@ -41,8 +69,8 @@
 			<option value="choose"
 				<c:if test="${color=='choose' }">selected</c:if>>색상</option>
 		</select>
-		<input type="text" name="keyword" value="${keyword }">
-		<input type="submit" value="검색">
+		<input type="text" name="keyword" value="${keyword }" placeholder="영어로 입력하세요">
+		<input type="submit" value="검색" class="button1">
 	
 <div id="brace_wrap">
 <c:set var="cp" value="${pageContext.request.contextPath }"/>

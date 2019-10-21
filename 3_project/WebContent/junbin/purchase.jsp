@@ -78,6 +78,7 @@
 		<input type="hidden" name="purway" value="${buyway}">
 		<input type="hidden" name="puramount" value="${orderamount}">
 		<input type="hidden" name="puraddr" value="${mvo.maddr}">
+		<input type="hidden" name="goCode" value="${goCode}">
 		<input type="submit" value="결제하기" style="width:200px;font-size: 25px;background-color: skyblue;font-family: 궁서체;font-weight: bolder">
 		<input type="button" value="취소하기" style="width:150px;font-size: 20px;background-color: skyblue;font-family: 돋움체" onclick="history.go(-1);">
 	</form>

@@ -738,13 +738,15 @@
 											<span class="name" id="${vs.index }">블랙로골팔찌</span>
 											<br>
 										</c:when>
-									</c:choose> <c:choose>
+									</c:choose> 
+									<c:choose>
 										<c:when test="${sessionScope.mid=='admin'}">
 											<%--운영자로 로그인한 경우 --%>
-											<span class="number">${vo.goprice }원</span>
-											<!-- 가격 -->
-											<span class="pamount">수량:${vo.pamount }</span>
-											<!--수량 -->
+											<span class="number">${vo.goprice }원</span><!-- 가격 -->
+											<span class="pamount" style="color: teal; ">수량:${vo.pamount }</span><!--수량 -->
+												<c:if test="${vo.pamount==0}">
+														<span class="pamount" style="color: red;">품절</span><!-- 재고가 0이면 품절뜨게 -->
+												</c:if>
 										</c:when>
 									</c:choose>
 								</strong>

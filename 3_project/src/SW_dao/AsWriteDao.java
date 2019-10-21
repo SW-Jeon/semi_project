@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import JB.Purchase_vo.PurchaseVo;
 import SW_vo.AsWriteVo;
 import jdbc.JdbcUtil;
 
@@ -44,8 +43,6 @@ public class AsWriteDao {
 		public int insert(AsWriteVo vo) {
 			Connection con=null;
 			PreparedStatement pstmt=null;
-			PreparedStatement pstmt1=null;
-			ResultSet rs=null;
 			try {
 				con=JdbcUtil.getConn();
 				int boardNum=getMaxNum()+1;
