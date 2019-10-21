@@ -27,7 +27,7 @@
 		   
 				<td><%=vo.getAsnum() %></td>
 				<td><%=vo.getAstitle() %></td>
-				<td><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}"><img src="upload/<%=vo.getAsimg()%>" width="70" height="140" ></a></td>
+				<td><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}"><img src="upload/<%=vo.getAsimg() %>" width="70" height="140" ></a></td>
 				<td><%=vo.getAshit() %></td>
 			</tr>
 <%		

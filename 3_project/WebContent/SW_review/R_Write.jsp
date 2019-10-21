@@ -205,6 +205,6 @@
 		</table>
 			<input type="hidden" name="purnum" value="${purnum }">
 			<input type="submit" value="리뷰남기기" style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;  margin-top: 50px;">
-			<input type="reset" value="취소"  style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;">
+			<input type="reset" value="취소"  style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;" onclick="history.go(-1);">
 	</form>
 </div>

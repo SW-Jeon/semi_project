@@ -7,15 +7,12 @@
 	 	<table  style="width:85%; height:30%;  border-style: groove; " >
 		<tr>
 			<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">제목</th>
-			<td><input type="text" name="infotitle" style="width: 90%; height: 50px; font-size: large;" placeholder="제목(33자이내)" required autofocus ></td>
+			<td><input type="text" name="infotitle" style="width: 90%; height: 50px; font-size: 1.5em;" placeholder="제목(33자이내)" required autofocus ></td>
 		</tr>
-		<tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-		
 		<tr>
 			<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; ">내용</th>
-			<td><textarea rows="30" cols="100" name="infocontent" style="width: 90%; height: 200px; font-size: large;" placeholder="내용을 적어주세요." required></textarea></td>
+			<td><textarea rows="30" cols="100" name="infocontent" style="width: 90%; height: 200px; font-size: 1.5em;" placeholder="내용을 적어주세요." required></textarea></td>
 		</tr>
-		<tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
 	</table>
 		<input type="hidden" name="num" value="${param.num}" readonly="readonly">
 		<input type="submit" value="등록" style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;  margin-top: 50px;">

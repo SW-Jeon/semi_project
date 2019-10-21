@@ -14,13 +14,11 @@
 			<th class="title">No.</th>
 			<th class="title">제목</th>
 		</tr>
-			<tr height="3" bgcolor="#dddddd">
-			<td colspan="4"></td>
-		</tr>
+		<tr height="3" bgcolor="#dddddd"><td colspan="4"></td></tr>
 		<c:forEach var="vo" items="${requestScope.list }">
 			<tr>
 				<td class="con">${vo.infonum }</td>
-				<td class="con"><a href="${cp }/info/detail?infonum=${vo.infonum}">${vo.infotitle }</a></td>
+				<td class="con"><a href="${cp }/info/detail?infonum=${vo.infonum}" >${vo.infotitle }</a></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -34,4 +32,5 @@
 	<br>
 	<p><a href="${cp }/pro/home" style="float: right; color: red;">메인으로</a></p>
 </div>
+
 
