@@ -49,7 +49,7 @@
 		<table style="display: inline-block;">
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">운영자 답변</th>
-				<td><textarea rows="5" cols="60" name="ascontent" style="width: 90%; height: 150px; font-size: large;" name="qarecontent" required autofocus></textarea></td>
+				<td><textarea rows="5" cols="60" name="qarecontent" style="width: 90%; height: 150px; font-size: large;" name="qarecontent" required autofocus></textarea></td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">답변 상태</th>

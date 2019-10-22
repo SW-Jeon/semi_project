@@ -30,7 +30,7 @@ public class QnAreqstController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		int qanum=Integer.parseInt(req.getParameter("qanum"));
 		String qarecontent=req.getParameter("qarecontent");
-		String reqst=req.getParameter("reqst");
+		String reqst =req.getParameter("reqst");
 
 		QnAlistDao dao=QnAlistDao.getInstance();
 		QnAvo vo=new QnAvo(qanum, null, null, null, qarecontent, 0, reqst);
