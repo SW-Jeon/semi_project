@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <h2><span style="color:blue">${mid }</span>님의 주문내역</h2>
 <table border="1" width="1200"  style="text-align: center;border: none;">
@@ -33,7 +32,14 @@
 		<td>
 			<input type="text" class="status" value="${vo.purstatus}" disabled="disabled" style="text-align: center;width:80px;font-weight:bold">
 		</td>
-		<td><a href="" style="color:#0000FF;text-decoration:underline">후기작성</a></td>
+	<c:choose>	
+		<c:when test="${vo.purstatus=='구매확정'}">		
+			<td><a href="${cp }/SW_review/Rwrite?purnum=${vo.purnum}" style="color:#0000FF;text-decoration:none;">후기작성</a></td>
+		</c:when>
+		<c:otherwise>
+			<td><a href="" style="color:darkgray; text-decoration:none;">후기작성</a></td>
+		</c:otherwise>
+	</c:choose>
 	</tr>
 </c:forEach>	
 </table>

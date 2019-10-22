@@ -68,4 +68,3 @@ public class Mem_LoginController extends HttpServlet{
 		}	
 	}
 }
-

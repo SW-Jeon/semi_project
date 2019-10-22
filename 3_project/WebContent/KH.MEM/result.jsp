@@ -1,3 +1,4 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
@@ -10,8 +11,6 @@
 		<h1>오류로 인해 요청작업을 수행하지 못하였습니다..</h1>
 	</c:otherwise>
 </c:choose>
-
 <a href="${cp }/user/logout">메인으로</a>
-
 </div>
 

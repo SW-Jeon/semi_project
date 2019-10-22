@@ -47,11 +47,11 @@ public class AsWriteDao {
 				con=JdbcUtil.getConn();
 				int boardNum=getMaxNum()+1;
 				int ashit=0;
-				String asimg=null;
+				//String asimg=null;
 				String sql="insert into aswrite values(?,?,?,?,?,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, boardNum);
-				pstmt.setString(2, asimg);
+				pstmt.setString(2, vo.getAsimg());
 				pstmt.setString(3, vo.getAstitle());
 				pstmt.setString(4, vo.getAscontent());
 				pstmt.setString(5, vo.getMid());
@@ -66,7 +66,7 @@ public class AsWriteDao {
 				JdbcUtil.close(con, pstmt, null);
 			}
 		}
-		
+
 		//글목록 확인
 		public ArrayList<AsWriteVo> Rlist(int startRow,int endRow,String field, String keyword){
 			Connection con=null;
@@ -83,8 +83,8 @@ public class AsWriteDao {
 							"            select * from aswrite order by asnum desc" + 
 							"        )aa" + 
 							")where rnum>=? and  rnum<=?";
-					}else {		//검색조건이 있는 경우
-						sql="select * from " + 
+				}else {		//검색조건이 있는 경우
+					sql="select * from " + 
 							"(" + 
 							"   select aa.*,rownum rnum from" + 
 							"    (" + 
@@ -93,8 +93,8 @@ public class AsWriteDao {
 							"	     order by asnum desc " + 
 							"     )aa" + 
 							")where rnum>=? and  rnum<=?";
-					}
-				
+				}
+
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, endRow);
@@ -110,7 +110,7 @@ public class AsWriteDao {
 					int purnum=rs.getInt(7);
 					int ashit=rs.getInt(8);
 					AsWriteVo vo=new AsWriteVo(asnum, asimg, astitle, ascontent, mid, gocode, purnum, ashit);
-							Rlist.add(vo);
+					Rlist.add(vo);
 				}
 				return Rlist;
 			}catch(SQLException se) {
@@ -120,7 +120,7 @@ public class AsWriteDao {
 				JdbcUtil.close(con,pstmt,rs);
 			}
 		}
-		
+
 		//전체글의 갯수
 		public int getCount(String field,String keyword) {
 			Connection con=null;
@@ -195,58 +195,58 @@ public class AsWriteDao {
 				JdbcUtil.close(con, pstmt, rs);
 			}
 		}
-		
+
 		//글삭제
 		public int delete(int asnum) {
-	        Connection con=null;
-	        PreparedStatement pstmt=null;
-	        try {
-	            con=JdbcUtil.getConn();
-	            String sql="delete from aswrite where asnum=? ";
-	            pstmt=con.prepareStatement(sql);
-	            pstmt.setInt(1,asnum);
-	            return pstmt.executeUpdate();
-	        }catch(SQLException se) {
-	            se.printStackTrace();
-	            return -1;
-	        }finally {
-	        	JdbcUtil.close(con, pstmt, null);
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			try {
+				con=JdbcUtil.getConn();
+				String sql="delete from aswrite where asnum=? ";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1,asnum);
+				return pstmt.executeUpdate();
+			}catch(SQLException se) {
+				se.printStackTrace();
+				return -1;
+			}finally {
+				JdbcUtil.close(con, pstmt, null);
 			}
 		}
-		
+
 		//후기수정
-	    public int update(AsWriteVo vo) {
-	    	Connection con=null;
-	    	PreparedStatement pstmt=null;
-	    	try {
-	    		con=JdbcUtil.getConn();
-	    		String sql="update aswrite set asimg=?,astitle=?,ascontent=? where asnum=?";
-	    		pstmt=con.prepareStatement(sql);
-	    		pstmt.setString(1, vo.getAsimg());
-	    		pstmt.setString(2, vo.getAstitle());
-	    		pstmt.setString(3, vo.getAscontent());
-	    		pstmt.setInt(4, vo.getAsnum());
-	    		return pstmt.executeUpdate();
-	    	}catch(SQLException se){
-	    		se.printStackTrace();
-	    		return -1;
-	    	}finally {
-	    		JdbcUtil.close(con, pstmt, null);
-	    	}
-	    }
-	    
-	    //후기수정을 위한 멤버선택
-	    public AsWriteVo getInfo(int asnum) {
-	    	Connection con=null;
-	    	PreparedStatement pstmt=null;
-	    	ResultSet rs=null;
-	    	try {
-	    		con=JdbcUtil.getConn();
-	    		String sql="select * from aswrite where asnum=?";
-	    		pstmt=con.prepareStatement(sql);
-	    		pstmt.setInt(1, asnum);
-	    		rs=pstmt.executeQuery();
-	    		if(rs.next()) {
+		public int update(AsWriteVo vo) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			try {
+				con=JdbcUtil.getConn();
+				String sql="update aswrite set asimg=?,astitle=?,ascontent=? where asnum=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, vo.getAsimg());
+				pstmt.setString(2, vo.getAstitle());
+				pstmt.setString(3, vo.getAscontent());
+				pstmt.setInt(4, vo.getAsnum());
+				return pstmt.executeUpdate();
+			}catch(SQLException se){
+				se.printStackTrace();
+				return -1;
+			}finally {
+				JdbcUtil.close(con, pstmt, null);
+			}
+		}
+
+		//후기수정을 위한 멤버선택
+		public AsWriteVo getInfo(int asnum) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				con=JdbcUtil.getConn();
+				String sql="select * from aswrite where asnum=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, asnum);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
 					String asimg=rs.getString(2);
 					String astitle=rs.getString(3);
 					String ascontent=rs.getString(4);
@@ -258,11 +258,42 @@ public class AsWriteDao {
 					return vo;
 				}
 				return null;
-	    	}catch(SQLException se) {
-	    		se.printStackTrace();
-	    		return null;
-	    	}finally {
-	    		JdbcUtil.close(con, pstmt, rs);
+			}catch(SQLException se) {
+				se.printStackTrace();
+				return null;
+			}finally {
+				JdbcUtil.close(con, pstmt, rs);
+			}
+		}
+		
+		public ArrayList<AsWriteVo> R_List(){
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				con=JdbcUtil.getConn();
+				String sql="select * from aswrite";
+				pstmt=con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				ArrayList<AsWriteVo> R_List=new ArrayList<AsWriteVo>();
+				while(rs.next()) {
+					int asnum=rs.getInt(1);
+					String asimg=rs.getString(2);
+					String astitle=rs.getString(3);
+					String ascontent=rs.getString(4);
+					String mid=rs.getString(5);
+					String gocode=rs.getString(6);
+					int purnum=rs.getInt(7);
+					int ashit=rs.getInt(8);
+					AsWriteVo vo=new AsWriteVo(asnum, asimg, astitle, ascontent, mid, gocode, purnum, ashit);
+					R_List.add(vo);
+				}
+				return R_List;
+			}catch(SQLException se) {
+				System.out.println(se.getMessage());
+				return null;
+			}finally {
+				JdbcUtil.close(con,pstmt,rs);
 			}
 		}
 }

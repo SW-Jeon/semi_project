@@ -27,14 +27,11 @@ public class WriteController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		HttpSession session=req.getSession(); 
-		String mid=(String)session.getAttribute("mid");
-
-		String gocode=req.getParameter("gocode"); //상품코드 받음
-
+		String mid=req.getParameter("mid");
 		String title=req.getParameter("title");
 		String writecontent=req.getParameter("writecontent");
-		
+		String gocode=req.getParameter("gocode"); //상품코드 받음
+
 		System.out.println(gocode);
 		InventoryDao dao1=new InventoryDao();
 		InventoryVo ivo=dao1.getInfo(gocode);
@@ -43,14 +40,14 @@ public class WriteController extends HttpServlet {
 		WriteDao dao=WriteDao.getInstance();
 		int n=dao.insert(vo);
 		if(n>0){
-			req.setAttribute("msg", "success");
+			resp.sendRedirect(req.getContextPath()+"/SW_write/Wlist");
 		}else {
 			req.setAttribute("msg", "fail");
+			req.setAttribute("top", "/pro/header.jsp");
+			req.setAttribute("main","/SW_pro/result.jsp");
+			req.setAttribute("bottom", "/pro/footer.jsp");
+			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 		}
 		req.setAttribute("ivo",ivo );
-		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main","/SW_pro/result.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 }

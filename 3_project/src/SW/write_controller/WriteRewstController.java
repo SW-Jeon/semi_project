@@ -20,7 +20,10 @@ public class WriteRewstController extends HttpServlet{
 		WriteDao dao=WriteDao.getInstance();
 		WriteVo vo=dao.getInfo(writenum);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/SW_write/W_Detail.jsp").forward(req, resp);
+		req.setAttribute("top", "/pro/header.jsp");
+		req.setAttribute("main",	"/SW_write/W_Detail.jsp");
+		req.setAttribute("bottom", "/pro/footer.jsp");
+		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -34,13 +37,13 @@ public class WriteRewstController extends HttpServlet{
 		WriteVo vo=new WriteVo(writenum, null, null, null, null, rewrite, rewst);
 		int n=dao.reDab(vo);
 		if(n>0){
-				req.setAttribute("msg", "success");
+			resp.sendRedirect(req.getContextPath()+"/SW_write/Wlist");
 		}else {
 				req.setAttribute("msg", "fail");
-		}
-			req.setAttribute("top", "/pro/header.jsp");
-			req.setAttribute("main","/SW_pro/result.jsp");
-			req.setAttribute("bottom", "/pro/footer.jsp");
-			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+				req.setAttribute("top", "/pro/header.jsp");
+				req.setAttribute("main","/SW_pro/result.jsp");
+				req.setAttribute("bottom", "/pro/footer.jsp");
+				req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+		}		
 	}
 }

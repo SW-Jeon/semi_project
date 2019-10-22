@@ -18,13 +18,14 @@ public class R_DeleteController extends HttpServlet {
 		AsWriteDao dao=AsWriteDao.getInstance();
 		int n=dao.delete(asnum);
 		if(n>0) {
-			req.setAttribute("msg","success");
+			resp.sendRedirect(req.getContextPath()+"/SW_review/Rlist");
 		}else {
 			req.setAttribute("msg","fail");
+			req.setAttribute("top", "/pro/header.jsp");
+			req.setAttribute("content","/SW_pro/result.jsp");
+			req.setAttribute("bottom", "/pro/footer.jsp");
+			req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 		}
-		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("content","/SW_pro/result.jsp");
-		req.setAttribute("bottom", "/pro/footer.jsp");
-		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
+		
 	}
 }

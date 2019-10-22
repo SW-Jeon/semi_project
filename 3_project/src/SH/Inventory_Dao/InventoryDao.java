@@ -235,7 +235,7 @@ public class InventoryDao {
 		}
 	}
 	
-	public InventoryVo detail(String gocode) {
+	public InventoryVo detail(String gocode) {//상세
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -294,7 +294,7 @@ public class InventoryDao {
 			}finally {
 				JdbcUtil.close(con, pstmt, rs);
 			}
-		}
+		}	
 		public int update(int pamount,String gocode) {//결제시 필요한 업데이트구문
 			Connection con=null;
 			PreparedStatement pstmt=null;

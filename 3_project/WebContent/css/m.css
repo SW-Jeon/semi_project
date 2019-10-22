@@ -15,7 +15,7 @@
 
 #main {
 	width: 100%;
-	height: 1200px;
+	height: 1500px;
 	text-align: center;
 	clear: both;
 	margin-bottom: 30px;
@@ -62,16 +62,12 @@
 	clear: both;
 	padding: 20px;
 	text-align: center;
-	background: #ffffff; /* Old browsers */
-	background: -moz-linear-gradient(left, #ffffff 4%, #ffffff 10%, #ffffff 48%, #ffffff
-		48%, #42e560 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(left, #ffffff 4%, #ffffff 10%, #ffffff 48%,
-		#ffffff 48%, #42e560 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, #ffffff 4%, #ffffff 10%, #ffffff 48%, #ffffff
-		48%, #42e560 100%);
-	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff',
-		endColorstr='#42e560', GradientType=1); /* IE6-9 */
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#fcfcfc+33,b4e391+100 */
+background: #fcfcfc; /* Old browsers */
+background: -moz-linear-gradient(top,  #fcfcfc 33%, #b4e391 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #fcfcfc 33%,#b4e391 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #fcfcfc 33%,#b4e391 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#b4e391',GradientType=0 ); /* IE6-9 */
 }
 
 #header h1 {
@@ -88,7 +84,7 @@
 }
 
 #gnb {
-	width: 40%;
+	width: 50%;
 	height: 100px;
 	float: right;
 }
@@ -105,49 +101,63 @@
 }
 
 #gnb ul li button {
-	font-family: Sans-Serif;
+	font-style: Sans-Serif;
+	font-size: 1em;
+	width: 110px;
+	height: 45px;
+	background-color: white;
+	color: #424242;
+	border: 0px;
+	margin:auto;
+}
+#gnb ul li button:hover {
+	background-color: #424242;
+	color: white;
+	font-size: 1.2em;
+	width: 140px;
+	height: 50px;
 }
 
 #banner {
 	width: 100%;
-	height: 100px;
+	height: 68px;
 	clear:both;
-	margin-top: 200px;
+	margin-top: 230px;
+	background-color: #424242;
+	color:white;
 }
 
 #banner ul li {
 	list-style: none;
 	display: inline-block;
 	width: 200px;
-	margin-left: 120px;
+	margin-left: 130px;
+	margin-top: 10px;
 }
 
 #banner ul li button {
 	float: left;
 	font-size: 1.5em;
 	text-align: center;
+	width: 110px;
+	height: 50px;
+	background-color: #424242;
+	color: white;
+	border: 0px;
+	margin:auto;
+}
+#banner ul li button:hover {
+	background-color: white;
+	color: #424242;
+	font-size: 2em;
+	width: 160px;
+	height: 50px;
+	font-weight: bolder;
 }
 
 #header ul li a {
 	text-decoration: none;
 }
-
-#header ul li button {
-	width: 100px;
-	height: 30px;
-	background-color: white;
-	color: black;
-	border: 0px;
-	margin:auto;
-}
-
-#header ul li button:hover {
-	background-color: #4CAF50;
-	color: white;
-}
-
-
-
 
 #mypageLeft{
 	width : 20%;
@@ -222,4 +232,3 @@ padding:20px; margin-bottom:100px ; marmargin-right: 20px; margin-left: 120px; }
 #mainlist_wrap{margin:0px auto;}
 #mainlist_wrap #mainimg{width:280px; height:280px;  float: left; 
 padding:10px; margin-bottom:10px ; marmargin-right: 20px;  margin-left: 90px; }
-

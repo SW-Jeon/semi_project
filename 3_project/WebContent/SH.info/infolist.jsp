@@ -1,46 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-      <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>/SH.info/infolist.jsp</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- /SH.info/infolist.jsp -->
 <style>
-ul{list-style:none; }
-.head{width: 900px; height: 40px; float: left;}
-.body{width: 900px; height: 40px; float: left;}
-.no{width:40px; height: 40px; float: left; text-align: center;}
-.head_title{width: 800px; height: 40px; float: left; text-align: center;}
-.num{width:40px; height: 40px; float: left; text-align: center; clear: both; }
-.body_title{width: 800px; height: 40px; float: left; }
-.insert{width:80px; height: 40px; float: left; text-align: center; clear: both; }
-.main{width:80px; height: 40px; float: left; text-align: center;}
-.button{width: 900px; height: 40px; float: left;}
+.title{font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; background-color: #D8D8D8; }
+.con{ font-size: 1.2em;}
 </style>
-</head>
-<body>
-<c:set var="cp" value="${pageContext.request.contextPath }"/>
+<c:set var="cp" value="${pageContext.request.contextPath }" />
 <div id="main">
-<h1 style="font-size: 5em;">공지사항</h1>
-		<hr>
-	<ul class="head">
-		<li class="no">No</li><li class="head_title">제목</li>
-	</ul>
-	<c:forEach var="vo" items="${requestScope.list }">
-		<ul class="body">
-			<li class="num">${vo.infonum}</li>
-			<li class="body_title">&nbsp;&nbsp;&nbsp;<a href="${cp }/info/detail?infonum=${vo.infonum}">${vo.infotitle }</a></li>
-		</ul>
-	</c:forEach>
-		<ul class="button">	
-			<c:choose >
-				<c:when test="${sessionScope.mid=='admin'}"><%--운영자로 로그인한 경우 --%>
-					<li class="insert"><a href="${cp }/info/insert">글쓰기</a></li>
-				</c:when>			
-			</c:choose>
-				<li class="main"><a href="${cp }/pro/home">메인으로</a><li>	
-		</ul>
+	<h1 style="font-size: 5em;">공지사항</h1>
+	<hr>
+	<table style="width: 95%; text-align: center; margin: auto;">
+		<tr >
+			<th class="title">No.</th>
+			<th class="title">제목</th>
+		</tr>
+		<tr height="3" bgcolor="#dddddd"><td colspan="4"></td></tr>
+		<c:forEach var="vo" items="${requestScope.list }">
+			<tr>
+				<td class="con">${vo.infonum }</td>
+				<td class="con"><a href="${cp }/info/detail?infonum=${vo.infonum}" >${vo.infotitle }</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+	
+		<c:choose>
+			<c:when test="${sessionScope.mid=='admin'}">
+				<%--운영자로 로그인한 경우 --%>
+			<p><a href="${cp }/info/insert" style="float: right; color: red;">글쓰기</a></p>
+			</c:when>
+		</c:choose>
+	<br>
+	<p><a href="${cp }/pro/home" style="float: right; color: red;">메인으로</a></p>
 </div>
-</body>
-</html>
+
+
