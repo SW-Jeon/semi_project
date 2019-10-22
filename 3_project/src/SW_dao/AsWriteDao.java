@@ -266,6 +266,7 @@ public class AsWriteDao {
 			}
 		}
 		
+		//상품리뷰게시판 리스트 불러오기
 		public ArrayList<AsWriteVo> R_List(){
 			Connection con=null;
 			PreparedStatement pstmt=null;
@@ -294,6 +295,37 @@ public class AsWriteDao {
 				return null;
 			}finally {
 				JdbcUtil.close(con,pstmt,rs);
+			}
+		}
+		
+		//자세한 후기 보기 위한 사진클릭시 이동 메소드
+		public AsWriteVo getImg(String asimg) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				con=JdbcUtil.getConn();
+				String sql="select asnum,asimg,astitle,ascontent,RPAD( SUBSTR(mid,1,2), LENGTH(mid), '#') mid,gocode,purnum,ashit from aswrite where asimg=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, asimg);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					int asnum=rs.getInt(1);
+					String astitle=rs.getString(3);
+					String ascontent=rs.getString(4);
+					String mid=rs.getString(5);
+					String gocode=rs.getString(6);
+					int purnum=rs.getInt(7);
+					int ashit=rs.getInt(8);
+					AsWriteVo vo=new AsWriteVo(asnum, asimg, astitle, ascontent, mid, gocode, purnum, ashit); 
+					return vo;
+				}
+				return null;
+			}catch(SQLException se) {
+				se.printStackTrace();
+				return null;
+			}finally {
+				JdbcUtil.close(con, pstmt, rs);
 			}
 		}
 }
