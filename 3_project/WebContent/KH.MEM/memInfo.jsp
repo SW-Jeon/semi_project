@@ -6,12 +6,13 @@
 
  <span style="font-size:20px;font-weight: bold">${vo.mname}</span> 님의 기본정보 관리페이지 입니다.<br>
  <hr>
-<h1>기본 정보</h1>
+<h1 style="font-size: 3em;"> [ 기본 정보 ]</h1>
 <form>
- <table  style="width:20%" >
+ <table  style="width:30%; height:30%; " >
 	<tr>
-		<th>아이디: ${vo.mid}</th>
-		<tr height="1" bgcolor="#dddddd"><td colspan="2"></td>
+		<th style="font-size: 1.3em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">아이디: </th>
+		<td  style="width: 90%; height: 50px; font-size: 1.3em; padding-left: 10px;" >${vo.mid}</td>
+		
 	</tr>
 	<tr>
 		<th>비밀번호: ${vo.mpwd}</th>
