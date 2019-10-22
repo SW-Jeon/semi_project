@@ -2,7 +2,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 .title{font-size: 1.2em;  font-weight:bold; text-align:center; padding-left: 5px; background-color: #D8D8D8; }
-
 </style>
 <h2><span style="color:blue">${mid }</span>님의 주문내역</h2>
 <table border="1" style="width: 95%; text-align: center; margin: auto;">
