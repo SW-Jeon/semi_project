@@ -28,13 +28,6 @@
 	해당일 전체매출액 : <span style="color:red;font-weight:bold">${dc.format(dayAll)}원</span>
 </h3>
 </div>
-<div id="statsMon">
-<form method="post" action="${cp}/admin/stats">
-
-
-
-</form>
-</div>
 
 
 
