@@ -79,7 +79,7 @@ public class WriteDao {
 						"    (" + 
 						"        select aa.*,rownum rnum from" + 
 						"        (" + 
-						"            select * from write order by writenum desc" + 
+						"            select writenum,RPAD( SUBSTR(mid,1,2), LENGTH(mid), '#') mid,gocode,title,writecontent,rewrite,rewst from write order by writenum desc" + 
 						"        )aa" + 
 						")where rnum>=? and  rnum<=?";
 				}else {		//검색조건이 있는 경우
@@ -87,7 +87,7 @@ public class WriteDao {
 						"(" + 
 						"   select aa.*,rownum rnum from" + 
 						"    (" + 
-						"        select * from write " + 
+						"        select writenum,RPAD( SUBSTR(mid,1,2), LENGTH(mid), '#') mid,gocode,title,writecontent,rewrite,rewst from write " + 
 						"	     where " + field + " like '%" + keyword +"%'" + 
 						"	     order by writenum desc " + 
 						"     )aa" + 
