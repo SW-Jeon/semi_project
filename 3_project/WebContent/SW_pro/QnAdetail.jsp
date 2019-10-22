@@ -18,15 +18,7 @@
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글쓴이</th>
 				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qaname}</td>
 			</tr>
-			<tr>
-				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">>답변</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qarecontent}</td>
-			</tr>
-
-			<tr>
-				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">답변확인상태</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.reqst}</td>
-			</tr>
+			
 			<tr>
 			 	<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">조회수</th>
 				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qahit}</td>
@@ -36,6 +28,24 @@
 				<td width="20"><a href="${cp }/SW_pro/delete?qanum=${vo.qanum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">삭제하기</a></td>
 			</tr>
 	</table>
+<c:choose>
+	<c:when test="${vo.reqst=='답변완료' }">	
+	<table style="width: 60%; height:10%;  text-align: center; margin: auto; border: 5px groove red;">	
+			<tr>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">>답변</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qarecontent}</td>
+			</tr>
+
+			<tr>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">답변확인상태</th>
+				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.reqst}</td>
+			</tr>
+	</table>
+	</c:when>
+	<c:otherwise>
+		<table style="width: 60%; height:10%;  text-align: center; margin: auto; "></table>
+	</c:otherwise>
+</c:choose>		
 	<br><hr>
 <c:if test="${sessionScope.mid=='admin'}">		
 	<form method="post"  action="${cp }/SW_pro/QnAreqst">
