@@ -5,26 +5,35 @@
 <hr>
 <div id="date" style="border:2px solid green;width:1000px;margin:auto">
 <h1>
-	<a href="${cp}/admin/stats?cday=${day-1}" style="color:hotpink">[이전날]</a> <${year}년 ${month}월 ${day}일>
+	<a href="${cp}/admin/stats?cday=${day-1}&cmonth=${month}" style="color:hotpink">[이전날]</a> <${year}년 ${month}월 ${day}일>
 	<%
 		Calendar cal=Calendar.getInstance();
+		int currentMonth=cal.get(Calendar.MONTH)+1;
 		int currentDay=cal.get(Calendar.DAY_OF_MONTH);
+		int inputMonth=(Integer)request.getAttribute("month");
 		int inputDay=(Integer)request.getAttribute("day");
-		if(currentDay<=inputDay){
+		if(currentDay<=inputDay && currentMonth<=inputMonth){
 	%>	
 			<span style="color:hotpink">[없음]</span>
 	<% 
 		}else{
 	%>
-			<a href="${cp}/admin/stats?cday=${day+1}" style="color:hotpink">[다음날]</a>
+			<a href="${cp}/admin/stats?cday=${day+1}&cmonth=${month}" style="color:hotpink">[다음날]</a>
 	<%
 		}
 	%>  
 </h1>
-<h3>해당일 전체매출액 : <span style="color:red;font-weight:bold">${dc.format(dayAll)}원</span></h3>
+<h3>
+	전체매출액 : <span style="color:red;font-weight:bold">${dc.format(allSum)}원</span><br>
+	해당일 전체매출액 : <span style="color:red;font-weight:bold">${dc.format(dayAll)}원</span>
+</h3>
 </div>
-<div>
+<div id="statsMon">
+<form method="post" action="${cp}/admin/stats">
 
+
+
+</form>
 </div>
 
 
