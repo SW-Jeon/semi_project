@@ -26,8 +26,8 @@
 	       		<th> 전화번호<input type="text" name="mphone" placeholder="전화번호 입력" required></th>
 	       	</tr> 	 	
 	      	<tr  height="30">
-	       		<th><label><input name="mgen" type="radio" checked value="남">남</label>
-                <input id="female" name="mgen" type="radio" value="여"><label for="female">여</label></th>
+	       		<th><input name="mgen" type="radio" checked value="남">남
+                <input id="female" name="mgen" type="radio" value="여">여</th>
 	       	</tr>
 	       	<tr  height="30">
 	       		<th> <input type="hidden" name="회원상태" value="${param.mDelup   }"></th>
@@ -57,8 +57,6 @@
 			alert("비밀번호 5~12자리 내로 입력하세요");
 			return false; 
 		}
-		
-			
-		return false;
+		return true;
 	}
 </script>
