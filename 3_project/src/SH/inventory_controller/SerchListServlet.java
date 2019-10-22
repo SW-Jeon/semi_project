@@ -35,9 +35,9 @@ public class SerchListServlet extends HttpServlet{
 		ArrayList<InventoryVo> list=dao.serchList(startRow, endRow, jnum, keyword,level); //아직 dao에 level추가 안함
 		int pageCount=(int)Math.ceil(dao.getCount(jnum,keyword,level)/6.0);
 		//시작페이지 번호
-		int startPageNum=((pageNum-1)/10*10)+1;
+		int startPageNum=((pageNum-1)/5*5)+1;
 		//끝페이지 번호
-		int endPageNum=startPageNum+10;
+		int endPageNum=startPageNum+4;
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
 		}
