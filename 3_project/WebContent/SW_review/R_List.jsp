@@ -28,8 +28,8 @@
 		   <tr>
 				<td class="con"><%=vo.getAsnum() %></td>
 				<td class="con"><%=vo.getAstitle() %></td>
-				<td class="con"><a href="${cp }/SW_review/Rdetail?asnum=${vo.asnum}"><img src="upload/<%=vo.getAsimg() %>" width="100" height="150" ></a></td>
-				<td class="con"><%=vo.getAshit() %><%=vo.getAsimg() %></td>
+				<td class="con"><a href="${cp }/SW_review/Rdetail?asnum=<%=vo.getAsnum() %>"><img src="upload/<%=vo.getAsimg() %>" width="100" height="150" ></a></td>
+				<td class="con"><%=vo.getAshit()  %></td>
 		</tr>
 <%		
 			}
