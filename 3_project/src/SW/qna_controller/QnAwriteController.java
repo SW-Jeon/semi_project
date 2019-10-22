@@ -33,7 +33,7 @@ public class QnAwriteController extends HttpServlet {
 		QnAlistDao dao=QnAlistDao.getInstance();
 		int n=dao.insert(vo);
 		if(n>0){
-			resp.sendRedirect(req.getContextPath()+"/SW_pro/QnAdetail");
+			resp.sendRedirect(req.getContextPath()+"/SW_pro/QnAlist");
 		}else {
 			req.setAttribute("msg", "fail");
 			req.setAttribute("top", "/pro/header.jsp");
