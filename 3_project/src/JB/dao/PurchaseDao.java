@@ -289,6 +289,7 @@ public class PurchaseDao {
 		}
 	}
 
+
 	//회원이 구매한 물건 개수
 	public int getCount(String mid) {
 		Connection con=null;
@@ -313,6 +314,7 @@ public class PurchaseDao {
 			JdbcUtil.close(con, pstmt, rs);
 		}
 	}
+
 	//운영자 모드시 전체결제 갯수 받는 메소드
 	public int getCount(String field,String keyword) {//회원이 구매한 물건 개수
 		Connection con=null;

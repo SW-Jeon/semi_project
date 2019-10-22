@@ -13,4 +13,3 @@
 </c:choose>
 <a href="${cp }/user/logout">메인으로</a>
 </div>
-
