@@ -289,7 +289,10 @@ public class PurchaseDao {
 		}
 	}
 
-	public int getCount(String mid) {//회원이 구매한 물건 개수
+
+	//회원이 구매한 물건 개수
+	public int getCount(String mid) {
+
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
