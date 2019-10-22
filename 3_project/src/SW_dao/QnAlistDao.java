@@ -46,7 +46,6 @@ public class QnAlistDao {
 		try {
 			con=JdbcUtil.getConn();
 			int boardNum=getMaxNum()+1;
-			//int qahit=0;
 			String qarecontent=null;
 			String sql="insert into qa values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
