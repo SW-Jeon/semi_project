@@ -105,19 +105,42 @@ public class PurchaseAdDao {
 		}
 	}
 	//일별 전체 매출액 메소드
-	public int sumPriceDay(int day) {
+	public int sumPriceDay(String month,int day) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="select sum(pursumprice) from purchase where substr(purdate,7,2)=? and purstatus='구매확정'";
+			String sql="select sum(pursumprice) from purchase where substr(purdate,4,2)=? and substr(purdate,7,2)=? and purstatus='구매확정'";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, day);
+			pstmt.setString(1, month);
+			pstmt.setInt(2, day);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				int sumday=rs.getInt(1);
 				return sumday;
+			}
+			return 0;
+		}catch(SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JdbcUtil.close(con, pstmt, rs);
+		}
+	}
+	//전체매출액 메소드
+	public int allSumPrice() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="select sum(pursumprice) from purchase where purstatus='구매확정'";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int sumAll=rs.getInt(1);
+				return sumAll;
 			}
 			return 0;
 		}catch(SQLException se) {
