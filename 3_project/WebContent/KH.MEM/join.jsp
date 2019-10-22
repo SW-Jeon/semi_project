@@ -56,9 +56,7 @@
 		if(mpwd.value.length>12 || mpwd.value.length<5){
 			alert("비밀번호 5~12자리 내로 입력하세요");
 			return false; 
-		}
-		
-			
-		return false;
+		}	
+		return true;
 	}
 </script>
