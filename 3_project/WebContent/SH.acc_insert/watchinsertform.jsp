@@ -1,33 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<style type="text/css">
-.gocode{width: 200px;}
-.jnum{width: 250px;}
-</style>
-<meta charset="UTF-8">
-<title>/SH.acc_insert/watchInsertform.jsp</title>
-</head>
-<body>
-<form action="${cp }/SH.acc_insert/watchinsertOk.jsp" enctype="multipart/form-data" method="post">
-		<h1>상품등록페이지</h1>
-		코드번호<br>
-		<input type="text" name="gocode"  placeholder="시계w" class="gocode"><br>
-		제품이름 <br>
-		<input type="text" name="goname" ><br>
-		가격<br>
-		<input type="text" name="goprice"   placeholder="숫자만 입력하세요"><br>
-		색상<br>
-		<input type="text" name="gocolor"  placeholder="영어로 입력하세요"><br>
-		이미지<input type="file" name="file1" ><br>
-		재고수량<br>
-		<input type="text" name="pamount" ><br>
-		품목번호<br>
-		<input type="text" name="jnum" placeholder="시계300"  class="jnum"><br>	
-		<input type="submit" value="전송">
-		<input type="reset" value="취소">
-</form>
-</body>
-</html>
+<!--  /SH.acc_insert/watchInsertform.jsp -->
+<div id="main">
+	<h1 style="font-size: 4em; text-align:center; ">상품등록페이지</h1>
+	<form action="${cp }/SH.acc_insert/earinsertOk.jsp" enctype="multipart/form-data" method="post">
+		<table  style="width:85%; height:45%;  border-style: groove;  margin-left: 100px;" >
+		 <tr>
+			<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width: 20%; ">코드번호</th>
+			 <td><input type="text" name="gocode" style="width: 90%; height: 50px; font-size: large;" placeholder="시계w" required autofocus ></td>
+		 </tr>
+		  <tr>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width: 20%; ">제품이름</th>
+			 	<td><input type="text" name="goname" style="width: 90%; height: 50px; font-size: large;" placeholder="제품이름" required></td>
+		  </tr>
+		  <tr>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width: 20%; ">가격</th>
+			 	<td><input type="text" name="goprice" style="width: 90%; height: 50px; font-size: large;" placeholder="숫자만 입력하세요" required ></td>
+		  </tr>
+		  <tr>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width: 20%; ">색상</th>
+			 	<td><input type="text" name="gocolor" style="width: 90%; height: 50px; font-size: large;" placeholder="영어로 입력하세요" required ></td>
+		   </tr>
+		   <tr>
+			 	<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; ">이미지</th>
+			 	<td><input type="file" name="file1"  required></td>
+		   </tr>
+		   <tr>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width: 20%; ">재고수량</th>
+			 	<td><input type="text" name="pamount" style="width: 90%; height: 50px; font-size: large;" placeholder="재고수량" required ></td>
+		    </tr>
+			 <tr>
+				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width: 20%; ">품목번호</th>
+			 	<td><input type="text" name="jnum" style="width: 90%; height: 50px; font-size: large;" placeholder="시계300" required ></td>
+			 </tr>
+		</table>
+		<input type="submit" value="상품등록" style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;  margin-top: 50px; margin-left: 40%;">
+		<input type="reset" value="취소" style="width: 100px; height: 50px; font-size: medium; background-color: black; color: white;" onclick="history.go(-1);">
+	</form>
+</div>
