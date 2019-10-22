@@ -11,31 +11,27 @@
 	<table style="width: 60%; height:30%;  text-align: center; margin: auto;">	
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">번호</th>
-				<td  style="width: 80%; height: 50px; font-size: large; padding-left: 10px;" >${vo.asnum }</td>
+				<td  style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.asnum }</td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글제목</th>
-				<td style="width: 80%; height: 50px; font-size: large; padding-left: 10px;" >${vo.astitle }</td>
+				<td style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.astitle }</td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글내용</th>
-				<td  style="width: 80%; height: 50px; font-size: large; padding-left: 10px;" >${vo.ascontent }</td>
+				<td  style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.ascontent }</td>
 			</tr>
 			
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글쓴이</th>
-				<td style="width: 80%; height: 50px; font-size: large; padding-left: 10px;" >${vo.mid }</td>
+				<td style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.mid }</td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">조회수</th>
-				<td style="width: 80%; height: 50px; font-size: large; padding-left: 10px;" >${vo.ashit }</td>
-			</tr>
-
-			<tr>
-				<td width="30"><a href="${cp }/SW_review/Rupdate?asnum=${vo.asnum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">수정하기</a></td>
-				<td width="30"><a href="${cp }/SW_review/Rdelete?asnum=${vo.asnum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">삭제하기</a></td>
+				<td style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.ashit }</td>
 			</tr>
 	</table>
+	<a href="${cp }/SW_review/Rdelete?asnum=${vo.asnum }" style="text-align: center; text-decoration: none; float:right; margin-right:50px; display: inline-block; font-size: 1.5em;">삭제하기</a>
 </div>
 
 
