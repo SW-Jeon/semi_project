@@ -5,7 +5,7 @@
 	<h1>삭제하기(비밀번호 확인)</h1>
 	<hr>
 	<form method="post" action="${cp }/SW_pro/delete">
-		<input type="hidden" name="qanum" value="${qanum }" >
+		<input type="hidden" name="qanum" value="${param.qanum }" >
 		비밀번호 확인:	<input type="password" name="qapwd" >
 		<br>
 		<input type="submit" value="삭제">

@@ -25,16 +25,10 @@ public class WriteUpdateController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String mid=req.getParameter("mid");
 		String title=req.getParameter("title");
 		String writecontent=req.getParameter("writecontent");
-		String rewrite=req.getParameter("rewrite");
-		String rewst=req.getParameter("rewst");
-		
-		HttpSession session=req.getSession(); 
-		String gocode=(String)session.getAttribute("gocode");
-		
-		WriteVo vo=new WriteVo(0, mid, gocode, title, writecontent, rewrite, rewst);
+
+		WriteVo vo=new WriteVo(0, null, null, title, writecontent, null, null);
 		WriteDao dao=WriteDao.getInstance();
 		int n=dao.update(vo);
 		if(n>0){

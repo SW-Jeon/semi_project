@@ -19,6 +19,7 @@
 				<td  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.writecontent}</td>
 			</tr>
 	</table>
+	<a href="${cp }/SW_write/delete?writenum=${vo.writenum }" style="text-align: center; text-decoration: none; float:right; margin-right:50px; display: inline-block; font-size: 1.5em;">삭제하기</a>
 <c:choose>
 	<c:when test="${vo.rewst=='답변완료' }">	
 	<table style="width: 60%; height:10%;  text-align: center; margin: auto; border: 5px groove red;">	
