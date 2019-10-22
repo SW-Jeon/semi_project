@@ -23,10 +23,7 @@
 			 	<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">조회수</th>
 				<td  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qahit}</td>
 			</tr>
-			<tr>
-				<td width="20"><a href="${cp }/SW_pro/update?qanum=${vo.qanum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">수정하기</a></td>
-				<td width="20"><a href="${cp }/SW_pro/delete?qanum=${vo.qanum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">삭제하기</a></td>
-			</tr>
+			
 	</table>
 <c:choose>
 	<c:when test="${vo.reqst=='답변완료' }">	
