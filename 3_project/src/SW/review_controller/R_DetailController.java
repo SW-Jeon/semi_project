@@ -17,8 +17,9 @@ public class R_DetailController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		int asnum=Integer.parseInt(req.getParameter("asnum"));
+		String asimg=req.getParameter("asimg");
 		AsWriteDao dao=AsWriteDao.getInstance();
-		AsWriteVo vo=dao.detail(asnum);
+		AsWriteVo vo=dao.getImg(asimg);
 		dao.addHit(asnum); 	//업데이트 하면서 조회수 +1씩 증가
 		req.setAttribute("vo", vo);
 		req.setAttribute("top", "/pro/header.jsp");

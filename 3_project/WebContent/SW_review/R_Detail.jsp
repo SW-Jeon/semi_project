@@ -6,47 +6,32 @@
 <div id="main">
 		<h1 style="font-size: 5em;">상품후기</h1>
 		<img src="${cp }/images/review.png" >
-	<hr>
-	<table style="width: 60%; height:30%;  text-align: center; margin: auto;">
-<% 
-		AsWriteDao dao=AsWriteDao.getInstance();
-		ArrayList<AsWriteVo> list=dao.R_List();
-		for(AsWriteVo vo:list){
-%>		
-			<tr>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" ><%=vo.getAsimg() %></td>
-			</tr>
+	<hr>	
+	<img src="${cp }/SW_review/upload/${vo.asimg }" width="300" height="450" style="float: left; border: 1px groove #BDBDBD; margin-left: 100px;" >	
+	<table style="width: 60%; height:30%;  text-align: center; margin: auto;">	
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">번호</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" ><%=vo.getAsnum() %></td>
+				<td  style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.asnum }</td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글제목</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" ><%=vo.getAstitle() %></td>
+				<td style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.astitle }</td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글내용</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" ><%=vo.getAscontent() %></td>
+				<td  style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.ascontent }</td>
 			</tr>
 			
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글쓴이</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" ><%=vo.getMid() %></td>
+				<td style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.mid }</td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">조회수</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" ><%=vo.getAshit() %></td>
-			</tr>
-<%		
-			}
-%>			
-			<tr>
-				<td width="30"><a href="${cp }/SW_review/Rupdate?asnum=${vo.asnum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">수정하기</a></td>
-				<td width="30"><a href="${cp }/SW_review/Rdelete?asnum=${vo.asnum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">삭제하기</a></td>
+				<td style="width: 50%; height: 50px; font-size: large; padding-left: 10px;" >${vo.ashit }</td>
 			</tr>
 	</table>
-	<br><hr>
-		
+	<a href="${cp }/SW_review/Rdelete?asnum=${vo.asnum }" style="text-align: center; text-decoration: none; float:right; margin-right:50px; display: inline-block; font-size: 1.5em;">삭제하기</a>
 </div>
 
 
