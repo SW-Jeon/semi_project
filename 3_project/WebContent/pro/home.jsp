@@ -1,13 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+.blinking{
+	-webkit-animation:blink 1.5s ease-in-out infinite alternate;
+    -moz-animation:blink 1.5s ease-in-out infinite alternate;
+    animation:blink 1.5s ease-in-out infinite alternate;
+}
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+</style>
 <!--  home.jsp -->
 <c:choose>
 	<c:when test="${empty sessionScope.mid}">
 		<div id="content">
-			<div id="home_text"
-				style="color: red; font-style: inherit; text-align: left;">
-				###히트상품###</div>
+			<div id="home_text" style="color: red; font-style: inherit; text-align: left;">
+				<span class="blinking">###히트상품###</span>
+				</div>
 			<!-- 이미지 뿌려야함 -->
 			<script type="text/javascript">
 				function aa(gocode, index) {
@@ -21,7 +40,8 @@
 				<c:set var="cp" value="${pageContext.request.contextPath }" />
 				<c:forEach var="vo" items="${list }" varStatus="vs">
 					<div id="mainimg">
-						<a href="javascript:aa('${vo.gocode}',${vs.index })"> <c:choose>
+						<a href="javascript:aa('${vo.gocode}',${vs.index })"> 					
+						<c:choose>
 								<c:when test="${vo.jnum==100 }">
 									<img src="${cp }/acc/ear/${vo.goimg }" border=0 width="280px"
 										height="280px">
@@ -38,7 +58,7 @@
 									<img src="${cp }/acc/brace/${vo.goimg }" border=0 width="280px"
 										height="280px">
 								</c:when>
-							</c:choose>
+							</c:choose>					
 							<div id="price">
 								<strong class="b1"> <c:choose>
 										<c:when test="${vo.gocode=='e1'}">
@@ -383,7 +403,8 @@
 		<div id="main">
 			<div id="home_text"
 				style="color: red; font-style: inherit; text-align: left;">
-				###히트상품###</div>
+				<span class="blinking">###히트상품###</span>
+				</div>
 			<!-- 이미지 뿌려야함 -->
 			<script type="text/javascript">
 				function aa(gocode, index) {

@@ -197,7 +197,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', end
 }
 
 .tag{text-align: left;font-size:13px;}
+
 a{text-decoration: none;color:gray;}
+
 #result{width:450px;border:1px solid gray;height:100px;padding:1px;
 font-size: 12px; display:none;}
 #cardinfo{width:600px;border:1px solid gray;padding:1px;margin-top:20px;display:none;}
@@ -209,11 +211,14 @@ label{margin-left:80px;}
 li{font-size:15px;}
 table{margin:auto;}
 
+
+
 #brace_wrap{ margin:0px auto;}
 #price{text-align: center;}
-#brace_wrap #b{width:400px; height:400px;  float: left; margin-top:130px;
-padding:20px; margin-bottom:100px ; margin-right: 20px; margin-left: 120px; }
-img { display: block; margin: 0px auto; }
+#brace_wrap #b{width:400px; height:400px;  float: left; 
+margin-top:130px; padding:20px; margin-bottom:100px ; margin-right: 20px; margin-left: 120px;
+}
+
 
 #page{clear: both; float: left;   margin-left: 800px; margin-top: 130px;}
 
@@ -232,3 +237,7 @@ padding:20px; margin-bottom:100px ; marmargin-right: 20px; margin-left: 120px; }
 #mainlist_wrap{margin:0px auto;}
 #mainlist_wrap #mainimg{width:280px; height:280px;  float: left; 
 padding:10px; margin-bottom:10px ; marmargin-right: 20px;  margin-left: 90px; }
+
+
+
+

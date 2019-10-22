@@ -26,11 +26,10 @@
 		<c:choose>
 			<c:when test="${sessionScope.mid=='admin'}">
 				<%--운영자로 로그인한 경우 --%>
-			<p><a href="${cp }/info/insert" style="float: right; color: red;">글쓰기</a></p>
+			<p><a href="${cp }/info/insert" style="float: right; color: gray;">글쓰기</a></p>
 			</c:when>
 		</c:choose>
-	<br>
-	<p><a href="${cp }/pro/home" style="float: right; color: red;">메인으로</a></p>
+	<p><a href="${cp }/pro/home" style="float: right; color: gray;">메인으로&nbsp;</a></p>
 </div>
 
 

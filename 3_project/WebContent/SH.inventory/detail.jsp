@@ -9,7 +9,7 @@
 <style>
 * {box-sizing: border-box;}
 #wrab{width: 100%; height: 900px; margin-left: 200px; }
-#detail{ float: left; width: 500px; height: 600px; margin-left: 100px; border: 1px solid black; }
+#detail{ float: left; width: 500px; height: 600px; margin-left: 100px; border: 1px solid darkseagreen; }
 .img-zoom-container {
   position: relative;
 }
@@ -24,7 +24,7 @@
 }
 
 .img-zoom-result {
-  border: 1px solid #d4d4d4;
+  border: 1px solid darkseagreen;
   /*set the size of the result div:*/
   width: 300px;
   height: 300px;
@@ -161,7 +161,7 @@ function change () {
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
 <div id="main">
 <br>
-<h1><p style="text-align: center; color: midnightblue; font-style: italic; ">상세페이지</p></h1><br>
+<h1><p style="text-align: center; color: DarkSeaGreen; font-style: italic; ">상세페이지</p></h1><br>
 <div id="wrab">
 	<div class="img-zoom-box" >		 
 		  <div id="myresult" class="img-zoom-result" ></div>
@@ -184,18 +184,19 @@ function change () {
 
 		<div id="detail">
 			<form name="form"  method="get" style="text-align: center;" action="${cp }/demand/insert" onsubmit="return checkLogin()">
-			 <h1>${name}</h1><br>
-			<h2>가격 : ${vo.goprice } 원</h2><br>
-			<h3>배송방법: 택배</h3><br>
-			색상:
+			<br>
+			 <span style="color: DarkSeaGreen;"><h1>${name}</h1></span><br>
+			<span style="color: DarkSeaGreen;"><h2>가격 : ${vo.goprice } 원</h2></span><br>
+			<span style="color: darkseagreen;"><h4>배송방법: 택배</h4></span><br>
+			<span style="color: darkseagreen;">색상:</span>
 			<select name="color">
-				<option value="${vo.gocolor }">${vo.gocolor }</option>		
+				<option value="${vo.gocolor }" style="background-color:DarkSlateGray;">${vo.gocolor }</option>		
 			</select>
 			<br>
-			수량 : <input type=hidden name="sell_price" value="${vo.goprice }">
-			<input type="text" name="amount" value="1" size="3" onchange="change();">
+			<span style="color: darkseagreen;">수량 :</span> <input type=hidden name="sell_price" value="${vo.goprice }">
+			<input type="text" name="amount" value="1" size="3" onchange="change();" style="color: DarkSlateGray ; text-align: right;">
 			<input type="button" value=" + " onclick="add();" class="button1"><input type="button" value=" - " onclick="del();" class="button1"><br>
-			금액 : <input type="text" name="sum" size="11" readonly>원<br>
+			<span style="color: darkseagreen;">금액 :</span> <input type="text" name="sum" size="11" readonly style="color: DarkSlateGray ; text-align: right;">원<br>
 			<br>
 			<!-- 아래추가 -->
 			<input type="hidden" name="goImg" value="${vo.goimg }">
