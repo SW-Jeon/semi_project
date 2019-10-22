@@ -80,7 +80,7 @@ public class AsWriteDao {
 							"    (" + 
 							"        select aa.*,rownum rnum from" + 
 							"        (" + 
-							"            select * from aswrite order by asnum desc" + 
+							"            select asnum,asimg,astitle,ascontent,RPAD( SUBSTR(mid,1,2), LENGTH(mid), '#') mid,gocode,purnum,ashit from aswrite order by asnum desc" + 
 							"        )aa" + 
 							")where rnum>=? and  rnum<=?";
 				}else {		//검색조건이 있는 경우
@@ -88,7 +88,7 @@ public class AsWriteDao {
 							"(" + 
 							"   select aa.*,rownum rnum from" + 
 							"    (" + 
-							"        select * from aswrite " + 
+							"       select asnum,asimg,astitle,ascontent,RPAD( SUBSTR(mid,1,2), LENGTH(mid), '#') mid,gocode,purnum,ashit from aswrite " + 
 							"	     where " + field + " like '%" + keyword +"%'" + 
 							"	     order by asnum desc " + 
 							"     )aa" + 
@@ -272,7 +272,7 @@ public class AsWriteDao {
 			ResultSet rs=null;
 			try {
 				con=JdbcUtil.getConn();
-				String sql="select * from aswrite";
+				String sql="select asnum,asimg,astitle,ascontent,RPAD( SUBSTR(mid,1,2), LENGTH(mid), '#') mid,gocode,purnum,ashit from aswrite";
 				pstmt=con.prepareStatement(sql);
 				rs=pstmt.executeQuery();
 				ArrayList<AsWriteVo> R_List=new ArrayList<AsWriteVo>();

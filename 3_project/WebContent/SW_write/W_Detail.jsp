@@ -29,10 +29,6 @@
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">답변확인상태</th>
 				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.rewst}</td>
 			</tr>
-			<tr>
-				<td width="30"><a href="${cp }/SW_write/update?writenum=${vo.writenum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">수정하기</a></td>
-				<td width="30"><a href="${cp }/SW_write/delete?writenum=${vo.writenum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">삭제하기</a></td>
-			</tr>
 	</table>
 	<br><hr>
  <c:if test="${sessionScope.mid=='admin'}">		
@@ -40,7 +36,7 @@
 		<table style="display: inline-block;">
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">운영자 답변</th>
-				<td><textarea rows="5" cols="60" name="ascontent" style="width: 90%; height: 150px; font-size: large;" name="rewrite"></textarea></td>
+				<td><textarea rows="5" cols="60" name="rewrite" style="width: 90%; height: 150px; font-size: large;" name="rewrite"></textarea></td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">답변상태</th>
