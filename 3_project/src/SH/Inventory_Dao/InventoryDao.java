@@ -12,6 +12,30 @@ import jdbc.JdbcUtil;
 
 public class InventoryDao {
 	
+	public int insert(InventoryVo vo) {//상품등록
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="insert into inventory values(?,?,?,?,?,?,?,'admin')";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, vo.getGocode());
+			pstmt.setString(2, vo.getGoname());
+			pstmt.setInt(3, vo.getGoprice());
+			pstmt.setString(4, vo.getGocolor());
+			pstmt.setString(5, vo.getGoimg());
+			pstmt.setInt(6, vo.getPamount());
+			pstmt.setInt(7, vo.getJnum());
+			return pstmt.executeUpdate();
+		}catch(SQLException se ) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JdbcUtil.close(con, pstmt, null);
+		}
+	}
+	
+	
 	public int getCount(int jnum,String keyword,int level) {//작성된 글의 개수
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -23,7 +47,7 @@ public class InventoryDao {
 			if(jnum!=0 ) {//리스트
 				sql +=" where jnum="+jnum+" and gocolor like'%"+keyword+"%'";
 				if(level==0) {
-					sql +=" order by jnum desc";
+					sql +=" order by gocode desc";
 				}else if(level==1) {
 					sql +=" order by goprice desc"; 
 				}else if(level==2) {
@@ -91,7 +115,7 @@ public class InventoryDao {
 						"		select aa.*,rownum rnum from" +
 						"		(" + 
 						"		select * from inventory where jnum=" + jnum +			
-						"		order by jnum desc" +
+						"		order by rownum desc" +
 						"		)aa" + 
 						"	)where rnum>=? and rnum<=?";
 			}else if(level==1) {
@@ -152,7 +176,7 @@ public class InventoryDao {
 					"(" + 
 					"select * from inventory" + 
 					" where jnum="+jnum+" and gocolor like'%"+keyword+"%'" + 
-					" order by jnum desc" + 
+					" order by rownum desc" + 
 					")aa" + 
 					")where rnum>=? and rnum<=?";
 							if(level==1) {
