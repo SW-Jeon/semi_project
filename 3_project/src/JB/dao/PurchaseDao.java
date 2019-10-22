@@ -91,15 +91,15 @@ public class PurchaseDao {
 		}
 	}
 	//월별 결제일자 관련 메소드
-	public ArrayList<PurchaseVo> ListMonth(String month){
+	public ArrayList<PurchaseVo> ListMonth(int month){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="select * from purchase where substr(purdate,4,2)='?'";
+			String sql="select * from purchase where substr(purdate,4,2)=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, month);
+			pstmt.setInt(1, month);
 			rs=pstmt.executeQuery();
 			ArrayList<PurchaseVo> list= new ArrayList<PurchaseVo>();
 			while(rs.next()) {
