@@ -1,19 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+.title{font-size: 1.2em;  font-weight:bold; text-align:center; padding-left: 5px; background-color: #D8D8D8; }
+</style>
 <h1>전체 결제정보</h1>
-<table border="1" width="1200"  style="text-align: center;border: none;">
+<table border="1" style="width: 95%; text-align: center; margin: auto;">
 	<tr>
-		<th>상품이미지</th>
-		<th>상품명</th>
-		<th>색상</th>
-		<th>총결제가격</th>
-		<th>결제수량</th>
-		<th>결제수단</th>
-		<th>배송지</th>
-		<th>결제일자</th>
-		<th>구매상태</th>
-		<th>구매자 아이디</th>
+		<th class="title">상품이미지</th>
+		<th class="title">상품명</th>
+		<th class="title">색상</th>
+		<th class="title">총결제가격</th>
+		<th class="title">결제수량</th>
+		<th class="title">결제수단</th>
+		<th class="title">배송지</th>
+		<th class="title">결제일자</th>
+		<th class="title">구매상태</th>
+		<th class="title">구매자 아이디</th>
 	</tr>
 <c:forEach var="vo" items="${list }">
 	<tr>
