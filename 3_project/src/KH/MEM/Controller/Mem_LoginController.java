@@ -43,7 +43,8 @@ public class Mem_LoginController extends HttpServlet{
 		String mid=req.getParameter("mid");
 		String mpwd=req.getParameter("mpwd");
 		Mem_Dao dao = Mem_Dao.getMem_Dao();
-		boolean result=dao.isMember(mid, mpwd);
+		int mdelup=1;
+		boolean result=dao.isMember(mid, mpwd,mdelup);
 		InventoryDao idao=new InventoryDao();
 		InventoryVo vo=new InventoryVo();
 		ArrayList<InventoryVo> list=idao.mainList(vo);

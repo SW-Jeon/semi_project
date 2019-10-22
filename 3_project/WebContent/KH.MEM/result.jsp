@@ -11,8 +11,5 @@
 		<h1>오류로 인해 요청작업을 수행하지 못하였습니다..</h1>
 	</c:otherwise>
 </c:choose>
-
-<a href="${cp }/pro/home.jsp">메인으로</a>
-		
-<a href="${pageContext.request.contextPath }/pro/home">메인으로</a>
+<a href="${cp }/user/logout">메인으로</a>
 </div>

@@ -29,6 +29,7 @@ public class Homecontroller extends HttpServlet {
 		String right=(String)req.getAttribute("right");
 		String main=(String)req.getAttribute("main");
 		String bottom=(String)req.getAttribute("bottom");
+		
 		if(top==null) {
 			top="/pro/header.jsp";
 		}
