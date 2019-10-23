@@ -19,9 +19,8 @@ public class QnAupdateController  extends HttpServlet{
 		QnAlistDao dao=QnAlistDao.getInstance();
 		QnAvo vo=dao.getInfo(qanum);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/SW_pro/Q_Update.jsp").forward(req, resp);
 		req.setAttribute("top", "/pro/header.jsp");
-		req.setAttribute("main","/SW_pro/Q_Update.jsp");
+		req.setAttribute("main","/SW_pro/QnAupdate.jsp");
 		req.setAttribute("bottom", "/pro/footer.jsp");
 		req.getRequestDispatcher("/pro/product.jsp").forward(req, resp);
 	}

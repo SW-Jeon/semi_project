@@ -199,11 +199,24 @@ a:hover,
 <div id="main">
 <c:set var="cp" value="${pageContext.request.contextPath }"/>
 <div id="jj" style="text-align: right;">
+<c:choose>
+<c:when test="${sessionScope.mid=='admin'}">
+<a href="${cp }/SH.acc_insert/watchinsertform.jsp">상품등록</a>
+&nbsp;
 <a href="${cp }/inventory/list?jnum=300&level=0">최신순</a>
 &nbsp;
 <a href="${cp }/inventory/list?jnum=300&level=1">가격높은순</a>
 &nbsp;
 <a href="${cp }/inventory/list?jnum=300&level=2">가격낮은순</a>
+</c:when>
+<c:otherwise>
+<a href="${cp }/inventory/list?jnum=300&level=0">최신순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=300&level=1">가격높은순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=300&level=2">가격낮은순</a>
+</c:otherwise>
+</c:choose>
 </div>
 <div id="watch_wrap" >
 	<c:forEach var="vo" items="${list }" varStatus="vs">
@@ -283,6 +296,15 @@ a:hover,
 								</c:when>
 								<c:when test="${vo.gocode=='w20'}">				
 									<span class="name" id="${vs.index }">딥브라운시계</span><br>
+								</c:when>
+								<c:when test="${vo.gocode=='w21'}">				
+									<span class="name" id="${vs.index }">${vo.goname }</span><br>
+								</c:when>
+								<c:when test="${vo.gocode=='w22'}">				
+									<span class="name" id="${vs.index }">${vo.goname }</span><br>
+								</c:when>
+								<c:when test="${vo.gocode=='w23'}">				
+									<span class="name" id="${vs.index }">${vo.goname }</span><br>
 								</c:when>
 							</c:choose>
 									<c:choose>

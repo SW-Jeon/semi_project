@@ -14,7 +14,7 @@
           </label>
           </div>
           	<br>
-			<input type="submit" value="로그인" style="width: 70px; height: 30px;">
+			<input type="submit" value="로그인" style="width: 100px; height: 50px; text-align:center; font-size: medium; background-color: black; color: white;  ">
 		</form>
 			<br>
 	</div>
@@ -22,6 +22,9 @@
 		<img src="https://colinbendell.cloudinary.com/image/upload/c_crop,f_auto,g_auto,h_350,w_400/v1512090971/Wizard-Clap-by-Markus-Magnusson.gif">
 	</div>
 	<div id=right_down3>
-		<img src="https://colinbendell.cloudinary.com/image/upload/c_crop,f_auto,g_auto,h_350,w_400/v1512090971/Wizard-Clap-by-Markus-Magnusson.gif">
+		
+		<img src="${cp }/images/gu.png" style="width: 350px; height: 400px; margin-bottom: 40px;">
+
+		<img src="${cp }/images/pt.png" style="width: 350px; height: 400px;">
 	</div>
 </div>

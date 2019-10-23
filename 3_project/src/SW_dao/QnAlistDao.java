@@ -239,7 +239,7 @@ public class QnAlistDao {
     	ResultSet rs=null;
     	try {
     		con=JdbcUtil.getConn();
-    		String sql="select * from qa whrer qanum=?";
+    		String sql="select * from qa where qanum=?";
     		pstmt=con.prepareStatement(sql);
     		pstmt.setInt(1, qanum);
     		rs=pstmt.executeQuery();

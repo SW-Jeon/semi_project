@@ -91,15 +91,15 @@ public class PurchaseDao {
 		}
 	}
 	//월별 결제일자 관련 메소드
-	public ArrayList<PurchaseVo> ListMonth(String month){
+	public ArrayList<PurchaseVo> ListMonth(int month){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=JdbcUtil.getConn();
-			String sql="select * from purchase where substr(purdate,4,2)='?'";
+			String sql="select * from purchase where substr(purdate,4,2)=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, month);
+			pstmt.setInt(1, month);
 			rs=pstmt.executeQuery();
 			ArrayList<PurchaseVo> list= new ArrayList<PurchaseVo>();
 			while(rs.next()) {
@@ -316,40 +316,40 @@ public class PurchaseDao {
 	}
 
 	//운영자 모드시 전체결제 갯수 받는 메소드
-	public int getCount(String field,String keyword) {//회원이 구매한 물건 개수
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-		con=JdbcUtil.getConn();
-		String sql="select NVL(count(*),0) as maxnum from inventory i, demand d, purchase p "
-				+ "where i.gocode=d.gocode and d.ordernum=p.ordernum";
-		if(field!=null && !field.equals("")) {
-			sql="select NVL(count(*),0) from" + 
-					"(" + 
-					"    select goname,mid,purway,purstatus from" + 
-					"    (" + 
-					"        select i.goname, d.mid,p.purway, p.purstatus" + 
-					"        from inventory i, demand d, purchase p" + 
-					"        where i.gocode=d.gocode and d.ordernum=p.ordernum" + 
-					"    ) aa" + 
-					") where "+field+" like '%"+keyword+"%'";
-		}
-		pstmt=con.prepareStatement(sql);
-		rs=pstmt.executeQuery();
-			if(rs.next()) {
-				int infonum=rs.getInt(1);//컬럼순서 
-				return infonum;
-			}else {
-				return 0;
+		public int getCount(String field,String keyword) {//회원이 구매한 물건 개수
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+			con=JdbcUtil.getConn();
+			String sql="select NVL(count(*),0) as maxnum from inventory i, demand d, purchase p "
+					+ "where i.gocode=d.gocode and d.ordernum=p.ordernum";
+			if(field!=null && !field.equals("")) {
+				sql="select NVL(count(*),0) from" + 
+						"(" + 
+						"    select goname,mid,purway,purstatus from" + 
+						"    (" + 
+						"        select i.goname, d.mid,p.purway, p.purstatus" + 
+						"        from inventory i, demand d, purchase p" + 
+						"        where i.gocode=d.gocode and d.ordernum=p.ordernum" + 
+						"    ) aa" + 
+						") where "+field+" like '%"+keyword+"%'";
 			}
-		}catch(SQLException se) {
-			System.out.println(se.getMessage());
-			return -1;
-		}finally {
-			JdbcUtil.close(con, pstmt, rs);
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+				if(rs.next()) {
+					int infonum=rs.getInt(1);//컬럼순서 
+					return infonum;
+				}else {
+					return 0;
+				}
+			}catch(SQLException se) {
+				System.out.println(se.getMessage());
+				return -1;
+			}finally {
+				JdbcUtil.close(con, pstmt, rs);
+			}
 		}
-	}
 	//구매확정시 구매상태 변경해주는 메소드
 	public void updateOk(int purnum, String mid) {
 		Connection con=null;

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import KH.MEM_Vo.Mem_Vo;
 import KH.Mem_Dao.Mem_Dao;
 import SH.Inventory_Dao.InventoryDao;
 import SH.Inventory_Vo.InventoryVo;

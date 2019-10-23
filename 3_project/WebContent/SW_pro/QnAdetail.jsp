@@ -8,16 +8,26 @@
 	<table style="width: 60%; height:30%;  text-align: center; margin: auto;">
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">번호</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qanum }</td>
+				<td  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qanum }</td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글내용</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qacontent}</td>
+				<td  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qacontent}</td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글쓴이</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qaname}</td>
+				<td  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qaname}</td>
 			</tr>
+			
+			<tr>
+			 	<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">조회수</th>
+				<td  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qahit}</td>
+			</tr>
+			
+	</table>
+<c:choose>
+	<c:when test="${vo.reqst=='답변완료' }">	
+	<table style="width: 60%; height:10%;  text-align: center; margin: auto; border: 5px groove red;">	
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">>답변</th>
 				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qarecontent}</td>
@@ -27,22 +37,19 @@
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">답변확인상태</th>
 				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.reqst}</td>
 			</tr>
-			<tr>
-			 	<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">조회수</th>
-				<td width="600"  style="width: 90%; height: 50px; font-size: large; padding-left: 10px;" >${vo.qahit}</td>
-			</tr>
-			<tr>
-				<td width="20"><a href="${cp }/SW_pro/update?qanum=${vo.qanum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">수정하기</a></td>
-				<td width="20"><a href="${cp }/SW_pro/delete?qanum=${vo.qanum }" style="text-align: center; text-decoration: none; display: inline-block; font-size: 1.5em;">삭제하기</a></td>
-			</tr>
 	</table>
+	</c:when>
+	<c:otherwise>
+		<table style="width: 60%; height:10%;  text-align: center; margin: auto; "></table>
+	</c:otherwise>
+</c:choose>		
 	<br><hr>
 <c:if test="${sessionScope.mid=='admin'}">		
 	<form method="post"  action="${cp }/SW_pro/QnAreqst">
 		<table style="display: inline-block;">
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">운영자 답변</th>
-				<td><textarea rows="5" cols="60" name="ascontent" style="width: 90%; height: 150px; font-size: large;" name="qarecontent" required autofocus></textarea></td>
+				<td><textarea rows="5" cols="60" name="qarecontent" style="width: 90%; height: 150px; font-size: large;" name="qarecontent" required autofocus></textarea></td>
 			</tr>
 			<tr>
 				<th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">답변 상태</th>

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div id="main">
-	<h1 style="font-size: 4em;">고객만족센터</h1>
-	<h2 >Q&A 수정하기</h2>
+	<h1 style="font-size: 3em;">회원문의</h1>
+	<h4 style="font-size: 1.5em;">수정</h4>
 	<hr>
-	<form method="post" action="${cp }/SW_pro/Qupdate">
+	<form method="post" action="${cp }/SW_pro/update">
 		 <table  style="width:85%; height:30%;  border-style: groove; " >
 			 <tr>
 				 <th style="font-size: 1.5em;  font-weight:bold; text-align:center; padding-left: 5px; width:10%; ">글쓴이</th>

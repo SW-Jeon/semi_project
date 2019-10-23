@@ -18,11 +18,8 @@ a {
 a:hover {
     color: #fff;
 }
-
 .name{color: gray;}
-
 .number{color: gray;}
-
 @keyframes anima {
     from {
         margin-top: -50px;
@@ -41,7 +38,6 @@ a:hover {
         opacity: 1
     }
 }
-
 @-webkit-keyframes anima {
     from {
         margin-left: -20px;
@@ -78,9 +74,7 @@ a:hover {
     -ms-backface-visibility: hidden;
     backface-visibility: hidden;
     
-
 }
-
 .pic-3d {
     -webkit-perspective: 500;
     -moz-perspective: 500;
@@ -93,7 +87,6 @@ a:hover {
     -ms-transform-style: preserve-3d;
     transform-style: preserve-3d
 }
-
 .pic-caption {
     cursor: default;
     position: absolute;
@@ -108,7 +101,6 @@ a:hover {
     -khtml-opacity: 0;
     opacity: 0;
 }
-
 .pic-image {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
@@ -116,7 +108,6 @@ a:hover {
     -ms-transform: scale(1);
     transform: scale(1)
 }
-
 .pic:hover .pic-image {
     -webkit-transform: scale(0.9);
     -moz-transform: scale(0.9);
@@ -124,11 +115,9 @@ a:hover {
     -ms-transform: scale(0.9);
     transform: scale(0.9)
 }
-
 .pic-title {
     font-size: 1.8em
 }
-
 a,
 a:hover,
 .pic .pic-image,
@@ -141,8 +130,6 @@ a:hover,
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease
 }
-
-
 .pic:hover .left-to-right
  {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=($opacity * 100))";
@@ -166,18 +153,14 @@ a:hover,
     -ms-tap-highlight-color: transparent;
     tap-highlight-color: transparent
 }
-
-
 .left-to-right {
     top: 0;
     right: 50%
 }
-
 .pic:hover .left-to-right {
     right: 0;
     top: 0
 }
-
 @media screen and (max-width: 560px) {
     .pic {
         max-width: 450px;
@@ -201,31 +184,41 @@ a:hover,
 </script>
 <div id="main" >
 <div id="jj" style="text-align: right;">
+<c:choose>
+<c:when test="${sessionScope.mid=='admin'}">
+<a href="${cp }/SH.acc_insert/braceinsertform.jsp">상품등록</a>
+&nbsp;
 <a href="${cp }/inventory/list?jnum=400&level=0">최신순</a>
 &nbsp;
 <a href="${cp }/inventory/list?jnum=400&level=1">가격높은순</a>
 &nbsp;
 <a href="${cp }/inventory/list?jnum=400&level=2">가격낮은순</a>
+</c:when>
+<c:otherwise>
+<a href="${cp }/inventory/list?jnum=400&level=0">최신순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=400&level=1">가격높은순</a>
+&nbsp;
+<a href="${cp }/inventory/list?jnum=400&level=2">가격낮은순</a>
+</c:otherwise>
+</c:choose>
 </div>
 <div id="brace_wrap">
 	<c:set var="cp" value="${pageContext.request.contextPath }"/>
 		<c:forEach var="vo" items="${list }" varStatus="vs">
 			<div id="b">
-				<a href="javascript:aa('${vo.gocode}',${vs.index })" >
-				
-				
-				
-<article class="htmleaf-container">
-<section class="wrapper cl">
-<div class="pic">				
-<img src="${cp }/acc/brace/${vo.goimg }"  width="300" height="300" class="pic-image" alt="Pic"><!-- 이미지 -->		
-<span class="pic-caption left-to-right">
-<h1 class="pic-title">상세페이지</h1>
- <p>상세페이지로 이동합니다</p>
- </span>
- </div>
-</section>
-</article>							
+				<a href="javascript:aa('${vo.gocode}',${vs.index })" >	
+					<article class="htmleaf-container">
+						<section class="wrapper cl">
+							<div class="pic">				
+								<img src="${cp }/acc/brace/${vo.goimg }"  width="300" height="300" class="pic-image" alt="Pic"><!-- 이미지 -->		
+									<span class="pic-caption left-to-right">
+										<h1 class="pic-title">상세페이지</h1>
+										<p>상세페이지로 이동합니다</p>
+ 									</span>
+ 							</div>
+						</section>
+					</article>							
 						<div id="price">
 						<br>
 						<strong class="b1">
@@ -288,7 +281,16 @@ a:hover,
 									<span class="name" id="${vs.index }">커플실팔찌</span><br>
 								</c:when>
 								<c:when test="${vo.gocode=='b20'}">				
-									<span class="name" id="${vs.index }">블랙로골팔찌</span><br>
+									<span class="name" id="${vs.index }">${vo.goname }</span><br>
+								</c:when>
+								<c:when test="${vo.gocode=='b21'}">				
+									<span class="name" id="${vs.index }">${vo.goname }</span><br>
+								</c:when>
+								<c:when test="${vo.gocode=='b22'}">				
+									<span class="name" id="${vs.index }">${vo.goname }</span><br>
+								</c:when>
+								<c:when test="${vo.gocode=='b23'}">				
+									<span class="name" id="${vs.index }">${vo.goname }</span><br>
 								</c:when>
 							</c:choose>
 							<br>
@@ -311,9 +313,6 @@ a:hover,
 			</div>	
 		</c:forEach>
 	</div>
-	
-	
-	
 		<div id="page"><!-- 페이징처리 -->
 			<c:choose>
 				<c:when test="${startPageNum>4 }">

@@ -22,7 +22,6 @@ public class ListServlet extends HttpServlet {
 		int jnum=Integer.parseInt(req.getParameter("jnum"));
 		int level=Integer.parseInt(req.getParameter("level"));
 		int pageNum=1;
-		int field=0;
 		String keyword=null;
 		if(spageNum!=null) {
 			pageNum=Integer.parseInt(spageNum);
@@ -31,14 +30,19 @@ public class ListServlet extends HttpServlet {
 		int startRow=endRow-5;
 		InventoryDao dao=new InventoryDao();
 		ArrayList<InventoryVo> list=dao.list(startRow, endRow, jnum,level);	
-		int pageCount=(int)Math.ceil(dao.getCount(field, keyword, level)/.0);
+		int pageCount=(int)Math.ceil(dao.getCount(jnum, keyword, level)/6.0);
 		//시작페이지 번호
-		int startPageNum=((pageNum-1)/10*10)+1;
+		int startPageNum=((pageNum-1)/4*4)+1;
 		//끝페이지 번호
 		int endPageNum=startPageNum+3;
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
 		}
+		System.out.println("pageNum:"+pageNum);
+		System.out.println("pageCount:"+pageCount);
+		System.out.println("startPageNum:"+startPageNum);
+		System.out.println("endPageNum:"+endPageNum);
+		
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("list", list);
 		req.setAttribute("startPageNum", startPageNum);
