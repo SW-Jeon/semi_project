@@ -24,11 +24,11 @@
 .button1 {
   background-color: white; 
   color: black; 
-  border: 2px solid #4CAF50;
+  border: 1px solid gray;
 }
 
 .button1:hover {
-  background-color: #4CAF50;
+  background-color: gray;
   color: white;
 }
 </style>
@@ -54,7 +54,7 @@
 			<td colspan="2" style="text-align: right; ">
 				<input type="submit" value="수정" class="button1" >
 				<input type="reset" value="되돌리기" class="button1"  >
-				<a href="${cp }/info/list" style="color: green;">목록으로</a>
+				<a href="${cp }/info/list" style="color: gray;">목록으로</a>
 				
 			</td>
 		</tr>

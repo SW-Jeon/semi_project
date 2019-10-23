@@ -49,7 +49,7 @@
 .button1 {
   background-color: white; 
   color: black; 
-  border: 2px solid #4CAF50;
+  border: 1px solid #4CAF50;
 }
 
 .button1:hover {
@@ -204,6 +204,12 @@ function change () {
 			<input type="hidden" name="goName" value="${name}">
 			<input type="hidden" name="getCode" value="${vo.gocode}">
 			<input type="button" value="장바구니" onclick="CartGo()" class="button1" >&nbsp;<input type="submit" value="구매하기"  class="button1" >
+			<br>
+			<c:choose>
+			<c:when test="${sessionScope.mid=='admin' }">
+			<input type="button" value="삭제하기" onclick="DelGo()" class="button1">
+			</c:when>
+			</c:choose>
 			</form>
 		</div>
 </div>
@@ -236,6 +242,9 @@ function checkLogin() {
 			return false;
 		}
 	return true;
+}
+function DelGo() {
+	location.href="${cp}/delete/go?gocode=${gocode}";
 }
 </script>
 </div>
