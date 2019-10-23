@@ -16,6 +16,7 @@
     		<c:otherwise>      <%--로그인 한 경우 --%>
 				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/SW_write/Wlist'">회원문의</button></li>
 				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/user/mypage'">마이페이지</button></li>
+				
 				<li><button type="button" class="navyBtn" onClick="location.href='${cp }/user/logout'"><span style="color:red;font-weight: bold">로그아웃</span></button></li>
             </c:otherwise>
        	</c:choose>

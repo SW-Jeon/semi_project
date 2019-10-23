@@ -1,17 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.title{font-size: 1.2em;  font-weight:bold; text-align:center; padding-left: 5px; background-color: #D8D8D8; }
+</style>
 <h1>전체회원 정보</h1>
-<table border="1" width="1200"  style="text-align: center;border: none;">
+<table border="1" style="width: 95%; text-align: center; margin: auto;">
 	<tr>
-		<th>아이디</th>
-		<th>비밀번호</th>
-		<th>이름</th>
-		<th>이메일</th>
-		<th>주소</th>
-		<th>휴대폰번호</th>
-		<th>성별</th>
-		<th>가입상태</th>
+		<th class="title">아이디</th>
+		<th class="title">비밀번호</th>
+		<th class="title">이름</th>
+		<th class="title">이메일</th>
+		<th class="title">주소</th>
+		<th class="title">휴대폰번호</th>
+		<th class="title">성별</th>
+		<th class="title">가입상태</th>
 	</tr>
 <c:forEach var="vo" items="${list }">
 	<tr>

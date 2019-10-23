@@ -14,7 +14,7 @@
           </label>
           </div>
           	<br>
-			<input type="submit" value="로그인" style="width: 70px; height: 30px;">
+			<input type="submit" value="로그인" style="width: 100px; height: 50px; text-align:center; font-size: medium; background-color: black; color: white;  ">
 		</form>
 			<br>
 	</div>
