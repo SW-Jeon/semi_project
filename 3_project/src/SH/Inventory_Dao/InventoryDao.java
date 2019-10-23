@@ -35,6 +35,22 @@ public class InventoryDao {
 		}
 	}
 	
+	public int delete(String gocode) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=JdbcUtil.getConn();
+			String sql="delete from inventory where gocode=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, gocode);
+			return pstmt.executeUpdate();
+		}catch (SQLException se) {
+			System.out.println(se.getMessage());
+			return -1;
+		}finally {
+			JdbcUtil.close(con, pstmt, null);
+		}
+	}
 	
 	public int getCount(int jnum,String keyword,int level) {//작성된 글의 개수
 		Connection con=null;
