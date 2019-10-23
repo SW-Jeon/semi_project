@@ -49,7 +49,7 @@
 .button1 {
   background-color: white; 
   color: black; 
-  border: 2px solid #4CAF50;
+  border: 1px solid #4CAF50;
 }
 
 .button1:hover {
